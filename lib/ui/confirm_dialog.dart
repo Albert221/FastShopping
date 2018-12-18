@@ -15,11 +15,12 @@ class ConfirmDialog extends StatelessWidget {
         actions: [
           FlatButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: const Text('ANULUJ')),
+              child: const Text('ANULUJ',
+                  style: const TextStyle(color: Colors.black87))),
           FlatButton(
               onPressed: () => Navigator.of(context).pop(true),
               child: const Text('USUŃ',
-                  style: const TextStyle(color: Colors.white)),
+                  style: const TextStyle(color: Colors.black87)),
               color: Theme.of(context).accentColor)
         ]);
   }

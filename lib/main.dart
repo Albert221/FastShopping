@@ -9,7 +9,8 @@ class ShoppingListApp extends StatelessWidget {
     return MaterialApp(
         title: 'Lista zakupów',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.orange),
+        theme: ThemeData(
+            primarySwatch: Colors.amber, backgroundColor: Colors.white),
         home: ShoppingListPage());
   }
 }

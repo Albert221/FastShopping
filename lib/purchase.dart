@@ -12,4 +12,13 @@ class Purchase implements Comparable<Purchase> {
 
     return purchased ? 1 : -1;
   }
+
+  Purchase.fromJson(Map<String, dynamic> json)
+      : name = json['name'],
+        purchased = json['purchased'];
+
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'purchased': purchased
+  };
 }

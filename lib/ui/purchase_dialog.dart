@@ -35,7 +35,9 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
                 Form(
                     key: _formKey,
                     child: TextFormField(
+                        textCapitalization: TextCapitalization.sentences,
                         initialValue: widget.initialName,
+                        autofocus: true,
                         maxLength: 25,
                         onSaved: (value) => _purchaseName = value,
                         validator: (value) {
@@ -43,15 +45,14 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
                             return 'Nazwa produktu nie może być pusta';
                           }
                         },
-                        decoration: const InputDecoration(
-                            hintText: 'Np. 5dag cukru białego'))),
+                        decoration:
+                            const InputDecoration(hintText: 'Cukier biały'))),
                 const SizedBox(height: 16.0),
                 Align(
                     alignment: Alignment.centerRight,
                     child: FlatButton(
                         onPressed: () => _submitDialog(context),
-                        child: const Text('DODAJ',
-                            style: const TextStyle(color: Colors.white)),
+                        child: const Text('DODAJ'),
                         color: Theme.of(context).accentColor))
               ]))
         ]);
