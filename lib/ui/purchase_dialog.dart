@@ -1,12 +1,7 @@
+import 'package:fast_shopping/localization.dart';
 import 'package:flutter/material.dart';
 
 class PurchaseDialog extends StatefulWidget {
-  const PurchaseDialog({Key key, this.initialName}) : super(key: key);
-
-  final String initialName;
-
-  bool get isEdit => initialName != null;
-
   @override
   _PurchaseDialogState createState() => _PurchaseDialogState();
 }
@@ -27,7 +22,7 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-        title: Text(widget.isEdit ? 'Edytuj produkt' : 'Dodaj produkt'),
+        title: Text(AppLocalizations.of(context).purchaseDialogTitle),
         children: [
           Container(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -36,23 +31,26 @@ class _PurchaseDialogState extends State<PurchaseDialog> {
                     key: _formKey,
                     child: TextFormField(
                         textCapitalization: TextCapitalization.sentences,
-                        initialValue: widget.initialName,
                         autofocus: true,
                         maxLength: 25,
                         onSaved: (value) => _purchaseName = value,
                         validator: (value) {
                           if (value.isEmpty) {
-                            return 'Nazwa produktu nie może być pusta';
+                            return AppLocalizations.of(context)
+                                .purchaseDialogInputNotEmpty;
                           }
                         },
-                        decoration:
-                            const InputDecoration(hintText: 'Cukier biały'))),
+                        decoration: InputDecoration(
+                            hintText: AppLocalizations.of(context)
+                                .purchaseDialogInputPlaceholder))),
                 const SizedBox(height: 16.0),
                 Align(
                     alignment: Alignment.centerRight,
                     child: FlatButton(
                         onPressed: () => _submitDialog(context),
-                        child: const Text('DODAJ'),
+                        child: Text(AppLocalizations.of(context)
+                            .purchaseDialogAdd
+                            .toUpperCase()),
                         color: Theme.of(context).accentColor))
               ]))
         ]);

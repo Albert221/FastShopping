@@ -1,3 +1,4 @@
+import 'package:fast_shopping/localization.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmDialog extends StatelessWidget {
@@ -8,18 +9,22 @@ class ConfirmDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-        title: const Text('Usuwanie'),
+        title: Text(AppLocalizations.of(context).deleteDialogTitle),
         content: Text(all
-            ? 'Czy na pewno chcesz wszystko usunąć?'
-            : 'Czy na pewno chcesz usunąć?'),
+            ? AppLocalizations.of(context).deleteDialogDescriptionAll
+            : AppLocalizations.of(context).deleteDialogDescriptionOne),
         actions: [
           FlatButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: const Text('ANULUJ',
+              child: Text(
+                  AppLocalizations.of(context).deleteDialogCancel.toUpperCase(),
                   style: const TextStyle(color: Colors.black87))),
           FlatButton(
               onPressed: () => Navigator.of(context).pop(true),
-              child: const Text('USUŃ',
+              child: Text(
+                  AppLocalizations.of(context)
+                      .deleteDialogConfirm
+                      .toUpperCase(),
                   style: const TextStyle(color: Colors.black87)),
               color: Theme.of(context).accentColor)
         ]);

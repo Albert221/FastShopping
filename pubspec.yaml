@@ -1,4 +1,4 @@
-name: shopping_list
+name: fast_shopping
 description: Very simple and straightforward shopping list application.
 version: 1.0.0+1
 
@@ -8,11 +8,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   shared_preferences: ^0.4.3
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  intl_translation: ^0.17.2
 
 flutter:
   uses-material-design: true

@@ -1,0 +1,67 @@
+{
+  "@@last_modified": "2018-12-18T20:44:01.022159",
+  "appTitle": "Szybkie zakupy",
+  "@appTitle": {
+    "description": "Application title.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "navigationTitle": "Lista zakupów",
+  "@navigationTitle": {
+    "description": "Title displayed on top of the main screen.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "purchasesPlaceholder": "Nie masz żadnych zakupów na liście.",
+  "@purchasesPlaceholder": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "purchaseDialogTitle": "Dodaj produkt",
+  "@purchaseDialogTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "purchaseDialogInputPlaceholder": "Cukier biały",
+  "@purchaseDialogInputPlaceholder": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "purchaseDialogInputNotEmpty": "Nazwa produktu nie może być pusta",
+  "@purchaseDialogInputNotEmpty": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "purchaseDialogAdd": "Dodaj",
+  "@purchaseDialogAdd": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deleteDialogTitle": "Usuwanie",
+  "@deleteDialogTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deleteDialogDescriptionOne": "Czy na pewno chcesz usunąć ten produkt?",
+  "@deleteDialogDescriptionOne": {
+    "description": "Description in alert when deleting one item.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "deleteDialogDescriptionAll": "Czy na pewno chcesz usunąć te produkty?",
+  "@deleteDialogDescriptionAll": {
+    "description": "Description in alert when deleting all items.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "deleteDialogCancel": "Anuluj",
+  "@deleteDialogCancel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deleteDialogConfirm": "Usuń",
+  "@deleteDialogConfirm": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

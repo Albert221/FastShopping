@@ -1,9 +1,10 @@
+import 'package:fast_shopping/localization.dart';
 import 'package:flutter/material.dart';
-import 'package:shopping_list/persistor.dart';
-import 'package:shopping_list/ui/confirm_dialog.dart';
-import 'package:shopping_list/ui/purchase_dialog.dart';
-import 'package:shopping_list/ui/purchase_list_item.dart';
-import 'package:shopping_list/purchase.dart';
+import 'package:fast_shopping/persistor.dart';
+import 'package:fast_shopping/ui/confirm_dialog.dart';
+import 'package:fast_shopping/ui/purchase_dialog.dart';
+import 'package:fast_shopping/ui/purchase_list_item.dart';
+import 'package:fast_shopping/purchase.dart';
 
 class ShoppingListPage extends StatefulWidget {
   @override
@@ -68,7 +69,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-            title: const Text('Lista zakupów'),
+            title: Text(AppLocalizations.of(context).navigationTitle),
             actions: _purchases.isEmpty
                 ? []
                 : [
@@ -98,7 +99,7 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
           width: MediaQuery.of(context).size.width * 0.80,
           child: Image.asset('assets/placeholder.png')),
       SizedBox(height: 24.0),
-      const Text('Nie masz żadnych zakupów na liście.',
+      Text(AppLocalizations.of(context).purchasesPlaceholder,
           style: TextStyle(fontSize: 16.0))
     ]));
   }

@@ -1,0 +1,67 @@
+{
+  "@@last_modified": "2018-12-18T20:44:01.022159",
+  "appTitle": "Fast shopping",
+  "@appTitle": {
+    "description": "Application title.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "navigationTitle": "Shopping list",
+  "@navigationTitle": {
+    "description": "Title displayed on top of the main screen.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "purchasesPlaceholder": "You have no items on your list.",
+  "@purchasesPlaceholder": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "purchaseDialogTitle": "Add item",
+  "@purchaseDialogTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "purchaseDialogInputPlaceholder": "White sugar",
+  "@purchaseDialogInputPlaceholder": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "purchaseDialogInputNotEmpty": "Item name cannot be blank",
+  "@purchaseDialogInputNotEmpty": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "purchaseDialogAdd": "Add",
+  "@purchaseDialogAdd": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deleteDialogTitle": "Deleting",
+  "@deleteDialogTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deleteDialogDescriptionOne": "Are you sure you want to delete this item?",
+  "@deleteDialogDescriptionOne": {
+    "description": "Description in alert when deleting one item.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "deleteDialogDescriptionAll": "Are you sure you want to delete all items?",
+  "@deleteDialogDescriptionAll": {
+    "description": "Description in alert when deleting all items.",
+    "type": "text",
+    "placeholders": {}
+  },
+  "deleteDialogCancel": "Cancel",
+  "@deleteDialogCancel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deleteDialogConfirm": "Delete",
+  "@deleteDialogConfirm": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
