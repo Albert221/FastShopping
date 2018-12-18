@@ -67,11 +67,15 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(title: const Text('Lista zakupów'), actions: [
-          IconButton(
-              icon: Icon(Icons.delete_forever),
-              onPressed: () => _deleteAllPurchases(context))
-        ]),
+        appBar: AppBar(
+            title: const Text('Lista zakupów'),
+            actions: _purchases.isEmpty
+                ? []
+                : [
+                    IconButton(
+                        icon: Icon(Icons.delete_forever),
+                        onPressed: () => _deleteAllPurchases(context))
+                  ]),
         body: _purchases.isNotEmpty
             ? ListView.builder(
                 padding: EdgeInsets.symmetric(vertical: 16.0),
