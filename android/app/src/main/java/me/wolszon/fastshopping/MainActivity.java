@@ -1,4 +1,4 @@
-package me.wolszon.shoppinglist;
+package me.wolszon.fastshopping;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
