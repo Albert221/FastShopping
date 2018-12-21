@@ -1,4 +1,4 @@
-import 'package:fast_shopping/purchase.dart';
+import 'package:fast_shopping/model/purchase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 

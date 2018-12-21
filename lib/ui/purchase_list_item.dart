@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fast_shopping/purchase.dart';
+import 'package:fast_shopping/model/purchase.dart';
 
 class PurchaseListItem extends StatelessWidget {
   const PurchaseListItem(

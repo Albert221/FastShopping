@@ -1,95 +1,88 @@
 import 'package:fast_shopping/localization.dart';
+import 'package:fast_shopping/model/shopping_list_model.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_shopping/persistor.dart';
 import 'package:fast_shopping/ui/confirm_dialog.dart';
 import 'package:fast_shopping/ui/purchase_dialog.dart';
 import 'package:fast_shopping/ui/purchase_list_item.dart';
-import 'package:fast_shopping/purchase.dart';
+import 'package:fast_shopping/model/purchase.dart';
+import 'package:scoped_model/scoped_model.dart';
 
-class ShoppingListPage extends StatefulWidget {
-  @override
-  _ShoppingListPageState createState() => _ShoppingListPageState();
-}
+class ShoppingListPage extends StatelessWidget {
+  BuildContext _context;
 
-class _ShoppingListPageState extends State<ShoppingListPage> {
-  List<Purchase> _purchases = [];
-  Persistor _persistor = Persistor();
-
-  @override
-  void initState() {
-    super.initState();
-
-    _persistor.load().then((data) => setState(() => _purchases = data));
-  }
-
-  void _save() {
-    _persistor.save(_purchases);
-  }
-
-  void _addPurchase(BuildContext context) async {
+  void _addPurchase() async {
     String name = await showDialog(
-        context: context, builder: (BuildContext context) => PurchaseDialog());
+        context: _context, builder: (BuildContext context) => PurchaseDialog());
 
     if (name == null) return;
 
-    setState(() {
-      _purchases.add(Purchase(name));
-    });
-    _save();
+    ScopedModel.of<ShoppingListModel>(_context).add(Purchase(name));
   }
 
-  void _togglePurchase(int index) {
-    setState(() => _purchases[index].purchased = !_purchases[index].purchased);
-    _save();
+  void _togglePurchase(Purchase purchase) {
+    ScopedModel.of<ShoppingListModel>(_context).toggle(purchase);
   }
 
-  void _deletePurchase(BuildContext context, int index) async {
+  void _deletePurchase(Purchase purchase) async {
     bool result = await showDialog(
-        context: context, builder: (BuildContext context) => ConfirmDialog());
+        context: _context, builder: (BuildContext context) => ConfirmDialog());
 
     if (result == true) {
-      setState(() => _purchases.removeAt(index));
+      final model = ScopedModel.of<ShoppingListModel>(_context);
+
+      model.delete(purchase);
     }
-    _save();
   }
 
-  void _deleteAllPurchases(BuildContext context) async {
+  void _deleteAllPurchases() async {
     bool result = await showDialog(
-        context: context,
+        context: _context,
         builder: (BuildContext context) => ConfirmDialog(all: true));
 
     if (result == true) {
-      setState(() => _purchases.clear());
+      ScopedModel.of<ShoppingListModel>(_context).deleteCompleted();
     }
-    _save();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-            title: Text(AppLocalizations.of(context).navigationTitle),
-            actions: _purchases.isEmpty
-                ? []
-                : [
-                    IconButton(
-                        icon: Icon(Icons.delete_forever),
-                        onPressed: () => _deleteAllPurchases(context))
-                  ]),
-        body: _purchases.isNotEmpty
-            ? ListView.builder(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                itemCount: _purchases.length,
-                itemBuilder: (BuildContext context, int i) => PurchaseListItem(
-                    key: ObjectKey(_purchases[i]),
-                    purchase: _purchases[i],
-                    onTap: () => _togglePurchase(i),
-                    onDelete: () => _deletePurchase(context, i)))
-            : _buildPlaceholder(context),
-        floatingActionButton: FloatingActionButton(
-            onPressed: () => _addPurchase(context),
-            child: const Icon(Icons.add)));
+    return ScopedModelDescendant<ShoppingListModel>(
+        builder: (BuildContext context, child, model) => Scaffold(
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+                title: Text(AppLocalizations.of(context).navigationTitle),
+                actions: model.purchases.isEmpty
+                    ? []
+                    : [
+                        IconButton(
+                            icon: Icon(Icons.delete_forever),
+                            onPressed: () => _deleteAllPurchases())
+                      ]),
+            body: Builder(builder: (BuildContext context) {
+              _context = context;
+
+              return model.purchases.isNotEmpty
+                  ? _buildList(context, model)
+                  : _buildPlaceholder(context);
+            }),
+            floatingActionButton: FloatingActionButton(
+                onPressed: () => _addPurchase(),
+                child: const Icon(Icons.add))));
+  }
+
+  Widget _buildList(BuildContext context, ShoppingListModel model) {
+    return ListView.builder(
+        padding: EdgeInsets.symmetric(vertical: 16.0),
+        itemCount: model.purchases.length,
+        itemBuilder: (BuildContext context, int i) {
+          final purchase = model.purchases[i];
+
+          return PurchaseListItem(
+              purchase: purchase,
+              onTap: () => _togglePurchase(purchase),
+              onDelete: () => _deletePurchase(purchase));
+        });
   }
 
   Widget _buildPlaceholder(BuildContext context) {
