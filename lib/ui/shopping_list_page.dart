@@ -1,13 +1,13 @@
 import 'package:fast_shopping/localization.dart';
 import 'package:fast_shopping/model/shopping_list_model.dart';
 import 'package:flutter/material.dart';
-import 'package:fast_shopping/persistor.dart';
 import 'package:fast_shopping/ui/confirm_dialog.dart';
 import 'package:fast_shopping/ui/purchase_dialog.dart';
 import 'package:fast_shopping/ui/purchase_list_item.dart';
 import 'package:fast_shopping/model/purchase.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+// ignore: must_be_immutable
 class ShoppingListPage extends StatelessWidget {
   BuildContext _context;
 
