@@ -11,7 +11,7 @@ class ConfirmDialog extends StatelessWidget {
     return AlertDialog(
         title: Text(AppLocalizations.of(context).deleteDialogTitle),
         content: Text(all
-            ? AppLocalizations.of(context).deleteDialogDescriptionAll
+            ? AppLocalizations.of(context).deleteDialogDescriptionCompleted
             : AppLocalizations.of(context).deleteDialogDescriptionOne),
         actions: [
           FlatButton(

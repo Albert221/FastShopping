@@ -23,7 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "appTitle" : MessageLookupByLibrary.simpleMessage("Szybkie zakupy"),
     "deleteDialogCancel" : MessageLookupByLibrary.simpleMessage("Anuluj"),
     "deleteDialogConfirm" : MessageLookupByLibrary.simpleMessage("Usuń"),
-    "deleteDialogDescriptionAll" : MessageLookupByLibrary.simpleMessage("Czy na pewno chcesz usunąć te produkty?"),
+    "deleteDialogDescriptionCompleted" : MessageLookupByLibrary.simpleMessage("Czy na pewno chcesz usunąć zaznaczone produkty?"),
     "deleteDialogDescriptionOne" : MessageLookupByLibrary.simpleMessage("Czy na pewno chcesz usunąć ten produkt?"),
     "deleteDialogTitle" : MessageLookupByLibrary.simpleMessage("Usuwanie"),
     "navigationTitle" : MessageLookupByLibrary.simpleMessage("Lista zakupów"),

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2018-12-18T20:44:01.022159",
+  "@@last_modified": "2018-12-23T15:21:39.455633",
   "appTitle": "Szybkie zakupy",
   "@appTitle": {
     "description": "Application title.",
@@ -48,9 +48,9 @@
     "type": "text",
     "placeholders": {}
   },
-  "deleteDialogDescriptionAll": "Czy na pewno chcesz usunąć te produkty?",
-  "@deleteDialogDescriptionAll": {
-    "description": "Description in alert when deleting all items.",
+  "deleteDialogDescriptionCompleted": "Czy na pewno chcesz usunąć zaznaczone produkty?",
+  "@deleteDialogDescriptionCompleted": {
+    "description": "Description in alert when deleting completed items.",
     "type": "text",
     "placeholders": {}
   },

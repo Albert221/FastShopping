@@ -56,10 +56,10 @@ class AppLocalizations {
           name: 'deleteDialogDescriptionOne',
           desc: 'Description in alert when deleting one item.');
 
-  String get deleteDialogDescriptionAll =>
-      Intl.message('Are you sure you want to delete all items?',
-          name: 'deleteDialogDescriptionAll',
-          desc: 'Description in alert when deleting all items.');
+  String get deleteDialogDescriptionCompleted =>
+      Intl.message('Are you sure you want to delete completed items?',
+          name: 'deleteDialogDescriptionCompleted',
+          desc: 'Description in alert when deleting completed items.');
 
   String get deleteDialogCancel =>
       Intl.message('Cancel', name: 'deleteDialogCancel');

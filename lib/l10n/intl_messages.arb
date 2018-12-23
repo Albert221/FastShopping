@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2018-12-18T20:44:01.022159",
+  "@@last_modified": "2018-12-23T15:21:39.455633",
   "appTitle": "Fast shopping",
   "@appTitle": {
     "description": "Application title.",
@@ -48,9 +48,9 @@
     "type": "text",
     "placeholders": {}
   },
-  "deleteDialogDescriptionAll": "Are you sure you want to delete all items?",
-  "@deleteDialogDescriptionAll": {
-    "description": "Description in alert when deleting all items.",
+  "deleteDialogDescriptionCompleted": "Are you sure you want to delete completed items?",
+  "@deleteDialogDescriptionCompleted": {
+    "description": "Description in alert when deleting completed items.",
     "type": "text",
     "placeholders": {}
   },
