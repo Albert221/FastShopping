@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2018-12-23T15:21:39.455633",
+  "@@last_modified": "2018-12-28T19:16:35.229145",
   "appTitle": "Szybkie zakupy",
   "@appTitle": {
     "description": "Application title.",
@@ -61,6 +61,21 @@
   },
   "deleteDialogConfirm": "Usuń",
   "@deleteDialogConfirm": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deletedSnackbarText": "Usunąłeś przedmiot z listy.",
+  "@deletedSnackbarText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deletedAllSnackbarText": "Usunąłeś wszystkie zaznaczone przedmioty.",
+  "@deletedAllSnackbarText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "undo": "Cofnij",
+  "@undo": {
     "type": "text",
     "placeholders": {}
   }

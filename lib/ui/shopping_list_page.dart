@@ -35,9 +35,10 @@ class ShoppingListPage extends StatelessWidget {
 
       Scaffold.of(_context).hideCurrentSnackBar();
       Scaffold.of(_context).showSnackBar(SnackBar(
-          content: const Text('You have deleted an item.'),
+          content: Text(AppLocalizations.of(_context).deletedSnackbarText),
           action: SnackBarAction(
-              label: 'UNDO', onPressed: () => model.undoDeleting())));
+              label: AppLocalizations.of(_context).undo.toUpperCase(),
+              onPressed: () => model.undoDeleting())));
     }
   }
 
@@ -52,9 +53,10 @@ class ShoppingListPage extends StatelessWidget {
 
       Scaffold.of(_context).hideCurrentSnackBar();
       Scaffold.of(_context).showSnackBar(SnackBar(
-          content: const Text('You have deleted all completed purchases.'),
+          content: Text(AppLocalizations.of(_context).deletedAllSnackbarText),
           action: SnackBarAction(
-              label: 'UNDO', onPressed: () => model.undoDeleting())));
+              label: AppLocalizations.of(_context).undo.toUpperCase(),
+              onPressed: () => model.undoDeleting())));
     }
   }
 

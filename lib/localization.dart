@@ -5,9 +5,8 @@ import 'package:fast_shopping/l10n/messages_all.dart';
 
 class AppLocalizations {
   static Future<AppLocalizations> load(Locale locale) {
-    final String name = locale.countryCode == null
-        ? locale.languageCode
-        : locale.toString();
+    final String name =
+        locale.countryCode == null ? locale.languageCode : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
 
     return initializeMessages(localeName).then((_) {
@@ -22,14 +21,12 @@ class AppLocalizations {
 
   static AppLocalizationsDelegate get delegate => AppLocalizationsDelegate();
 
-  String get appTitle =>
-      Intl.message('Fast shopping',
-          name: 'appTitle', desc: 'Application title.');
+  String get appTitle => Intl.message('Fast shopping',
+      name: 'appTitle', desc: 'Application title.');
 
-  String get navigationTitle =>
-      Intl.message('Shopping list',
-          name: 'navigationTitle',
-          desc: 'Title displayed on top of the main screen.');
+  String get navigationTitle => Intl.message('Shopping list',
+      name: 'navigationTitle',
+      desc: 'Title displayed on top of the main screen.');
 
   String get purchasesPlaceholder =>
       Intl.message('You have no items on your list.',
@@ -66,6 +63,15 @@ class AppLocalizations {
 
   String get deleteDialogConfirm =>
       Intl.message('Delete', name: 'deleteDialogConfirm');
+
+  String get deletedSnackbarText =>
+      Intl.message('You have deleted an item.', name: 'deletedSnackbarText');
+
+  String get deletedAllSnackbarText =>
+      Intl.message('You have deleted all completed purchases.',
+          name: 'deletedAllSnackbarText');
+
+  String get undo => Intl.message('Undo', name: 'undo');
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

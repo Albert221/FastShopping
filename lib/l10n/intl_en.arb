@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2018-12-23T15:21:39.455633",
+  "@@last_modified": "2018-12-28T19:16:35.229145",
   "appTitle": "Fast shopping",
   "@appTitle": {
     "description": "Application title.",
@@ -61,6 +61,21 @@
   },
   "deleteDialogConfirm": "Delete",
   "@deleteDialogConfirm": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deletedSnackbarText": "You have deleted an item.",
+  "@deletedSnackbarText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "deletedAllSnackbarText": "You have deleted all completed purchases.",
+  "@deletedAllSnackbarText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "undo": "Undo",
+  "@undo": {
     "type": "text",
     "placeholders": {}
   }

@@ -26,11 +26,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteDialogDescriptionCompleted" : MessageLookupByLibrary.simpleMessage("Czy na pewno chcesz usunąć zaznaczone produkty?"),
     "deleteDialogDescriptionOne" : MessageLookupByLibrary.simpleMessage("Czy na pewno chcesz usunąć ten produkt?"),
     "deleteDialogTitle" : MessageLookupByLibrary.simpleMessage("Usuwanie"),
+    "deletedAllSnackbarText" : MessageLookupByLibrary.simpleMessage("Usunąłeś wszystkie zaznaczone przedmioty."),
+    "deletedSnackbarText" : MessageLookupByLibrary.simpleMessage("Usunąłeś przedmiot z listy."),
     "navigationTitle" : MessageLookupByLibrary.simpleMessage("Lista zakupów"),
     "purchaseDialogAdd" : MessageLookupByLibrary.simpleMessage("Dodaj"),
     "purchaseDialogInputNotEmpty" : MessageLookupByLibrary.simpleMessage("Nazwa produktu nie może być pusta"),
     "purchaseDialogInputPlaceholder" : MessageLookupByLibrary.simpleMessage("Cukier biały"),
     "purchaseDialogTitle" : MessageLookupByLibrary.simpleMessage("Dodaj produkt"),
-    "purchasesPlaceholder" : MessageLookupByLibrary.simpleMessage("Nie masz żadnych zakupów na liście.")
+    "purchasesPlaceholder" : MessageLookupByLibrary.simpleMessage("Nie masz żadnych zakupów na liście."),
+    "undo" : MessageLookupByLibrary.simpleMessage("Cofnij")
   };
 }

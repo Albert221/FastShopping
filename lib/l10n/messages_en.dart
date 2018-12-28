@@ -26,11 +26,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteDialogDescriptionCompleted" : MessageLookupByLibrary.simpleMessage("Are you sure you want to delete completed items?"),
     "deleteDialogDescriptionOne" : MessageLookupByLibrary.simpleMessage("Are you sure you want to delete this item?"),
     "deleteDialogTitle" : MessageLookupByLibrary.simpleMessage("Deleting"),
+    "deletedAllSnackbarText" : MessageLookupByLibrary.simpleMessage("You have deleted all completed purchases."),
+    "deletedSnackbarText" : MessageLookupByLibrary.simpleMessage("You have deleted an item."),
     "navigationTitle" : MessageLookupByLibrary.simpleMessage("Shopping list"),
     "purchaseDialogAdd" : MessageLookupByLibrary.simpleMessage("Add"),
     "purchaseDialogInputNotEmpty" : MessageLookupByLibrary.simpleMessage("Item name cannot be blank"),
     "purchaseDialogInputPlaceholder" : MessageLookupByLibrary.simpleMessage("White sugar"),
     "purchaseDialogTitle" : MessageLookupByLibrary.simpleMessage("Add item"),
-    "purchasesPlaceholder" : MessageLookupByLibrary.simpleMessage("You have no items on your list.")
+    "purchasesPlaceholder" : MessageLookupByLibrary.simpleMessage("You have no items on your list."),
+    "undo" : MessageLookupByLibrary.simpleMessage("Undo")
   };
 }
