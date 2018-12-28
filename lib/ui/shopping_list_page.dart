@@ -56,7 +56,7 @@ class ShoppingListPage extends StatelessWidget {
                     ? []
                     : [
                         IconButton(
-                            icon: Icon(Icons.delete_forever),
+                            icon: const Icon(Icons.delete_forever),
                             onPressed: () => _deleteAllPurchases())
                       ]),
             body: Builder(builder: (BuildContext context) {
@@ -73,7 +73,7 @@ class ShoppingListPage extends StatelessWidget {
 
   Widget _buildList(BuildContext context, ShoppingListModel model) {
     return ListView.builder(
-        padding: EdgeInsets.symmetric(vertical: 16.0),
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
         itemCount: model.purchases.length,
         itemBuilder: (BuildContext context, int i) {
           final purchase = model.purchases[i];
@@ -91,9 +91,9 @@ class ShoppingListPage extends StatelessWidget {
       SizedBox(
           width: MediaQuery.of(context).size.width * 0.80,
           child: Image.asset('assets/placeholder.png')),
-      SizedBox(height: 24.0),
+      const SizedBox(height: 24.0),
       Text(AppLocalizations.of(context).purchasesPlaceholder,
-          style: TextStyle(fontSize: 16.0))
+          style: const TextStyle(fontSize: 16.0))
     ]));
   }
 }

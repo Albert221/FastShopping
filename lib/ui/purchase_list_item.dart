@@ -54,14 +54,14 @@ class _PurchasedIcon extends StatelessWidget {
       child: Stack(children: [
         AnimatedOpacity(
             curve: Curves.ease,
-            duration: Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 200),
             opacity: purchased ? 1 : 0,
-            child: Icon(Icons.check, color: Colors.green)),
+            child: const Icon(Icons.check, color: Colors.green)),
         AnimatedOpacity(
             curve: Curves.ease,
-            duration: Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 200),
             opacity: purchased ? 0 : 1,
-            child: Icon(Icons.remove))
+            child: const Icon(Icons.remove))
       ]),
     );
   }
