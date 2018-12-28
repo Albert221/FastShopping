@@ -40,10 +40,10 @@ If you are into localization of the app, please make use of the
 
 ```bash
 # Generate `intl_messages.arb` from strings in `localization.dart`:
-flutter pub pub run intl_translation:extract_to_arb --output-dir=lib/l10n 
-lib/localization.dart
-# Create `intl_<locale>.arb` files based on `intl_messages.arb` and create 
-Dart file using:
-flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/l10n 
-lib/localization.dart lib/l10n/intl_*.arb --no-use-deferred-loading
+flutter pub pub run intl_translation:extract_to_arb --output-dir=lib/l10n \
+    lib/localization.dart
+# Create `intl_<locale>.arb` files based on `intl_messages.arb`
+# and create Dart file using:
+flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/l10n \
+    lib/localization.dart lib/l10n/intl_*.arb --no-use-deferred-loading
 ```
