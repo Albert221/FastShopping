@@ -33,6 +33,7 @@ class ShoppingListPage extends StatelessWidget {
 
       model.delete(purchase);
 
+      Scaffold.of(_context).hideCurrentSnackBar();
       Scaffold.of(_context).showSnackBar(SnackBar(
           content: const Text('You have deleted an item.'),
           action: SnackBarAction(
@@ -49,6 +50,7 @@ class ShoppingListPage extends StatelessWidget {
       final model = ScopedModel.of<ShoppingListModel>(_context);
       model.deleteCompleted();
 
+      Scaffold.of(_context).hideCurrentSnackBar();
       Scaffold.of(_context).showSnackBar(SnackBar(
           content: const Text('You have deleted all completed purchases.'),
           action: SnackBarAction(
