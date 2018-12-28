@@ -32,16 +32,27 @@ class ShoppingListPage extends StatelessWidget {
       final model = ScopedModel.of<ShoppingListModel>(_context);
 
       model.delete(purchase);
+
+      Scaffold.of(_context).showSnackBar(SnackBar(
+          content: const Text('You have deleted an item.'),
+          action: SnackBarAction(
+              label: 'UNDO', onPressed: () => model.undoDeleting())));
     }
   }
 
-  void _deleteAllPurchases() async {
+  void _deleteCompletedPurchases() async {
     bool result = await showDialog(
         context: _context,
         builder: (BuildContext context) => ConfirmDialog(all: true));
 
     if (result == true) {
-      ScopedModel.of<ShoppingListModel>(_context).deleteCompleted();
+      final model = ScopedModel.of<ShoppingListModel>(_context);
+      model.deleteCompleted();
+
+      Scaffold.of(_context).showSnackBar(SnackBar(
+          content: const Text('You have deleted all completed purchases.'),
+          action: SnackBarAction(
+              label: 'UNDO', onPressed: () => model.undoDeleting())));
     }
   }
 
@@ -52,12 +63,14 @@ class ShoppingListPage extends StatelessWidget {
             backgroundColor: Colors.white,
             appBar: AppBar(
                 title: Text(AppLocalizations.of(context).navigationTitle),
-                actions: model.purchases.isEmpty
+                actions: model.purchases
+                        .where((purchase) => purchase.purchased)
+                        .isEmpty
                     ? []
                     : [
                         IconButton(
                             icon: const Icon(Icons.delete_forever),
-                            onPressed: () => _deleteAllPurchases())
+                            onPressed: () => _deleteCompletedPurchases())
                       ]),
             body: Builder(builder: (BuildContext context) {
               _context = context;

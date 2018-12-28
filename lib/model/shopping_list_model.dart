@@ -2,42 +2,56 @@ import 'package:fast_shopping/model/purchase.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class ShoppingListModel extends Model {
-  final List<Purchase> purchases = [];
-  Function(ShoppingListModel) onSave;
+  final List<Purchase> _purchases = [];
+
+  List<Purchase> get purchases =>
+      _purchases.where((purchase) => !purchase.isDeleted).toList();
+
+  final Function(ShoppingListModel) onSave;
 
   ShoppingListModel({this.onSave});
 
   void import(List<Purchase> purchases) {
-    this.purchases.addAll(purchases);
+    _purchases.addAll(purchases);
 
     notifyListeners();
   }
 
   void add(Purchase purchase) {
-    purchases.add(purchase);
+    _purchases.add(purchase);
 
-    notifyListeners();
     _save();
   }
 
   void toggle(Purchase purchase) {
     purchase.toggle();
 
-    notifyListeners();
     _save();
   }
 
   void delete(Purchase purchase) {
-    purchases.remove(purchase);
+    _clearHistory();
+    purchase.delete();
 
-    notifyListeners();
     _save();
   }
 
   void deleteCompleted() {
-    purchases.removeWhere((purchase) => purchase.purchased);
+    _clearHistory();
+    _purchases
+        .where((purchase) => purchase.purchased)
+        .forEach((purchase) => purchase.delete());
 
-    notifyListeners();
+    _save();
+  }
+
+  void _clearHistory() {
+    _purchases.removeWhere((purchase) => purchase.isDeleted);
+  }
+
+  void undoDeleting() {
+    _purchases.forEach((purchase) => purchase.recover());
+
     _save();
   }
 
@@ -45,5 +59,7 @@ class ShoppingListModel extends Model {
     if (onSave != null) {
       onSave(this);
     }
+
+    notifyListeners();
   }
 }
