@@ -90,7 +90,7 @@ class ShoppingListPage extends StatelessWidget {
 
   Widget _buildList(BuildContext context, ShoppingListModel model) {
     return ListView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        padding: const EdgeInsets.only(top: 16.0, bottom: 70.0),
         itemCount: model.purchases.length,
         itemBuilder: (BuildContext context, int i) {
           final purchase = model.purchases[i];
