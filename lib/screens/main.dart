@@ -14,33 +14,18 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {},
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(4),
-              child: IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {},
-              ),
-            ),
-            const SizedBox(width: 8),
-            Text('Lista zakupów 1'),
-          ],
-        ),
-      ),
       body: ListView.builder(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-        itemCount: 2,
+        padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+        itemCount: 4,
         itemBuilder: (context, i) => Padding(
           padding: const EdgeInsets.only(bottom: 16),
           child: ListItem(
-            done: false,
+            done: true,
+            doneAt: DateTime.now().subtract(Duration(hours: 2)),
             title: 'Herbatniki duża paczka',
           ),
         ),
