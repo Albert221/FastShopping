@@ -163,6 +163,7 @@ class ListItemState extends State<ListItem>
                 decoration: const InputDecoration(
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.zero,
+                  isDense: true,
                 ),
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.done,
