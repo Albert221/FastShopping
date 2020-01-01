@@ -21,6 +21,33 @@ class _MainScreenState extends State<MainScreen> {
   bool _shouldShowFab(BuildContext context) =>
       MediaQuery.of(context).viewInsets.bottom == 0;
 
+  void _deleteItem(BuildContext context, Item item) {
+    setState(() => item.removed = true);
+    item.widgetKey.currentState.collapse();
+
+    Scaffold.of(context).hideCurrentSnackBar();
+    Scaffold.of(context)
+        .showSnackBar(
+          SnackBar(
+            behavior: SnackBarBehavior.floating,
+            content: Text('Usunięto element z listy.'),
+            action: SnackBarAction(
+              textColor: PrimaryFlatButton.buttonColor,
+              label: 'COFNIJ',
+              onPressed: () {
+                setState(() => item.removed = false);
+              },
+            ),
+          ),
+        )
+        .closed
+        .then((reason) {
+      if (reason != SnackBarClosedReason.action) {
+        setState(() => _items.remove(item));
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +73,9 @@ class _MainScreenState extends State<MainScreen> {
           final item = _items[i];
 
           return AnimatedCrossFade(
+            key: ObjectKey(item),
             firstCurve: Curves.ease,
+            secondCurve: Curves.ease,
             sizeCurve: Curves.ease,
             duration: const Duration(milliseconds: 300),
             crossFadeState: item.removed
@@ -72,9 +101,7 @@ class _MainScreenState extends State<MainScreen> {
                 onTitleEdited: (newTitle) {
                   setState(() => item.title = newTitle);
                 },
-                onDeleteTap: () {
-                  setState(() => item.removed = true);
-                },
+                onDeleteTap: () => _deleteItem(context, item),
                 onExpand: () {
                   _items.where((a) => a != item).forEach((otherItem) {
                     otherItem.widgetKey.currentState?.collapse();
