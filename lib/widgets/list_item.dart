@@ -7,6 +7,7 @@ class ListItem extends StatefulWidget {
   final DateTime doneAt;
 
   final bool actionsVisible;
+
   final ValueChanged<bool> onDoneTap;
   final ValueChanged<String> onTitleEdited;
   final VoidCallback onDeleteTap;
@@ -45,14 +46,18 @@ class ListItemState extends State<ListItem>
   void _resetTitle() {
     _titleController
       ..text = widget.title
+      // Move caret to the end
       ..selection = TextSelection.collapsed(offset: widget.title.length);
+  }
+
+  void _editTitle() {
+    FocusScope.of(context).requestFocus(_titleFocusNode);
+    setState(() => _editing = true);
   }
 
   void _onEditingTitleComplete() {
     setState(() => _editing = false);
-    if (widget.onTitleEdited != null) {
-      widget.onTitleEdited(_titleController.text);
-    }
+    widget.onTitleEdited?.call(_titleController.text);
   }
 
   void _cancelEditingTitle() {
@@ -62,13 +67,10 @@ class ListItemState extends State<ListItem>
 
   void expand() {
     setState(() => _expanded = true);
-    if (widget.onExpand != null) {
-      widget.onExpand();
-    }
+    widget.onExpand?.call();
   }
 
   void collapse() {
-    // FocusScope.of(context).unfocus();
     _cancelEditingTitle();
     setState(() => _expanded = false);
   }
@@ -235,10 +237,7 @@ class ListItemState extends State<ListItem>
             style: const TextStyle(color: Color(0xFF4D3900)),
           ),
           color: const Color(0xFFFFF0C3),
-          onPressed: () {
-            FocusScope.of(context).requestFocus(_titleFocusNode);
-            setState(() => _editing = true);
-          },
+          onPressed: _editTitle,
         ),
       ],
     );

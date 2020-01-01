@@ -77,7 +77,7 @@ class _MainScreenState extends State<MainScreen> {
                 },
                 onExpand: () {
                   _items.where((a) => a != item).forEach((otherItem) {
-                    otherItem.widgetKey.currentState.collapse();
+                    otherItem.widgetKey.currentState?.collapse();
                   });
                 },
               ),
