@@ -40,36 +40,49 @@ class _MainScreenState extends State<MainScreen> {
             )
           : null,
       body: ListView.builder(
-        padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+        padding: const EdgeInsets.only(top: 16),
         itemCount: _items.length,
         itemBuilder: (context, i) {
           final item = _items[i];
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: ListItem(
-              key: item.widgetKey,
-              title: item.title,
-              done: item.done,
-              doneAt: item.doneAt,
-              onDoneTap: (value) {
-                setState(() {
-                  item.done = value;
-                  if (value) {
-                    item.doneAt = DateTime.now();
-                  } else {
-                    item.doneAt = null;
-                  }
-                });
-              },
-              onTitleEdited: (newTitle) {
-                setState(() => item.title = newTitle);
-              },
-              onExpand: () {
-                _items.where((a) => a != item).forEach((otherItem) {
-                  otherItem.widgetKey.currentState.collapse();
-                });
-              },
+
+          return AnimatedCrossFade(
+            firstCurve: Curves.ease,
+            sizeCurve: Curves.ease,
+            duration: const Duration(milliseconds: 300),
+            crossFadeState: item.removed
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
+            firstChild: Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: ListItem(
+                key: item.widgetKey,
+                title: item.title,
+                done: item.done,
+                doneAt: item.doneAt,
+                onDoneTap: (value) {
+                  setState(() {
+                    item.done = value;
+                    if (value) {
+                      item.doneAt = DateTime.now();
+                    } else {
+                      item.doneAt = null;
+                    }
+                  });
+                },
+                onTitleEdited: (newTitle) {
+                  setState(() => item.title = newTitle);
+                },
+                onDeleteTap: () {
+                  setState(() => item.removed = true);
+                },
+                onExpand: () {
+                  _items.where((a) => a != item).forEach((otherItem) {
+                    otherItem.widgetKey.currentState.collapse();
+                  });
+                },
+              ),
             ),
+            secondChild: const SizedBox(width: double.infinity),
           );
         },
       ),
@@ -83,6 +96,7 @@ class Item {
   String title;
   bool done;
   DateTime doneAt;
+  bool removed = false;
 
   Item(this.title, [this.done = false, this.doneAt]) : widgetKey = GlobalKey();
 }
