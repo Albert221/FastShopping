@@ -1,3 +1,4 @@
+import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -197,12 +198,8 @@ class ListItemState extends State<ListItem>
           onPressed: _cancelEditingTitle,
         ),
         const SizedBox(width: 16),
-        FlatButton(
-          child: Text(
-            'ZAPISZ',
-            style: const TextStyle(color: Color(0xFF4D3900)),
-          ),
-          color: const Color(0xFFFFF0C3),
+        PrimaryFlatButton(
+          text: 'ZAPISZ',
           onPressed: _onEditingTitleComplete,
         ),
       ],
@@ -220,24 +217,13 @@ class ListItemState extends State<ListItem>
           ),
         ),
         Spacer(),
-        FlatButton(
-          child: Text(
-            'USUŃ',
-            style: const TextStyle(color: Color(0xFFD32F2F)),
-          ),
-          onPressed: () {
-            if (widget.onDeleteTap != null) {
-              widget.onDeleteTap();
-            }
-          },
+        DangerFlatButton(
+          text: 'USUŃ',
+          onPressed: () => widget.onDeleteTap?.call(),
         ),
         const SizedBox(width: 16),
-        FlatButton(
-          child: Text(
-            'EDYTUJ',
-            style: const TextStyle(color: Color(0xFF4D3900)),
-          ),
-          color: const Color(0xFFFFF0C3),
+        PrimaryFlatButton(
+          text: 'EDYTUJ',
           onPressed: _editTitle,
         ),
       ],
