@@ -21,6 +21,8 @@ class _MainScreenState extends State<MainScreen> {
   bool _shouldShowFab(BuildContext context) =>
       MediaQuery.of(context).viewInsets.bottom == 0;
 
+  bool _shouldShowArchiveBanner() => _items.every((item) => item.done);
+
   void _deleteItem(BuildContext context, Item item) {
     setState(() => item.removed = true);
     item.widgetKey.currentState.collapse();
@@ -67,10 +69,28 @@ class _MainScreenState extends State<MainScreen> {
             )
           : null,
       body: ListView.builder(
-        padding: const EdgeInsets.only(top: 16),
-        itemCount: _items.length,
+        itemCount: _items.length + 1,
         itemBuilder: (context, i) {
-          final item = _items[i];
+          if (i == 0) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 16),
+              child: AnimatedCrossFade(
+                firstCurve: Curves.ease,
+                secondCurve: Curves.ease,
+                sizeCurve: Curves.ease,
+                duration: const Duration(milliseconds: 300),
+                crossFadeState: _shouldShowArchiveBanner()
+                    ? CrossFadeState.showFirst
+                    : CrossFadeState.showSecond,
+                firstChild: ArchiveBanner(
+                  onArchiveTap: () {},
+                ),
+                secondChild: const SizedBox(width: double.infinity),
+              ),
+            );
+          }
+
+          final item = _items[i - 1];
 
           return AnimatedCrossFade(
             key: ObjectKey(item),
@@ -107,6 +127,17 @@ class _MainScreenState extends State<MainScreen> {
                     otherItem.widgetKey.currentState?.collapse();
                   });
                 },
+                dragHandler: ListItemDragHandler(
+                  onDragStart: (details) {
+                    debugPrint(details.toString());
+                  },
+                  onDragUpdate: (details) {
+                    debugPrint(details.toString());
+                  },
+                  onDragEnd: (details) {
+                    debugPrint(details.toString());
+                  },
+                ),
               ),
             ),
             secondChild: const SizedBox(width: double.infinity),

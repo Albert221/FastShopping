@@ -26,6 +26,31 @@ class PrimaryFlatButton extends StatelessWidget {
   }
 }
 
+class SecondaryFlatButton extends StatelessWidget {
+  static const textColor = Color(0xFF4D3900);
+
+  final String text;
+  final VoidCallback onPressed;
+
+  const SecondaryFlatButton({
+    Key key,
+    @required this.text,
+    @required this.onPressed,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FlatButton(
+      child: Text(
+        text,
+        style: const TextStyle(color: textColor),
+      ),
+      // color: buttonColor,
+      onPressed: onPressed,
+    );
+  }
+}
+
 class DangerFlatButton extends StatelessWidget {
   static const textColor = Color(0xFFD32F2F);
 

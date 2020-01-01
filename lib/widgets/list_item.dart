@@ -13,6 +13,7 @@ class ListItem extends StatefulWidget {
   final ValueChanged<String> onTitleEdited;
   final VoidCallback onDeleteTap;
   final VoidCallback onExpand;
+  final ListItemDragHandler dragHandler;
 
   const ListItem({
     Key key,
@@ -24,6 +25,7 @@ class ListItem extends StatefulWidget {
     this.onTitleEdited,
     this.onDeleteTap,
     this.onExpand,
+    this.dragHandler,
   }) : super(key: key);
 
   @override
@@ -210,7 +212,10 @@ class ListItemState extends State<ListItem>
     return Row(
       children: [
         GestureDetector(
-          // TODO: Dragging
+          onVerticalDragStart: widget.dragHandler?.onDragStart,
+          onVerticalDragUpdate: widget.dragHandler?.onDragUpdate,
+          onVerticalDragEnd: widget.dragHandler?.onDragEnd,
+          onVerticalDragCancel: widget.dragHandler?.onDragCancel,
           child: const Icon(
             Icons.drag_handle,
             color: Colors.black87,
@@ -229,4 +234,18 @@ class ListItemState extends State<ListItem>
       ],
     );
   }
+}
+
+class ListItemDragHandler {
+  final ValueChanged<DragStartDetails> onDragStart;
+  final ValueChanged<DragUpdateDetails> onDragUpdate;
+  final ValueChanged<DragEndDetails> onDragEnd;
+  final VoidCallback onDragCancel;
+
+  ListItemDragHandler({
+    this.onDragStart,
+    this.onDragUpdate,
+    this.onDragEnd,
+    this.onDragCancel,
+  });
 }
