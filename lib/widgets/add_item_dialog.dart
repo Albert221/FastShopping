@@ -34,6 +34,9 @@ class AddItemDialog extends StatelessWidget {
               textInputAction: TextInputAction.done,
               minLines: 1,
               maxLines: 1000,
+              onSubmitted: (_) {
+                Navigator.pop(context, _titleController.text);
+              },
             ),
           ),
           Padding(
