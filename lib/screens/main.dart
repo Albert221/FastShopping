@@ -11,7 +11,7 @@ class _MainScreenState extends State<MainScreen> {
     Item('Herbatniki duża paczka'),
     Item('3x bita śmietana (proszek)'),
     Item('0,5l śmietany 30% karton'),
-    Item('Krem karpatka proszek'),
+    Item('Krem karpatka proszek', true, DateTime.now()),
     Item(
         'Masa kajmakowa/krówkowa (puszka) albo mleko skondensowane jak nie będzie'),
     Item('Kapusta czerwona 2x średnie'),
@@ -65,7 +65,19 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButton: _shouldShowFab(context)
           ? FloatingActionButton(
               child: const Icon(Icons.add),
-              onPressed: () {},
+              onPressed: () async {
+                final result = await showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => AddItemDialog(),
+                );
+
+                if (result != null) {
+                  setState(() {
+                    _items.add(Item(result as String));
+                  });
+                }
+              },
             )
           : null,
       body: ListView.builder(

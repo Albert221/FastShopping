@@ -68,9 +68,13 @@ class ListItemState extends State<ListItem>
     setState(() => _editing = false);
   }
 
-  void expand() {
+  void expand({bool editing = false}) {
     setState(() => _expanded = true);
     widget.onExpand?.call();
+
+    if (editing) {
+      _editTitle();
+    }
   }
 
   void collapse() {
@@ -115,7 +119,15 @@ class ListItemState extends State<ListItem>
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 16, 16, 16),
-                  child: Text(widget.title),
+                  child: widget.title.isNotEmpty
+                      ? Text(widget.title)
+                      : Text(
+                          'Bez nazwy',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
                 ),
               ),
             ],
@@ -163,10 +175,14 @@ class ListItemState extends State<ListItem>
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
               child: TextField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.zero,
                   isDense: true,
+                  hintText: _editing ? 'Wpisz tu nazwę...' : 'Bez nazwy',
+                  hintStyle: TextStyle(
+                    fontStyle: _editing ? FontStyle.normal : FontStyle.italic,
+                  ),
                 ),
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.done,
