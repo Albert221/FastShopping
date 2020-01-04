@@ -1,0 +1,17 @@
+{
+    "app_title": "Fast Shopping",
+    "list_item_no_name": "No name",
+    "list_item_done_ago": "done $1",
+    "list_item_title_hint": "Write item name here...",
+    "list_item_editing_cancel": "CANCEL",
+    "list_item_editing_save": "SAVE",
+    "list_item_remove": "REMOVE",
+    "list_item_edit": "EDIT",
+    "item_removed_snackbar_message": "Item has been removed from the list.",
+    "item_removed_snackbar_undo": "UNDO",
+    "add_item_dialog_title": "Add item",
+    "add_item_dialog_cancel": "CANCEL",
+    "add_item_dialog_add": "ADD",
+    "archive_banner_content": "Looks like everything is marked as done. Do you wish to archive your shopping list?",
+    "archive_banner_archive": "ARCHIVE"
+}

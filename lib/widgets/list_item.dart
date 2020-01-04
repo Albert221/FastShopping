@@ -1,3 +1,4 @@
+import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -122,7 +123,7 @@ class ListItemState extends State<ListItem>
                   child: widget.title.isNotEmpty
                       ? Text(widget.title)
                       : Text(
-                          'Bez nazwy',
+                          'list_item_no_name'.i18n,
                           style: TextStyle(
                             color: Colors.black54,
                             fontStyle: FontStyle.italic,
@@ -159,7 +160,9 @@ class ListItemState extends State<ListItem>
                 ),
                 if (widget.doneAt != null)
                   Text(
-                    'oznaczone ' + timeago.format(widget.doneAt),
+                    'list_item_done_ago'.i18nFormat([
+                      timeago.format(widget.doneAt),
+                    ]),
                     style: const TextStyle(
                       fontSize: 12,
                       color: Colors.black87,
@@ -179,7 +182,9 @@ class ListItemState extends State<ListItem>
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.zero,
                   isDense: true,
-                  hintText: _editing ? 'Wpisz tu nazwę...' : 'Bez nazwy',
+                  hintText: _editing
+                      ? 'list_item_title_hint'.i18n
+                      : 'list_item_no_name'.i18n,
                   hintStyle: TextStyle(
                     fontStyle: _editing ? FontStyle.normal : FontStyle.italic,
                   ),
@@ -212,12 +217,12 @@ class ListItemState extends State<ListItem>
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         FlatButton(
-          child: Text('ANULUJ'),
+          child: Text('list_item_editing_cancel'.i18n),
           onPressed: _cancelEditingTitle,
         ),
         const SizedBox(width: 16),
         PrimaryFlatButton(
-          text: 'ZAPISZ',
+          text: 'list_item_editing_save'.i18n,
           onPressed: _onEditingTitleComplete,
         ),
       ],
@@ -239,12 +244,12 @@ class ListItemState extends State<ListItem>
         ),
         Spacer(),
         DangerFlatButton(
-          text: 'USUŃ',
+          text: 'list_item_remove'.i18n,
           onPressed: () => widget.onDeleteTap?.call(),
         ),
         const SizedBox(width: 16),
         PrimaryFlatButton(
-          text: 'EDYTUJ',
+          text: 'list_item_edit'.i18n,
           onPressed: _editTitle,
         ),
       ],

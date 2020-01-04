@@ -1,0 +1,17 @@
+{
+    "app_title": "Szybkie Zakupy",
+    "list_item_no_name": "Bez nazwy",
+    "list_item_done_ago": "oznaczono $1",
+    "list_item_title_hint": "Wpisz nazwę tutaj...",
+    "list_item_editing_cancel": "ANULUJ",
+    "list_item_editing_save": "ZAPISZ",
+    "list_item_remove": "USUŃ",
+    "list_item_edit": "EDYTUJ",
+    "item_removed_snackbar_message": "Element został usunięty z listy.",
+    "item_removed_snackbar_undo": "COFNIJ",
+    "add_item_dialog_title": "Dodaj element",
+    "add_item_dialog_cancel": "ANULUJ",
+    "add_item_dialog_add": "DODAJ",
+    "archive_banner_content": "Wygląda na to, że wszystko jest już kupione. Czy chcesz zarchiwizować listę zakupów?",
+    "archive_banner_archive": "ARCHIWIZUJ"
+}

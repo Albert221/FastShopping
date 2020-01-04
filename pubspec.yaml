@@ -4,11 +4,12 @@ description: Very simple and straightforward shopping list application.
 version: 2.0.0+5
 
 environment:
-  sdk: ">=2.3.0 <3.0.0"
+  sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  devicelocale: ^0.2.1
   timeago: ^2.0.22
 
 dev_dependencies:
@@ -16,3 +17,8 @@ dev_dependencies:
     sdk: flutter
 flutter:
   uses-material-design: true
+
+  assets:
+    # Internationalization
+    - lib/i18n/en_US.json
+    - lib/i18n/pl_PL.json

@@ -1,3 +1,4 @@
+import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -32,10 +33,10 @@ class _MainScreenState extends State<MainScreen> {
         .showSnackBar(
           SnackBar(
             behavior: SnackBarBehavior.floating,
-            content: Text('Usunięto element z listy.'),
+            content: Text('item_removed_snackbar_message'.i18n),
             action: SnackBarAction(
               textColor: PrimaryFlatButton.buttonColor,
-              label: 'COFNIJ',
+              label: 'item_removed_snackbar_undo'.i18n,
               onPressed: () {
                 setState(() => item.removed = false);
               },
@@ -54,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Szybkie zakupy'),
+        title: Text('app_title'.i18n),
         actions: [
           IconButton(
             icon: const Icon(Icons.more_vert),

@@ -1,3 +1,4 @@
+import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,7 @@ class ArchiveBanner extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 24, 16, 4),
             child: Text(
-              'Wygląda na to, że wszystko jest już kupione.'
-              ' Czy chcesz zarchiwizować listę zakupów?',
+              'archive_banner_content'.i18n,
             ),
           ),
           Align(
@@ -24,7 +24,7 @@ class ArchiveBanner extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: SecondaryFlatButton(
-                text: 'ARCHIWIZUJ',
+                text: 'archive_banner_archive'.i18n,
                 onPressed: onArchiveTap,
               ),
             ),

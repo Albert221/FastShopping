@@ -1,3 +1,4 @@
+import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class AddItemDialog extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
             child: Text(
-              'Dodaj element',
+              'add_item_dialog_title'.i18n,
               style: Theme.of(context).textTheme.title,
             ),
           ),
@@ -28,7 +29,7 @@ class AddItemDialog extends StatelessWidget {
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
                 isDense: true,
-                hintText: 'Wpisz tu nazwę...',
+                hintText: 'list_item_title_hint'.i18n,
               ),
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
@@ -45,14 +46,14 @@ class AddItemDialog extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 FlatButton(
-                  child: Text('ANULUJ'),
+                  child: Text('add_item_dialog_cancel'.i18n),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
                 const SizedBox(width: 8),
                 PrimaryFlatButton(
-                  text: 'DODAJ',
+                  text: 'add_item_dialog_add'.i18n,
                   onPressed: () {
                     Navigator.pop(context, _titleController.text);
                   },
