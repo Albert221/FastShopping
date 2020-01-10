@@ -1,4 +1,5 @@
 import 'package:fast_shopping/i18n/i18n.dart';
+import 'package:fast_shopping/models/models.dart' as models;
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -9,24 +10,24 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final _items = [
-    Item('Herbatniki duża paczka'),
-    Item('3x bita śmietana (proszek)'),
-    Item('0,5l śmietany 30% karton'),
-    Item('Krem karpatka proszek', true, DateTime.now()),
-    Item(
-        'Masa kajmakowa/krówkowa (puszka) albo mleko skondensowane jak nie będzie'),
-    Item('Kapusta czerwona 2x średnie'),
-    Item('6 cebul czerwonych'),
+    Item(models.Item('Herbatniki duża paczka')),
+    Item(models.Item('3x bita śmietana (proszek)')),
+    Item(models.Item('0,5l śmietany 30% karton')),
+    Item(models.Item('Krem karpatka proszek', true, DateTime.now())),
+    Item(models.Item(
+        'Masa kajmakowa/krówkowa (puszka) albo mleko skondensowane jak nie będzie')),
+    Item(models.Item('Kapusta czerwona 2x średnie')),
+    Item(models.Item('6 cebul czerwonych')),
   ];
 
   bool _shouldShowFab(BuildContext context) =>
       MediaQuery.of(context).viewInsets.bottom == 0;
 
-  bool _shouldShowArchiveBanner() => _items.every((item) => item.done);
+  bool _shouldShowArchiveBanner() => _items.every((item) => item.item.done);
 
   void _deleteItem(BuildContext context, Item item) {
-    setState(() => item.removed = true);
-    item.widgetKey.currentState.collapse();
+    setState(() => item.item.removed = true);
+    item.key.currentState.collapse();
 
     Scaffold.of(context).hideCurrentSnackBar();
     Scaffold.of(context)
@@ -38,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
               textColor: PrimaryFlatButton.buttonColor,
               label: 'item_removed_snackbar_undo'.i18n,
               onPressed: () {
-                setState(() => item.removed = false);
+                setState(() => item.item.removed = false);
               },
             ),
           ),
@@ -75,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
 
                 if (result != null) {
                   setState(() {
-                    _items.add(Item(result as String));
+                    _items.add(Item(models.Item(result as String)));
                   });
                 }
               },
@@ -111,33 +112,33 @@ class _MainScreenState extends State<MainScreen> {
             secondCurve: Curves.ease,
             sizeCurve: Curves.ease,
             duration: const Duration(milliseconds: 300),
-            crossFadeState: item.removed
+            crossFadeState: item.item.removed
                 ? CrossFadeState.showSecond
                 : CrossFadeState.showFirst,
             firstChild: Padding(
               padding: const EdgeInsets.only(bottom: 16),
-              child: ListItem(
-                key: item.widgetKey,
-                title: item.title,
-                done: item.done,
-                doneAt: item.doneAt,
+              child: ListItemTile(
+                key: item.key,
+                title: item.item.title,
+                done: item.item.done,
+                doneAt: item.item.doneAt,
                 onDoneTap: (value) {
                   setState(() {
-                    item.done = value;
+                    item.item.done = value;
                     if (value) {
-                      item.doneAt = DateTime.now();
+                      item.item.doneAt = DateTime.now();
                     } else {
-                      item.doneAt = null;
+                      item.item.doneAt = null;
                     }
                   });
                 },
                 onTitleEdited: (newTitle) {
-                  setState(() => item.title = newTitle);
+                  setState(() => item.item.title = newTitle);
                 },
                 onDeleteTap: () => _deleteItem(context, item),
                 onExpand: () {
                   _items.where((a) => a != item).forEach((otherItem) {
-                    otherItem.widgetKey.currentState?.collapse();
+                    otherItem.key.currentState?.collapse();
                   });
                 },
                 dragHandler: ListItemDragHandler(
@@ -162,12 +163,8 @@ class _MainScreenState extends State<MainScreen> {
 }
 
 class Item {
-  final GlobalKey<ListItemState> widgetKey;
+  final models.Item item;
+  final GlobalKey<ListItemTileState> key;
 
-  String title;
-  bool done;
-  DateTime doneAt;
-  bool removed = false;
-
-  Item(this.title, [this.done = false, this.doneAt]) : widgetKey = GlobalKey();
+  Item(this.item) : key = GlobalKey();
 }

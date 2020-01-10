@@ -3,7 +3,7 @@ import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-class ListItem extends StatefulWidget {
+class ListItemTile extends StatefulWidget {
   final bool done;
   final String title;
   final DateTime doneAt;
@@ -16,7 +16,7 @@ class ListItem extends StatefulWidget {
   final VoidCallback onExpand;
   final ListItemDragHandler dragHandler;
 
-  const ListItem({
+  const ListItemTile({
     Key key,
     @required this.done,
     @required this.title,
@@ -30,10 +30,10 @@ class ListItem extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  ListItemState createState() => ListItemState();
+  ListItemTileState createState() => ListItemTileState();
 }
 
-class ListItemState extends State<ListItem>
+class ListItemTileState extends State<ListItemTile>
     with SingleTickerProviderStateMixin {
   final _titleController = TextEditingController();
   final _titleFocusNode = FocusNode();
