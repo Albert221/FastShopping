@@ -31,6 +31,14 @@ interface.
 
 ![Shopping list. Simply.](https://i.imgur.com/12AiVoL.png)
 
+## Building
+
+```bash
+flutter packages pub get
+flutter packages pub run build_runner build
+flutter packages build apk
+```
+
 ## Contributing
 
 Everyone is welcome to contribute! But remember the main goal of this app.
