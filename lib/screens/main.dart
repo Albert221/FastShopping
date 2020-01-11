@@ -1,7 +1,13 @@
+import 'dart:async';
+
+import 'package:built_collection/built_collection.dart';
 import 'package:fast_shopping/i18n/i18n.dart';
-import 'package:fast_shopping/models/models.dart' as models;
+import 'package:fast_shopping/models/models.dart';
+import 'package:fast_shopping/store/store.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -9,25 +15,52 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final _items = [
-    Item(models.Item('Herbatniki duża paczka')),
-    Item(models.Item('3x bita śmietana (proszek)')),
-    Item(models.Item('0,5l śmietany 30% karton')),
-    Item(models.Item('Krem karpatka proszek', true, DateTime.now())),
-    Item(models.Item(
-        'Masa kajmakowa/krówkowa (puszka) albo mleko skondensowane jak nie będzie')),
-    Item(models.Item('Kapusta czerwona 2x średnie')),
-    Item(models.Item('6 cebul czerwonych')),
-  ];
+  /// Key is an id of the item.
+  final _itemsKeys = <String, GlobalKey<ListItemTileState>>{};
+
+  StreamSubscription itemsSubscription;
+
+  void _onStoreInit(Store<BuiltList<Item>> store) {
+    _syncItemKeys(store.state.toList());
+
+    itemsSubscription = store.onChange.listen((state) {
+      _syncItemKeys(state.toList());
+    });
+  }
+
+  void _syncItemKeys(List<Item> items) {
+    final visitedIds = <String>[];
+
+    items.forEach((item) {
+      if (!_itemsKeys.keys.contains(item.id)) {
+        _itemsKeys[item.id] = GlobalKey();
+        visitedIds.add(item.id);
+      }
+    });
+
+    _itemsKeys.removeWhere((id, _) => !visitedIds.contains(id));
+  }
+
+  @override
+  void dispose() {
+    itemsSubscription?.cancel();
+
+    super.dispose();
+  }
 
   bool _shouldShowFab(BuildContext context) =>
       MediaQuery.of(context).viewInsets.bottom == 0;
 
-  bool _shouldShowArchiveBanner() => _items.every((item) => item.item.done);
+  bool _shouldShowArchiveBanner(BuildContext context) =>
+      StoreProvider.of<BuiltList<Item>>(context)
+          .state
+          .every((item) => item.done);
 
   void _deleteItem(BuildContext context, Item item) {
-    setState(() => item.item.removed = true);
-    item.key.currentState.collapse();
+    final store = StoreProvider.of<BuiltList<Item>>(context);
+
+    store.dispatch(RemoveItem(item));
+    _itemsKeys[item.id].currentState.collapse();
 
     Scaffold.of(context).hideCurrentSnackBar();
     Scaffold.of(context)
@@ -39,7 +72,7 @@ class _MainScreenState extends State<MainScreen> {
               textColor: PrimaryFlatButton.buttonColor,
               label: 'item_removed_snackbar_undo'.i18n,
               onPressed: () {
-                setState(() => item.item.removed = false);
+                store.dispatch(UndoRemovingItem(item));
               },
             ),
           ),
@@ -47,13 +80,15 @@ class _MainScreenState extends State<MainScreen> {
         .closed
         .then((reason) {
       if (reason != SnackBarClosedReason.action) {
-        setState(() => _items.remove(item));
+        store.dispatch(DeleteItem(item));
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final store = StoreProvider.of<BuiltList<Item>>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('app_title'.i18n),
@@ -75,96 +110,86 @@ class _MainScreenState extends State<MainScreen> {
                 );
 
                 if (result != null) {
-                  setState(() {
-                    _items.add(Item(models.Item(result as String)));
-                  });
+                  store.dispatch(AddItem(result as String));
                 }
               },
             )
           : null,
-      body: ListView.builder(
-        itemCount: _items.length + 1,
-        itemBuilder: (context, i) {
-          if (i == 0) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: AnimatedCrossFade(
-                firstCurve: Curves.ease,
-                secondCurve: Curves.ease,
-                sizeCurve: Curves.ease,
-                duration: const Duration(milliseconds: 300),
-                crossFadeState: _shouldShowArchiveBanner()
-                    ? CrossFadeState.showFirst
-                    : CrossFadeState.showSecond,
-                firstChild: ArchiveBanner(
-                  onArchiveTap: () {},
+      body: StoreConnector<BuiltList<Item>, BuiltList<Item>>(
+        converter: (store) => store.state,
+        onInit: _onStoreInit,
+        builder: (context, items) => ListView.builder(
+          itemCount: items.length + 1,
+          itemBuilder: (context, i) {
+            if (i == 0) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: AnimatedCrossFade(
+                  firstCurve: Curves.ease,
+                  secondCurve: Curves.ease,
+                  sizeCurve: Curves.ease,
+                  duration: const Duration(milliseconds: 300),
+                  crossFadeState: _shouldShowArchiveBanner(context)
+                      ? CrossFadeState.showFirst
+                      : CrossFadeState.showSecond,
+                  firstChild: ArchiveBanner(
+                    onArchiveTap: () {},
+                  ),
+                  secondChild: const SizedBox(width: double.infinity),
                 ),
-                secondChild: const SizedBox(width: double.infinity),
+              );
+            }
+
+            final item = items[i - 1];
+
+            return AnimatedCrossFade(
+              key: ValueKey(item.id),
+              firstCurve: Curves.ease,
+              secondCurve: Curves.ease,
+              sizeCurve: Curves.ease,
+              duration: const Duration(milliseconds: 300),
+              crossFadeState: item.removed
+                  ? CrossFadeState.showSecond
+                  : CrossFadeState.showFirst,
+              firstChild: Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: ListItemTile(
+                  key: _itemsKeys[item.id],
+                  title: item.title,
+                  done: item.done,
+                  doneAt: item.doneAt,
+                  onDoneTap: (value) => value
+                      ? store.dispatch(MarkItemDone(item))
+                      : store.dispatch(MarkItemUndone(item)),
+                  onTitleEdited: (newTitle) {
+                    store.dispatch(RenameItem(item, newTitle));
+                  },
+                  onDeleteTap: () => _deleteItem(context, item),
+                  onExpand: () {
+                    _itemsKeys.forEach((id, key) {
+                      if (id != item.id) {
+                        key.currentState?.collapse();
+                      }
+                    });
+                  },
+                  dragHandler: ListItemDragHandler(
+                    onDragStart: (details) {
+                      debugPrint(details.toString());
+                    },
+                    onDragUpdate: (details) {
+                      debugPrint(details.toString());
+                    },
+                    onDragEnd: (details) {
+                      debugPrint(details.toString());
+                    },
+                  ),
+                ),
               ),
+              secondChild: const SizedBox(width: double.infinity),
             );
-          }
-
-          final item = _items[i - 1];
-
-          return AnimatedCrossFade(
-            key: ObjectKey(item),
-            firstCurve: Curves.ease,
-            secondCurve: Curves.ease,
-            sizeCurve: Curves.ease,
-            duration: const Duration(milliseconds: 300),
-            crossFadeState: item.item.removed
-                ? CrossFadeState.showSecond
-                : CrossFadeState.showFirst,
-            firstChild: Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: ListItemTile(
-                key: item.key,
-                title: item.item.title,
-                done: item.item.done,
-                doneAt: item.item.doneAt,
-                onDoneTap: (value) {
-                  setState(() {
-                    item.item.done = value;
-                    if (value) {
-                      item.item.doneAt = DateTime.now();
-                    } else {
-                      item.item.doneAt = null;
-                    }
-                  });
-                },
-                onTitleEdited: (newTitle) {
-                  setState(() => item.item.title = newTitle);
-                },
-                onDeleteTap: () => _deleteItem(context, item),
-                onExpand: () {
-                  _items.where((a) => a != item).forEach((otherItem) {
-                    otherItem.key.currentState?.collapse();
-                  });
-                },
-                dragHandler: ListItemDragHandler(
-                  onDragStart: (details) {
-                    debugPrint(details.toString());
-                  },
-                  onDragUpdate: (details) {
-                    debugPrint(details.toString());
-                  },
-                  onDragEnd: (details) {
-                    debugPrint(details.toString());
-                  },
-                ),
-              ),
-            ),
-            secondChild: const SizedBox(width: double.infinity),
-          );
-        },
+          },
+        ),
       ),
     );
   }
-}
-
-class Item {
-  final models.Item item;
-  final GlobalKey<ListItemTileState> key;
-
-  Item(this.item) : key = GlobalKey();
 }
