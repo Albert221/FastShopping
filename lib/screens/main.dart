@@ -16,25 +16,24 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   /// Key is an id of the item.
-  final _itemsKeys = <String, GlobalKey<ListItemTileState>>{};
+  var _itemsKeys = <String, GlobalKey<ListItemTileState>>{};
 
   StreamSubscription itemsSubscription;
 
-  void _onStoreInit(Store<BuiltList<Item>> store) {
-    _syncItemKeys(store.state.toList());
+  void _onStoreInit(Store<FastShoppingState> store) {
+    _syncItemKeys(store.state.items.toList());
 
     itemsSubscription = store.onChange.listen((state) {
-      _syncItemKeys(state.toList());
+      _syncItemKeys(state.items.toList());
     });
   }
 
   void _syncItemKeys(List<Item> items) {
-    final visitedIds = <String>[];
+    final visitedIds = items.map((item) => item.id);
 
     items.forEach((item) {
       if (!_itemsKeys.keys.contains(item.id)) {
         _itemsKeys[item.id] = GlobalKey();
-        visitedIds.add(item.id);
       }
     });
 
@@ -52,12 +51,13 @@ class _MainScreenState extends State<MainScreen> {
       MediaQuery.of(context).viewInsets.bottom == 0;
 
   bool _shouldShowArchiveBanner(BuildContext context) =>
-      StoreProvider.of<BuiltList<Item>>(context)
+      StoreProvider.of<FastShoppingState>(context)
           .state
+          .items
           .every((item) => item.done);
 
   void _deleteItem(BuildContext context, Item item) {
-    final store = StoreProvider.of<BuiltList<Item>>(context);
+    final store = StoreProvider.of<FastShoppingState>(context);
 
     store.dispatch(RemoveItem(item));
     _itemsKeys[item.id].currentState.collapse();
@@ -87,7 +87,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final store = StoreProvider.of<BuiltList<Item>>(context);
+    final store = StoreProvider.of<FastShoppingState>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -115,8 +115,8 @@ class _MainScreenState extends State<MainScreen> {
               },
             )
           : null,
-      body: StoreConnector<BuiltList<Item>, BuiltList<Item>>(
-        converter: (store) => store.state,
+      body: StoreConnector<FastShoppingState, BuiltList<Item>>(
+        converter: (store) => store.state.items,
         onInit: _onStoreInit,
         builder: (context, items) => ListView.builder(
           itemCount: items.length + 1,
