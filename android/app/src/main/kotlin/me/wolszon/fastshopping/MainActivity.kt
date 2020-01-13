@@ -1,4 +1,4 @@
-package me.wolszon.fast_shopping
+package me.wolszon.fastshopping
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
