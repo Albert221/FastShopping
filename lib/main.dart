@@ -16,7 +16,7 @@ void main() {
   runApp(FastShoppingApp(store: store));
 }
 
-final _initialState = BuiltList([
+final _initialState = BuiltList<Item>([
   Item((b) => b..title = 'Herbatniki duża paczka'),
   Item((b) => b..title = '3x bita śmietana (proszek)'),
   Item((b) => b..title = '0,5l śmietany 30% karton'),
