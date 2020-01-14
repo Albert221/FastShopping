@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/models/models.dart';
 import 'package:fast_shopping/store/store.dart';
@@ -16,15 +15,17 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   /// Key is an id of the item.
-  var _itemsKeys = <String, GlobalKey<ListItemTileState>>{};
+  final _itemsKeys = <String, GlobalKey<ListItemTileState>>{};
 
   StreamSubscription itemsSubscription;
 
   void _onStoreInit(Store<FastShoppingState> store) {
-    _syncItemKeys(store.state.items.toList());
+    try {
+      _syncItemKeys(store.state.currentList.items.toList());
+    } catch (_) {}
 
     itemsSubscription = store.onChange.listen((state) {
-      _syncItemKeys(state.items.toList());
+      _syncItemKeys(store.state.currentList.items.toList());
     });
   }
 
@@ -53,13 +54,14 @@ class _MainScreenState extends State<MainScreen> {
   bool _shouldShowArchiveBanner(BuildContext context) =>
       StoreProvider.of<FastShoppingState>(context)
           .state
+          .currentList
           .items
-          .every((item) => item.done);
+          .every((item) => item.done || item.removed);
 
-  void _deleteItem(BuildContext context, Item item) {
+  void _deleteItem(BuildContext context, ShoppingList list, Item item) {
     final store = StoreProvider.of<FastShoppingState>(context);
 
-    store.dispatch(RemoveItem(item));
+    store.dispatch(RemoveItem(list, item));
     _itemsKeys[item.id].currentState.collapse();
 
     Scaffold.of(context).hideCurrentSnackBar();
@@ -72,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
               textColor: PrimaryFlatButton.buttonColor,
               label: 'item_removed_snackbar_undo'.i18n,
               onPressed: () {
-                store.dispatch(UndoRemovingItem(item));
+                store.dispatch(UndoRemovingItem(list, item));
               },
             ),
           ),
@@ -80,7 +82,7 @@ class _MainScreenState extends State<MainScreen> {
         .closed
         .then((reason) {
       if (reason != SnackBarClosedReason.action) {
-        store.dispatch(DeleteItem(item));
+        store.dispatch(DeleteItem(list, item));
       }
     });
   }
@@ -89,37 +91,53 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     final store = StoreProvider.of<FastShoppingState>(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('app_title'.i18n),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      floatingActionButton: _shouldShowFab(context)
-          ? FloatingActionButton(
-              child: const Icon(Icons.add),
-              onPressed: () async {
-                final result = await showDialog(
-                  context: context,
-                  barrierDismissible: false,
-                  builder: (context) => AddItemDialog(),
-                );
+    return StoreConnector<FastShoppingState, ShoppingList>(
+      converter: (store) => store.state.currentList,
+      onInit: _onStoreInit,
+      builder: (context, list) => Scaffold(
+        appBar: AppBar(
+          title: Text('app_title'.i18n),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.more_vert),
+              onPressed: () {},
+            ),
+          ],
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButton: _shouldShowFab(context)
+            ? FloatingActionButton(
+                child: const Icon(Icons.add),
+                onPressed: () async {
+                  final result = await showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) => AddItemDialog(),
+                  );
 
-                if (result != null) {
-                  store.dispatch(AddItem(result as String));
-                }
-              },
-            )
-          : null,
-      body: StoreConnector<FastShoppingState, BuiltList<Item>>(
-        converter: (store) => store.state.items,
-        onInit: _onStoreInit,
-        builder: (context, items) => ListView.builder(
-          itemCount: items.length + 1,
+                  if (result != null) {
+                    store.dispatch(AddItem(list, result as String));
+                  }
+                },
+              )
+            : null,
+        bottomNavigationBar: BottomAppBar(
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(4),
+                child: IconButton(
+                  icon: const Icon(Icons.menu),
+                  onPressed: () {},
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(list.name),
+            ],
+          ),
+        ),
+        body: ListView.builder(
+          itemCount: list.items.length + 1,
           itemBuilder: (context, i) {
             if (i == 0) {
               return Padding(
@@ -140,7 +158,7 @@ class _MainScreenState extends State<MainScreen> {
               );
             }
 
-            final item = items[i - 1];
+            final item = list.items[i - 1];
 
             return AnimatedCrossFade(
               key: ValueKey(item.id),
@@ -159,12 +177,12 @@ class _MainScreenState extends State<MainScreen> {
                   done: item.done,
                   doneAt: item.doneAt,
                   onDoneTap: (value) => value
-                      ? store.dispatch(MarkItemDone(item))
-                      : store.dispatch(MarkItemUndone(item)),
+                      ? store.dispatch(MarkItemDone(list, item))
+                      : store.dispatch(MarkItemUndone(list, item)),
                   onTitleEdited: (newTitle) {
-                    store.dispatch(RenameItem(item, newTitle));
+                    store.dispatch(RenameItem(list, item, newTitle));
                   },
-                  onDeleteTap: () => _deleteItem(context, item),
+                  onDeleteTap: () => _deleteItem(context, list, item),
                   onExpand: () {
                     _itemsKeys.forEach((id, key) {
                       if (id != item.id) {
