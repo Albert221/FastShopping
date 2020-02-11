@@ -50,9 +50,6 @@ class _MainScreenState extends State<MainScreen> {
     super.dispose();
   }
 
-  bool _shouldShowFab(BuildContext context) =>
-      MediaQuery.of(context).viewInsets.bottom == 0;
-
   void _deleteItem(BuildContext context, Item item) {
     final store = context.store;
 
@@ -81,6 +78,10 @@ class _MainScreenState extends State<MainScreen> {
       }
     });
   }
+
+  bool _shouldShowFab(BuildContext context) =>
+      MediaQuery.of(context).viewInsets.bottom == 0 &&
+      context.store.state.currentList != null;
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +130,12 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               const SizedBox(width: 8),
-              Text(list.name),
+              list == null
+                  ? Text(
+                      'No list selected',
+                      style: TextStyle(fontStyle: FontStyle.italic),
+                    )
+                  : Text(list.name),
             ],
           ),
         ),
@@ -153,9 +159,11 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  bool _shouldShowArchiveBanner(BuildContext context) =>
-      context.store.state.currentListItems
-          .every((item) => item.done || item.removed);
+  bool _shouldShowArchiveBanner(BuildContext context) {
+    final items = context.store.state.currentListItems;
+
+    return items.every((item) => item.done || item.removed) && items.isNotEmpty;
+  }
 
   Widget _buildArchiveBannerSpace() {
     return Padding(

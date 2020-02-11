@@ -12,8 +12,8 @@ void main() {
     rootReducer,
     middleware: [
       thunkMiddleware,
-      ensureShoppingListAvailable,
     ],
+    // initialState: FastShoppingState(),
     initialState: _initialState,
   );
 
