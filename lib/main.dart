@@ -1,8 +1,10 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:fast_shopping/app.dart';
 import 'package:fast_shopping/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
+import 'package:uuid/uuid.dart';
 import 'models/models.dart';
 
 void main() {
@@ -20,30 +22,41 @@ void main() {
   runApp(FastShoppingApp(store: store));
 }
 
+final _initialListId = Uuid().v4();
 final _initialState = FastShoppingState(
   (b) => b
-    ..lists.replace(
-      [
-        ShoppingList(
-          (b) => b
-            ..name = 'My shopping list'
-            ..items.replace(
-              [
-                Item((b) => b..title = 'Herbatniki duża paczka'),
-                Item((b) => b..title = '3x bita śmietana (proszek)'),
-                Item((b) => b..title = '0,5l śmietany 30% karton'),
-                Item((b) => b
-                  ..title = 'Krem karpatka proszek'
-                  ..done = true
-                  ..doneAt = DateTime.now()),
-                Item((b) => b
-                  ..title = 'Masa kajmakowa/krówkowa (puszka) '
-                      'albo mleko skondensowane jak nie będzie'),
-                Item((b) => b..title = 'Kapusta czerwona 2x średnie'),
-                Item((b) => b..title = '6 cebul czerwonych'),
-              ],
-            ),
-        ),
-      ],
-    ),
+    ..currentListId = _initialListId
+    ..lists = BuiltList<ShoppingList>([
+      ShoppingList(
+        (b) => b
+          ..id = _initialListId
+          ..name = 'My shopping list',
+      )
+    ]).toBuilder()
+    ..items = BuiltList<Item>([
+      Item((b) => b
+        ..title = 'Herbatniki duża paczka'
+        ..shoppingListId = _initialListId),
+      Item((b) => b
+        ..title = '3x bita śmietana (proszek)'
+        ..shoppingListId = _initialListId),
+      Item((b) => b
+        ..title = '0,5l śmietany 30% karton'
+        ..shoppingListId = _initialListId),
+      Item((b) => b
+        ..title = 'Krem karpatka proszek'
+        ..done = true
+        ..doneAt = DateTime.now()
+        ..shoppingListId = _initialListId),
+      Item((b) => b
+        ..title = 'Masa kajmakowa/krówkowa (puszka) '
+            'albo mleko skondensowane jak nie będzie'
+        ..shoppingListId = _initialListId),
+      Item((b) => b
+        ..title = 'Kapusta czerwona 2x średnie'
+        ..shoppingListId = _initialListId),
+      Item((b) => b
+        ..title = '6 cebul czerwonych'
+        ..shoppingListId = _initialListId),
+    ]).toBuilder(),
 );

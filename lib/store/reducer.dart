@@ -4,8 +4,9 @@ import 'package:redux/redux.dart';
 FastShoppingState rootReducer(FastShoppingState state, action) {
   return state.rebuild(
     (b) => b
+      ..currentListId = _currentListIdReducer(state.currentListId, action)
       ..lists.replace(listsReducer(state.lists, action))
-      ..currentListId = _currentListIdReducer(state.currentListId, action),
+      ..items.replace(itemsReducer(state.items, action)),
   );
 }
 

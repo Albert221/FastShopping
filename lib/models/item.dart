@@ -6,6 +6,8 @@ part 'item.g.dart';
 abstract class Item implements Built<Item, ItemBuilder> {
   String get id;
 
+  String get shoppingListId;
+
   String get title;
 
   bool get done;
@@ -21,6 +23,7 @@ abstract class Item implements Built<Item, ItemBuilder> {
     return _$Item
         ._(
           id: Uuid().v4(),
+          shoppingListId: '',
           title: '',
           done: false,
           doneAt: null,
