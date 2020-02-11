@@ -13,5 +13,8 @@
     "add_item_dialog_cancel": "CANCEL",
     "add_item_dialog_add": "ADD",
     "archive_banner_content": "Looks like everything is marked as done. Do you wish to archive your shopping list?",
-    "archive_banner_archive": "ARCHIVE"
+    "archive_banner_archive": "ARCHIVE",
+    "shopping_list_not_selected": "No list selected",
+    "list_archived_snackbar_message": "List has been archived successfully.",
+    "list_archived_snackbar_undo": "UNDO"
 }

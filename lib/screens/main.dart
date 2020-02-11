@@ -90,6 +90,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('app_title'.i18n),
+        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: const Icon(Icons.more_vert),
@@ -132,29 +133,36 @@ class _MainScreenState extends State<MainScreen> {
               const SizedBox(width: 8),
               list == null
                   ? Text(
-                      'No list selected',
-                      style: TextStyle(fontStyle: FontStyle.italic),
+                      'shopping_list_not_selected'.i18n,
+                      style: const TextStyle(fontStyle: FontStyle.italic),
                     )
                   : Text(list.name),
             ],
           ),
         ),
       ),
-      body: StoreConnector<FastShoppingState, List<Item>>(
-        onInit: _onStoreInit,
-        converter: (store) => store.state.currentListItems,
-        builder: (context, items) => ListView.builder(
-          itemCount: items.length + 1,
-          itemBuilder: (context, i) {
-            if (i == 0) {
-              return _buildArchiveBannerSpace();
-            }
+      body: StoreConnector<FastShoppingState, bool>(
+        converter: (store) => store.state.currentList != null,
+        builder: (context, shoppingListAvailable) {
+          return shoppingListAvailable
+              ? StoreConnector<FastShoppingState, List<Item>>(
+                  onInit: _onStoreInit,
+                  converter: (store) => store.state.currentListItems,
+                  builder: (context, items) => ListView.builder(
+                    itemCount: items.length + 1,
+                    itemBuilder: (context, i) {
+                      if (i == 0) {
+                        return _buildArchiveBannerSpace(context);
+                      }
 
-            final item = items[i - 1];
+                      final item = items[i - 1];
 
-            return _buildItemRow(context, item);
-          },
-        ),
+                      return _buildItemRow(context, item);
+                    },
+                  ),
+                )
+              : Center(child: Text('shopping_list_not_selected'.i18n));
+        },
       ),
     );
   }
@@ -165,7 +173,7 @@ class _MainScreenState extends State<MainScreen> {
     return items.every((item) => item.done || item.removed) && items.isNotEmpty;
   }
 
-  Widget _buildArchiveBannerSpace() {
+  Widget _buildArchiveBannerSpace(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: AnimatedCrossFade(
@@ -177,7 +185,27 @@ class _MainScreenState extends State<MainScreen> {
             ? CrossFadeState.showFirst
             : CrossFadeState.showSecond,
         firstChild: ArchiveBanner(
-          onArchiveTap: () {},
+          onArchiveTap: () {
+            final store = context.store;
+            final shoppingList = store.state.currentList;
+
+            store.dispatch(ArchiveShoppingList(shoppingList));
+
+            Scaffold.of(context).hideCurrentSnackBar();
+            Scaffold.of(context).showSnackBar(
+              SnackBar(
+                behavior: SnackBarBehavior.floating,
+                content: Text('list_archived_snackbar_message'.i18n),
+                action: SnackBarAction(
+                  textColor: PrimaryFlatButton.buttonColor,
+                  label: 'list_archived_snackbar_undo'.i18n,
+                  onPressed: () {
+                    store.dispatch(UnarchiveShoppingList(shoppingList));
+                  },
+                ),
+              ),
+            );
+          },
         ),
         secondChild: const SizedBox(width: double.infinity),
       ),

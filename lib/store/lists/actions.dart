@@ -1,14 +1,25 @@
 import 'package:fast_shopping/models/models.dart';
 
-class AddShoppingList {
-  final String id;
-  final String name;
-
-  AddShoppingList(this.name, {this.id});
-}
-
 class SetCurrentShoppingList {
   final ShoppingList list;
 
   SetCurrentShoppingList(this.list);
+}
+
+class AddShoppingList {
+  final String name;
+
+  AddShoppingList(this.name);
+}
+
+class ArchiveShoppingList {
+  final ShoppingList list;
+
+  ArchiveShoppingList(this.list);
+}
+
+class UnarchiveShoppingList {
+  final ShoppingList list;
+
+  UnarchiveShoppingList(this.list);
 }
