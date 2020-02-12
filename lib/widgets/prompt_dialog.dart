@@ -1,9 +1,22 @@
-import 'package:fast_shopping/i18n/i18n.dart';
-import 'package:fast_shopping/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
-class AddItemDialog extends StatelessWidget {
-  final _titleController = TextEditingController();
+class PromptDialog extends StatelessWidget {
+  final String title;
+  final String inputHint;
+  final Widget primaryButton;
+  final TextEditingController controller;
+  final VoidCallback onSubmitted;
+  final Widget secondaryButton;
+
+  PromptDialog({
+    Key key,
+    @required this.title,
+    @required this.inputHint,
+    @required this.primaryButton,
+    this.controller,
+    this.onSubmitted,
+    this.secondaryButton,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,29 +28,27 @@ class AddItemDialog extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
             child: Text(
-              'add_item_dialog_title'.i18n,
+              title,
               style: Theme.of(context).textTheme.title,
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 10, 0, 18),
             child: TextField(
-              controller: _titleController,
+              controller: controller,
               autofocus: true,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
                 isDense: true,
-                hintText: 'list_item_title_hint'.i18n,
+                hintText: inputHint,
               ),
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
               minLines: 1,
               maxLines: 1000,
-              onSubmitted: (_) {
-                Navigator.pop(context, _titleController.text);
-              },
+              onSubmitted: (_) => onSubmitted?.call(),
             ),
           ),
           Padding(
@@ -45,19 +56,9 @@ class AddItemDialog extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                FlatButton(
-                  child: Text('add_item_dialog_cancel'.i18n),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
+                if (secondaryButton != null) secondaryButton,
                 const SizedBox(width: 8),
-                PrimaryFlatButton(
-                  text: 'add_item_dialog_add'.i18n,
-                  onPressed: () {
-                    Navigator.pop(context, _titleController.text);
-                  },
-                ),
+                primaryButton,
               ],
             ),
           ),

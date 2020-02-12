@@ -1,7 +1,9 @@
 import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/models/models.dart';
+import 'package:fast_shopping/screens/screens.dart';
 import 'package:fast_shopping/store/store.dart';
 import 'package:fast_shopping/utils/extensions.dart';
+import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
@@ -66,9 +68,15 @@ class _ListsScreenState extends State<ListsScreen>
           ? FloatingActionButton.extended(
               icon: const Icon(Icons.add),
               label: Text('shopping_lists_add_new'.i18n),
-              onPressed: () {
-                // todo: Prompt for the shopping list name
-                context.store.dispatch(AddShoppingList('New list'));
+              onPressed: () async {
+                final name = await showDialog(
+                  context: context,
+                  builder: (context) => AddListDialog(),
+                );
+
+                if (name != null) {
+                  context.store.dispatch(AddShoppingList(name as String));
+                }
               },
             )
           : null,

@@ -109,6 +109,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final store = context.store;
+    final fabShown = _shouldShowFab(context);
 
     return Scaffold(
       key: _scaffoldKey,
@@ -128,8 +129,11 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: _shouldShowFab(context)
+      floatingActionButton: fabShown
           ? FloatingActionButton(
+              // fixme: Fix 'There are multiple heroes that share the same
+              // tag within a subtree' error
+              heroTag: null,
               child: const Icon(Icons.add),
               onPressed: () async {
                 final result = await showDialog(
