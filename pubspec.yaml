@@ -28,6 +28,8 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/logo.png
+
     # Internationalization
     - lib/i18n/en_US.json
     - lib/i18n/pl_PL.json

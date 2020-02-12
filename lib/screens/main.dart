@@ -89,14 +89,19 @@ class _MainScreenState extends State<MainScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('app_title'.i18n),
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.more_vert),
-            onPressed: () {},
-          ),
-        ],
+        centerTitle: true,
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: 32,
+              height: 32,
+              child: Image.asset('assets/logo.png', color: Colors.black),
+            ),
+            const SizedBox(width: 16),
+            Text('app_title'.i18n),
+          ],
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: _shouldShowFab(context)
