@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/models/models.dart';
+import 'package:fast_shopping/screens/screens.dart';
 import 'package:fast_shopping/store/store.dart';
 import 'package:fast_shopping/utils/extensions.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
@@ -156,7 +157,12 @@ class _MainScreenState extends State<MainScreen> {
                 child: IconButton(
                   icon: const Icon(Icons.list),
                   onPressed: () {
-                    // todo: show shopping lists
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ListsScreen(),
+                      ),
+                    );
                   },
                 ),
               ),

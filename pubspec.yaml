@@ -13,6 +13,7 @@ dependencies:
   built_value: ^7.0.4
   devicelocale: ^0.2.1
   flutter_redux: ^0.6.0
+  md2_tab_indicator: ^1.0.2
   redux_thunk: ^0.3.0
   redux: ^4.0.0
   timeago: ^2.0.22
