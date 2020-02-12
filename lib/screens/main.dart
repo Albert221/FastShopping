@@ -17,15 +17,16 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   /// Key is an id of the item.
   final _itemsKeys = <String, GlobalKey<ListItemTileState>>{};
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  StreamSubscription itemsSubscription;
+  StreamSubscription _itemsSubscription;
 
   void _onStoreInit(Store<FastShoppingState> store) {
     try {
       _syncItemKeys(store);
     } catch (_) {}
 
-    itemsSubscription = store.onChange.listen((state) {
+    _itemsSubscription = store.onChange.listen((state) {
       _syncItemKeys(store);
     });
   }
@@ -45,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void dispose() {
-    itemsSubscription?.cancel();
+    _itemsSubscription?.cancel();
 
     super.dispose();
   }
@@ -79,6 +80,27 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  void _archiveList(BuildContext context, ShoppingList list) {
+    final store = context.store;
+
+    store.dispatch(ArchiveShoppingList(list));
+
+    _scaffoldKey.currentState.hideCurrentSnackBar();
+    _scaffoldKey.currentState.showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: Text('list_archived_snackbar_message'.i18n),
+        action: SnackBarAction(
+          textColor: PrimaryFlatButton.buttonColor,
+          label: 'list_archived_snackbar_undo'.i18n,
+          onPressed: () {
+            store.dispatch(UnarchiveShoppingList(list));
+          },
+        ),
+      ),
+    );
+  }
+
   bool _shouldShowFab(BuildContext context) =>
       MediaQuery.of(context).viewInsets.bottom == 0 &&
       context.store.state.currentList != null;
@@ -88,6 +110,7 @@ class _MainScreenState extends State<MainScreen> {
     final store = context.store;
 
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         centerTitle: true,
         title: Row(
@@ -131,8 +154,10 @@ class _MainScreenState extends State<MainScreen> {
               Padding(
                 padding: const EdgeInsets.all(4),
                 child: IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () {},
+                  icon: const Icon(Icons.list),
+                  onPressed: () {
+                    // todo: show shopping lists
+                  },
                 ),
               ),
               const SizedBox(width: 8),
@@ -190,27 +215,8 @@ class _MainScreenState extends State<MainScreen> {
             ? CrossFadeState.showFirst
             : CrossFadeState.showSecond,
         firstChild: ArchiveBanner(
-          onArchiveTap: () {
-            final store = context.store;
-            final shoppingList = store.state.currentList;
-
-            store.dispatch(ArchiveShoppingList(shoppingList));
-
-            Scaffold.of(context).hideCurrentSnackBar();
-            Scaffold.of(context).showSnackBar(
-              SnackBar(
-                behavior: SnackBarBehavior.floating,
-                content: Text('list_archived_snackbar_message'.i18n),
-                action: SnackBarAction(
-                  textColor: PrimaryFlatButton.buttonColor,
-                  label: 'list_archived_snackbar_undo'.i18n,
-                  onPressed: () {
-                    store.dispatch(UnarchiveShoppingList(shoppingList));
-                  },
-                ),
-              ),
-            );
-          },
+          onArchiveTap: () =>
+              _archiveList(context, context.store.state.currentList),
         ),
         secondChild: const SizedBox(width: double.infinity),
       ),
