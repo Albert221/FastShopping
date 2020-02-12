@@ -1,3 +1,4 @@
+import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/models/models.dart';
 import 'package:fast_shopping/store/store.dart';
 import 'package:fast_shopping/utils/extensions.dart';
@@ -39,7 +40,7 @@ class _ListsScreenState extends State<ListsScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shopping lists'),
+        title: Text('shopping_lists_title'.i18n),
         bottom: TabBar(
           controller: _tabController,
           labelStyle: const TextStyle(fontWeight: FontWeight.w700),
@@ -52,11 +53,11 @@ class _ListsScreenState extends State<ListsScreen>
           tabs: [
             Tab(
               icon: const Icon(Icons.local_grocery_store),
-              text: 'Current',
+              text: 'shopping_lists_tab_current'.i18n,
             ),
             Tab(
               icon: const Icon(Icons.archive),
-              text: 'Archived',
+              text: 'shopping_lists_tab_archived'.i18n,
             ),
           ],
         ),
@@ -64,8 +65,9 @@ class _ListsScreenState extends State<ListsScreen>
       floatingActionButton: _fabShown
           ? FloatingActionButton.extended(
               icon: const Icon(Icons.add),
-              label: Text('NEW LIST'),
+              label: Text('shopping_lists_add_new'.i18n),
               onPressed: () {
+                // todo: Prompt for the shopping list name
                 context.store.dispatch(AddShoppingList('New list'));
               },
             )
@@ -141,7 +143,8 @@ class _ShoppingListTab extends StatelessWidget {
           return ListTile(
             leading: const Icon(Icons.list),
             title: Text(list.name),
-            subtitle: Text('$itemsCount elements'),
+            subtitle:
+                Text('shopping_lists_item_elements'.i18nNumber(itemsCount)),
             onTap: onTap == null ? null : () => onTap(list),
             trailing: trailingBuilder?.call(list),
           );

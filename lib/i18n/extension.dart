@@ -6,10 +6,31 @@ extension I18n on String {
   String i18nFormat(List<dynamic> strings) {
     String message = FastShoppingI18n().message(this);
 
+    return _format(message, strings);
+  }
+
+  String _format(String original, List<dynamic> strings) {
     strings.asMap().forEach((i, string) {
-      message = message.replaceAll('\$' + (i + 1).toString(), string);
+      original = original.replaceAll(
+        '\$' + (i + 1).toString(),
+        string.toString(),
+      );
     });
 
-    return message;
+    return original;
+  }
+
+  String i18nNumber(num number) {
+    final message = FastShoppingI18n().message(this);
+
+    final parts = message.split(r'|');
+
+    if (number == 0) {
+      return parts[0];
+    } else if (number == 1) {
+      return parts[1];
+    } else {
+      return _format(parts[2], [number]);
+    }
   }
 }

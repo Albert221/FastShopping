@@ -16,5 +16,10 @@
     "archive_banner_archive": "ARCHIVE",
     "shopping_list_not_selected": "No list selected",
     "list_archived_snackbar_message": "List has been archived successfully.",
-    "list_archived_snackbar_undo": "UNDO"
+    "list_archived_snackbar_undo": "UNDO",
+    "shopping_lists_title": "Shopping lists",
+    "shopping_lists_tab_current": "Current",
+    "shopping_lists_tab_archived": "Archived",
+    "shopping_lists_add_new": "NEW LIST",
+    "shopping_lists_item_elements": "No elements|1 element|$1 elements"
 }
