@@ -43,6 +43,8 @@ BuiltList<ShoppingList> _unarchiveShoppingListReducer(
 
 BuiltList<ShoppingList> _removeShoppingListReducer(
     BuiltList<ShoppingList> state, RemoveShoppingList action) {
-  return state
-      .rebuild((b) => b..removeWhere((list) => list.id == action.list.id));
+  return state.rebuild((b) => b
+    ..removeWhere(
+      (list) => list.id == action.list.id,
+    ));
 }

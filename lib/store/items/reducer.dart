@@ -74,5 +74,8 @@ BuiltList<Item> _undoRemovingItemReducer(
 }
 
 BuiltList<Item> _deleteItemReducer(BuiltList<Item> state, DeleteItem action) {
-  return state.rebuild((b) => b..remove(action.item));
+  return state.rebuild((b) => b
+    ..removeWhere(
+      (item) => item.id == action.item.id,
+    ));
 }

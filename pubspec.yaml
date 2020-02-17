@@ -13,6 +13,7 @@ dependencies:
   built_value: ^7.0.4
   devicelocale: ^0.2.1
   flutter_redux: ^0.6.0
+  flutter_svg: ^0.17.1
   md2_tab_indicator: ^1.0.2
   redux_thunk: ^0.3.0
   redux: ^4.0.0
@@ -30,6 +31,9 @@ flutter:
 
   assets:
     - assets/logo.png
+    - assets/arrow_fab.svg
+    - assets/arrow_bottom_app_bar.svg
 
     # Internationalization
-    - lib/i18n/*.json
+    - lib/i18n/en_US.json
+    - lib/i18n/pl_PL.json

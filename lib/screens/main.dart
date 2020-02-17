@@ -8,6 +8,7 @@ import 'package:fast_shopping/utils/extensions.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:redux/redux.dart';
 
 class MainScreen extends StatefulWidget {
@@ -75,7 +76,9 @@ class _MainScreenState extends State<MainScreen> {
         )
         .closed
         .then((reason) {
+      print('imma delete: ' + reason.toString());
       if (reason != SnackBarClosedReason.action) {
+        print('deleted');
         store.dispatch(DeleteItem(item));
       }
     });
@@ -109,7 +112,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final store = context.store;
-    final fabShown = _shouldShowFab(context);
 
     return Scaffold(
       key: _scaffoldKey,
@@ -129,31 +131,30 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: fabShown
-          ? FloatingActionButton(
-              // fixme: Fix 'There are multiple heroes that share the same
-              // tag within a subtree' error
-              heroTag: null,
-              child: const Icon(Icons.add),
-              onPressed: () async {
-                final result = await showDialog(
-                  context: context,
-                  builder: (context) => AddItemDialog(),
-                );
+      floatingActionButton: StoreConnector<FastShoppingState, bool>(
+        converter: (store) => store.state.currentList != null,
+        builder: (context, _) => _shouldShowFab(context)
+            ? FloatingActionButton(
+                child: const Icon(Icons.add),
+                onPressed: () async {
+                  final result = await showDialog(
+                    context: context,
+                    builder: (context) => AddItemDialog(),
+                  );
 
-                if (result != null) {
-                  store.dispatch(AddItem(
-                    result as String,
-                    store.state.currentListId,
-                  ));
-                }
-              },
-            )
-          : null,
+                  if (result != null) {
+                    store.dispatch(AddItem(
+                      result as String,
+                      store.state.currentListId,
+                    ));
+                  }
+                },
+              )
+            : const SizedBox(),
+      ),
       bottomNavigationBar: StoreConnector<FastShoppingState, ShoppingList>(
         converter: (store) => store.state.currentList,
         builder: (context, list) => BottomAppBar(
-          shape: const CircularNotchedRectangle(),
           notchMargin: 8,
           child: Row(
             children: [
@@ -173,7 +174,7 @@ class _MainScreenState extends State<MainScreen> {
               Expanded(
                 child: list == null
                     ? Text(
-                        'shopping_list_not_selected'.i18n,
+                        'shopping_list_not_selected_placeholder'.i18n,
                         style: const TextStyle(fontStyle: FontStyle.italic),
                         overflow: TextOverflow.ellipsis,
                       )
@@ -190,24 +191,35 @@ class _MainScreenState extends State<MainScreen> {
       body: StoreConnector<FastShoppingState, bool>(
         converter: (store) => store.state.currentList != null,
         builder: (context, shoppingListAvailable) {
-          return shoppingListAvailable
-              ? StoreConnector<FastShoppingState, List<Item>>(
-                  onInit: _onStoreInit,
-                  converter: (store) => store.state.currentListItems,
-                  builder: (context, items) => ListView.builder(
-                    itemCount: items.length + 1,
-                    itemBuilder: (context, i) {
-                      if (i == 0) {
-                        return _buildArchiveBannerSpace(context);
-                      }
+          if (!shoppingListAvailable) {
+            // return Center(child: Text('shopping_list_not_selected'.i18n));
 
-                      final item = items[i - 1];
+            return _buildNoListSelectedPlaceholder();
+          }
 
-                      return _buildItemRow(context, item);
-                    },
-                  ),
-                )
-              : Center(child: Text('shopping_list_not_selected'.i18n));
+          return StoreConnector<FastShoppingState, List<Item>>(
+            onInit: _onStoreInit,
+            converter: (store) => store.state.currentListItems,
+            builder: (context, items) {
+              if (items.every((item) => item.removed)) {
+                // Works for empty list too
+                return _buildNoItemsPlaceholder(context);
+              }
+
+              return ListView.builder(
+                itemCount: items.length + 1,
+                itemBuilder: (context, i) {
+                  if (i == 0) {
+                    return _buildArchiveBannerSpace(context);
+                  }
+
+                  final item = items[i - 1];
+
+                  return _buildItemRow(context, item);
+                },
+              );
+            },
+          );
         },
       ),
     );
@@ -216,7 +228,7 @@ class _MainScreenState extends State<MainScreen> {
   bool _shouldShowArchiveBanner(BuildContext context) {
     final items = context.store.state.currentListItems;
 
-    return items.every((item) => item.done || item.removed) && items.isNotEmpty;
+    return items.where((item) => !item.removed).every((item) => item.done);
   }
 
   Widget _buildArchiveBannerSpace(BuildContext context) {
@@ -285,6 +297,70 @@ class _MainScreenState extends State<MainScreen> {
         ),
       ),
       secondChild: const SizedBox(width: double.infinity),
+    );
+  }
+
+  Widget _buildNoListSelectedPlaceholder() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          flex: 3,
+          child: Container(
+            padding: const EdgeInsets.only(bottom: 32),
+            alignment: Alignment.bottomCenter,
+            child: Text(
+              'shopping_list_not_selected_message'.i18n,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16, bottom: 20),
+            child: SvgPicture.asset(
+              'assets/arrow_bottom_app_bar.svg',
+              alignment: Alignment.bottomLeft,
+              height: double.infinity,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNoItemsPlaceholder(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Expanded(
+          flex: 3,
+          child: Container(
+            padding: const EdgeInsets.only(bottom: 32),
+            alignment: Alignment.bottomCenter,
+            child: Text(
+              'empty_list_add_some_items_message'.i18n,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 94, bottom: 36),
+            child: _shouldShowFab(context)
+                ? SvgPicture.asset(
+                    'assets/arrow_fab.svg',
+                    alignment: Alignment.bottomRight,
+                    height: double.infinity,
+                  )
+                : null,
+          ),
+        ),
+      ],
     );
   }
 }

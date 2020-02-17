@@ -15,6 +15,7 @@ class ListsScreen extends StatefulWidget {
 
 class _ListsScreenState extends State<ListsScreen>
     with SingleTickerProviderStateMixin {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   TabController _tabController;
 
   bool _fabShown = true;
@@ -41,9 +42,20 @@ class _ListsScreenState extends State<ListsScreen>
   bool _shouldShowFab(BuildContext context) =>
       MediaQuery.of(context).viewInsets.bottom == 0;
 
+  void _showSnackbar(String content) {
+    _scaffoldKey.currentState.hideCurrentSnackBar();
+    _scaffoldKey.currentState.showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: Text(content),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         title: Text('shopping_lists_title'.i18n),
         bottom: TabBar(
@@ -96,13 +108,7 @@ class _ListsScreenState extends State<ListsScreen>
             trailingBuilder: (list) => IconButton(
               icon: const Icon(Icons.archive),
               onPressed: () {
-                Scaffold.of(context).hideCurrentSnackBar();
-                Scaffold.of(context).showSnackBar(
-                  SnackBar(
-                    content:
-                        Text('shopping_list_archived_snackbar_message'.i18n),
-                  ),
-                );
+                _showSnackbar('shopping_list_archived_snackbar_message'.i18n);
 
                 context.store.dispatch(ArchiveShoppingList(list));
               },
@@ -116,12 +122,8 @@ class _ListsScreenState extends State<ListsScreen>
                 IconButton(
                   icon: const Icon(Icons.unarchive),
                   onPressed: () {
-                    Scaffold.of(context).hideCurrentSnackBar();
-                    Scaffold.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                            'shopping_list_unarchived_snackbar_message'.i18n),
-                      ),
+                    _showSnackbar(
+                      'shopping_list_unarchived_snackbar_message'.i18n,
                     );
 
                     context.store.dispatch(UnarchiveShoppingList(list));
