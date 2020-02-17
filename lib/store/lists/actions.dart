@@ -23,3 +23,9 @@ class UnarchiveShoppingList {
 
   UnarchiveShoppingList(this.list);
 }
+
+class RemoveShoppingList {
+  final ShoppingList list;
+
+  RemoveShoppingList(this.list);
+}

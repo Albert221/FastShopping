@@ -3,7 +3,8 @@ import 'package:fast_shopping/models/models.dart';
 import 'package:fast_shopping/screens/screens.dart';
 import 'package:fast_shopping/store/store.dart';
 import 'package:fast_shopping/utils/extensions.dart';
-import 'package:flutter/material.dart';
+import 'package:fast_shopping/widgets/widgets.dart';
+import 'package:flutter/material.dart' hide SimpleDialog;
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 
@@ -113,6 +114,39 @@ class _ListsScreenState extends State<ListsScreen>
                 IconButton(
                   icon: const Icon(Icons.delete_forever),
                   onPressed: () {
+                    final dialogBodyParts =
+                        'delete_shopping_list_dialog_body'.i18n.split(r'$1');
+
+                    showDialog(
+                      context: context,
+                      builder: (context) => SimpleDialog(
+                        title: 'delete_shopping_list_dialog_title'.i18n,
+                        body: RichText(
+                          text: TextSpan(
+                            style: Theme.of(context).textTheme.bodyText2,
+                            children: [
+                              TextSpan(text: dialogBodyParts.first),
+                              TextSpan(
+                                text: list.name,
+                                style: TextStyle(fontStyle: FontStyle.italic),
+                              ),
+                              TextSpan(text: dialogBodyParts.last),
+                            ],
+                          ),
+                        ),
+                        primaryButton: DangerFlatButton(
+                          text: 'delete_shopping_list_dialog_delete'.i18n,
+                          onPressed: () {
+                            context.store.dispatch(RemoveShoppingList(list));
+                            Navigator.pop(context);
+                          },
+                        ),
+                        secondaryButton: SecondaryFlatButton(
+                          text: 'delete_shopping_list_dialog_cancel'.i18n,
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ),
+                    );
                     // todo: Show confirm dialog and delete the list.
                   },
                 ),

@@ -7,6 +7,7 @@ final listsReducer = combineReducers<BuiltList<ShoppingList>>([
   TypedReducer(_addShoppingListReducer),
   TypedReducer(_archiveShoppingListReducer),
   TypedReducer(_unarchiveShoppingListReducer),
+  TypedReducer(_removeShoppingListReducer),
 ]);
 
 BuiltList<ShoppingList> _addShoppingListReducer(
@@ -38,4 +39,10 @@ BuiltList<ShoppingList> _unarchiveShoppingListReducer(
             ..archivedAt = null)
           : list,
     ));
+}
+
+BuiltList<ShoppingList> _removeShoppingListReducer(
+    BuiltList<ShoppingList> state, RemoveShoppingList action) {
+  return state
+      .rebuild((b) => b..removeWhere((list) => list.id == action.list.id));
 }

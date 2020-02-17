@@ -21,5 +21,9 @@
     "shopping_lists_tab_current": "Current",
     "shopping_lists_tab_archived": "Archived",
     "shopping_lists_add_new": "NEW LIST",
-    "shopping_lists_item_elements": "No elements|1 element|$1 elements"
+    "shopping_lists_item_elements": "No elements|1 element|$1 elements",
+    "delete_shopping_list_dialog_title": "Deleting shopping list",
+    "delete_shopping_list_dialog_body": "Do you really want to delete $1 shopping list?\nThis operation cannot be undone.",
+    "delete_shopping_list_dialog_cancel": "CANCEL",
+    "delete_shopping_list_dialog_delete": "DELETE"
 }
