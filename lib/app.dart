@@ -13,19 +13,13 @@ class FastShoppingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // I don't like how I18nBuilder works now,
-    // will probably refactor it sometime.
-
-    return I18nBuilder(
-      placeholder: Container(color: Colors.white),
-      builder: (_) => StoreProvider<FastShoppingState>(
-        store: store,
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          onGenerateTitle: (_) => 'Fast Shopping'.i18n,
-          home: MainScreen(),
-          theme: FastShoppingTheme.light(),
-        ),
+    return StoreProvider<FastShoppingState>(
+      store: store,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        onGenerateTitle: (_) => 'Fast Shopping'.i18n,
+        home: MainScreen(),
+        theme: FastShoppingTheme.light(),
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:built_collection/built_collection.dart';
+import 'package:devicelocale/devicelocale.dart';
 import 'package:fast_shopping/app.dart';
+import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
@@ -7,19 +9,25 @@ import 'package:redux_thunk/redux_thunk.dart';
 import 'package:uuid/uuid.dart';
 import 'models/models.dart';
 
-void main() {
-  final store = Store<FastShoppingState>(
+void main() async {
+  final store = _setupStore();
+
+  WidgetsFlutterBinding.ensureInitialized();
+  final langs = await Devicelocale.preferredLanguages;
+  await FastShoppingI18n().init(Set<String>.from(langs));
+
+  runApp(FastShoppingApp(store: store));
+}
+
+Store<FastShoppingState> _setupStore() {
+  return Store<FastShoppingState>(
     rootReducer,
     middleware: [
       thunkMiddleware,
     ],
     // initialState: FastShoppingState(),
     initialState: _initialState,
-  );
-
-  store.dispatch(Boot());
-
-  runApp(FastShoppingApp(store: store));
+  )..dispatch(Boot());
 }
 
 final _initialListId = Uuid().v4();
