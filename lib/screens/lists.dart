@@ -6,6 +6,7 @@ import 'package:fast_shopping/utils/extensions.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart' hide SimpleDialog;
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 
 class ListsScreen extends StatefulWidget {
@@ -105,6 +106,14 @@ class _ListsScreenState extends State<ListsScreen>
               // Go back to main screen.
               Navigator.pop(context);
             },
+            emptyPlaceholder: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset('assets/shopping_bags_woman.svg', width: 250),
+                const SizedBox(height: 32),
+                Text('no_current_lists_message'.i18n),
+              ],
+            ),
             trailingBuilder: (list) => IconButton(
               icon: const Icon(Icons.archive),
               onPressed: () {
@@ -116,6 +125,9 @@ class _ListsScreenState extends State<ListsScreen>
           ),
           _ShoppingListTab(
             selector: (lists) => lists.where((list) => list.archived).toList(),
+            emptyPlaceholder: Center(
+              child: Text('no_archived_lists_message'.i18n),
+            ),
             trailingBuilder: (list) => Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -184,37 +196,42 @@ class _ShoppingListTab extends StatelessWidget {
   final List<ShoppingList> Function(List<ShoppingList>) selector;
   final void Function(ShoppingList) onTap;
   final Widget Function(ShoppingList) trailingBuilder;
+  final Widget emptyPlaceholder;
 
   const _ShoppingListTab({
     Key key,
     @required this.selector,
     this.onTap,
     this.trailingBuilder,
+    this.emptyPlaceholder,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return StoreConnector<FastShoppingState, List<ShoppingList>>(
       converter: (store) => selector(store.state.lists.toList()),
-      builder: (context, lists) => ListView.builder(
-        padding: const EdgeInsets.only(bottom: 72),
-        itemCount: lists.length,
-        itemBuilder: (context, i) {
-          final list = lists[i];
-          final itemsCount = context.store.state.items
-              .where((item) => item.shoppingListId == list.id && !item.removed)
-              .length;
+      builder: (context, lists) => lists.isEmpty
+          ? SizedBox(child: emptyPlaceholder)
+          : ListView.builder(
+              padding: const EdgeInsets.only(bottom: 72),
+              itemCount: lists.length,
+              itemBuilder: (context, i) {
+                final list = lists[i];
+                final itemsCount = context.store.state.items
+                    .where((item) =>
+                        item.shoppingListId == list.id && !item.removed)
+                    .length;
 
-          return ListTile(
-            leading: const Icon(Icons.list),
-            title: Text(list.name),
-            subtitle:
-                Text('shopping_lists_item_elements'.i18nNumber(itemsCount)),
-            onTap: onTap == null ? null : () => onTap(list),
-            trailing: trailingBuilder?.call(list),
-          );
-        },
-      ),
+                return ListTile(
+                  leading: const Icon(Icons.list),
+                  title: Text(list.name),
+                  subtitle: Text(
+                      'shopping_lists_item_elements'.i18nNumber(itemsCount)),
+                  onTap: onTap == null ? null : () => onTap(list),
+                  trailing: trailingBuilder?.call(list),
+                );
+              },
+            ),
     );
   }
 }

@@ -33,6 +33,7 @@ flutter:
     - assets/logo.png
     - assets/arrow_fab.svg
     - assets/arrow_bottom_app_bar.svg
+    - assets/shopping_bags_woman.svg
 
     # Internationalization
     - lib/i18n/en_US.json
