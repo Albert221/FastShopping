@@ -120,10 +120,10 @@ class _MainScreenState extends State<MainScreen> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
+            SvgPicture.asset(
+              'assets/logo.svg',
               width: 32,
               height: 32,
-              child: Image.asset('assets/logo.png', color: Colors.black),
             ),
             const SizedBox(width: 16),
             Text('app_title'.i18n),
