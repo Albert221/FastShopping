@@ -96,6 +96,14 @@ class _ListsScreenState extends State<ListsScreen>
             trailingBuilder: (list) => IconButton(
               icon: const Icon(Icons.archive),
               onPressed: () {
+                Scaffold.of(context).hideCurrentSnackBar();
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content:
+                        Text('shopping_list_archived_snackbar_message'.i18n),
+                  ),
+                );
+
                 context.store.dispatch(ArchiveShoppingList(list));
               },
             ),
@@ -108,15 +116,20 @@ class _ListsScreenState extends State<ListsScreen>
                 IconButton(
                   icon: const Icon(Icons.unarchive),
                   onPressed: () {
+                    Scaffold.of(context).hideCurrentSnackBar();
+                    Scaffold.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                            'shopping_list_unarchived_snackbar_message'.i18n),
+                      ),
+                    );
+
                     context.store.dispatch(UnarchiveShoppingList(list));
                   },
                 ),
                 IconButton(
                   icon: const Icon(Icons.delete_forever),
                   onPressed: () {
-                    final dialogBodyParts =
-                        'delete_shopping_list_dialog_body'.i18n.split(r'$1');
-
                     showDialog(
                       context: context,
                       builder: (context) => SimpleDialog(
@@ -125,12 +138,18 @@ class _ListsScreenState extends State<ListsScreen>
                           text: TextSpan(
                             style: Theme.of(context).textTheme.bodyText2,
                             children: [
-                              TextSpan(text: dialogBodyParts.first),
+                              TextSpan(
+                                text: 'delete_shopping_list_dialog_body_before'
+                                    .i18n,
+                              ),
                               TextSpan(
                                 text: list.name,
                                 style: TextStyle(fontStyle: FontStyle.italic),
                               ),
-                              TextSpan(text: dialogBodyParts.last),
+                              TextSpan(
+                                text: 'delete_shopping_list_dialog_body_after'
+                                    .i18n,
+                              ),
                             ],
                           ),
                         ),
