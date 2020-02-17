@@ -37,6 +37,9 @@ class _ListsScreenState extends State<ListsScreen>
     super.dispose();
   }
 
+  bool _shouldShowFab(BuildContext context) =>
+      MediaQuery.of(context).viewInsets.bottom == 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +66,7 @@ class _ListsScreenState extends State<ListsScreen>
           ],
         ),
       ),
-      floatingActionButton: _fabShown
+      floatingActionButton: _fabShown && _shouldShowFab(context)
           ? FloatingActionButton.extended(
               icon: const Icon(Icons.add),
               label: Text('shopping_lists_add_new'.i18n),
