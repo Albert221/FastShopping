@@ -13,8 +13,8 @@ void main() async {
   final store = _setupStore();
 
   WidgetsFlutterBinding.ensureInitialized();
-  final langs = await Devicelocale.preferredLanguages;
-  await FastShoppingI18n().init(langs.first);
+  final lang = await Devicelocale.currentLocale;
+  await FastShoppingI18n().init(lang);
 
   runApp(FastShoppingApp(store: store));
 }
