@@ -31,6 +31,6 @@
     "delete_shopping_list_dialog_body_after": " shopping list?\nThis operation cannot be undone.",
     "delete_shopping_list_dialog_cancel": "CANCEL",
     "delete_shopping_list_dialog_delete": "DELETE",
-    "no_current_lists_message": "There is no current lists, create one!",
-    "no_archived_lists_message": "There is no archived lists."
+    "no_current_lists_message": "There are no current lists, create one!",
+    "no_archived_lists_message": "There are no archived lists."
 }
