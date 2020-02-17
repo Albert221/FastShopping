@@ -4,6 +4,7 @@ import 'package:fast_shopping/app.dart';
 import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/store/store.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:uuid/uuid.dart';
@@ -16,6 +17,8 @@ void main() async {
   final lang = await Devicelocale.currentLocale;
   await FastShoppingI18n().init(lang);
 
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   runApp(FastShoppingApp(store: store));
 }
 
@@ -25,8 +28,8 @@ Store<FastShoppingState> _setupStore() {
     middleware: [
       thunkMiddleware,
     ],
-    // initialState: FastShoppingState(),
-    initialState: _initialState,
+    initialState: FastShoppingState(),
+    // initialState: _initialState,
   )..dispatch(Boot());
 }
 
