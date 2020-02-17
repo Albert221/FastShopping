@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:fast_shopping/utils/waitgroup.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class FastShoppingI18n {

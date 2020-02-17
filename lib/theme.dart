@@ -11,7 +11,7 @@ class FastShoppingTheme {
       appBarTheme: AppBarTheme(
         brightness: Brightness.light,
         textTheme: TextTheme(
-          title: TextStyle(
+          headline6: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.w500,
             fontSize: 20,
@@ -20,7 +20,7 @@ class FastShoppingTheme {
       ),
       bottomAppBarColor: primary,
       textTheme: TextTheme(
-        body1: TextStyle(
+        bodyText2: TextStyle(
           fontSize: 16,
         ),
       ),

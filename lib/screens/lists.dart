@@ -3,7 +3,6 @@ import 'package:fast_shopping/models/models.dart';
 import 'package:fast_shopping/screens/screens.dart';
 import 'package:fast_shopping/store/store.dart';
 import 'package:fast_shopping/utils/extensions.dart';
-import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
@@ -87,7 +86,6 @@ class _ListsScreenState extends State<ListsScreen>
             selector: (lists) => lists.where((list) => !list.archived).toList(),
             onTap: (list) {
               context.store.dispatch(SetCurrentShoppingList(list));
-
               // Go back to main screen.
               Navigator.pop(context);
             },
