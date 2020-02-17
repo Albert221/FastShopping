@@ -141,6 +141,7 @@ class _ShoppingListTab extends StatelessWidget {
     return StoreConnector<FastShoppingState, List<ShoppingList>>(
       converter: (store) => selector(store.state.lists.toList()),
       builder: (context, lists) => ListView.builder(
+        padding: const EdgeInsets.only(bottom: 72),
         itemCount: lists.length,
         itemBuilder: (context, i) {
           final list = lists[i];

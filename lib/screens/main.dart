@@ -138,7 +138,6 @@ class _MainScreenState extends State<MainScreen> {
               onPressed: () async {
                 final result = await showDialog(
                   context: context,
-                  barrierDismissible: false,
                   builder: (context) => AddItemDialog(),
                 );
 
@@ -154,6 +153,8 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: StoreConnector<FastShoppingState, ShoppingList>(
         converter: (store) => store.state.currentList,
         builder: (context, list) => BottomAppBar(
+          shape: const CircularNotchedRectangle(),
+          notchMargin: 8,
           child: Row(
             children: [
               Padding(
@@ -163,20 +164,25 @@ class _MainScreenState extends State<MainScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => ListsScreen(),
-                      ),
+                      MaterialPageRoute(builder: (context) => ListsScreen()),
                     );
                   },
                 ),
               ),
               const SizedBox(width: 8),
-              list == null
-                  ? Text(
-                      'shopping_list_not_selected'.i18n,
-                      style: const TextStyle(fontStyle: FontStyle.italic),
-                    )
-                  : Text(list.name),
+              Expanded(
+                child: list == null
+                    ? Text(
+                        'shopping_list_not_selected'.i18n,
+                        style: const TextStyle(fontStyle: FontStyle.italic),
+                        overflow: TextOverflow.ellipsis,
+                      )
+                    : Text(
+                        list.name,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+              ),
+              const SizedBox(width: 88),
             ],
           ),
         ),
