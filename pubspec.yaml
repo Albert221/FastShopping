@@ -36,5 +36,4 @@ flutter:
     - assets/shopping_bags_woman.svg
 
     # Internationalization
-    - lib/i18n/en_US.json
-    - lib/i18n/pl_PL.json
+    - lib/i18n/messages/
