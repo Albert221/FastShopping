@@ -76,9 +76,7 @@ class _MainScreenState extends State<MainScreen> {
         )
         .closed
         .then((reason) {
-      print('imma delete: ' + reason.toString());
       if (reason != SnackBarClosedReason.action) {
-        print('deleted');
         store.dispatch(DeleteItem(item));
       }
     });
@@ -192,8 +190,6 @@ class _MainScreenState extends State<MainScreen> {
         converter: (store) => store.state.currentList != null,
         builder: (context, shoppingListAvailable) {
           if (!shoppingListAvailable) {
-            // return Center(child: Text('shopping_list_not_selected'.i18n));
-
             return _buildNoListSelectedPlaceholder();
           }
 

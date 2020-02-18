@@ -12,7 +12,6 @@ class SetCurrentShoppingList {
 ThunkAction<FastShoppingState> addShoppingList(String name) {
   return (Store<FastShoppingState> store) {
     store.dispatch(AddedShoppingList(name));
-    print('added');
 
     final newList = store.state.lists.last;
 
