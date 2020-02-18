@@ -1,7 +1,6 @@
 import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
 class ListItemTile extends StatefulWidget {
   final bool done;
@@ -160,9 +159,7 @@ class ListItemTileState extends State<ListItemTile>
                 ),
                 if (widget.doneAt != null)
                   Text(
-                    'list_item_done_ago'.i18nFormat([
-                      timeago.format(widget.doneAt),
-                    ]),
+                    'list_item_done_ago'.i18nFormat([widget.doneAt.timeAgo()]),
                     style: const TextStyle(
                       fontSize: 12,
                       color: Colors.black87,

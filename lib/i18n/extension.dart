@@ -1,4 +1,5 @@
 import 'package:fast_shopping/i18n/i18n.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 extension I18n on String {
   String get i18n => FastShoppingI18n().message(this);
@@ -33,4 +34,9 @@ extension I18n on String {
       return _format(parts[2], [number]);
     }
   }
+}
+
+extension TimeAgoI18n on DateTime {
+  String timeAgo() =>
+      timeago.format(this, locale: FastShoppingI18n().preferredLocale);
 }

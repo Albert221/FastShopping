@@ -8,7 +8,6 @@ import 'package:flutter/material.dart' hide SimpleDialog;
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
-import 'package:timeago/timeago.dart' as timeago;
 
 class ListsScreen extends StatefulWidget {
   @override
@@ -109,7 +108,7 @@ class _ListsScreenState extends State<ListsScreen>
               Navigator.pop(context);
             },
             thirdLineBuilder: (list) => 'shopping_lists_item_created_at'
-                .i18nFormat([timeago.format(list.createdAt)]),
+                .i18nFormat([list.createdAt.timeAgo()]),
             emptyPlaceholder: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -131,7 +130,7 @@ class _ListsScreenState extends State<ListsScreen>
             selector: (lists) => lists.where((list) => list.archived).toList()
               ..sort((a, b) => -a.archivedAt.compareTo(b.archivedAt)),
             thirdLineBuilder: (list) => 'shopping_lists_item_archived_at'
-                .i18nFormat([timeago.format(list.archivedAt)]),
+                .i18nFormat([list.archivedAt.timeAgo()]),
             emptyPlaceholder: Center(
               child: Text('no_archived_lists_message'.i18n),
             ),
