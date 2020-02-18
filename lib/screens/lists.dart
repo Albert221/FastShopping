@@ -8,6 +8,7 @@ import 'package:flutter/material.dart' hide SimpleDialog;
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class ListsScreen extends StatefulWidget {
   @override
@@ -100,12 +101,15 @@ class _ListsScreenState extends State<ListsScreen>
         controller: _tabController,
         children: [
           _ShoppingListTab(
-            selector: (lists) => lists.where((list) => !list.archived).toList(),
+            selector: (lists) => lists.where((list) => !list.archived).toList()
+              ..sort((a, b) => -a.createdAt.compareTo(b.createdAt)),
             onTap: (list) {
               context.store.dispatch(SetCurrentShoppingList(list));
               // Go back to main screen.
               Navigator.pop(context);
             },
+            thirdLineBuilder: (list) => 'shopping_lists_item_created_at'
+                .i18nFormat([timeago.format(list.createdAt)]),
             emptyPlaceholder: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -124,7 +128,10 @@ class _ListsScreenState extends State<ListsScreen>
             ),
           ),
           _ShoppingListTab(
-            selector: (lists) => lists.where((list) => list.archived).toList(),
+            selector: (lists) => lists.where((list) => list.archived).toList()
+              ..sort((a, b) => -a.archivedAt.compareTo(b.archivedAt)),
+            thirdLineBuilder: (list) => 'shopping_lists_item_archived_at'
+                .i18nFormat([timeago.format(list.archivedAt)]),
             emptyPlaceholder: Center(
               child: Text('no_archived_lists_message'.i18n),
             ),
@@ -195,6 +202,7 @@ class _ListsScreenState extends State<ListsScreen>
 class _ShoppingListTab extends StatelessWidget {
   final List<ShoppingList> Function(List<ShoppingList>) selector;
   final void Function(ShoppingList) onTap;
+  final String Function(ShoppingList) thirdLineBuilder;
   final Widget Function(ShoppingList) trailingBuilder;
   final Widget emptyPlaceholder;
 
@@ -202,6 +210,7 @@ class _ShoppingListTab extends StatelessWidget {
     Key key,
     @required this.selector,
     this.onTap,
+    this.thirdLineBuilder,
     this.trailingBuilder,
     this.emptyPlaceholder,
   }) : super(key: key);
@@ -221,12 +230,29 @@ class _ShoppingListTab extends StatelessWidget {
                     .where((item) =>
                         item.shoppingListId == list.id && !item.removed)
                     .length;
+                final current = context.store.state.currentList?.id == list.id;
+
+                String subtitle =
+                    'shopping_lists_item_elements'.i18nNumber(itemsCount);
+                if (thirdLineBuilder != null) {
+                  subtitle += '\n' + thirdLineBuilder(list);
+                }
 
                 return ListTile(
                   leading: const Icon(Icons.list),
-                  title: Text(list.name),
+                  title: Text(
+                    list.name,
+                    style: current
+                        ? const TextStyle(fontWeight: FontWeight.bold)
+                        : null,
+                  ),
+                  isThreeLine: thirdLineBuilder != null,
                   subtitle: Text(
-                      'shopping_lists_item_elements'.i18nNumber(itemsCount)),
+                    subtitle,
+                    style: current
+                        ? const TextStyle(fontWeight: FontWeight.bold)
+                        : null,
+                  ),
                   onTap: onTap == null ? null : () => onTap(list),
                   trailing: trailingBuilder?.call(list),
                 );
