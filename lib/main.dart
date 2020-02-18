@@ -11,9 +11,10 @@ import 'package:uuid/uuid.dart';
 import 'models/models.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   final store = _setupStore();
 
-  WidgetsFlutterBinding.ensureInitialized();
   final lang = await Devicelocale.currentLocale;
   await FastShoppingI18n().init(lang);
 
@@ -27,10 +28,11 @@ Store<FastShoppingState> _setupStore() {
     rootReducer,
     middleware: [
       thunkMiddleware,
+      persisterMiddleware(),
     ],
     initialState: FastShoppingState(),
     // initialState: _initialState,
-  )..dispatch(Boot());
+  )..dispatch(LoadData());
 }
 
 final _initialListId = Uuid().v4();

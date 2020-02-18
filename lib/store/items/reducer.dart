@@ -28,7 +28,7 @@ BuiltList<Item> _markItemDoneReducer(
       (item) => item.id == action.item.id
           ? item.rebuild((b) => b
             ..done = true
-            ..doneAt = DateTime.now())
+            ..doneAt = DateTime.now().toUtc())
           : item,
     ));
 }

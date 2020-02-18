@@ -1,5 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 import 'package:fast_shopping/models/models.dart';
 
 part 'state.g.dart';
@@ -31,4 +32,7 @@ abstract class FastShoppingState
 
   List<Item> get currentListItems =>
       items.where((item) => item.shoppingListId == currentListId).toList();
+
+  static Serializer<FastShoppingState> get serializer =>
+      _$fastShoppingStateSerializer;
 }

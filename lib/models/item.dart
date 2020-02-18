@@ -1,4 +1,5 @@
 import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 import 'package:uuid/uuid.dart';
 
 part 'item.g.dart';
@@ -31,4 +32,6 @@ abstract class Item implements Built<Item, ItemBuilder> {
         )
         .rebuild(updates);
   }
+
+  static Serializer<Item> get serializer => _$itemSerializer;
 }

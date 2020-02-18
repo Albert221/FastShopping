@@ -15,7 +15,7 @@ BuiltList<ShoppingList> _addedShoppingListReducer(
   final shoppingList = ShoppingList(
     (b) => b
       ..name = action.name
-      ..createdAt = DateTime.now(),
+      ..createdAt = DateTime.now().toUtc(),
   );
 
   return state.rebuild((b) => b..add(shoppingList));
@@ -28,7 +28,7 @@ BuiltList<ShoppingList> _archiveShoppingListReducer(
       (list) => list.id == action.list.id
           ? list.rebuild((b) => b
             ..archived = true
-            ..archivedAt = DateTime.now())
+            ..archivedAt = DateTime.now().toUtc())
           : list,
     ));
 }

@@ -1,4 +1,5 @@
 import 'package:built_value/built_value.dart';
+import 'package:built_value/serializer.dart';
 import 'package:uuid/uuid.dart';
 
 part 'shopping_list.g.dart';
@@ -23,10 +24,12 @@ abstract class ShoppingList
         ._(
           id: Uuid().v4(),
           name: '',
-          createdAt: DateTime.now(),
+          createdAt: DateTime.now().toUtc(),
           archived: false,
           archivedAt: null,
         )
         .rebuild(updates);
   }
+
+  static Serializer<ShoppingList> get serializer => _$shoppingListSerializer;
 }
