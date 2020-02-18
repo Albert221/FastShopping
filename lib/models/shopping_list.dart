@@ -9,6 +9,8 @@ abstract class ShoppingList
 
   String get name;
 
+  DateTime get createdAt;
+
   bool get archived;
 
   @nullable
@@ -21,6 +23,7 @@ abstract class ShoppingList
         ._(
           id: Uuid().v4(),
           name: '',
+          createdAt: DateTime.now(),
           archived: false,
           archivedAt: null,
         )

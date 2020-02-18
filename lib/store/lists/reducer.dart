@@ -4,17 +4,21 @@ import 'package:fast_shopping/store/store.dart';
 import 'package:redux/redux.dart';
 
 final listsReducer = combineReducers<BuiltList<ShoppingList>>([
-  TypedReducer(_addShoppingListReducer),
+  TypedReducer(_addedShoppingListReducer),
   TypedReducer(_archiveShoppingListReducer),
   TypedReducer(_unarchiveShoppingListReducer),
   TypedReducer(_removeShoppingListReducer),
 ]);
 
-BuiltList<ShoppingList> _addShoppingListReducer(
-    BuiltList<ShoppingList> state, AddShoppingList action) {
-  final shoppingList = ShoppingList((b) => b..name = action.name);
+BuiltList<ShoppingList> _addedShoppingListReducer(
+    BuiltList<ShoppingList> state, AddedShoppingList action) {
+  final shoppingList = ShoppingList(
+    (b) => b
+      ..name = action.name
+      ..createdAt = DateTime.now(),
+  );
 
-  return state.rebuild((b) => b.add(shoppingList));
+  return state.rebuild((b) => b..add(shoppingList));
 }
 
 BuiltList<ShoppingList> _archiveShoppingListReducer(

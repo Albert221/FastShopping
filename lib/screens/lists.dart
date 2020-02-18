@@ -92,7 +92,7 @@ class _ListsScreenState extends State<ListsScreen>
                 );
 
                 if (name != null) {
-                  context.store.dispatch(AddShoppingList(name as String));
+                  context.store.dispatch(addShoppingList(name as String));
                 }
               },
             )
