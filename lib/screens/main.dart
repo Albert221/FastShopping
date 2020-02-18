@@ -156,35 +156,35 @@ class _MainScreenState extends State<MainScreen> {
         converter: (store) => store.state.currentList,
         builder: (context, list) => BottomAppBar(
           notchMargin: 8,
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: IconButton(
-                  icon: const Icon(Icons.list),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ListsScreen()),
-                    );
-                  },
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ListsScreen()),
+              );
+            },
+            child: Row(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Icon(Icons.list),
                 ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: list == null
-                    ? Text(
-                        'shopping_list_not_selected_placeholder'.i18n,
-                        style: const TextStyle(fontStyle: FontStyle.italic),
-                        overflow: TextOverflow.ellipsis,
-                      )
-                    : Text(
-                        list.name,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-              ),
-              const SizedBox(width: 88),
-            ],
+                const SizedBox(width: 8),
+                Expanded(
+                  child: list == null
+                      ? Text(
+                          'shopping_list_not_selected_placeholder'.i18n,
+                          style: const TextStyle(fontStyle: FontStyle.italic),
+                          overflow: TextOverflow.ellipsis,
+                        )
+                      : Text(
+                          list.name,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                ),
+                const SizedBox(width: 88),
+              ],
+            ),
           ),
         ),
       ),
