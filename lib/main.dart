@@ -28,6 +28,5 @@ Store<FastShoppingState> _setupStore() {
       persisterMiddleware(),
     ],
     initialState: FastShoppingState(),
-    // initialState: _initialState,
   )..dispatch(LoadData());
 }

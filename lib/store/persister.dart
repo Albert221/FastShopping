@@ -66,7 +66,7 @@ final Serializers _serializers =
     (_$_serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
 
 FastShoppingState _migrateV1ToV2(String json) {
-  final purchases = jsonDecode(json) as List<Map<String, dynamic>>;
+  final purchases = jsonDecode(json) as List<dynamic>;
 
   final list = ShoppingList(
     (b) => b
@@ -75,11 +75,13 @@ FastShoppingState _migrateV1ToV2(String json) {
   );
 
   final items = purchases.map((purchase) {
+    purchase = purchase as Map<String, dynamic>;
     final done = purchase['purchased'] as bool;
 
     return Item(
       (b) => b
         ..title = purchase['name'] as String
+        ..shoppingListId = list.id
         ..done = done
         ..doneAt = done ? DateTime.now().toUtc() : null,
     );
