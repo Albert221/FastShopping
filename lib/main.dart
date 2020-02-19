@@ -17,7 +17,15 @@ void main() async {
 
   final store = _setupStore();
 
-  runApp(FastShoppingApp(store: store));
+  runApp(FastShoppingApp(
+    store: store,
+    onHotReload: () async {
+      // Somehow you still have to Hot Reload twice after
+      // changing messages files, but that's still more convenient
+      // than Hot Restarting the app.
+      FastShoppingI18n().init(await Devicelocale.currentLocale);
+    },
+  ));
 }
 
 Store<FastShoppingState> _setupStore() {
