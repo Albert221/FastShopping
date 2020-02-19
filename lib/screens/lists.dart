@@ -115,6 +115,10 @@ class _Body extends StatelessWidget {
     );
   }
 
+  void _onRenameList(BuildContext context, ShoppingList list) async {
+    // todo: show dialog to rename the list.
+  }
+
   void _onArchiveList(BuildContext context, ShoppingList list) {
     _showSnackbar(context, 'shopping_list_archived_snackbar_message'.i18n);
 
@@ -169,45 +173,62 @@ class _Body extends StatelessWidget {
     return TabBarView(
       controller: tabController,
       children: [
-        _ShoppingListTab(
-          selector: (lists) => lists.where((list) => !list.archived).toList()
-            ..sort((a, b) => -a.createdAt.compareTo(b.createdAt)),
-          onTap: (list) {
-            context.store.dispatch(SetCurrentShoppingList(list));
-            // Go back to main screen.
-            Navigator.pop(context);
-          },
-          thirdLineBuilder: (list) => 'shopping_lists_item_created_at'
-              .i18nFormat([list.createdAt.timeAgo()]),
-          emptyPlaceholder: const _CurrentTabPlaceholder(),
-          trailingBuilder: (list) => IconButton(
+        _buildCurrentTab(context),
+        _buildArchivedTab(context),
+      ],
+    );
+  }
+
+  Widget _buildCurrentTab(BuildContext context) {
+    return _ShoppingListTab(
+      selector: (lists) => lists.where((list) => !list.archived).toList()
+        ..sort((a, b) => -a.createdAt.compareTo(b.createdAt)),
+      onTap: (list) {
+        context.store.dispatch(SetCurrentShoppingList(list));
+        // Go back to main screen.
+        Navigator.pop(context);
+      },
+      thirdLineBuilder: (list) => 'shopping_lists_item_created_at'
+          .i18nFormat([list.createdAt.timeAgo()]),
+      emptyPlaceholder: const _CurrentTabPlaceholder(),
+      trailingBuilder: (list) => Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            icon: const Icon(Icons.edit),
+            onPressed: () => _onRenameList(context, list),
+          ),
+          IconButton(
             icon: const Icon(Icons.archive),
             onPressed: () => _onArchiveList(context, list),
           ),
-        ),
-        _ShoppingListTab(
-          selector: (lists) => lists.where((list) => list.archived).toList()
-            ..sort((a, b) => -a.archivedAt.compareTo(b.archivedAt)),
-          thirdLineBuilder: (list) => 'shopping_lists_item_archived_at'
-              .i18nFormat([list.archivedAt.timeAgo()]),
-          emptyPlaceholder: Center(
-            child: Text('no_archived_lists_message'.i18n),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildArchivedTab(BuildContext context) {
+    return _ShoppingListTab(
+      selector: (lists) => lists.where((list) => list.archived).toList()
+        ..sort((a, b) => -a.archivedAt.compareTo(b.archivedAt)),
+      thirdLineBuilder: (list) => 'shopping_lists_item_archived_at'
+          .i18nFormat([list.archivedAt.timeAgo()]),
+      emptyPlaceholder: Center(
+        child: Text('no_archived_lists_message'.i18n),
+      ),
+      trailingBuilder: (list) => Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            icon: const Icon(Icons.unarchive),
+            onPressed: () => _onUnarchiveList(context, list),
           ),
-          trailingBuilder: (list) => Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              IconButton(
-                icon: const Icon(Icons.unarchive),
-                onPressed: () => _onUnarchiveList(context, list),
-              ),
-              IconButton(
-                icon: const Icon(Icons.delete_forever),
-                onPressed: () => _onDeleteTap(context, list),
-              ),
-            ],
+          IconButton(
+            icon: const Icon(Icons.delete_forever),
+            onPressed: () => _onDeleteTap(context, list),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
