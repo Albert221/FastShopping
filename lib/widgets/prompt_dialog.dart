@@ -37,6 +37,7 @@ class PromptDialog extends StatelessWidget {
             child: TextField(
               controller: controller,
               autofocus: true,
+              textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding:
