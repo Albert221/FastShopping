@@ -217,14 +217,14 @@ class _BodyState extends State<_Body> {
           builder: (context, items) {
             if (items.every((item) => item.removed)) {
               // Works for empty list too
-              return const _NoItemsPlaceholder();
+              return _NoItemsPlaceholder();
             }
 
             return ListView.builder(
               itemCount: items.length + 1,
               itemBuilder: (context, i) {
                 if (i == 0) {
-                  return const _ArchiveBannerSpace();
+                  return _ArchiveBannerSpace();
                 }
 
                 final item = items[i - 1];
@@ -325,7 +325,7 @@ class _NoListSelectedPlaceholder extends StatelessWidget {
 }
 
 class _NoItemsPlaceholder extends StatelessWidget {
-  const _NoItemsPlaceholder();
+  _NoItemsPlaceholder();
 
   @override
   Widget build(BuildContext context) {
@@ -363,7 +363,7 @@ class _NoItemsPlaceholder extends StatelessWidget {
 }
 
 class _ArchiveBannerSpace extends StatelessWidget {
-  const _ArchiveBannerSpace();
+  _ArchiveBannerSpace();
 
   void _archiveList(BuildContext context, ShoppingList list) {
     final store = context.store;
