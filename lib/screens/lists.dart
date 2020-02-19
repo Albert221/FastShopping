@@ -262,8 +262,11 @@ class _ShoppingListTab extends StatelessWidget {
       child: ListTile(
         leading: const Icon(Icons.list),
         title: Text(
-          list.name,
-          style: current ? const TextStyle(fontWeight: FontWeight.bold) : null,
+          list.name.isNotEmpty ? list.name : 'shopping_list_no_name'.i18n,
+          style: TextStyle(
+            fontWeight: current ? FontWeight.bold : null,
+            fontStyle: list.name.isEmpty ? FontStyle.italic : null,
+          ),
         ),
         isThreeLine: thirdLineBuilder != null,
         subtitle: Text(

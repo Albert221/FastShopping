@@ -114,7 +114,12 @@ class _BottomAppBar extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       )
                     : Text(
-                        list.name,
+                        list.name.isNotEmpty
+                            ? list.name
+                            : 'shopping_list_no_name'.i18n,
+                        style: list.name.isEmpty
+                            ? const TextStyle(fontStyle: FontStyle.italic)
+                            : null,
                         overflow: TextOverflow.ellipsis,
                       ),
               ),

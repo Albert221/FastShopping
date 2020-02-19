@@ -26,6 +26,7 @@
     "shopping_lists_item_elements": "Brak elementów|1 element|$1 elementy/ów",
     "shopping_lists_item_created_at": "Stworzono $1",
     "shopping_lists_item_archived_at": "Zarchiwiz. $1",
+    "shopping_list_no_name": "Bez nazwy",
     "shopping_list_archived_snackbar_message": "Lista została zarchiwizowana pomyślnie.",
     "shopping_list_unarchived_snackbar_message": "Lista została przywrócona pomyślnie.",
     "add_list_dialog_title": "Dodaj nową listę zakupów",
