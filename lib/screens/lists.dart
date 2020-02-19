@@ -164,7 +164,8 @@ class _ListsScreenState extends State<ListsScreen>
                               ),
                               TextSpan(
                                 text: list.name,
-                                style: TextStyle(fontStyle: FontStyle.italic),
+                                style: const TextStyle(
+                                    fontStyle: FontStyle.italic),
                               ),
                               TextSpan(
                                 text: 'delete_shopping_list_dialog_body_after'
@@ -237,23 +238,25 @@ class _ShoppingListTab extends StatelessWidget {
                   subtitle += '\n' + thirdLineBuilder(list);
                 }
 
-                return ListTile(
-                  leading: const Icon(Icons.list),
-                  title: Text(
-                    list.name,
-                    style: current
-                        ? const TextStyle(fontWeight: FontWeight.bold)
-                        : null,
+                return Container(
+                  color: current
+                      ? Theme.of(context).primaryColor.withOpacity(.2)
+                      : null,
+                  child: ListTile(
+                    leading: const Icon(Icons.list),
+                    title: Text(
+                      list.name,
+                      style: current
+                          ? const TextStyle(fontWeight: FontWeight.bold)
+                          : null,
+                    ),
+                    isThreeLine: thirdLineBuilder != null,
+                    subtitle: Text(
+                      subtitle,
+                    ),
+                    onTap: onTap == null ? null : () => onTap(list),
+                    trailing: trailingBuilder?.call(list),
                   ),
-                  isThreeLine: thirdLineBuilder != null,
-                  subtitle: Text(
-                    subtitle,
-                    style: current
-                        ? const TextStyle(fontWeight: FontWeight.bold)
-                        : null,
-                  ),
-                  onTap: onTap == null ? null : () => onTap(list),
-                  trailing: trailingBuilder?.call(list),
                 );
               },
             ),
