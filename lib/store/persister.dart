@@ -36,6 +36,7 @@ Middleware<FastShoppingState> persisterMiddleware() {
           final migratedState = _migrateV1ToV2(json);
 
           store.dispatch(LoadedData(migratedState));
+          prefs.remove(v1DataKey);
         } else if (prefs.containsKey(dataKey)) {
           // Load data
           final json = prefs.getString(dataKey);
