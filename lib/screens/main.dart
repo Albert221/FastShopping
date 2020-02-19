@@ -17,9 +17,124 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: _scaffoldKey,
+      appBar: AppBar(
+        centerTitle: true,
+        title: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SvgPicture.asset(
+              'assets/logo.svg',
+              width: 32,
+              height: 32,
+            ),
+            const SizedBox(width: 16),
+            Text('app_title'.i18n),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: const _FloatingActionButton(),
+      bottomNavigationBar: const _BottomAppBar(),
+      body: _Body(),
+    );
+  }
+}
+
+class _FloatingActionButton extends StatelessWidget {
+  const _FloatingActionButton();
+
+  void _showAddItemDialog(BuildContext context) async {
+    final result = await showDialog(
+      context: context,
+      builder: (context) => AddItemDialog(),
+    );
+
+    if (result != null) {
+      context.store.dispatch(AddItem(
+        result as String,
+        context.store.state.currentListId,
+      ));
+    }
+  }
+
+  bool _shouldShowFab(BuildContext context) =>
+      MediaQuery.of(context).viewInsets.bottom == 0 &&
+      context.store.state.currentList != null;
+
+  @override
+  Widget build(BuildContext context) {
+    return StoreConnector<FastShoppingState, bool>(
+      converter: (store) => store.state.currentList != null,
+      builder: (context, _) => _shouldShowFab(context)
+          ? FloatingActionButton(
+              child: const Icon(Icons.add),
+              onPressed: () => _showAddItemDialog(context),
+            )
+          : const SizedBox(),
+    );
+  }
+}
+
+class _BottomAppBar extends StatelessWidget {
+  const _BottomAppBar();
+
+  void _openListsScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ListsScreen()),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StoreConnector<FastShoppingState, ShoppingList>(
+      converter: (store) => store.state.currentList,
+      builder: (context, list) => BottomAppBar(
+        notchMargin: 8,
+        child: InkWell(
+          onTap: () => _openListsScreen(context),
+          child: Row(
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(16),
+                child: Icon(Icons.list),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: list == null
+                    ? Text(
+                        'shopping_list_not_selected_placeholder'.i18n,
+                        style: const TextStyle(fontStyle: FontStyle.italic),
+                        overflow: TextOverflow.ellipsis,
+                      )
+                    : Text(
+                        list.name,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+              ),
+              const SizedBox(width: 88),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<_Body> {
   /// Key is an id of the item.
   final _itemsKeys = <String, GlobalKey<ListItemTileState>>{};
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   StreamSubscription _itemsSubscription;
 
@@ -82,168 +197,39 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  void _archiveList(BuildContext context, ShoppingList list) {
-    final store = context.store;
-
-    store.dispatch(ArchiveShoppingList(list));
-
-    _scaffoldKey.currentState.hideCurrentSnackBar();
-    _scaffoldKey.currentState.showSnackBar(
-      SnackBar(
-        behavior: SnackBarBehavior.floating,
-        content: Text('list_archived_snackbar_message'.i18n),
-        action: SnackBarAction(
-          textColor: PrimaryFlatButton.buttonColor,
-          label: 'list_archived_snackbar_undo'.i18n,
-          onPressed: () {
-            store.dispatch(UnarchiveShoppingList(list));
-          },
-        ),
-      ),
-    );
-  }
-
-  bool _shouldShowFab(BuildContext context) =>
-      MediaQuery.of(context).viewInsets.bottom == 0 &&
-      context.store.state.currentList != null;
-
   @override
   Widget build(BuildContext context) {
-    final store = context.store;
+    return StoreConnector<FastShoppingState, bool>(
+      converter: (store) => store.state.currentList != null,
+      builder: (context, shoppingListAvailable) {
+        if (!shoppingListAvailable) {
+          return const _NoListSelectedPlaceholder();
+        }
 
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SvgPicture.asset(
-              'assets/logo.svg',
-              width: 32,
-              height: 32,
-            ),
-            const SizedBox(width: 16),
-            Text('app_title'.i18n),
-          ],
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: StoreConnector<FastShoppingState, bool>(
-        converter: (store) => store.state.currentList != null,
-        builder: (context, _) => _shouldShowFab(context)
-            ? FloatingActionButton(
-                child: const Icon(Icons.add),
-                onPressed: () async {
-                  final result = await showDialog(
-                    context: context,
-                    builder: (context) => AddItemDialog(),
-                  );
+        return StoreConnector<FastShoppingState, List<Item>>(
+          onInit: _onStoreInit,
+          converter: (store) => store.state.currentListItems,
+          builder: (context, items) {
+            if (items.every((item) => item.removed)) {
+              // Works for empty list too
+              return const _NoItemsPlaceholder();
+            }
 
-                  if (result != null) {
-                    store.dispatch(AddItem(
-                      result as String,
-                      store.state.currentListId,
-                    ));
-                  }
-                },
-              )
-            : const SizedBox(),
-      ),
-      bottomNavigationBar: StoreConnector<FastShoppingState, ShoppingList>(
-        converter: (store) => store.state.currentList,
-        builder: (context, list) => BottomAppBar(
-          notchMargin: 8,
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ListsScreen()),
-              );
-            },
-            child: Row(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Icon(Icons.list),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: list == null
-                      ? Text(
-                          'shopping_list_not_selected_placeholder'.i18n,
-                          style: const TextStyle(fontStyle: FontStyle.italic),
-                          overflow: TextOverflow.ellipsis,
-                        )
-                      : Text(
-                          list.name,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                ),
-                const SizedBox(width: 88),
-              ],
-            ),
-          ),
-        ),
-      ),
-      body: StoreConnector<FastShoppingState, bool>(
-        converter: (store) => store.state.currentList != null,
-        builder: (context, shoppingListAvailable) {
-          if (!shoppingListAvailable) {
-            return _buildNoListSelectedPlaceholder();
-          }
+            return ListView.builder(
+              itemCount: items.length + 1,
+              itemBuilder: (context, i) {
+                if (i == 0) {
+                  return const _ArchiveBannerSpace();
+                }
 
-          return StoreConnector<FastShoppingState, List<Item>>(
-            onInit: _onStoreInit,
-            converter: (store) => store.state.currentListItems,
-            builder: (context, items) {
-              if (items.every((item) => item.removed)) {
-                // Works for empty list too
-                return _buildNoItemsPlaceholder(context);
-              }
+                final item = items[i - 1];
 
-              return ListView.builder(
-                itemCount: items.length + 1,
-                itemBuilder: (context, i) {
-                  if (i == 0) {
-                    return _buildArchiveBannerSpace(context);
-                  }
-
-                  final item = items[i - 1];
-
-                  return _buildItemRow(context, item);
-                },
-              );
-            },
-          );
-        },
-      ),
-    );
-  }
-
-  bool _shouldShowArchiveBanner(BuildContext context) {
-    final items = context.store.state.currentListItems;
-
-    return items.where((item) => !item.removed).every((item) => item.done);
-  }
-
-  Widget _buildArchiveBannerSpace(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: AnimatedCrossFade(
-        firstCurve: Curves.ease,
-        secondCurve: Curves.ease,
-        sizeCurve: Curves.ease,
-        duration: const Duration(milliseconds: 300),
-        crossFadeState: _shouldShowArchiveBanner(context)
-            ? CrossFadeState.showFirst
-            : CrossFadeState.showSecond,
-        firstChild: ArchiveBanner(
-          onArchiveTap: () =>
-              _archiveList(context, context.store.state.currentList),
-        ),
-        secondChild: const SizedBox(width: double.infinity),
-      ),
+                return _buildItemRow(context, item);
+              },
+            );
+          },
+        );
+      },
     );
   }
 
@@ -295,8 +281,13 @@ class _MainScreenState extends State<MainScreen> {
       secondChild: const SizedBox(width: double.infinity),
     );
   }
+}
 
-  Widget _buildNoListSelectedPlaceholder() {
+class _NoListSelectedPlaceholder extends StatelessWidget {
+  const _NoListSelectedPlaceholder();
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -326,8 +317,13 @@ class _MainScreenState extends State<MainScreen> {
       ],
     );
   }
+}
 
-  Widget _buildNoItemsPlaceholder(BuildContext context) {
+class _NoItemsPlaceholder extends StatelessWidget {
+  const _NoItemsPlaceholder();
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -347,7 +343,7 @@ class _MainScreenState extends State<MainScreen> {
           flex: 2,
           child: Padding(
             padding: const EdgeInsets.only(right: 94, bottom: 36),
-            child: _shouldShowFab(context)
+            child: MediaQuery.of(context).viewInsets.bottom == 0
                 ? SvgPicture.asset(
                     'assets/arrow_fab.svg',
                     alignment: Alignment.bottomRight,
@@ -357,6 +353,56 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _ArchiveBannerSpace extends StatelessWidget {
+  const _ArchiveBannerSpace();
+
+  void _archiveList(BuildContext context, ShoppingList list) {
+    final store = context.store;
+
+    store.dispatch(ArchiveShoppingList(list));
+
+    Scaffold.of(context).hideCurrentSnackBar();
+    Scaffold.of(context).showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: Text('list_archived_snackbar_message'.i18n),
+        action: SnackBarAction(
+          textColor: PrimaryFlatButton.buttonColor,
+          label: 'list_archived_snackbar_undo'.i18n,
+          onPressed: () {
+            store.dispatch(UnarchiveShoppingList(list));
+          },
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final shouldShowBanner = context.store.state.currentListItems
+        .where((item) => !item.removed)
+        .every((item) => item.done);
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: AnimatedCrossFade(
+        firstCurve: Curves.ease,
+        secondCurve: Curves.ease,
+        sizeCurve: Curves.ease,
+        duration: const Duration(milliseconds: 300),
+        crossFadeState: shouldShowBanner
+            ? CrossFadeState.showFirst
+            : CrossFadeState.showSecond,
+        firstChild: ArchiveBanner(
+          onArchiveTap: () =>
+              _archiveList(context, context.store.state.currentList),
+        ),
+        secondChild: const SizedBox(width: double.infinity),
+      ),
     );
   }
 }
