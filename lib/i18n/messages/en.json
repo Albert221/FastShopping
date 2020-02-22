@@ -1,5 +1,7 @@
 {
     "app_title": "Fast Shopping",
+    "menu_donate": "Donate",
+    "menu_licenses": "Licences",
     "list_item_no_name": "No name",
     "list_item_done_ago": "done $1",
     "list_item_title_hint": "Write item name here...",
@@ -40,5 +42,8 @@
     "delete_shopping_list_dialog_delete": "DELETE",
     "no_current_lists_message": "There are no current lists, create one!",
     "no_archived_lists_message": "There are no archived lists.",
-    "list_from_old_version": "List from old version"
+    "list_from_old_version": "List from old version",
+    "donate_dialog_title": "Donate",
+    "donate_dialog_body": "You can support application's author by sending him a donation.",
+    "donate_dialog_paypal": "GO TO PAYPAL.ME"
 }

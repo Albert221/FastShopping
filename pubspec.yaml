@@ -19,6 +19,7 @@ dependencies:
   redux: ^4.0.0
   shared_preferences: ^0.5.6+1
   timeago: ^2.0.22
+  url_launcher: ^5.4.2
   uuid: ^2.0.4
 
 dev_dependencies:
