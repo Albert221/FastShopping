@@ -1,57 +1,33 @@
-<img align="left" src="https://i.imgur.com/Jb04dUM.png" alt="">
+<img align="right" src="android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="">
 
-# Fast shopping
+# Fast Shopping
 
-*Fast shopping* is a simple application for easy shopping list making, for 
-everyone.
+[![Get it on Google Play][google_play_button]][google_play]
 
-[![Download on Google 
-Play](https://play.google.com/intl/en_us/badges/images/badge_new.png)](https://play.google.com/store/apps/details?id=me.wolszon.fastshopping)
+**Fast Shopping** is a mobile application developed with simplicity in mind. It allows you on having a simple set of shopping lists, that you can easily manage. It contains **no** ads. Targetted to everyone who wants a simple app to get the job done. Not limited to tech-savy users.
 
 ## Goal
 
 This application was made to resolve a certain problem in a certain way. 
-There are many people that don't want to use a voice assistant and find 
-other apps available on the market too much overwhelming, too complex, 
-bloated with features, bloated with ads or simply overingeenered for their 
-simple problem. In the past, you would get yourself a piece of paper and a 
-pen and write down the stuff you need to buy, so you can read it while being 
-in the market. *Fast shopping* is an application that does exactly that and 
-only that. Reducing number of taps to a minimum and offering a very readable 
-interface.
 
-## Features
-
-- adding items to list
-- making items complete
-- deleting specific items
-- deleting all completed items at once
-
-*and that's all!*
-
-![Shopping list. Simply.](https://i.imgur.com/12AiVoL.png)
+There are many people that don't want to use a voice assistant and find other apps available on the market too overwhelming, too complex, bloated with features, bloated with ads or simply overengineered for their simple problem. In the past, you would get yourself a piece of paper and a pen and write down the stuff you need to buy, so you can read it while being in the market. **Fast shopping** is an application that does exactly that and only that. Reducing number of taps to a minimum and offering a very readable interface.
 
 ## Building
 
 ```bash
+git clone git@github.com:Albert221/FastShopping.git && cd FastShopping
 flutter packages pub get
 flutter packages pub run build_runner build
-flutter packages build apk
+flutter build apk
+# or if you want to build the debug version and run it
+flutter run
 ```
 
-## Contributing
+## Translating
 
-Everyone is welcome to contribute! But remember the main goal of this app.
+If you want to fix translations or maybe add your mother tongue, head to `lib/i18n/messages` folder and copy the `en.json` file to `<your language>.json` and proceed to translating.
 
-If you are into localization of the app, please make use of the 
-`intl_translation` package:
+Translate the app launcher name too. To do this, create a new folder in `android/app/src/main/res` called `values-<your language>` and put a `strings.xml` file there. For reference, check `android\app\src\main\res\values\strings.xml` file.
 
-```bash
-# Generate `intl_messages.arb` from strings in `localization.dart`:
-flutter pub pub run intl_translation:extract_to_arb --output-dir=lib/l10n \
-    lib/localization.dart
-# Create `intl_<locale>.arb` files based on `intl_messages.arb`
-# and create Dart file using:
-flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/l10n \
-    lib/localization.dart lib/l10n/intl_*.arb --no-use-deferred-loading
-```
+[google_play_button]: https://play.google.com/intl/en_us/badges/images/badge_new.png
+[google_play]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
