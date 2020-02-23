@@ -23,64 +23,68 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SvgPicture.asset(
-              'assets/logo.svg',
-              width: 32,
-              height: 32,
-            ),
-            const SizedBox(width: 16),
-            Text('app_title'.i18n),
-          ],
-        ),
-        actions: [
-          PopupMenuButton<String>(
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                value: 'donate',
-                child: Row(
-                  children: [
-                    const Icon(Icons.attach_money),
-                    const SizedBox(width: 16),
-                    Text('menu_donate'.i18n),
-                  ],
-                ),
-              ),
-              PopupMenuItem(
-                value: 'licenses',
-                child: Row(
-                  children: [
-                    const Icon(Icons.info_outline),
-                    const SizedBox(width: 16),
-                    Text('menu_licenses'.i18n),
-                  ],
-                ),
-              ),
-            ],
-            onSelected: (index) {
-              if (index == 'donate') {
-                showDialog(
-                  context: context,
-                  builder: (context) => DonateDialog(),
-                );
-              } else if (index == 'licenses') {
-                showLicensePage(
-                  context: context,
-                  applicationName: 'app_title'.i18n,
-                );
-              }
-            },
-          ),
-        ],
-      ),
+      appBar: _buildAppBar(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: const _FloatingActionButton(),
       bottomNavigationBar: const _BottomAppBar(),
       body: _Body(),
+    );
+  }
+
+  Widget _buildAppBar(BuildContext context) {
+    return AppBar(
+      centerTitle: true,
+      title: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(
+            'assets/logo.svg',
+            width: 32,
+            height: 32,
+          ),
+          const SizedBox(width: 16),
+          Text('app_title'.i18n),
+        ],
+      ),
+      actions: [
+        PopupMenuButton<String>(
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              value: 'donate',
+              child: Row(
+                children: [
+                  const Icon(Icons.attach_money),
+                  const SizedBox(width: 16),
+                  Text('menu_donate'.i18n),
+                ],
+              ),
+            ),
+            PopupMenuItem(
+              value: 'licenses',
+              child: Row(
+                children: [
+                  const Icon(Icons.info_outline),
+                  const SizedBox(width: 16),
+                  Text('menu_licenses'.i18n),
+                ],
+              ),
+            ),
+          ],
+          onSelected: (index) {
+            if (index == 'donate') {
+              showDialog(
+                context: context,
+                builder: (context) => DonateDialog(),
+              );
+            } else if (index == 'licenses') {
+              showLicensePage(
+                context: context,
+                applicationName: 'app_title'.i18n,
+              );
+            }
+          },
+        ),
+      ],
     );
   }
 }

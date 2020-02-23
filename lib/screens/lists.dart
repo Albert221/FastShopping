@@ -1,9 +1,9 @@
 import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/models/models.dart';
+import 'package:fast_shopping/screens/rename_list_dialog.dart';
 import 'package:fast_shopping/screens/screens.dart';
 import 'package:fast_shopping/store/store.dart';
 import 'package:fast_shopping/utils/extensions.dart';
-import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart' hide SimpleDialog;
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -116,7 +116,16 @@ class _Body extends StatelessWidget {
   }
 
   void _onRenameList(BuildContext context, ShoppingList list) async {
-    // todo: show dialog to rename the list.
+    final newName = await showDialog(
+      context: context,
+      builder: (context) => RenameListDialog(
+        initialName: list.name,
+      ),
+    );
+
+    if (newName != null) {
+      context.store.dispatch(RenameShoppingList(list, newName as String));
+    }
   }
 
   void _onArchiveList(BuildContext context, ShoppingList list) {
@@ -131,41 +140,17 @@ class _Body extends StatelessWidget {
     context.store.dispatch(UnarchiveShoppingList(list));
   }
 
-  void _onDeleteTap(BuildContext context, ShoppingList list) {
-    showDialog(
+  void _onDeleteTap(BuildContext context, ShoppingList list) async {
+    final result = await showDialog(
       context: context,
-      builder: (context) => SimpleDialog(
-        title: 'delete_shopping_list_dialog_title'.i18n,
-        body: RichText(
-          text: TextSpan(
-            style: Theme.of(context).textTheme.bodyText2,
-            children: [
-              TextSpan(
-                text: 'delete_shopping_list_dialog_body_before'.i18n,
-              ),
-              TextSpan(
-                text: list.name,
-                style: const TextStyle(fontStyle: FontStyle.italic),
-              ),
-              TextSpan(
-                text: 'delete_shopping_list_dialog_body_after'.i18n,
-              ),
-            ],
-          ),
-        ),
-        primaryButton: DangerFlatButton(
-          text: 'delete_shopping_list_dialog_delete'.i18n,
-          onPressed: () {
-            context.store.dispatch(RemoveShoppingList(list));
-            Navigator.pop(context);
-          },
-        ),
-        secondaryButton: SecondaryFlatButton(
-          text: 'delete_shopping_list_dialog_cancel'.i18n,
-          onPressed: () => Navigator.pop(context),
-        ),
+      builder: (context) => DeleteListDialog(
+        listName: list.name,
       ),
     );
+
+    if (result != null) {
+      context.store.dispatch(RemoveShoppingList(list));
+    }
   }
 
   @override

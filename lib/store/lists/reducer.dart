@@ -7,6 +7,7 @@ final listsReducer = combineReducers<BuiltList<ShoppingList>>([
   TypedReducer(_addedShoppingListReducer),
   TypedReducer(_archiveShoppingListReducer),
   TypedReducer(_unarchiveShoppingListReducer),
+  TypedReducer(_renameShoppingListReducer),
   TypedReducer(_removeShoppingListReducer),
 ]);
 
@@ -41,6 +42,16 @@ BuiltList<ShoppingList> _unarchiveShoppingListReducer(
           ? list.rebuild((b) => b
             ..archived = false
             ..archivedAt = null)
+          : list,
+    ));
+}
+
+BuiltList<ShoppingList> _renameShoppingListReducer(
+    BuiltList<ShoppingList> state, RenameShoppingList action) {
+  return state.rebuild((b) => b
+    ..map(
+      (list) => list.id == action.list.id
+          ? list.rebuild((b) => b..name = action.newName)
           : list,
     ));
 }

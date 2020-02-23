@@ -37,6 +37,13 @@ class UnarchiveShoppingList {
   UnarchiveShoppingList(this.list);
 }
 
+class RenameShoppingList {
+  final ShoppingList list;
+  final String newName;
+
+  RenameShoppingList(this.list, this.newName);
+}
+
 class RemoveShoppingList {
   final ShoppingList list;
 
