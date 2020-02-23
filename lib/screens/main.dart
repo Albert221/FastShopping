@@ -313,17 +313,12 @@ class _BodyState extends State<_Body> {
               }
             });
           },
-          dragHandler: ListItemDragHandler(
-            onDragStart: (details) {
-              debugPrint(details.toString());
-            },
-            onDragUpdate: (details) {
-              debugPrint(details.toString());
-            },
-            onDragEnd: (details) {
-              debugPrint(details.toString());
-            },
-          ),
+          // todo: Reordering using this drag handler
+          // dragHandler: ListItemDragHandler(
+          //   onDragStart: (details) => debugPrint(details.toString()),
+          //   onDragUpdate: (details) => debugPrint(details.toString()),
+          //   onDragEnd: (details) => debugPrint(details.toString()),
+          // ),
         ),
       ),
       secondChild: const SizedBox(width: double.infinity),

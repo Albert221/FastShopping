@@ -229,16 +229,17 @@ class ListItemTileState extends State<ListItemTile>
   Widget _buildItemActions(BuildContext context) {
     return Row(
       children: [
-        GestureDetector(
-          onVerticalDragStart: widget.dragHandler?.onDragStart,
-          onVerticalDragUpdate: widget.dragHandler?.onDragUpdate,
-          onVerticalDragEnd: widget.dragHandler?.onDragEnd,
-          onVerticalDragCancel: widget.dragHandler?.onDragCancel,
-          child: const Icon(
-            Icons.drag_handle,
-            color: Colors.black87,
+        if (widget.dragHandler != null)
+          GestureDetector(
+            onVerticalDragStart: widget.dragHandler?.onDragStart,
+            onVerticalDragUpdate: widget.dragHandler?.onDragUpdate,
+            onVerticalDragEnd: widget.dragHandler?.onDragEnd,
+            onVerticalDragCancel: widget.dragHandler?.onDragCancel,
+            child: const Icon(
+              Icons.drag_handle,
+              color: Colors.black87,
+            ),
           ),
-        ),
         Spacer(),
         DangerFlatButton(
           text: 'list_item_remove'.i18n,
