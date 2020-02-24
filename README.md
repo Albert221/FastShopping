@@ -6,6 +6,8 @@
 
 **Fast Shopping** is a mobile application developed with simplicity in mind. It allows you on having a simple set of shopping lists, that you can easily manage. It contains **no** ads. Targetted to everyone who wants a simple app to get the job done. Not limited to tech-savy users.
 
+![App screenshots][app_screenshots]
+
 ## Goal
 
 This application was made to resolve a certain problem in a certain way. 
@@ -31,3 +33,4 @@ Translate the app launcher name too. To do this, create a new folder in `android
 
 [google_play_button]: https://play.google.com/intl/en_us/badges/images/badge_new.png
 [google_play]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
+[app_screenshots]: https://i.imgur.com/biDOUms.jpg
