@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -20,6 +21,7 @@ class FastShoppingI18n {
     this.preferredLocale = language;
 
     timeago.setLocaleMessages('pl', timeago.PlMessages());
+    timeago.setLocaleMessages('mk', MkMessages());
 
     if (preferredLocale != _fallbackLocale) {
       try {
