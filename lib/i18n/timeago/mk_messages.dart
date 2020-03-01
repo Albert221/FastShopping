@@ -6,31 +6,31 @@ class MkMessages implements LookupMessages {
   @override
   String prefixFromNow() => '';
   @override
-  String suffixAgo() => 'ago';
+  String suffixAgo() => 'пред';
   @override
-  String suffixFromNow() => 'from now';
+  String suffixFromNow() => 'од сега';
   @override
-  String lessThanOneMinute(int seconds) => 'a moment';
+  String lessThanOneMinute(int seconds) => 'момент';
   @override
-  String aboutAMinute(int minutes) => 'a minute';
+  String aboutAMinute(int minutes) => 'минута';
   @override
-  String minutes(int minutes) => '$minutes minutes';
+  String minutes(int minutes) => '$minutes минути';
   @override
-  String aboutAnHour(int minutes) => 'about an hour';
+  String aboutAnHour(int minutes) => 'околу еден час';
   @override
-  String hours(int hours) => '$hours hours';
+  String hours(int hours) => '$hours часа';
   @override
-  String aDay(int hours) => 'a day';
+  String aDay(int hours) => 'ден';
   @override
-  String days(int days) => '$days days';
+  String days(int days) => '$days дена';
   @override
-  String aboutAMonth(int days) => 'about a month';
+  String aboutAMonth(int days) => 'околу еден месец';
   @override
-  String months(int months) => '$months months';
+  String months(int months) => '$months месеци';
   @override
-  String aboutAYear(int year) => 'about a year';
+  String aboutAYear(int year) => 'околу една година';
   @override
-  String years(int years) => '$years years';
+  String years(int years) => '$years години';
   @override
   String wordSeparator() => ' ';
 }
