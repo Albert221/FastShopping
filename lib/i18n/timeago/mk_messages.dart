@@ -2,11 +2,11 @@ import 'package:timeago/timeago.dart';
 
 class MkMessages implements LookupMessages {
   @override
-  String prefixAgo() => '';
+  String prefixAgo() => 'пред';
   @override
   String prefixFromNow() => '';
   @override
-  String suffixAgo() => 'пред';
+  String suffixAgo() => '';
   @override
   String suffixFromNow() => 'од сега';
   @override
