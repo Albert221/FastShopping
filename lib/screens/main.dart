@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:animations/animations.dart';
 import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/models/models.dart';
 import 'package:fast_shopping/screens/screens.dart';
@@ -72,8 +73,9 @@ class _MainScreenState extends State<MainScreen> {
           ],
           onSelected: (index) {
             if (index == 'donate') {
-              showDialog(
+              showModal(
                 context: context,
+                configuration: FadeScaleTransitionConfiguration(),
                 builder: (context) => DonateDialog(),
               );
             } else if (index == 'licenses') {
@@ -93,8 +95,9 @@ class _FloatingActionButton extends StatelessWidget {
   const _FloatingActionButton();
 
   void _showAddItemDialog(BuildContext context) async {
-    final result = await showDialog(
+    final result = await showModal(
       context: context,
+      configuration: FadeScaleTransitionConfiguration(),
       builder: (context) => AddItemDialog(),
     );
 
@@ -127,48 +130,47 @@ class _FloatingActionButton extends StatelessWidget {
 class _BottomAppBar extends StatelessWidget {
   const _BottomAppBar();
 
-  void _openListsScreen(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => ListsScreen()),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return StoreConnector<FastShoppingState, ShoppingList>(
       converter: (store) => store.state.currentList,
       builder: (context, list) => BottomAppBar(
         notchMargin: 8,
-        child: InkWell(
-          onTap: () => _openListsScreen(context),
-          child: Row(
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(16),
-                child: Icon(Icons.list),
+        child: OpenContainer(
+          closedColor: Theme.of(context).bottomAppBarColor,
+          closedBuilder: (context, openListsScreen) {
+            return InkWell(
+              onTap: openListsScreen,
+              child: Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Icon(Icons.list),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: list == null
+                        ? Text(
+                            'shopping_list_not_selected_placeholder'.i18n,
+                            style: const TextStyle(fontStyle: FontStyle.italic),
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        : Text(
+                            list.name.isNotEmpty
+                                ? list.name
+                                : 'shopping_list_no_name'.i18n,
+                            style: list.name.isEmpty
+                                ? const TextStyle(fontStyle: FontStyle.italic)
+                                : null,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                  ),
+                  const SizedBox(width: 88),
+                ],
               ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: list == null
-                    ? Text(
-                        'shopping_list_not_selected_placeholder'.i18n,
-                        style: const TextStyle(fontStyle: FontStyle.italic),
-                        overflow: TextOverflow.ellipsis,
-                      )
-                    : Text(
-                        list.name.isNotEmpty
-                            ? list.name
-                            : 'shopping_list_no_name'.i18n,
-                        style: list.name.isEmpty
-                            ? const TextStyle(fontStyle: FontStyle.italic)
-                            : null,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-              ),
-              const SizedBox(width: 88),
-            ],
-          ),
+            );
+          },
+          openBuilder: (context, _) => ListsScreen(),
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:fast_shopping/i18n/i18n.dart';
 import 'package:fast_shopping/models/models.dart';
 import 'package:fast_shopping/screens/rename_list_dialog.dart';
@@ -87,8 +88,9 @@ class _FloatingActionButton extends StatelessWidget {
       icon: const Icon(Icons.add),
       label: Text('shopping_lists_add_new'.i18n),
       onPressed: () async {
-        final name = await showDialog(
+        final name = await showModal(
           context: context,
+          configuration: FadeScaleTransitionConfiguration(),
           builder: (context) => AddListDialog(),
         );
 
@@ -116,8 +118,9 @@ class _Body extends StatelessWidget {
   }
 
   void _onRenameList(BuildContext context, ShoppingList list) async {
-    final newName = await showDialog(
+    final newName = await showModal(
       context: context,
+      configuration: FadeScaleTransitionConfiguration(),
       builder: (context) => RenameListDialog(
         initialName: list.name,
       ),
@@ -141,8 +144,9 @@ class _Body extends StatelessWidget {
   }
 
   void _onDeleteTap(BuildContext context, ShoppingList list) async {
-    final result = await showDialog(
+    final result = await showModal(
       context: context,
+      configuration: FadeScaleTransitionConfiguration(),
       builder: (context) => DeleteListDialog(
         listName: list.name,
       ),
