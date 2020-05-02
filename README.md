@@ -3,6 +3,7 @@
 # Fast Shopping
 
 [![Get it on Google Play][google_play_button]][google_play]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAlbert221%2FFastShopping.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FAlbert221%2FFastShopping?ref=badge_shield)
 
 **Fast Shopping** is a mobile application developed with simplicity in mind. It allows you on having a simple set of shopping lists, that you can easily manage. It contains **no** ads. Targetted to everyone who wants a simple app to get the job done. Not limited to tech-savy users.
 
@@ -41,3 +42,7 @@ Translate the app launcher name too. To do this, create a new folder in `android
 [google_play]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
 [app_screenshots]: https://i.imgur.com/biDOUms.jpg
 [matejmecka]: https://github.com/MatejMecka
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FAlbert221%2FFastShopping.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FAlbert221%2FFastShopping?ref=badge_large)
