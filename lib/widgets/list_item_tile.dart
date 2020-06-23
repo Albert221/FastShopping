@@ -1,4 +1,5 @@
-import 'package:fast_shopping/i18n/i18n.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
+import 'package:fast_shopping/l10n/timeago.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -134,7 +135,7 @@ class ListItemTileState extends State<ListItemTile>
                   child: widget.title.isNotEmpty
                       ? Text(widget.title)
                       : Text(
-                          'list_item_no_name'.i18n,
+                          S.of(context).list_item_no_name,
                           style: TextStyle(
                             color: Colors.black54,
                             fontStyle: FontStyle.italic,
@@ -171,7 +172,9 @@ class ListItemTileState extends State<ListItemTile>
                 ),
                 if (widget.doneAt != null)
                   Text(
-                    'list_item_done_ago'.i18nFormat([widget.doneAt.timeAgo()]),
+                    S
+                        .of(context)
+                        .list_item_done_ago(widget.doneAt.timeAgo(context)),
                     style: const TextStyle(
                       fontSize: 12,
                       color: Colors.black87,
@@ -192,8 +195,8 @@ class ListItemTileState extends State<ListItemTile>
                   contentPadding: EdgeInsets.zero,
                   isDense: true,
                   hintText: _editing
-                      ? 'list_item_title_hint'.i18n
-                      : 'list_item_no_name'.i18n,
+                      ? S.of(context).list_item_title_hint
+                      : S.of(context).list_item_no_name,
                   hintStyle: TextStyle(
                     fontStyle: _editing ? FontStyle.normal : FontStyle.italic,
                   ),
@@ -226,12 +229,12 @@ class ListItemTileState extends State<ListItemTile>
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         FlatButton(
-          child: Text('list_item_editing_cancel'.i18n),
+          child: Text(S.of(context).list_item_editing_cancel),
           onPressed: _cancelEditingTitle,
         ),
         const SizedBox(width: 16),
         PrimaryFlatButton(
-          text: 'list_item_editing_save'.i18n,
+          text: S.of(context).list_item_editing_save,
           onPressed: _onEditingTitleComplete,
         ),
       ],
@@ -254,12 +257,12 @@ class ListItemTileState extends State<ListItemTile>
           ),
         Spacer(),
         DangerFlatButton(
-          text: 'list_item_remove'.i18n,
+          text: S.of(context).list_item_remove,
           onPressed: () => widget.onDeleteTap?.call(),
         ),
         const SizedBox(width: 16),
         PrimaryFlatButton(
-          text: 'list_item_edit'.i18n,
+          text: S.of(context).list_item_edit,
           onPressed: _editTitle,
         ),
       ],

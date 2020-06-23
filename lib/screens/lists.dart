@@ -1,5 +1,6 @@
 import 'package:animations/animations.dart';
-import 'package:fast_shopping/i18n/i18n.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
+import 'package:fast_shopping/l10n/timeago.dart';
 import 'package:fast_shopping/models/models.dart';
 import 'package:fast_shopping/screens/rename_list_dialog.dart';
 import 'package:fast_shopping/screens/screens.dart';
@@ -45,7 +46,7 @@ class _ListsScreenState extends State<ListsScreen>
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text('shopping_lists_title'.i18n),
+        title: Text(S.of(context).shopping_lists_title),
         bottom: TabBar(
           controller: _tabController,
           labelStyle: const TextStyle(fontWeight: FontWeight.w700),
@@ -58,11 +59,11 @@ class _ListsScreenState extends State<ListsScreen>
           tabs: [
             Tab(
               icon: const Icon(Icons.local_grocery_store),
-              text: 'shopping_lists_tab_current'.i18n,
+              text: S.of(context).shopping_lists_tab_current,
             ),
             Tab(
               icon: const Icon(Icons.archive),
-              text: 'shopping_lists_tab_archived'.i18n,
+              text: S.of(context).shopping_lists_tab_archived,
             ),
           ],
         ),
@@ -82,7 +83,7 @@ class _FloatingActionButton extends StatelessWidget {
 
     return FloatingActionButton.extended(
       icon: const Icon(Icons.add),
-      label: Text('shopping_lists_add_new'.i18n),
+      label: Text(S.of(context).shopping_lists_add_new),
       onPressed: () async {
         final name = await showModal(
           context: context,
@@ -130,13 +131,15 @@ class _Body extends StatelessWidget {
   }
 
   void _onArchiveList(BuildContext context, ShoppingList list) {
-    _showSnackbar(context, 'shopping_list_archived_snackbar_message'.i18n);
+    _showSnackbar(
+        context, S.of(context).shopping_list_archived_snackbar_message);
 
     context.store.dispatch(ArchiveShoppingList(list));
   }
 
   void _onUnarchiveList(BuildContext context, ShoppingList list) {
-    _showSnackbar(context, 'shopping_list_unarchived_snackbar_message'.i18n);
+    _showSnackbar(
+        context, S.of(context).shopping_list_unarchived_snackbar_message);
 
     context.store.dispatch(UnarchiveShoppingList(list));
   }
@@ -176,8 +179,9 @@ class _Body extends StatelessWidget {
           // Go back to main screen.
           Navigator.pop(context);
         },
-        thirdLineBuilder: (list) => 'shopping_lists_item_created_at'
-            .i18nFormat([list.createdAt.timeAgo()]),
+        thirdLineBuilder: (list) => S
+            .of(context)
+            .shopping_lists_item_created_at(list.createdAt.timeAgo(context)),
         emptyPlaceholder: const _CurrentTabPlaceholder(),
         trailingBuilder: (list) => Row(
           mainAxisSize: MainAxisSize.min,
@@ -201,10 +205,11 @@ class _Body extends StatelessWidget {
       converter: (store) => ListsSelectors.allArchived(store),
       builder: (context, lists) => _ShoppingListTab(
         lists: lists,
-        thirdLineBuilder: (list) => 'shopping_lists_item_archived_at'
-            .i18nFormat([list.archivedAt.timeAgo()]),
+        thirdLineBuilder: (list) => S
+            .of(context)
+            .shopping_lists_item_archived_at(list.archivedAt.timeAgo(context)),
         emptyPlaceholder: Center(
-          child: Text('no_archived_lists_message'.i18n),
+          child: Text(S.of(context).no_archived_lists_message),
         ),
         trailingBuilder: (list) => Row(
           mainAxisSize: MainAxisSize.min,
@@ -259,7 +264,7 @@ class _ShoppingListTab extends StatelessWidget {
     final itemsCount = ItemsSelectors.itemsCount(context.store, list.id);
     final current = ListsSelectors.currentList(context.store)?.id == list.id;
 
-    String subtitle = 'shopping_lists_item_elements'.i18nNumber(itemsCount);
+    String subtitle = S.of(context).shopping_lists_item_elements(itemsCount);
     if (thirdLineBuilder != null) {
       subtitle += '\n' + thirdLineBuilder(list);
     }
@@ -269,7 +274,9 @@ class _ShoppingListTab extends StatelessWidget {
       child: ListTile(
         leading: const Icon(Icons.list),
         title: Text(
-          list.name.isNotEmpty ? list.name : 'shopping_list_no_name'.i18n,
+          list.name.isNotEmpty
+              ? list.name
+              : S.of(context).shopping_list_no_name,
           style: TextStyle(
             fontWeight: current ? FontWeight.bold : null,
             fontStyle: list.name.isEmpty ? FontStyle.italic : null,
@@ -296,7 +303,7 @@ class _CurrentTabPlaceholder extends StatelessWidget {
       children: [
         SvgPicture.asset('assets/shopping_bags_woman.svg', width: 250),
         const SizedBox(height: 32),
-        Text('no_current_lists_message'.i18n),
+        Text(S.of(context).no_current_lists_message),
       ],
     );
   }

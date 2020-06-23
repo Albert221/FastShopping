@@ -9,12 +9,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   animations: ^1.0.0+5
   built_collection: ^4.3.2
   built_value: ^7.0.4
-  devicelocale: ^0.2.1
   flutter_redux: ^0.6.0
   flutter_svg: ^0.17.1
+  intl: ^0.16.1
   md2_tab_indicator: ^1.0.2
   redux_thunk: ^0.3.0
   redux: ^4.0.0
@@ -26,6 +28,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter  
+  arbify: ^0.0.6
   build_runner: ^1.7.3
   built_value_generator: ^7.0.4
 
@@ -38,5 +41,6 @@ flutter:
     - assets/arrow_bottom_app_bar.svg
     - assets/shopping_bags_woman.svg
 
-    # Internationalization
-    - lib/i18n/messages/
+arbify:
+  url: https://arb.wolszon.me
+  project_id: 3

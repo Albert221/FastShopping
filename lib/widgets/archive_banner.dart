@@ -1,4 +1,4 @@
-import 'package:fast_shopping/i18n/i18n.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -15,16 +15,14 @@ class ArchiveBanner extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 24, 16, 4),
-            child: Text(
-              'archive_banner_content'.i18n,
-            ),
+            child: Text(S.of(context).archive_banner_content),
           ),
           Align(
             alignment: Alignment.centerRight,
             child: Padding(
               padding: const EdgeInsets.all(8),
               child: SecondaryFlatButton(
-                text: 'archive_banner_archive'.i18n,
+                text: S.of(context).archive_banner_archive,
                 onPressed: onArchiveTap,
               ),
             ),

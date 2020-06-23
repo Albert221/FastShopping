@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:animations/animations.dart';
-import 'package:fast_shopping/i18n/i18n.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/models/models.dart';
 import 'package:fast_shopping/screens/screens.dart';
 import 'package:fast_shopping/store/store.dart';
@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
             height: 32,
           ),
           const SizedBox(width: 16),
-          Text('app_title'.i18n),
+          Text(S.of(context).app_title),
         ],
       ),
       actions: [
@@ -57,7 +57,7 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   const Icon(Icons.attach_money),
                   const SizedBox(width: 16),
-                  Text('menu_donate'.i18n),
+                  Text(S.of(context).menu_donate),
                 ],
               ),
             ),
@@ -67,7 +67,7 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   const Icon(Icons.info_outline),
                   const SizedBox(width: 16),
-                  Text('menu_licenses'.i18n),
+                  Text(S.of(context).menu_licenses),
                 ],
               ),
             ),
@@ -82,7 +82,7 @@ class _MainScreenState extends State<MainScreen> {
             } else if (index == 'licenses') {
               showLicensePage(
                 context: context,
-                applicationName: 'app_title'.i18n,
+                applicationName: S.of(context).app_title,
               );
             }
           },
@@ -152,14 +152,16 @@ class _BottomAppBar extends StatelessWidget {
                   Expanded(
                     child: list == null
                         ? Text(
-                            'shopping_list_not_selected_placeholder'.i18n,
+                            S
+                                .of(context)
+                                .shopping_list_not_selected_placeholder,
                             style: const TextStyle(fontStyle: FontStyle.italic),
                             overflow: TextOverflow.ellipsis,
                           )
                         : Text(
                             list.name.isNotEmpty
                                 ? list.name
-                                : 'shopping_list_no_name'.i18n,
+                                : S.of(context).shopping_list_no_name,
                             style: list.name.isEmpty
                                 ? const TextStyle(fontStyle: FontStyle.italic)
                                 : null,
@@ -230,10 +232,10 @@ class _BodyState extends State<_Body> {
         .showSnackBar(
           SnackBar(
             behavior: SnackBarBehavior.floating,
-            content: Text('item_removed_snackbar_message'.i18n),
+            content: Text(S.of(context).item_removed_snackbar_message),
             action: SnackBarAction(
               textColor: PrimaryFlatButton.buttonColor,
-              label: 'item_removed_snackbar_undo'.i18n,
+              label: S.of(context).item_removed_snackbar_undo,
               onPressed: () {
                 store.dispatch(UndoRemovingItem(item));
               },
@@ -344,7 +346,7 @@ class _NoListSelectedPlaceholder extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 32),
             alignment: Alignment.bottomCenter,
             child: Text(
-              'shopping_list_not_selected_message'.i18n,
+              S.of(context).shopping_list_not_selected_message,
               textAlign: TextAlign.center,
             ),
           ),
@@ -380,7 +382,7 @@ class _NoItemsPlaceholder extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 32),
             alignment: Alignment.bottomCenter,
             child: Text(
-              'empty_list_add_some_items_message'.i18n,
+              S.of(context).empty_list_add_some_items_message,
               textAlign: TextAlign.center,
             ),
           ),
@@ -415,10 +417,10 @@ class _ArchiveBannerSpace extends StatelessWidget {
     Scaffold.of(context).showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,
-        content: Text('list_archived_snackbar_message'.i18n),
+        content: Text(S.of(context).list_archived_snackbar_message),
         action: SnackBarAction(
           textColor: PrimaryFlatButton.buttonColor,
-          label: 'list_archived_snackbar_undo'.i18n,
+          label: S.of(context).list_archived_snackbar_undo,
           onPressed: () {
             store.dispatch(UnarchiveShoppingList(list));
           },

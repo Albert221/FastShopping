@@ -1,4 +1,4 @@
-import 'package:fast_shopping/i18n/i18n.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart' hide SimpleDialog;
 
@@ -10,30 +10,30 @@ class DeleteListDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: 'delete_shopping_list_dialog_title'.i18n,
+      title: S.of(context).delete_shopping_list_dialog_title,
       body: RichText(
         text: TextSpan(
           style: Theme.of(context).textTheme.bodyText2,
           children: [
             TextSpan(
-              text: 'delete_shopping_list_dialog_body_before'.i18n,
+              text: S.of(context).delete_shopping_list_dialog_body_before,
             ),
             TextSpan(
               text: listName,
               style: const TextStyle(fontStyle: FontStyle.italic),
             ),
             TextSpan(
-              text: 'delete_shopping_list_dialog_body_after'.i18n,
+              text: S.of(context).delete_shopping_list_dialog_body_after,
             ),
           ],
         ),
       ),
       primaryButton: DangerFlatButton(
-        text: 'delete_shopping_list_dialog_delete'.i18n,
+        text: S.of(context).delete_shopping_list_dialog_delete,
         onPressed: () => Navigator.pop(context, true),
       ),
       secondaryButton: SecondaryFlatButton(
-        text: 'delete_shopping_list_dialog_cancel'.i18n,
+        text: S.of(context).delete_shopping_list_dialog_cancel,
         onPressed: () => Navigator.pop(context),
       ),
     );

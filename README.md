@@ -27,17 +27,18 @@ flutter run
 
 ## Translating
 
-If you want to fix translations or maybe add your mother tongue, head to `lib/i18n/messages` folder and copy the `en.json` file to `<your language>.json` and proceed to translating.
+If you want to fix translations or add your mother tounge, contact me through email. I'll add you to the [Arbify].
 
 Translate the app launcher name too. To do this, create a new folder in `android/app/src/main/res` called `values-<your language>` and put a `strings.xml` file there. For reference, check `android\app\src\main\res\values\strings.xml` file.
 
 ### Available languages
 
 - English
-- Polish
-- Macedonian ([@MatejMecka][matejmecka])
+- Polski
+- Македонски ([@MatejMecka][matejmecka])
 
 [google_play_button]: https://play.google.com/intl/en_us/badges/images/badge_new.png
 [google_play]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
 [app_screenshots]: https://i.imgur.com/biDOUms.jpg
+[Arbify]: https://github.com/Arbify/Arbify
 [matejmecka]: https://github.com/MatejMecka

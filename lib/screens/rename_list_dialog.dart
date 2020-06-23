@@ -1,4 +1,4 @@
-import 'package:fast_shopping/i18n/i18n.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -18,15 +18,15 @@ class RenameListDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PromptDialog(
-      title: 'rename_shopping_list_dialog_title'.i18n,
-      inputHint: 'rename_shopping_list_dialog_name_hint'.i18n,
+      title: S.of(context).rename_shopping_list_dialog_title,
+      inputHint: S.of(context).rename_shopping_list_dialog_name_hint,
       controller: _controller,
       primaryButton: PrimaryFlatButton(
-        text: 'rename_shopping_list_dialog_rename'.i18n,
+        text: S.of(context).rename_shopping_list_dialog_rename,
         onPressed: () => Navigator.pop(context, _controller.text),
       ),
       secondaryButton: SecondaryFlatButton(
-        text: 'rename_shopping_list_dialog_cancel'.i18n,
+        text: S.of(context).rename_shopping_list_dialog_cancel,
         onPressed: () => Navigator.pop(context),
       ),
     );

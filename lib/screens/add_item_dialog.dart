@@ -1,4 +1,4 @@
-import 'package:fast_shopping/i18n/i18n.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -8,16 +8,16 @@ class AddItemDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PromptDialog(
-      title: 'add_item_dialog_title'.i18n,
-      inputHint: 'list_item_title_hint'.i18n,
+      title: S.of(context).add_item_dialog_title,
+      inputHint: S.of(context).list_item_title_hint,
       controller: _titleController,
       primaryButton: PrimaryFlatButton(
-        text: 'add_item_dialog_add'.i18n,
+        text: S.of(context).add_item_dialog_add,
         onPressed: () => Navigator.pop(context, _titleController.text),
       ),
       onSubmitted: () => Navigator.pop(context, _titleController.text),
       secondaryButton: FlatButton(
-        child: Text('add_item_dialog_cancel'.i18n),
+        child: Text(S.of(context).add_item_dialog_cancel),
         onPressed: () => Navigator.pop(context),
       ),
     );
