@@ -40,12 +40,10 @@ class _ListsScreenState extends State<ListsScreen>
     super.dispose();
   }
 
-  bool _shouldShowFab(BuildContext context) =>
-      MediaQuery.of(context).viewInsets.bottom == 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('shopping_lists_title'.i18n),
         bottom: TabBar(
@@ -69,9 +67,7 @@ class _ListsScreenState extends State<ListsScreen>
           ],
         ),
       ),
-      floatingActionButton: _fabShown && _shouldShowFab(context)
-          ? const _FloatingActionButton()
-          : null,
+      floatingActionButton: _fabShown ? const _FloatingActionButton() : null,
       body: _Body(tabController: _tabController),
     );
   }

@@ -24,6 +24,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+      resizeToAvoidBottomInset: false,
       appBar: _buildAppBar(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: const _FloatingActionButton(),
@@ -110,7 +111,6 @@ class _FloatingActionButton extends StatelessWidget {
   }
 
   bool _shouldShowFab(BuildContext context) =>
-      MediaQuery.of(context).viewInsets.bottom == 0 &&
       context.store.state.currentList != null;
 
   @override
