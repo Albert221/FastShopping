@@ -24,7 +24,6 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      resizeToAvoidBottomInset: false,
       appBar: _buildAppBar(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: const _FloatingActionButton(),
@@ -111,16 +110,20 @@ class _FloatingActionButton extends StatelessWidget {
     }
   }
 
+  bool isKeyboardHidden(BuildContext context) =>
+      MediaQuery.of(context).viewInsets.bottom == 0;
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector<FastShoppingState, bool>(
       converter: (store) => ListsSelectors.anyListChoosen(store),
-      builder: (context, anyListChosen) => anyListChosen
-          ? FloatingActionButton(
-              child: const Icon(Icons.add),
-              onPressed: () => _showAddItemDialog(context),
-            )
-          : const SizedBox(),
+      builder: (context, anyListChosen) =>
+          isKeyboardHidden(context) && anyListChosen
+              ? FloatingActionButton(
+                  child: const Icon(Icons.add),
+                  onPressed: () => _showAddItemDialog(context),
+                )
+              : const SizedBox(),
     );
   }
 }
