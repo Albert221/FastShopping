@@ -39,11 +39,20 @@ class ListItemTileState extends State<ListItemTile>
 
   bool _expanded = false;
   bool _editing = false;
+  LocalHistoryEntry _editingHistoryEntry;
+  LocalHistoryEntry _expandedHistoryEntry;
 
   @override
   void initState() {
     super.initState();
     _resetTitle();
+
+    _editingHistoryEntry = LocalHistoryEntry(onRemove: () {
+      setState(() => _editing = false);
+    });
+    _expandedHistoryEntry = LocalHistoryEntry(onRemove: () {
+      setState(() => _expanded = false);
+    });
   }
 
   void _resetTitle() {
@@ -54,32 +63,35 @@ class ListItemTileState extends State<ListItemTile>
   }
 
   void _editTitle() {
+    ModalRoute.of(context).addLocalHistoryEntry(_editingHistoryEntry);
     FocusScope.of(context).requestFocus(_titleFocusNode);
     setState(() => _editing = true);
   }
 
   void _onEditingTitleComplete() {
-    setState(() => _editing = false);
+    ModalRoute.of(context).removeLocalHistoryEntry(_editingHistoryEntry);
     widget.onTitleEdited?.call(_titleController.text);
   }
 
   void _cancelEditingTitle() {
+    ModalRoute.of(context).removeLocalHistoryEntry(_editingHistoryEntry);
     _resetTitle();
-    setState(() => _editing = false);
   }
 
   void expand({bool editing = false}) {
+    if (_expanded) return;
+
+    ModalRoute.of(context).addLocalHistoryEntry(_expandedHistoryEntry);
     setState(() => _expanded = true);
     widget.onExpand?.call();
 
-    if (editing) {
-      _editTitle();
-    }
+    if (editing) _editTitle();
   }
 
   void collapse() {
-    _cancelEditingTitle();
-    setState(() => _expanded = false);
+    if (!_expanded) return;
+    if (_editing) _cancelEditingTitle();
+    ModalRoute.of(context).removeLocalHistoryEntry(_expandedHistoryEntry);
   }
 
   @override

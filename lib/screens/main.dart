@@ -36,6 +36,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget _buildAppBar(BuildContext context) {
     return AppBar(
       centerTitle: true,
+      automaticallyImplyLeading: false,
       title: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
