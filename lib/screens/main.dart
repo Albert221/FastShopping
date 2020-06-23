@@ -110,14 +110,11 @@ class _FloatingActionButton extends StatelessWidget {
     }
   }
 
-  bool _shouldShowFab(BuildContext context) =>
-      context.store.state.currentList != null;
-
   @override
   Widget build(BuildContext context) {
     return StoreConnector<FastShoppingState, bool>(
-      converter: (store) => store.state.currentList != null,
-      builder: (context, _) => _shouldShowFab(context)
+      converter: (store) => ListsSelectors.anyListChoosen(store),
+      builder: (context, anyListChosen) => anyListChosen
           ? FloatingActionButton(
               child: const Icon(Icons.add),
               onPressed: () => _showAddItemDialog(context),
@@ -133,7 +130,7 @@ class _BottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<FastShoppingState, ShoppingList>(
-      converter: (store) => store.state.currentList,
+      converter: (store) => ListsSelectors.currentList(store),
       builder: (context, list) => BottomAppBar(
         notchMargin: 8,
         child: OpenContainer(
@@ -199,7 +196,7 @@ class _BodyState extends State<_Body> {
   }
 
   void _syncItemKeys(Store<FastShoppingState> store) {
-    final items = store.state.currentListItems;
+    final items = ItemsSelectors.currentListItems(store);
     final visitedIds = items.map((item) => item.id);
 
     items.forEach((item) {
@@ -250,7 +247,7 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<FastShoppingState, bool>(
-      converter: (store) => store.state.currentList != null,
+      converter: (store) => ListsSelectors.anyListChoosen(store),
       builder: (context, shoppingListAvailable) {
         if (!shoppingListAvailable) {
           return const _NoListSelectedPlaceholder();
@@ -258,7 +255,7 @@ class _BodyState extends State<_Body> {
 
         return StoreConnector<FastShoppingState, List<Item>>(
           onInit: _onStoreInit,
-          converter: (store) => store.state.currentListItems,
+          converter: (store) => ItemsSelectors.currentListItems(store),
           builder: (context, items) {
             if (items.every((item) => item.removed)) {
               // Works for empty list too
@@ -428,9 +425,8 @@ class _ArchiveBannerSpace extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final shouldShowBanner = context.store.state.currentListItems
-        .where((item) => !item.removed)
-        .every((item) => item.done);
+    final shouldShowBanner =
+        ItemsSelectors.isCurrentListEveryItemDoneOrDeleted(context.store);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
@@ -444,7 +440,7 @@ class _ArchiveBannerSpace extends StatelessWidget {
             : CrossFadeState.showSecond,
         firstChild: ArchiveBanner(
           onArchiveTap: () =>
-              _archiveList(context, context.store.state.currentList),
+              _archiveList(context, ListsSelectors.currentList(context.store)),
         ),
         secondChild: const SizedBox(width: double.infinity),
       ),

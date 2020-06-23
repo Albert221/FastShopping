@@ -25,14 +25,6 @@ abstract class FastShoppingState
         .rebuild(updates);
   }
 
-  ShoppingList get currentList => lists.firstWhere(
-        (list) => list.id == currentListId && !list.archived,
-        orElse: () => null,
-      );
-
-  List<Item> get currentListItems =>
-      items.where((item) => item.shoppingListId == currentListId).toList();
-
   static Serializer<FastShoppingState> get serializer =>
       _$fastShoppingStateSerializer;
 }

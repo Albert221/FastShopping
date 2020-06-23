@@ -167,61 +167,65 @@ class _Body extends StatelessWidget {
   }
 
   Widget _buildCurrentTab(BuildContext context) {
-    return _ShoppingListTab(
-      selector: (lists) => lists.where((list) => !list.archived).toList()
-        ..sort((a, b) => -a.createdAt.compareTo(b.createdAt)),
-      onTap: (list) {
-        context.store.dispatch(SetCurrentShoppingList(list));
-        // Go back to main screen.
-        Navigator.pop(context);
-      },
-      thirdLineBuilder: (list) => 'shopping_lists_item_created_at'
-          .i18nFormat([list.createdAt.timeAgo()]),
-      emptyPlaceholder: const _CurrentTabPlaceholder(),
-      trailingBuilder: (list) => Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            icon: const Icon(Icons.edit),
-            onPressed: () => _onRenameList(context, list),
-          ),
-          IconButton(
-            icon: const Icon(Icons.archive),
-            onPressed: () => _onArchiveList(context, list),
-          ),
-        ],
+    return StoreConnector<FastShoppingState, List<ShoppingList>>(
+      converter: (store) => ListsSelectors.allCurrent(store),
+      builder: (builder, lists) => _ShoppingListTab(
+        lists: lists,
+        onTap: (list) {
+          context.store.dispatch(SetCurrentShoppingList(list));
+          // Go back to main screen.
+          Navigator.pop(context);
+        },
+        thirdLineBuilder: (list) => 'shopping_lists_item_created_at'
+            .i18nFormat([list.createdAt.timeAgo()]),
+        emptyPlaceholder: const _CurrentTabPlaceholder(),
+        trailingBuilder: (list) => Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.edit),
+              onPressed: () => _onRenameList(context, list),
+            ),
+            IconButton(
+              icon: const Icon(Icons.archive),
+              onPressed: () => _onArchiveList(context, list),
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildArchivedTab(BuildContext context) {
-    return _ShoppingListTab(
-      selector: (lists) => lists.where((list) => list.archived).toList()
-        ..sort((a, b) => -a.archivedAt.compareTo(b.archivedAt)),
-      thirdLineBuilder: (list) => 'shopping_lists_item_archived_at'
-          .i18nFormat([list.archivedAt.timeAgo()]),
-      emptyPlaceholder: Center(
-        child: Text('no_archived_lists_message'.i18n),
-      ),
-      trailingBuilder: (list) => Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            icon: const Icon(Icons.unarchive),
-            onPressed: () => _onUnarchiveList(context, list),
-          ),
-          IconButton(
-            icon: const Icon(Icons.delete_forever),
-            onPressed: () => _onDeleteTap(context, list),
-          ),
-        ],
+    return StoreConnector<FastShoppingState, List<ShoppingList>>(
+      converter: (store) => ListsSelectors.allArchived(store),
+      builder: (context, lists) => _ShoppingListTab(
+        lists: lists,
+        thirdLineBuilder: (list) => 'shopping_lists_item_archived_at'
+            .i18nFormat([list.archivedAt.timeAgo()]),
+        emptyPlaceholder: Center(
+          child: Text('no_archived_lists_message'.i18n),
+        ),
+        trailingBuilder: (list) => Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.unarchive),
+              onPressed: () => _onUnarchiveList(context, list),
+            ),
+            IconButton(
+              icon: const Icon(Icons.delete_forever),
+              onPressed: () => _onDeleteTap(context, list),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
 class _ShoppingListTab extends StatelessWidget {
-  final List<ShoppingList> Function(List<ShoppingList>) selector;
+  final List<ShoppingList> lists;
   final void Function(ShoppingList) onTap;
   final String Function(ShoppingList) thirdLineBuilder;
   final Widget Function(ShoppingList) trailingBuilder;
@@ -229,7 +233,7 @@ class _ShoppingListTab extends StatelessWidget {
 
   const _ShoppingListTab({
     Key key,
-    @required this.selector,
+    @required this.lists,
     this.onTap,
     this.thirdLineBuilder,
     this.trailingBuilder,
@@ -238,27 +242,22 @@ class _ShoppingListTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<FastShoppingState, List<ShoppingList>>(
-      converter: (store) => selector(store.state.lists.toList()),
-      builder: (context, lists) => lists.isEmpty
-          ? SizedBox(child: emptyPlaceholder)
-          : ListView.builder(
-              padding: const EdgeInsets.only(bottom: 72),
-              itemCount: lists.length,
-              itemBuilder: (context, i) {
-                final list = lists[i];
+    return lists.isEmpty
+        ? SizedBox(child: emptyPlaceholder)
+        : ListView.builder(
+            padding: const EdgeInsets.only(bottom: 72),
+            itemCount: lists.length,
+            itemBuilder: (context, i) {
+              final list = lists[i];
 
-                return _buildListRow(context, list);
-              },
-            ),
-    );
+              return _buildListRow(context, list);
+            },
+          );
   }
 
   Widget _buildListRow(BuildContext context, ShoppingList list) {
-    final itemsCount = context.store.state.items
-        .where((item) => item.shoppingListId == list.id && !item.removed)
-        .length;
-    final current = context.store.state.currentList?.id == list.id;
+    final itemsCount = ItemsSelectors.itemsCount(context.store, list.id);
+    final current = ListsSelectors.currentList(context.store)?.id == list.id;
 
     String subtitle = 'shopping_lists_item_elements'.i18nNumber(itemsCount);
     if (thirdLineBuilder != null) {
