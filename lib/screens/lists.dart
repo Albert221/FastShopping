@@ -92,6 +92,8 @@ class _FloatingActionButton extends StatelessWidget {
 
         if (name != null) {
           store.dispatch(addShoppingList(name as String));
+
+          Navigator.of(context).pop();
         }
       },
     );
