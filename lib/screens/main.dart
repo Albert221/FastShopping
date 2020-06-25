@@ -128,8 +128,16 @@ class _FloatingActionButton extends StatelessWidget {
   }
 }
 
-class _BottomAppBar extends StatelessWidget {
+class _BottomAppBar extends StatefulWidget {
   const _BottomAppBar();
+
+  @override
+  _BottomAppBarState createState() => _BottomAppBarState();
+}
+
+class _BottomAppBarState extends State<_BottomAppBar> {
+  static const _requiredDragOffset = 100;
+  double _verticalDragOffset = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -140,36 +148,49 @@ class _BottomAppBar extends StatelessWidget {
         child: OpenContainer(
           closedColor: Theme.of(context).bottomAppBarColor,
           closedBuilder: (context, openListsScreen) {
-            return InkWell(
-              onTap: openListsScreen,
-              child: Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Icon(Icons.list),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: list == null
-                        ? Text(
-                            S
-                                .of(context)
-                                .shopping_list_not_selected_placeholder,
-                            style: const TextStyle(fontStyle: FontStyle.italic),
-                            overflow: TextOverflow.ellipsis,
-                          )
-                        : Text(
-                            list.name.isNotEmpty
-                                ? list.name
-                                : S.of(context).shopping_list_no_name,
-                            style: list.name.isEmpty
-                                ? const TextStyle(fontStyle: FontStyle.italic)
-                                : null,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                  ),
-                  const SizedBox(width: 88),
-                ],
+            return GestureDetector(
+              onVerticalDragUpdate: (DragUpdateDetails details) {
+                _verticalDragOffset += details.primaryDelta;
+              },
+              onVerticalDragEnd: (DragEndDetails details) {
+                if (-_verticalDragOffset >= _requiredDragOffset) {
+                  openListsScreen();
+                }
+
+                _verticalDragOffset = 0;
+              },
+              child: InkWell(
+                onTap: openListsScreen,
+                child: Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Icon(Icons.list),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: list == null
+                          ? Text(
+                              S
+                                  .of(context)
+                                  .shopping_list_not_selected_placeholder,
+                              style:
+                                  const TextStyle(fontStyle: FontStyle.italic),
+                              overflow: TextOverflow.ellipsis,
+                            )
+                          : Text(
+                              list.name.isNotEmpty
+                                  ? list.name
+                                  : S.of(context).shopping_list_no_name,
+                              style: list.name.isEmpty
+                                  ? const TextStyle(fontStyle: FontStyle.italic)
+                                  : null,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                    ),
+                    const SizedBox(width: 88),
+                  ],
+                ),
               ),
             );
           },
