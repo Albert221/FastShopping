@@ -162,31 +162,7 @@ class ListItemTileState extends State<ListItemTile>
         color: Colors.white,
         child: Column(
           children: [
-            Row(
-              children: [
-                const SizedBox(width: 17),
-                Checkbox(
-                  visualDensity: VisualDensity.standard,
-                  value: widget.done,
-                  onChanged: widget.onDoneTap,
-                ),
-                if (widget.doneAt != null)
-                  Text(
-                    S
-                        .of(context)
-                        .list_item_done_ago(widget.doneAt.timeAgo(context)),
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: Colors.black87,
-                    ),
-                  ),
-                const Spacer(),
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: collapse,
-                ),
-              ],
-            ),
+            _buildTopBar(context),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
               child: TextField(
@@ -220,6 +196,36 @@ class ListItemTileState extends State<ListItemTile>
               ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildTopBar(BuildContext context) {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: collapse,
+      child: Row(
+        children: [
+          const SizedBox(width: 17),
+          Checkbox(
+            visualDensity: VisualDensity.standard,
+            value: widget.done,
+            onChanged: widget.onDoneTap,
+          ),
+          if (widget.doneAt != null)
+            Text(
+              S.of(context).list_item_done_ago(widget.doneAt.timeAgo(context)),
+              style: const TextStyle(
+                fontSize: 12,
+                color: Colors.black87,
+              ),
+            ),
+          const Spacer(),
+          IconButton(
+            icon: const Icon(Icons.close),
+            onPressed: collapse,
+          ),
+        ],
       ),
     );
   }
