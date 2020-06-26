@@ -50,6 +50,7 @@ class ListItemTileState extends State<ListItemTile>
 
     _editingHistoryEntry = LocalHistoryEntry(onRemove: () {
       setState(() => _editing = false);
+      _resetTitle();
     });
     _expandedHistoryEntry = LocalHistoryEntry(onRemove: () {
       setState(() => _expanded = false);
@@ -76,7 +77,6 @@ class ListItemTileState extends State<ListItemTile>
 
   void _cancelEditingTitle() {
     ModalRoute.of(context).removeLocalHistoryEntry(_editingHistoryEntry);
-    _resetTitle();
   }
 
   void expand({bool editing = false}) {
