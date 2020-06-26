@@ -65,6 +65,8 @@ class ListItemTileState extends State<ListItemTile>
   }
 
   void _editTitle() {
+    if (_editing) return;
+
     ModalRoute.of(context).addLocalHistoryEntry(_editingHistoryEntry);
     FocusScope.of(context).requestFocus(_titleFocusNode);
     setState(() => _editing = true);
@@ -163,28 +165,34 @@ class ListItemTileState extends State<ListItemTile>
         child: Column(
           children: [
             _buildTopBar(context),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.zero,
-                  isDense: true,
-                  hintText: _editing
-                      ? S.of(context).list_item_title_hint
-                      : S.of(context).list_item_no_name,
-                  hintStyle: TextStyle(
-                    fontStyle: _editing ? FontStyle.normal : FontStyle.italic,
+            GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: _editTitle,
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+                child: TextField(
+                  onTap: _editTitle,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.zero,
+                    isDense: true,
+                    hintText: _editing
+                        ? S.of(context).list_item_title_hint
+                        : S.of(context).list_item_no_name,
+                    hintStyle: TextStyle(
+                      fontStyle: _editing ? FontStyle.normal : FontStyle.italic,
+                    ),
                   ),
+                  keyboardType: TextInputType.text,
+                  textInputAction: TextInputAction.done,
+                  minLines: 1,
+                  maxLines: 1000,
+                  readOnly: !_editing,
+                  controller: _titleController,
+                  focusNode: _titleFocusNode,
+                  onSubmitted: (_) => _onEditingTitleComplete(),
                 ),
-                keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.done,
-                minLines: 1,
-                maxLines: 1000,
-                readOnly: !_editing,
-                controller: _titleController,
-                focusNode: _titleFocusNode,
-                onSubmitted: (_) => _onEditingTitleComplete(),
               ),
             ),
             if (widget.actionsVisible)
