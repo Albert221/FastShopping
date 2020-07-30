@@ -2,11 +2,12 @@
 
 # Fast Shopping
 
-[![Get it on Google Play][google_play_button]][google_play]
+[![Get it on Google Play][google-play-badge]][google-play-link]
+[![Get it on F-Droid][fdroid-badge]][fdroid-link]
 
 **Fast Shopping** is a mobile application developed with simplicity in mind. It allows you on having a simple set of shopping lists, that you can easily manage. It contains **no** ads. Targetted to everyone who wants a simple app to get the job done. Not limited to tech-savy users.
 
-![App screenshots][app_screenshots]
+![App screenshots][app-screenshots]
 
 ## Goal
 
@@ -37,8 +38,10 @@ Translate the app launcher name too. To do this, create a new folder in `android
 - Polski
 - Македонски ([@MatejMecka][matejmecka])
 
-[google_play_button]: https://play.google.com/intl/en_us/badges/images/badge_new.png
-[google_play]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
-[app_screenshots]: https://i.imgur.com/biDOUms.jpg
+[google-play-badge]: assets/google-play-badge.png
+[google-play-link]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
+[fdroid-badge]: assets/fdroid-badge.png
+[fdroid-link]: https://www.f-droid.org/en/packages/me.wolszon.fastshopping/
+[app-screenshots]: https://i.imgur.com/biDOUms.jpg
 [Arbify]: https://github.com/Arbify/Arbify
 [matejmecka]: https://github.com/MatejMecka
