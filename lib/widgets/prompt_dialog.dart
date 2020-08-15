@@ -20,50 +20,52 @@ class PromptDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 10, 0, 18),
-            child: TextField(
-              controller: controller,
-              autofocus: true,
-              textCapitalization: TextCapitalization.sentences,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-                isDense: true,
-                hintText: inputHint,
+    return SingleChildScrollView(
+      child: Dialog(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 20, 24, 0),
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.headline6,
               ),
-              keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.done,
-              minLines: 1,
-              maxLines: 1000,
-              onSubmitted: (_) => onSubmitted?.call(),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                if (secondaryButton != null) secondaryButton,
-                const SizedBox(width: 8),
-                primaryButton,
-              ],
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 18),
+              child: TextField(
+                controller: controller,
+                autofocus: true,
+                textCapitalization: TextCapitalization.sentences,
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
+                  isDense: true,
+                  hintText: inputHint,
+                ),
+                keyboardType: TextInputType.text,
+                textInputAction: TextInputAction.done,
+                minLines: 1,
+                maxLines: 1000,
+                onSubmitted: (_) => onSubmitted?.call(),
+              ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  if (secondaryButton != null) secondaryButton,
+                  const SizedBox(width: 8),
+                  primaryButton,
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
