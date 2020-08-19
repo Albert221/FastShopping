@@ -121,6 +121,10 @@ class ListItemTileState extends State<ListItemTile>
   }
 
   Widget _buildCollapsed(BuildContext context) {
+    final textStyle = widget.done
+        ? TextStyle(decoration: TextDecoration.lineThrough)
+        : TextStyle();
+
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
@@ -144,10 +148,10 @@ class ListItemTileState extends State<ListItemTile>
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 16, 16, 16),
                   child: widget.title.isNotEmpty
-                      ? Text(widget.title)
+                      ? Text(widget.title, style: textStyle)
                       : Text(
                           S.of(context).list_item_no_name,
-                          style: TextStyle(
+                          style: textStyle.copyWith(
                             color: Colors.black54,
                             fontStyle: FontStyle.italic,
                           ),
