@@ -1,0 +1,1 @@
+Einfache App zum einfachen Erstellen von Einkaufslisten, entwickelt mit dem Ziel der Einfachheit.
