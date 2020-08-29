@@ -89,6 +89,6 @@ jobs:
           SUPPLY_PACKAGE_NAME: ${{ secrets.ANDROID_PACKAGE_NAME }}
           SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
         run: |
-          fastlane supply \
+          bundle exec fastlane supply \
           --aab build/app/outputs/bundle/release/app-release.aab
           --track beta
