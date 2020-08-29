@@ -1,0 +1,41 @@
+name: Flutter test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Test on beta
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: beta
+
+      - name: Dart version
+        run: dart --version
+
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Download pub dependencies
+        run: flutter pub get
+      
+      - name: Run build runner
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Run analyzer
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test

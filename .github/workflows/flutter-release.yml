@@ -1,0 +1,63 @@
+name: Flutter release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: Test, build and release
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: beta
+
+      - name: Dart version
+        run: dart --version
+
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Download pub dependencies
+        run: flutter pub get
+      
+      - name: Run build runner
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Run analyzer
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build Android App Bundle
+        run: flutter build appbundle
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
+
+      - name: Setup fastlane
+        run: sudo gem install fastlane -NV
+      
+      - name: Release to Google Play (internal)
+        env:
+          SUPPLY_PACKAGE_NAME: ${{ secrets.ANDROID_PACKAGE_NAME }}
+          SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        run: |
+          fastlane supply \
+          --aab build/app/outputs/bundle/release/app-release.aab
+          --track internal
