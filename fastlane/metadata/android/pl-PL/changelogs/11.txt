@@ -1,0 +1,1 @@
+Dodano język niemiecki i wsparcie dla trybu horyzontalnego.
