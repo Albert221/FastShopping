@@ -4,8 +4,9 @@ import 'package:timeago/timeago.dart' as timeago;
 
 extension TimeAgoI18n on DateTime {
   String timeAgo(BuildContext context) {
-    timeago.setLocaleMessages('pl', timeago.PlMessages());
+    timeago.setLocaleMessages('de', timeago.DeMessages());
     timeago.setLocaleMessages('mk', MkMessages());
+    timeago.setLocaleMessages('pl', timeago.PlMessages());
 
     return timeago.format(
       this,

@@ -1,259 +1,207 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2020-06-23T19:45:42+00:00",
-    "app_title": "Брз Шопинг",
-    "@app_title": {
-        "type": "text",
-        "description": "Shown on top of the screen."
-    },
+    "@@last_modified": "2020-08-15T14:27:26+00:00",
     "menu_donate": "Донирај",
-    "@menu_donate": {
-        "type": "text",
-        "description": ""
-    },
     "menu_licenses": "Лиценци",
-    "@menu_licenses": {
-        "type": "text",
-        "description": ""
-    },
     "list_item_no_name": "Нема име",
     "@list_item_no_name": {
-        "type": "text",
         "description": "When the item has no\/empty name."
     },
     "list_item_done_ago": "готово {when}",
     "@list_item_done_ago": {
-        "type": "text",
         "description": "Small caps date when item was marked as done."
     },
     "list_item_title_hint": "Напиши го името на предметот...",
     "@list_item_title_hint": {
-        "type": "text",
         "description": "Placeholder in item name text field."
     },
     "list_item_editing_cancel": "ОТКАЖИ",
     "@list_item_editing_cancel": {
-        "type": "text",
         "description": ""
     },
     "list_item_editing_save": "ЗАЧУВАЈ",
     "@list_item_editing_save": {
-        "type": "text",
         "description": ""
     },
     "list_item_remove": "ОТСТРАНИ",
     "@list_item_remove": {
-        "type": "text",
         "description": ""
     },
     "list_item_edit": "ПРОМЕНИ",
     "@list_item_edit": {
-        "type": "text",
         "description": ""
     },
     "item_removed_snackbar_message": "Предметот беше отстранет од листата.",
     "@item_removed_snackbar_message": {
-        "type": "text",
         "description": ""
     },
     "item_removed_snackbar_undo": "ВРАТИ",
     "@item_removed_snackbar_undo": {
-        "type": "text",
         "description": ""
     },
     "add_item_dialog_title": "Додади предмет",
     "@add_item_dialog_title": {
-        "type": "text",
         "description": ""
     },
     "add_item_dialog_cancel": "ОТКАЖИ",
     "@add_item_dialog_cancel": {
-        "type": "text",
         "description": ""
     },
     "add_item_dialog_add": "ДОДАДИ",
     "@add_item_dialog_add": {
-        "type": "text",
         "description": ""
     },
     "archive_banner_content": "Личи како се да е обележано готово. Дали посакувате да ја архивирате шопинг листата?",
     "@archive_banner_content": {
-        "type": "text",
         "description": ""
     },
     "archive_banner_archive": "АРХИВИРАЈ",
     "@archive_banner_archive": {
-        "type": "text",
         "description": ""
     },
     "shopping_list_not_selected_placeholder": "Не е одбрана листа",
     "@shopping_list_not_selected_placeholder": {
-        "type": "text",
         "description": ""
     },
     "shopping_list_not_selected_message": "Не е одбрана листа, направи една.",
     "@shopping_list_not_selected_message": {
-        "type": "text",
         "description": ""
     },
     "empty_list_add_some_items_message": "Додади некои предмети во твојата листа!",
     "@empty_list_add_some_items_message": {
-        "type": "text",
         "description": ""
     },
     "list_archived_snackbar_message": "Листата е успешно архивирана.",
     "@list_archived_snackbar_message": {
-        "type": "text",
         "description": ""
     },
     "list_archived_snackbar_undo": "ВРАТИ",
     "@list_archived_snackbar_undo": {
-        "type": "text",
         "description": ""
     },
     "shopping_lists_title": "Шопинг листи",
     "@shopping_lists_title": {
-        "type": "text",
         "description": ""
     },
     "shopping_lists_tab_archived": "Архивирано",
     "@shopping_lists_tab_archived": {
-        "type": "text",
         "description": ""
     },
     "shopping_lists_add_new": "НОВА ЛИСТА",
     "@shopping_lists_add_new": {
-        "type": "text",
         "description": ""
     },
     "shopping_lists_item_created_at": "Направен {when}",
     "@shopping_lists_item_created_at": {
-        "type": "text",
         "description": ""
     },
     "shopping_lists_item_archived_at": "Архивиран {when}",
     "@shopping_lists_item_archived_at": {
-        "type": "text",
         "description": ""
     },
     "shopping_list_no_name": "Нема име",
     "@shopping_list_no_name": {
-        "type": "text",
         "description": ""
     },
     "shopping_list_archived_snackbar_message": "Листата е успешно архивирана.",
     "@shopping_list_archived_snackbar_message": {
-        "type": "text",
         "description": ""
     },
     "shopping_list_unarchived_snackbar_message": "Листата повеќе не е архивирана.",
     "@shopping_list_unarchived_snackbar_message": {
-        "type": "text",
         "description": ""
     },
     "add_list_dialog_title": "Додади нова шопинг листа",
     "@add_list_dialog_title": {
-        "type": "text",
         "description": ""
     },
     "add_list_dialog_name_hint": "Напиши го името на шопинг листата...",
     "@add_list_dialog_name_hint": {
-        "type": "text",
         "description": ""
     },
     "add_list_dialog_cancel": "ОТКАЖИ",
     "@add_list_dialog_cancel": {
-        "type": "text",
         "description": ""
     },
     "add_list_dialog_add": "ДОДАДИ",
     "@add_list_dialog_add": {
-        "type": "text",
         "description": ""
     },
     "rename_shopping_list_dialog_title": "Преименија шопинг листата",
     "@rename_shopping_list_dialog_title": {
-        "type": "text",
         "description": ""
     },
     "rename_shopping_list_dialog_name_hint": "Напиши го името на новата шопинг листа тука...",
     "@rename_shopping_list_dialog_name_hint": {
-        "type": "text",
         "description": ""
     },
     "rename_shopping_list_dialog_cancel": "ОТКАЖИ",
     "@rename_shopping_list_dialog_cancel": {
-        "type": "text",
         "description": ""
     },
     "rename_shopping_list_dialog_rename": "ПРЕИМЕНИ",
     "@rename_shopping_list_dialog_rename": {
-        "type": "text",
         "description": ""
     },
     "delete_shopping_list_dialog_title": "Избриши шопинг листа",
     "@delete_shopping_list_dialog_title": {
-        "type": "text",
-        "description": ""
-    },
-    "delete_shopping_list_dialog_body_before": "Дали сигурно сакаш да избришеш",
-    "@delete_shopping_list_dialog_body_before": {
-        "type": "text",
-        "description": ""
-    },
-    "delete_shopping_list_dialog_body_after": "шопинг листа?\\nОваа операција е трајна.",
-    "@delete_shopping_list_dialog_body_after": {
-        "type": "text",
         "description": ""
     },
     "delete_shopping_list_dialog_cancel": "ОТКАЖИ",
-    "@delete_shopping_list_dialog_cancel": {
-        "type": "text",
-        "description": ""
-    },
     "delete_shopping_list_dialog_delete": "Избриши",
     "@delete_shopping_list_dialog_delete": {
-        "type": "text",
         "description": ""
     },
     "no_current_lists_message": "Во моментот нема листи, создади една!",
     "@no_current_lists_message": {
-        "type": "text",
         "description": ""
     },
     "no_archived_lists_message": "Нема архивирани листи.",
     "@no_archived_lists_message": {
-        "type": "text",
         "description": ""
     },
     "list_from_old_version": "Листа од стара верзија",
     "@list_from_old_version": {
-        "type": "text",
         "description": ""
     },
     "donate_dialog_title": "Донирај",
     "@donate_dialog_title": {
-        "type": "text",
         "description": ""
     },
     "donate_dialog_body": "Можете да го подржите креаторот на оваа апликација така што ќе му испратите донација.",
     "@donate_dialog_body": {
-        "type": "text",
         "description": ""
     },
     "donate_dialog_paypal": "ОДИ НА PAYPAL.ME",
     "@donate_dialog_paypal": {
-        "type": "text",
         "description": ""
     },
     "shopping_lists_item_elements": "{count, plural, one {1 eлемент} other {{count} елементи}}",
     "@shopping_lists_item_elements": {
-        "type": "text",
         "description": ""
     },
     "shopping_lists_tab_current": "Моментално",
-    "@shopping_lists_tab_current": {
-        "type": "text",
+    "app_title": "Брз Шопинг",
+    "@app_title": {
+        "description": "Shown on top of the screen."
+    },
+    "layout_dialog_one_list_title": "Една листа",
+    "layout_dialog_multiple_lists_title": "Повеќе листи",
+    "layout_dialog_title": "Изглед",
+    "menu_layout": "Изглед",
+    "@menu_layout": {
+        "description": "Shown on the main screen dropdown, next to the view_stream material icon."
+    },
+    "layout_dialog_content": "Ова можете да го промените подоцна.",
+    "@layout_dialog_content": {
+        "description": "Small text shown under one\/multiple lists options."
+    },
+    "delete_shopping_list_dialog_body_before": "Дали сигурно сакаш да избришеш ",
+    "@delete_shopping_list_dialog_body_before": {
+        "description": ""
+    },
+    "delete_shopping_list_dialog_body_after": " шопинг листа? Оваа операција е трајна.",
+    "@delete_shopping_list_dialog_body_after": {
         "description": ""
     }
 }
