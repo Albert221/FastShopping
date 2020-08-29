@@ -67,11 +67,11 @@ jobs:
       - name: Setup fastlane
         run: sudo gem install fastlane -NV
       
-      - name: Release to Google Play (internal)
+      - name: Release to Google Play (alpha)
         env:
           SUPPLY_PACKAGE_NAME: ${{ secrets.ANDROID_PACKAGE_NAME }}
           SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
         run: |
           fastlane supply \
           --aab build/app/outputs/bundle/release/app-release.aab
-          --track internal
+          --track beta
