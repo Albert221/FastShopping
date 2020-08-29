@@ -5,6 +5,20 @@ import 'package:uuid/uuid.dart';
 part 'item.g.dart';
 
 abstract class Item implements Built<Item, ItemBuilder> {
+  factory Item([void Function(ItemBuilder) updates]) {
+    return _$Item
+        ._(
+          id: Uuid().v4(),
+          shoppingListId: '',
+          title: '',
+          done: false,
+          removed: false,
+        )
+        .rebuild(updates);
+  }
+
+  Item._();
+
   String get id;
 
   String get shoppingListId;
@@ -17,21 +31,6 @@ abstract class Item implements Built<Item, ItemBuilder> {
   DateTime get doneAt;
 
   bool get removed;
-
-  Item._();
-
-  factory Item([void Function(ItemBuilder) updates]) {
-    return _$Item
-        ._(
-          id: Uuid().v4(),
-          shoppingListId: '',
-          title: '',
-          done: false,
-          doneAt: null,
-          removed: false,
-        )
-        .rebuild(updates);
-  }
 
   static Serializer<Item> get serializer => _$itemSerializer;
 }

@@ -1,47 +1,47 @@
 import 'package:fast_shopping/models/models.dart';
 
 class AddItem {
+  AddItem(this.title, this.listId);
+
   final String title;
   final String listId;
-
-  AddItem(this.title, this.listId);
 }
 
 class MarkItemDone {
-  final Item item;
-
   MarkItemDone(this.item);
+
+  final Item item;
 }
 
 class MarkItemUndone {
-  final Item item;
-
   MarkItemUndone(this.item);
+
+  final Item item;
 }
 
 class RenameItem {
+  RenameItem(this.item, this.newTitle);
+
   final Item item;
   final String newTitle;
-
-  RenameItem(this.item, this.newTitle);
 }
 
 class RemoveItem {
-  final Item item;
-
   RemoveItem(this.item);
+
+  final Item item;
 }
 
 class UndoRemovingItem {
-  final Item item;
-
   UndoRemovingItem(this.item);
+
+  final Item item;
 }
 
 /// Doesn't mark item as removed but completely deletes it from
 /// any persistent storage.
 class DeleteItem {
-  final Item item;
-
   DeleteItem(this.item);
+
+  final Item item;
 }

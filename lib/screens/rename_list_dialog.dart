@@ -3,9 +3,6 @@ import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class RenameListDialog extends StatelessWidget {
-  final String initialName;
-  final TextEditingController _controller;
-
   RenameListDialog({Key key, this.initialName = ''})
       : _controller = TextEditingController.fromValue(
           TextEditingValue(
@@ -14,6 +11,9 @@ class RenameListDialog extends StatelessWidget {
           ),
         ),
         super(key: key);
+
+  final String initialName;
+  final TextEditingController _controller;
 
   @override
   Widget build(BuildContext context) {

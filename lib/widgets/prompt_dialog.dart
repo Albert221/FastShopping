@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PromptDialog extends StatelessWidget {
-  final String title;
-  final String inputHint;
-  final Widget primaryButton;
-  final TextEditingController controller;
-  final VoidCallback onSubmitted;
-  final Widget secondaryButton;
-
-  PromptDialog({
+  const PromptDialog({
     Key key,
     @required this.title,
     @required this.inputHint,
@@ -17,6 +10,13 @@ class PromptDialog extends StatelessWidget {
     this.onSubmitted,
     this.secondaryButton,
   }) : super(key: key);
+
+  final String title;
+  final String inputHint;
+  final Widget primaryButton;
+  final TextEditingController controller;
+  final VoidCallback onSubmitted;
+  final Widget secondaryButton;
 
   @override
   Widget build(BuildContext context) {

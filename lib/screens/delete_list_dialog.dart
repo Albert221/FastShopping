@@ -3,9 +3,9 @@ import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart' hide SimpleDialog;
 
 class DeleteListDialog extends StatelessWidget {
-  final String listName;
-
   const DeleteListDialog({Key key, @required this.listName}) : super(key: key);
+
+  final String listName;
 
   @override
   Widget build(BuildContext context) {

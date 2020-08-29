@@ -17,8 +17,8 @@ class AddItemDialog extends StatelessWidget {
       ),
       onSubmitted: () => Navigator.pop(context, _titleController.text),
       secondaryButton: FlatButton(
-        child: Text(S.of(context).add_item_dialog_cancel),
         onPressed: () => Navigator.pop(context),
+        child: Text(S.of(context).add_item_dialog_cancel),
       ),
     );
   }

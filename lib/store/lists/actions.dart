@@ -4,9 +4,9 @@ import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
 class SetCurrentShoppingList {
-  final ShoppingList list;
-
   SetCurrentShoppingList(this.list);
+
+  final ShoppingList list;
 }
 
 ThunkAction<FastShoppingState> addShoppingList(String name) {
@@ -20,32 +20,32 @@ ThunkAction<FastShoppingState> addShoppingList(String name) {
 }
 
 class AddedShoppingList {
-  final String name;
-
   AddedShoppingList(this.name);
+
+  final String name;
 }
 
 class ArchiveShoppingList {
-  final ShoppingList list;
-
   ArchiveShoppingList(this.list);
+
+  final ShoppingList list;
 }
 
 class UnarchiveShoppingList {
-  final ShoppingList list;
-
   UnarchiveShoppingList(this.list);
+
+  final ShoppingList list;
 }
 
 class RenameShoppingList {
+  RenameShoppingList(this.list, this.newName);
+
   final ShoppingList list;
   final String newName;
-
-  RenameShoppingList(this.list, this.newName);
 }
 
 class RemoveShoppingList {
-  final ShoppingList list;
-
   RemoveShoppingList(this.list);
+
+  final ShoppingList list;
 }

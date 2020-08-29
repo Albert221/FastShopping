@@ -3,9 +3,9 @@ import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ArchiveBanner extends StatelessWidget {
-  final VoidCallback onArchiveTap;
-
   const ArchiveBanner({Key key, @required this.onArchiveTap}) : super(key: key);
+
+  final VoidCallback onArchiveTap;
 
   @override
   Widget build(BuildContext context) {

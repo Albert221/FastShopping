@@ -4,18 +4,6 @@ import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class ListItemTile extends StatefulWidget {
-  final bool done;
-  final String title;
-  final DateTime doneAt;
-
-  final bool actionsVisible;
-
-  final ValueChanged<bool> onDoneTap;
-  final ValueChanged<String> onTitleEdited;
-  final VoidCallback onDeleteTap;
-  final VoidCallback onExpand;
-  final ListItemDragHandler dragHandler;
-
   const ListItemTile({
     Key key,
     @required this.done,
@@ -28,6 +16,18 @@ class ListItemTile extends StatefulWidget {
     this.onExpand,
     this.dragHandler,
   }) : super(key: key);
+
+  final bool done;
+  final String title;
+  final DateTime doneAt;
+
+  final bool actionsVisible;
+
+  final ValueChanged<bool> onDoneTap;
+  final ValueChanged<String> onTitleEdited;
+  final VoidCallback onDeleteTap;
+  final VoidCallback onExpand;
+  final ListItemDragHandler dragHandler;
 
   @override
   ListItemTileState createState() => ListItemTileState();
@@ -122,8 +122,8 @@ class ListItemTileState extends State<ListItemTile>
 
   Widget _buildCollapsed(BuildContext context) {
     final textStyle = widget.done
-        ? TextStyle(decoration: TextDecoration.lineThrough)
-        : TextStyle();
+        ? const TextStyle(decoration: TextDecoration.lineThrough)
+        : const TextStyle();
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -256,8 +256,8 @@ class ListItemTileState extends State<ListItemTile>
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         FlatButton(
-          child: Text(S.of(context).list_item_editing_cancel),
           onPressed: _cancelEditingTitle,
+          child: Text(S.of(context).list_item_editing_cancel),
         ),
         const SizedBox(width: 16),
         PrimaryFlatButton(
@@ -282,7 +282,7 @@ class ListItemTileState extends State<ListItemTile>
               color: Colors.black87,
             ),
           ),
-        Spacer(),
+        const Spacer(),
         DangerFlatButton(
           text: S.of(context).list_item_remove,
           onPressed: () => widget.onDeleteTap?.call(),
@@ -298,15 +298,15 @@ class ListItemTileState extends State<ListItemTile>
 }
 
 class ListItemDragHandler {
-  final ValueChanged<DragStartDetails> onDragStart;
-  final ValueChanged<DragUpdateDetails> onDragUpdate;
-  final ValueChanged<DragEndDetails> onDragEnd;
-  final VoidCallback onDragCancel;
-
   ListItemDragHandler({
     this.onDragStart,
     this.onDragUpdate,
     this.onDragEnd,
     this.onDragCancel,
   });
+
+  final ValueChanged<DragStartDetails> onDragStart;
+  final ValueChanged<DragUpdateDetails> onDragUpdate;
+  final ValueChanged<DragEndDetails> onDragEnd;
+  final VoidCallback onDragCancel;
 }

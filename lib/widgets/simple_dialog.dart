@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SimpleDialog extends StatelessWidget {
-  final String title;
-  final Widget body;
-  final Widget primaryButton;
-  final Widget secondaryButton;
-
   const SimpleDialog({
     Key key,
     @required this.title,
@@ -13,6 +8,11 @@ class SimpleDialog extends StatelessWidget {
     @required this.primaryButton,
     this.secondaryButton,
   }) : super(key: key);
+
+  final String title;
+  final Widget body;
+  final Widget primaryButton;
+  final Widget secondaryButton;
 
   @override
   Widget build(BuildContext context) {

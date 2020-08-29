@@ -8,12 +8,12 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
 class FastShoppingApp extends StatefulWidget {
-  final Store<FastShoppingState> store;
-
   const FastShoppingApp({
     Key key,
     @required this.store,
   }) : super(key: key);
+
+  final Store<FastShoppingState> store;
 
   @override
   _FastShoppingAppState createState() => _FastShoppingAppState();
@@ -30,7 +30,7 @@ class _FastShoppingAppState extends State<FastShoppingApp> {
         home: MainScreen(),
         theme: FastShoppingTheme.light(),
         supportedLocales: S.delegate.supportedLocales,
-        localizationsDelegates: [
+        localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

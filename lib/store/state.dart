@@ -7,14 +7,6 @@ part 'state.g.dart';
 
 abstract class FastShoppingState
     implements Built<FastShoppingState, FastShoppingStateBuilder> {
-  String get currentListId;
-
-  BuiltList<ShoppingList> get lists;
-
-  BuiltList<Item> get items;
-
-  FastShoppingState._();
-
   factory FastShoppingState([void Function(FastShoppingStateBuilder) updates]) {
     return _$FastShoppingState
         ._(
@@ -24,6 +16,14 @@ abstract class FastShoppingState
         )
         .rebuild(updates);
   }
+
+  FastShoppingState._();
+
+  String get currentListId;
+
+  BuiltList<ShoppingList> get lists;
+
+  BuiltList<Item> get items;
 
   static Serializer<FastShoppingState> get serializer =>
       _$fastShoppingStateSerializer;

@@ -1,7 +1,7 @@
 import 'package:fast_shopping/store/store.dart';
 import 'package:redux/redux.dart';
 
-FastShoppingState rootReducer(FastShoppingState state, action) {
+FastShoppingState rootReducer(FastShoppingState state, dynamic action) {
   if (action is LoadedData) {
     return action.state;
   }

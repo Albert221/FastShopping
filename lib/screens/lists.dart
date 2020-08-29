@@ -87,7 +87,7 @@ class _FloatingActionButton extends StatelessWidget {
       onPressed: () async {
         final name = await showModal(
           context: context,
-          configuration: FadeScaleTransitionConfiguration(),
+          configuration: const FadeScaleTransitionConfiguration(),
           builder: (context) => AddListDialog(),
         );
 
@@ -102,9 +102,9 @@ class _FloatingActionButton extends StatelessWidget {
 }
 
 class _Body extends StatelessWidget {
-  final TabController tabController;
-
   const _Body({Key key, @required this.tabController}) : super(key: key);
+
+  final TabController tabController;
 
   void _showSnackbar(BuildContext context, String content) {
     Scaffold.of(context).hideCurrentSnackBar();
@@ -116,10 +116,10 @@ class _Body extends StatelessWidget {
     );
   }
 
-  void _onRenameList(BuildContext context, ShoppingList list) async {
+  Future<void> _onRenameList(BuildContext context, ShoppingList list) async {
     final newName = await showModal(
       context: context,
-      configuration: FadeScaleTransitionConfiguration(),
+      configuration: const FadeScaleTransitionConfiguration(),
       builder: (context) => RenameListDialog(
         initialName: list.name,
       ),
@@ -144,10 +144,10 @@ class _Body extends StatelessWidget {
     context.store.dispatch(UnarchiveShoppingList(list));
   }
 
-  void _onDeleteTap(BuildContext context, ShoppingList list) async {
+  Future<void> _onDeleteTap(BuildContext context, ShoppingList list) async {
     final result = await showModal(
       context: context,
-      configuration: FadeScaleTransitionConfiguration(),
+      configuration: const FadeScaleTransitionConfiguration(),
       builder: (context) => DeleteListDialog(
         listName: list.name,
       ),
@@ -230,12 +230,6 @@ class _Body extends StatelessWidget {
 }
 
 class _ShoppingListTab extends StatelessWidget {
-  final List<ShoppingList> lists;
-  final void Function(ShoppingList) onTap;
-  final String Function(ShoppingList) thirdLineBuilder;
-  final Widget Function(ShoppingList) trailingBuilder;
-  final Widget emptyPlaceholder;
-
   const _ShoppingListTab({
     Key key,
     @required this.lists,
@@ -244,6 +238,12 @@ class _ShoppingListTab extends StatelessWidget {
     this.trailingBuilder,
     this.emptyPlaceholder,
   }) : super(key: key);
+
+  final List<ShoppingList> lists;
+  final void Function(ShoppingList) onTap;
+  final String Function(ShoppingList) thirdLineBuilder;
+  final Widget Function(ShoppingList) trailingBuilder;
+  final Widget emptyPlaceholder;
 
   @override
   Widget build(BuildContext context) {
@@ -266,7 +266,7 @@ class _ShoppingListTab extends StatelessWidget {
 
     String subtitle = S.of(context).shopping_lists_item_elements(itemsCount);
     if (thirdLineBuilder != null) {
-      subtitle += '\n' + thirdLineBuilder(list);
+      subtitle += '\n${thirdLineBuilder(list)}';
     }
 
     return Container(

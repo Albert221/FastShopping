@@ -1,76 +1,75 @@
 import 'package:flutter/material.dart';
 
 class PrimaryFlatButton extends StatelessWidget {
-  static const textColor = Color(0xFF4D3900);
-  static const buttonColor = Color(0xFFFFF0C3);
-
-  final String text;
-  final VoidCallback onPressed;
-
   const PrimaryFlatButton({
     Key key,
     @required this.text,
     @required this.onPressed,
   }) : super(key: key);
 
+  static const textColor = Color(0xFF4D3900);
+  static const buttonColor = Color(0xFFFFF0C3);
+
+  final String text;
+  final VoidCallback onPressed;
+
   @override
   Widget build(BuildContext context) {
     return FlatButton(
+      color: buttonColor,
+      onPressed: onPressed,
       child: Text(
         text,
         style: const TextStyle(color: textColor),
       ),
-      color: buttonColor,
-      onPressed: onPressed,
     );
   }
 }
 
 class SecondaryFlatButton extends StatelessWidget {
-  static const textColor = Color(0xFF4D3900);
-
-  final String text;
-  final VoidCallback onPressed;
-
   const SecondaryFlatButton({
     Key key,
     @required this.text,
     @required this.onPressed,
   }) : super(key: key);
 
+  static const textColor = Color(0xFF4D3900);
+
+  final String text;
+  final VoidCallback onPressed;
+
   @override
   Widget build(BuildContext context) {
     return FlatButton(
+      onPressed: onPressed,
       child: Text(
         text,
         style: const TextStyle(color: textColor),
       ),
-      // color: buttonColor,
-      onPressed: onPressed,
     );
   }
 }
 
 class DangerFlatButton extends StatelessWidget {
-  static const textColor = Color(0xFFD32F2F);
-
-  final String text;
-  final VoidCallback onPressed;
-
   const DangerFlatButton({
     Key key,
     @required this.text,
     @required this.onPressed,
   }) : super(key: key);
 
+  static const textColor = Color(0xFFD32F2F);
+
+  final String text;
+  final VoidCallback onPressed;
+
   @override
   Widget build(BuildContext context) {
     return FlatButton(
+      onPressed: onPressed,
       child: Text(
         text,
         style: const TextStyle(color: textColor),
       ),
-      onPressed: onPressed,
     );
   }
 }

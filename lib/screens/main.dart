@@ -32,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget _buildAppBar(BuildContext context) {
+  PreferredSizeWidget _buildAppBar(BuildContext context) {
     return AppBar(
       centerTitle: true,
       automaticallyImplyLeading: false,
@@ -76,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
             if (index == 'donate') {
               showModal(
                 context: context,
-                configuration: FadeScaleTransitionConfiguration(),
+                configuration: const FadeScaleTransitionConfiguration(),
                 builder: (context) => DonateDialog(),
               );
             } else if (index == 'licenses') {
@@ -95,10 +95,10 @@ class _MainScreenState extends State<MainScreen> {
 class _FloatingActionButton extends StatelessWidget {
   const _FloatingActionButton();
 
-  void _showAddItemDialog(BuildContext context) async {
+  Future<void> _showAddItemDialog(BuildContext context) async {
     final result = await showModal(
       context: context,
-      configuration: FadeScaleTransitionConfiguration(),
+      configuration: const FadeScaleTransitionConfiguration(),
       builder: (context) => AddItemDialog(),
     );
 
@@ -120,8 +120,8 @@ class _FloatingActionButton extends StatelessWidget {
       builder: (context, anyListChosen) =>
           isKeyboardHidden(context) && anyListChosen
               ? FloatingActionButton(
-                  child: const Icon(Icons.add),
                   onPressed: () => _showAddItemDialog(context),
+                  child: const Icon(Icons.add),
                 )
               : const SizedBox(),
     );
@@ -226,11 +226,11 @@ class _BodyState extends State<_Body> {
     final items = ItemsSelectors.currentListItems(store);
     final visitedIds = items.map((item) => item.id);
 
-    items.forEach((item) {
+    for (final item in items) {
       if (!_itemsKeys.keys.contains(item.id)) {
         _itemsKeys[item.id] = GlobalKey();
       }
-    });
+    }
 
     _itemsKeys.removeWhere((id, _) => !visitedIds.contains(id));
   }
@@ -286,14 +286,14 @@ class _BodyState extends State<_Body> {
           builder: (context, items) {
             if (items.every((item) => item.removed)) {
               // Works for empty list too
-              return _NoItemsPlaceholder();
+              return const _NoItemsPlaceholder();
             }
 
             return ListView.builder(
               itemCount: items.length + 1,
               itemBuilder: (context, i) {
                 if (i == 0) {
-                  return _ArchiveBannerSpace();
+                  return const _ArchiveBannerSpace();
                 }
 
                 final item = items[i - 1];
@@ -389,7 +389,7 @@ class _NoListSelectedPlaceholder extends StatelessWidget {
 }
 
 class _NoItemsPlaceholder extends StatelessWidget {
-  _NoItemsPlaceholder();
+  const _NoItemsPlaceholder({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -427,7 +427,7 @@ class _NoItemsPlaceholder extends StatelessWidget {
 }
 
 class _ArchiveBannerSpace extends StatelessWidget {
-  _ArchiveBannerSpace();
+  const _ArchiveBannerSpace({Key key}) : super(key: key);
 
   void _archiveList(BuildContext context, ShoppingList list) {
     final store = context.store;

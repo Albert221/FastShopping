@@ -13,9 +13,9 @@ part 'persister.g.dart';
 class LoadData {}
 
 class LoadedData {
-  final FastShoppingState state;
-
   LoadedData(this.state);
+
+  final FastShoppingState state;
 }
 
 Middleware<FastShoppingState> persisterMiddleware() {
@@ -52,6 +52,6 @@ Middleware<FastShoppingState> persisterMiddleware() {
   };
 }
 
-@SerializersFor(const [FastShoppingState])
+@SerializersFor([FastShoppingState])
 final Serializers _serializers =
     (_$_serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
