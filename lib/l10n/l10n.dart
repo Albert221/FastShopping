@@ -221,16 +221,6 @@ class S {
         name: 'delete_shopping_list_dialog_title',
       );
 
-  String get delete_shopping_list_dialog_body_before => Intl.message(
-        'Do you really want to delete',
-        name: 'delete_shopping_list_dialog_body_before',
-      );
-
-  String get delete_shopping_list_dialog_body_after => Intl.message(
-        'shopping list?\\nThis operation cannot be undone.',
-        name: 'delete_shopping_list_dialog_body_after',
-      );
-
   String get delete_shopping_list_dialog_cancel => Intl.message(
         'CANCEL',
         name: 'delete_shopping_list_dialog_cancel',
@@ -287,12 +277,50 @@ class S {
         'Current',
         name: 'shopping_lists_tab_current',
       );
+
+  String get menu_layout => Intl.message(
+        'Layout',
+        name: 'menu_layout',        
+        desc: 'Shown on the main screen dropdown, next to the view_stream material icon.',
+      );
+
+  String get layout_dialog_title => Intl.message(
+        'Layout',
+        name: 'layout_dialog_title',
+      );
+
+  String get layout_dialog_one_list_title => Intl.message(
+        'One list',
+        name: 'layout_dialog_one_list_title',
+      );
+
+  String get layout_dialog_multiple_lists_title => Intl.message(
+        'Multiple lists',
+        name: 'layout_dialog_multiple_lists_title',
+      );
+
+  String get layout_dialog_content => Intl.message(
+        'You can change that later.',
+        name: 'layout_dialog_content',        
+        desc: 'Small text shown under one/multiple lists options.',
+      );
+
+  String get delete_shopping_list_dialog_body_before => Intl.message(
+        'Do you really want to delete ',
+        name: 'delete_shopping_list_dialog_body_before',
+      );
+
+  String get delete_shopping_list_dialog_body_after => Intl.message(
+        ' shopping list? This operation cannot be undone.',
+        name: 'delete_shopping_list_dialog_body_after',
+      );
 }
 
 class ArbifyLocalizationsDelegate extends LocalizationsDelegate<S> {
   const ArbifyLocalizationsDelegate();
 
   List<Locale> get supportedLocales => [
+        Locale.fromSubtags(languageCode: 'de'),
         Locale.fromSubtags(languageCode: 'en'),
         Locale.fromSubtags(languageCode: 'mk'),
         Locale.fromSubtags(languageCode: 'pl'),
@@ -300,6 +328,7 @@ class ArbifyLocalizationsDelegate extends LocalizationsDelegate<S> {
 
   @override
   bool isSupported(Locale locale) => [
+        'de',
         'en',
         'mk',
         'pl',
