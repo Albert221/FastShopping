@@ -17,6 +17,8 @@ There are many people that don't want to use a voice assistant and find other ap
 
 ## Building
 
+**Note:** Use Flutter `beta` channel.
+
 ```bash
 git clone git@github.com:Albert221/FastShopping.git && cd FastShopping
 flutter packages pub get
