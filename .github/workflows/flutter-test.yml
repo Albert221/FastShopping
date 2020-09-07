@@ -2,9 +2,8 @@ name: Flutter test
 
 on:
   push:
-    tags-ignore:
-      - '*.*'
-  pull_request:
+    tags-ignore: ['v*']
+  pull_request: {}
 
 jobs:
   test:
