@@ -27,7 +27,7 @@ class S {
 
   String get app_title => Intl.message(
         'Fast Shopping',
-        name: 'app_title',        
+        name: 'app_title',
         desc: 'Shown on top of the screen.',
       );
 
@@ -43,14 +43,14 @@ class S {
 
   String get list_item_no_name => Intl.message(
         'No name',
-        name: 'list_item_no_name',        
+        name: 'list_item_no_name',
         desc: 'When the item has no/empty name.',
       );
 
   String list_item_done_ago(String when) => Intl.message(
         'done ${when}',
-        name: 'list_item_done_ago',        
-        desc: 'Small caps date when item was marked as done.',        
+        name: 'list_item_done_ago',
+        desc: 'Small caps date when item was marked as done.',
         args: [when],
       );
 
@@ -151,13 +151,13 @@ class S {
 
   String shopping_lists_item_created_at(String when) => Intl.message(
         'Created ${when}',
-        name: 'shopping_lists_item_created_at',        
+        name: 'shopping_lists_item_created_at',
         args: [when],
       );
 
   String shopping_lists_item_archived_at(String when) => Intl.message(
         'Archived ${when}',
-        name: 'shopping_lists_item_archived_at',        
+        name: 'shopping_lists_item_archived_at',
         args: [when],
       );
 
@@ -262,14 +262,16 @@ class S {
       );
 
   String shopping_lists_item_elements(num count) => Intl.message(
-        '${Intl.plural(count, one: '1 element', other: '${count} elements', args: [count])}',
-        name: 'shopping_lists_item_elements',        
+        '${Intl.plural(count, one: '1 element', other: '${count} elements', args: [
+          count
+        ])}',
+        name: 'shopping_lists_item_elements',
         args: [count],
       );
 
   String get list_item_title_hint => Intl.message(
         'Write item name here...',
-        name: 'list_item_title_hint',        
+        name: 'list_item_title_hint',
         desc: 'Placeholder in item name text field.',
       );
 
@@ -280,8 +282,9 @@ class S {
 
   String get menu_layout => Intl.message(
         'Layout',
-        name: 'menu_layout',        
-        desc: 'Shown on the main screen dropdown, next to the view_stream material icon.',
+        name: 'menu_layout',
+        desc:
+            'Shown on the main screen dropdown, next to the view_stream material icon.',
       );
 
   String get layout_dialog_title => Intl.message(
@@ -301,7 +304,7 @@ class S {
 
   String get layout_dialog_content => Intl.message(
         'You can change that later.',
-        name: 'layout_dialog_content',        
+        name: 'layout_dialog_content',
         desc: 'Small text shown under one/multiple lists options.',
       );
 
@@ -320,11 +323,11 @@ class ArbifyLocalizationsDelegate extends LocalizationsDelegate<S> {
   const ArbifyLocalizationsDelegate();
 
   List<Locale> get supportedLocales => [
-        Locale.fromSubtags(languageCode: 'de'),
         Locale.fromSubtags(languageCode: 'en'),
+        Locale.fromSubtags(languageCode: 'de'),
         Locale.fromSubtags(languageCode: 'mk'),
         Locale.fromSubtags(languageCode: 'pl'),
-  ];
+      ];
 
   @override
   bool isSupported(Locale locale) => [
