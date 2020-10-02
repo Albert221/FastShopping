@@ -1,0 +1,1 @@
+Done items are now moved to the bottom of the list.

@@ -1,0 +1,1 @@
+Gotowe elementy są teraz przenoszone na dół listy.
