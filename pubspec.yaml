@@ -15,7 +15,7 @@ dependencies:
   built_collection: ^4.3.2
   built_value: ^7.0.4
   flutter_redux: ^0.6.0
-  flutter_svg: ^0.18.0
+  flutter_svg: ^0.19.0
   intl: ^0.16.1
   md2_tab_indicator: ^1.0.2
   redux_thunk: ^0.3.0
