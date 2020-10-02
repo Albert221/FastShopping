@@ -22,7 +22,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
-          channel: beta
+          channel: stable
 
       - name: Dart version
         run: dart --version
@@ -84,11 +84,11 @@ jobs:
           bundle config path vendor/bundle
           bundle install
       
-      - name: Release to Google Play (beta)
+      - name: Release to Google Play (production)
         env:
           SUPPLY_PACKAGE_NAME: ${{ secrets.ANDROID_PACKAGE_NAME }}
           SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
         run: |
           bundle exec fastlane supply \
           --aab build/app/outputs/bundle/release/app-release.aab \
-          --track beta
+          --track production

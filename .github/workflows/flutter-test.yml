@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Test on beta
+    name: Test on stable
 
     runs-on: ubuntu-latest
 
@@ -26,7 +26,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
-          channel: beta
+          channel: stable
 
       - name: Dart version
         run: dart --version
