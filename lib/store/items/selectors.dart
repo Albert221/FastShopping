@@ -6,7 +6,12 @@ class ItemsSelectors {
   static List<Item> currentListItems(Store<FastShoppingState> store) =>
       store.state.items
           .where((item) => item.shoppingListId == store.state.currentListId)
-          .toList();
+          .toList()
+            ..sort((a, b) {
+              if (a.done == b.done) return 0;
+
+              return a.done ? 1 : -1;
+            });
 
   static bool isCurrentListEveryItemDoneOrDeleted(
           Store<FastShoppingState> store) =>
