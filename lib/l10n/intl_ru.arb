@@ -1,0 +1,207 @@
+{
+    "@@locale": "ru",
+    "@@last_modified": "2020-11-18T07:53:32+00:00",
+    "menu_donate": "Пожертвовать",
+    "menu_licenses": "Лицензии",
+    "list_item_no_name": "Безымянный",
+    "@list_item_no_name": {
+        "description": "When the item has no\/empty name."
+    },
+    "list_item_title_hint": "Введите наименование пункта...",
+    "@list_item_title_hint": {
+        "description": "Placeholder in item name text field."
+    },
+    "list_item_editing_cancel": "ОТМЕНИТЬ",
+    "@list_item_editing_cancel": {
+        "description": ""
+    },
+    "list_item_editing_save": "СОХРАНИТЬ",
+    "@list_item_editing_save": {
+        "description": ""
+    },
+    "list_item_remove": "УДАЛИТЬ",
+    "@list_item_remove": {
+        "description": ""
+    },
+    "list_item_edit": "РЕДАКТИРОВАТЬ",
+    "@list_item_edit": {
+        "description": ""
+    },
+    "item_removed_snackbar_message": "Пункт был удалён из списка.",
+    "@item_removed_snackbar_message": {
+        "description": ""
+    },
+    "add_item_dialog_title": "Добавить пункт",
+    "@add_item_dialog_title": {
+        "description": ""
+    },
+    "add_item_dialog_cancel": "ОТМЕНИТЬ",
+    "@add_item_dialog_cancel": {
+        "description": ""
+    },
+    "add_item_dialog_add": "ДОБАВИТЬ",
+    "@add_item_dialog_add": {
+        "description": ""
+    },
+    "archive_banner_archive": "АРХИВИРОВАТЬ",
+    "@archive_banner_archive": {
+        "description": ""
+    },
+    "shopping_list_not_selected_message": "Список не выбран, создайте его.",
+    "@shopping_list_not_selected_message": {
+        "description": ""
+    },
+    "list_archived_snackbar_message": "Список успешно заархивирован.",
+    "@list_archived_snackbar_message": {
+        "description": ""
+    },
+    "list_archived_snackbar_undo": "ОТМЕНИТЬ",
+    "@list_archived_snackbar_undo": {
+        "description": ""
+    },
+    "shopping_lists_tab_current": "Текущий",
+    "shopping_lists_tab_archived": "В архиве",
+    "@shopping_lists_tab_archived": {
+        "description": ""
+    },
+    "shopping_lists_add_new": "НОВЫЙ СПИСОК",
+    "@shopping_lists_add_new": {
+        "description": ""
+    },
+    "shopping_lists_title": "Списки покупок",
+    "@shopping_lists_title": {
+        "description": ""
+    },
+    "shopping_list_no_name": "Без имени",
+    "@shopping_list_no_name": {
+        "description": ""
+    },
+    "shopping_list_archived_snackbar_message": "Список успешно заархивирован.",
+    "@shopping_list_archived_snackbar_message": {
+        "description": ""
+    },
+    "shopping_list_unarchived_snackbar_message": "Список успешно разархивирован.",
+    "@shopping_list_unarchived_snackbar_message": {
+        "description": ""
+    },
+    "add_list_dialog_title": "Добавить новый список покупок",
+    "@add_list_dialog_title": {
+        "description": ""
+    },
+    "add_list_dialog_name_hint": "Введите здесь название списка покупок...",
+    "@add_list_dialog_name_hint": {
+        "description": ""
+    },
+    "add_list_dialog_cancel": "ОТМЕНИТЬ",
+    "@add_list_dialog_cancel": {
+        "description": ""
+    },
+    "add_list_dialog_add": "ДОБАВИТЬ",
+    "@add_list_dialog_add": {
+        "description": ""
+    },
+    "rename_shopping_list_dialog_title": "Переименовать список покупок",
+    "@rename_shopping_list_dialog_title": {
+        "description": ""
+    },
+    "rename_shopping_list_dialog_name_hint": "Введите здесь новое название списка покупок...",
+    "@rename_shopping_list_dialog_name_hint": {
+        "description": ""
+    },
+    "rename_shopping_list_dialog_cancel": "ОТМЕНИТЬ",
+    "@rename_shopping_list_dialog_cancel": {
+        "description": ""
+    },
+    "rename_shopping_list_dialog_rename": "ПЕРЕИМЕНОВАТЬ",
+    "@rename_shopping_list_dialog_rename": {
+        "description": ""
+    },
+    "delete_shopping_list_dialog_title": "Удалить список покупок",
+    "@delete_shopping_list_dialog_title": {
+        "description": ""
+    },
+    "delete_shopping_list_dialog_body_before": "Вы действительно хотите удалить",
+    "@delete_shopping_list_dialog_body_before": {
+        "description": ""
+    },
+    "delete_shopping_list_dialog_body_after": "список покупок? Эта операция не может быть отменена",
+    "@delete_shopping_list_dialog_body_after": {
+        "description": ""
+    },
+    "delete_shopping_list_dialog_cancel": "ОТМЕНИТЬ",
+    "delete_shopping_list_dialog_delete": "УДАЛИТЬ",
+    "@delete_shopping_list_dialog_delete": {
+        "description": ""
+    },
+    "no_archived_lists_message": "Нет архивированных списков.",
+    "@no_archived_lists_message": {
+        "description": ""
+    },
+    "list_from_old_version": "Список из старой версии",
+    "@list_from_old_version": {
+        "description": ""
+    },
+    "donate_dialog_title": "Пожертвовать",
+    "@donate_dialog_title": {
+        "description": ""
+    },
+    "donate_dialog_body": "Вы можете поддержать автора приложения, отправив ему пожертвование.",
+    "@donate_dialog_body": {
+        "description": ""
+    },
+    "donate_dialog_paypal": "ПЕРЕЙТИ К PAYPAL.ME",
+    "@donate_dialog_paypal": {
+        "description": ""
+    },
+    "menu_layout": "Расположение",
+    "@menu_layout": {
+        "description": "Shown on the main screen dropdown, next to the view_stream material icon."
+    },
+    "layout_dialog_title": "Расположение",
+    "layout_dialog_one_list_title": "Один список",
+    "layout_dialog_content": "Вы можете изменить это позже.",
+    "@layout_dialog_content": {
+        "description": "Small text shown under one\/multiple lists options."
+    },
+    "layout_dialog_multiple_lists_title": "Несколько списков",
+    "no_current_lists_message": "Нет текущих списков, создайте их!",
+    "@no_current_lists_message": {
+        "description": ""
+    },
+    "list_item_done_ago": "сделано {when}",
+    "@list_item_done_ago": {
+        "description": "Small caps date when item was marked as done."
+    },
+    "item_removed_snackbar_undo": "ОТМЕНИТЬ",
+    "@item_removed_snackbar_undo": {
+        "description": ""
+    },
+    "archive_banner_content": "Похоже, что всё отмечено как выполненное. Вы желаете заархивировать список покупок?",
+    "@archive_banner_content": {
+        "description": ""
+    },
+    "shopping_list_not_selected_placeholder": "Список не выбран",
+    "@shopping_list_not_selected_placeholder": {
+        "description": ""
+    },
+    "shopping_lists_item_created_at": "Создано {when}",
+    "@shopping_lists_item_created_at": {
+        "description": ""
+    },
+    "shopping_lists_item_archived_at": "Заархивировано {when}",
+    "@shopping_lists_item_archived_at": {
+        "description": ""
+    },
+    "shopping_lists_item_elements": "{count, plural, one {элемент} many {элементов} other {элементы} few {элемента}}",
+    "@shopping_lists_item_elements": {
+        "description": ""
+    },
+    "app_title": "Быстрые покупки",
+    "@app_title": {
+        "description": "Shown on top of the screen."
+    },
+    "empty_list_add_some_items_message": "Добавьте несколько пунктов в свой список!",
+    "@empty_list_add_some_items_message": {
+        "description": ""
+    }
+}
