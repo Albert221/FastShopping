@@ -11,9 +11,11 @@ class FastShoppingApp extends StatefulWidget {
   const FastShoppingApp({
     Key key,
     @required this.store,
+    this.localeOverride,
   }) : super(key: key);
 
   final Store<FastShoppingState> store;
+  final Locale localeOverride;
 
   @override
   _FastShoppingAppState createState() => _FastShoppingAppState();
@@ -29,6 +31,7 @@ class _FastShoppingAppState extends State<FastShoppingApp> {
         onGenerateTitle: (context) => S.of(context).app_title,
         home: MainScreen(),
         theme: FastShoppingTheme.light(),
+        locale: widget.localeOverride,
         supportedLocales: S.delegate.supportedLocales,
         localizationsDelegates: const [
           S.delegate,

@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
-void main() {
+void main([Locale localeOverride]) {
   WidgetsFlutterBinding.ensureInitialized();
 
   final store = _setupStore();
-
-  runApp(FastShoppingApp(store: store));
+  runApp(FastShoppingApp(
+    store: store,
+    localeOverride: localeOverride,
+  ));
 }
 
 Store<FastShoppingState> _setupStore() {
