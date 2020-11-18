@@ -7,6 +7,7 @@ extension TimeAgoI18n on DateTime {
     timeago.setLocaleMessages('de', timeago.DeMessages());
     timeago.setLocaleMessages('mk', MkMessages());
     timeago.setLocaleMessages('pl', timeago.PlMessages());
+    timeago.setLocaleMessages('ru', timeago.RuMessages());
 
     return timeago.format(
       this,
