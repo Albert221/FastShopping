@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_driver/flutter_driver.dart';
+import 'package:image/image.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -34,10 +35,27 @@ void main() {
 Future<void> _saveScreenshot(
   String locale,
   String name,
-  Future<List<int>> pixels,
+  Future<List<int>> bytes,
 ) async {
+  final screenshot = decodePng(await bytes);
+  final screenshotFrame = decodePng(
+    await File('assets/screenshot-frame.png').readAsBytes(),
+  );
+
+  var image = Image(1944, 3456);
+  image = drawImage(image, screenshot, dstX: 255, dstY: 743);
+  image = drawImage(image, screenshotFrame);
+  image = copyResize(
+    image,
+    width: 1080,
+    height: 1920,
+    interpolation: Interpolation.cubic,
+  );
+
+  final resultBytes = encodePng(image);
+
   final file =
       File('metadata/android/$locale/images/phoneScreenshots/$name.png');
   await file.create(recursive: true);
-  await file.writeAsBytes(await pixels);
+  await file.writeAsBytes(resultBytes);
 }
