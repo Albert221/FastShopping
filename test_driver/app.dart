@@ -16,7 +16,7 @@ void main() {
           scriptCode: locale.scriptCode,
         );
 
-        app.main(dartLocale);
+        app.main(screenshottingLocale: dartLocale);
       }
 
       return null;

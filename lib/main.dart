@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
-void main([Locale localeOverride]) {
+void main({Locale screenshottingLocale}) {
   WidgetsFlutterBinding.ensureInitialized();
 
   final store = _setupStore();
   runApp(FastShoppingApp(
     store: store,
-    localeOverride: localeOverride,
+    screenshottingLocale: screenshottingLocale,
   ));
 }
 
