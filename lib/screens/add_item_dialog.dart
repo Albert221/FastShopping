@@ -17,6 +17,7 @@ class AddItemDialog extends StatelessWidget {
       ),
       onSubmitted: () => Navigator.pop(context, _titleController.text),
       secondaryButton: FlatButton(
+        key: const ValueKey('add_item_back'),
         onPressed: () => Navigator.pop(context),
         child: Text(S.of(context).add_item_dialog_cancel),
       ),

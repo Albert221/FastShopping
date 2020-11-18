@@ -31,6 +31,7 @@ class _FastShoppingAppState extends State<FastShoppingApp> {
     return StoreProvider<FastShoppingState>(
       store: widget.store,
       child: MaterialApp(
+        key: widget.screenshottingLocale != null ? UniqueKey() : null,
         debugShowCheckedModeBanner: false,
         onGenerateTitle: (context) {
           if (widget.screenshottingLocale != null) {
