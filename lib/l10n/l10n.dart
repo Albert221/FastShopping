@@ -314,6 +314,60 @@ class S {
         ' shopping list? This operation cannot be undone.',
         name: 'delete_shopping_list_dialog_body_after',
       );
+
+  String get screenshot_item_1 => Intl.message(
+        'Tomato sauce',
+        name: 'screenshot_item_1',        
+        desc: 'Item visible on app stores screenshots.',
+      );
+
+  String get screenshot_item_2 => Intl.message(
+        'Mustard',
+        name: 'screenshot_item_2',
+      );
+
+  String get screenshot_item_3 => Intl.message(
+        'Barbecue sauce',
+        name: 'screenshot_item_3',
+      );
+
+  String get screenshot_item_4 => Intl.message(
+        'Red-wine vinegar',
+        name: 'screenshot_item_4',
+      );
+
+  String get screenshot_item_5 => Intl.message(
+        'Salsa',
+        name: 'screenshot_item_5',        
+        desc: 'Expanded item on shopping list in app stores screenshots.',
+      );
+
+  String get screenshot_item_6 => Intl.message(
+        'Extra virgin olive oil',
+        name: 'screenshot_item_6',
+      );
+
+  String get screenshot_item_7 => Intl.message(
+        'Jarred capers and olives',
+        name: 'screenshot_item_7',
+      );
+
+  String get screenshot_item_8 => Intl.message(
+        'Hot pepper sauce',
+        name: 'screenshot_item_8',
+      );
+
+  String get screenshot_list_1 => Intl.message(
+        'Groceries',
+        name: 'screenshot_list_1',        
+        desc: 'Active shopping list in app stores screenshots.',
+      );
+
+  String get screenshot_list_2 => Intl.message(
+        'Party at Mike\'s',
+        name: 'screenshot_list_2',        
+        desc: 'Inactive shopping list in app stores screenshots.',
+      );
 }
 
 class ArbifyLocalizationsDelegate extends LocalizationsDelegate<S> {

@@ -25,7 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(when) => "Создано ${when}";
 
-  static m3(count) => "${Intl.plural(count, one: 'элемент', few: 'элемента', many: 'элементов', other: 'элементы')}";
+  static m3(count) => "${Intl.plural(count, one: '1 элемент', few: '${count} элемента', many: '${count} элементов', other: '${count} элементы')}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -73,6 +73,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "rename_shopping_list_dialog_name_hint" : MessageLookupByLibrary.simpleMessage("Введите здесь новое название списка покупок..."),
     "rename_shopping_list_dialog_rename" : MessageLookupByLibrary.simpleMessage("ПЕРЕИМЕНОВАТЬ"),
     "rename_shopping_list_dialog_title" : MessageLookupByLibrary.simpleMessage("Переименовать список покупок"),
+    "screenshot_item_1" : MessageLookupByLibrary.simpleMessage("Томатный соус"),
+    "screenshot_item_2" : MessageLookupByLibrary.simpleMessage("Горчица"),
+    "screenshot_item_3" : MessageLookupByLibrary.simpleMessage("Соус для жареного мяса"),
+    "screenshot_item_4" : MessageLookupByLibrary.simpleMessage("Красно-винный уксус"),
+    "screenshot_item_5" : MessageLookupByLibrary.simpleMessage("Острый томатный соус"),
+    "screenshot_item_6" : MessageLookupByLibrary.simpleMessage("Оливковое масло первого отжима"),
+    "screenshot_item_7" : MessageLookupByLibrary.simpleMessage("Каперсы и оливки в банках"),
+    "screenshot_item_8" : MessageLookupByLibrary.simpleMessage("Соус с острым перцем"),
+    "screenshot_list_1" : MessageLookupByLibrary.simpleMessage("Продовольственные товары"),
+    "screenshot_list_2" : MessageLookupByLibrary.simpleMessage("Вечеринка у Михаила"),
     "shopping_list_archived_snackbar_message" : MessageLookupByLibrary.simpleMessage("Список успешно заархивирован."),
     "shopping_list_no_name" : MessageLookupByLibrary.simpleMessage("Без имени"),
     "shopping_list_not_selected_message" : MessageLookupByLibrary.simpleMessage("Список не выбран, создайте его."),

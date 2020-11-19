@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2020-08-15T14:27:23+00:00",
+    "@@last_modified": "2020-11-18T18:34:24+00:00",
     "menu_donate": "Podaruj datek",
     "list_item_no_name": "Bez nazwy",
     "@list_item_no_name": {
@@ -203,5 +203,27 @@
     "delete_shopping_list_dialog_body_after": "? Ta operacja nie może zostać cofnięta.",
     "@delete_shopping_list_dialog_body_after": {
         "description": ""
+    },
+    "screenshot_item_1": "Masło osełkowe",
+    "@screenshot_item_1": {
+        "description": "Item visible on app stores screenshots."
+    },
+    "screenshot_item_2": "Ser żółty",
+    "screenshot_item_3": "Sałatka roszponka",
+    "screenshot_item_4": "Brązowy ryż",
+    "screenshot_item_5": "Mrożonka warzyw na patelnię",
+    "@screenshot_item_5": {
+        "description": "Expanded item on shopping list in app stores screenshots."
+    },
+    "screenshot_item_6": "Kasza gryczana",
+    "screenshot_item_7": "Buraki",
+    "screenshot_item_8": "Serek wiejski",
+    "screenshot_list_1": "Zakupy do domu",
+    "@screenshot_list_1": {
+        "description": "Active shopping list in app stores screenshots."
+    },
+    "screenshot_list_2": "Domówka u Krysi",
+    "@screenshot_list_2": {
+        "description": "Inactive shopping list in app stores screenshots."
     }
 }

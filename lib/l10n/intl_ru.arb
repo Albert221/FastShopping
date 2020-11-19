@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2020-11-18T07:53:32+00:00",
+    "@@last_modified": "2020-11-19T16:29:51+00:00",
     "menu_donate": "Пожертвовать",
     "menu_licenses": "Лицензии",
     "list_item_no_name": "Безымянный",
@@ -192,10 +192,6 @@
     "@shopping_lists_item_archived_at": {
         "description": ""
     },
-    "shopping_lists_item_elements": "{count, plural, one {элемент} many {элементов} other {элементы} few {элемента}}",
-    "@shopping_lists_item_elements": {
-        "description": ""
-    },
     "app_title": "Быстрые покупки",
     "@app_title": {
         "description": "Shown on top of the screen."
@@ -203,5 +199,31 @@
     "empty_list_add_some_items_message": "Добавьте несколько пунктов в свой список!",
     "@empty_list_add_some_items_message": {
         "description": ""
+    },
+    "shopping_lists_item_elements": "{count, plural, few {{count} элемента} many {{count} элементов} other {{count} элементы} one {1 элемент}}",
+    "@shopping_lists_item_elements": {
+        "description": ""
+    },
+    "screenshot_item_1": "Томатный соус",
+    "@screenshot_item_1": {
+        "description": "Item visible on app stores screenshots."
+    },
+    "screenshot_item_2": "Горчица",
+    "screenshot_item_3": "Соус для жареного мяса",
+    "screenshot_item_4": "Красно-винный уксус",
+    "screenshot_item_5": "Острый томатный соус",
+    "@screenshot_item_5": {
+        "description": "Expanded item on shopping list in app stores screenshots."
+    },
+    "screenshot_item_6": "Оливковое масло первого отжима",
+    "screenshot_item_7": "Каперсы и оливки в банках",
+    "screenshot_item_8": "Соус с острым перцем",
+    "screenshot_list_1": "Продовольственные товары",
+    "@screenshot_list_1": {
+        "description": "Active shopping list in app stores screenshots."
+    },
+    "screenshot_list_2": "Вечеринка у Михаила",
+    "@screenshot_list_2": {
+        "description": "Inactive shopping list in app stores screenshots."
     }
 }
