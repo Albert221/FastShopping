@@ -34,6 +34,13 @@ If you want to fix translations or add your mother tounge, contact me through em
 
 Translate the app launcher name too. To do this, create a new folder in `android/app/src/main/res` called `values-<your language>` and put a `strings.xml` file there. For reference, check `android\app\src\main\res\values\strings.xml` file.
 
+### Generate screenshots and feature graphics for stores
+
+```bash
+# Firstly open your Pixel 2 XL emulator and then
+flutter drive --target=test_driver/app.dart
+```
+
 ### Available languages
 
 - English
