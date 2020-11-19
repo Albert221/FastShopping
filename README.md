@@ -45,9 +45,9 @@ flutter drive --target=test_driver/app.dart
 
 - English
 - Polski
-- Македонски ([@MatejMecka][matejmecka])
-- Deutsch ([@kojid0][kojid0])
-- Русский ([@rikishi0071][rikishi0071])
+- Македонски ([@MatejMecka])
+- Deutsch ([@kojid0], [@divadsn])
+- Русский ([@rikishi0071])
 
 [google-play-badge]: assets/google-play-badge.png
 [google-play-link]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
@@ -56,6 +56,8 @@ flutter drive --target=test_driver/app.dart
 [app-screenshots]: https://i.imgur.com/biDOUms.jpg
 
 [Arbify]: https://github.com/Arbify/Arbify
-[matejmecka]: https://github.com/MatejMecka
-[kojid0]: https://github.com/kojid0
-[rikishi0071]: https://github.com/rikishi0071
+
+[@matejmecka]: https://github.com/MatejMecka
+[@kojid0]: https://github.com/kojid0
+[@divadsn]: https://github.com/divadsn
+[@rikishi0071]: https://github.com/rikishi0071
