@@ -1,6 +1,6 @@
 {
     "@@locale": "en",
-    "@@last_modified": "2020-08-15T14:27:21+00:00",
+    "@@last_modified": "2020-11-18T18:54:21+00:00",
     "app_title": "Fast Shopping",
     "@app_title": {
         "description": "Shown on top of the screen."
@@ -203,5 +203,27 @@
     "delete_shopping_list_dialog_body_after": " shopping list? This operation cannot be undone.",
     "@delete_shopping_list_dialog_body_after": {
         "description": ""
+    },
+    "screenshot_item_1": "Tomato sauce",
+    "@screenshot_item_1": {
+        "description": "Item visible on app stores screenshots."
+    },
+    "screenshot_item_2": "Mustard",
+    "screenshot_item_3": "Barbecue sauce",
+    "screenshot_item_4": "Red-wine vinegar",
+    "screenshot_item_5": "Salsa",
+    "@screenshot_item_5": {
+        "description": "Expanded item on shopping list in app stores screenshots."
+    },
+    "screenshot_item_6": "Extra virgin olive oil",
+    "screenshot_item_7": "Jarred capers and olives",
+    "screenshot_item_8": "Hot pepper sauce",
+    "screenshot_list_1": "Groceries",
+    "@screenshot_list_1": {
+        "description": "Active shopping list in app stores screenshots."
+    },
+    "screenshot_list_2": "Party at Mike's",
+    "@screenshot_list_2": {
+        "description": "Inactive shopping list in app stores screenshots."
     }
 }

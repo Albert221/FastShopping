@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2020-08-20T10:35:55+00:00",
+    "@@last_modified": "2020-11-18T22:55:18+00:00",
     "app_title": "Fast Shopping",
     "@app_title": {
         "description": "Shown on top of the screen."
@@ -203,5 +203,27 @@
     "delete_shopping_list_dialog_body_after": " wirklich gelöscht werden? Diese Aktion kann nicht rückgängig gemacht werden",
     "@delete_shopping_list_dialog_body_after": {
         "description": ""
+    },
+    "screenshot_item_2": "Käse",
+    "screenshot_item_4": "Naturreis",
+    "screenshot_item_3": "Kopfsalat",
+    "screenshot_item_1": "Markenbutter",
+    "@screenshot_item_1": {
+        "description": "Item visible on app stores screenshots."
+    },
+    "screenshot_item_5": "Tiefgefrorene Gemüsepfanne",
+    "@screenshot_item_5": {
+        "description": "Expanded item on shopping list in app stores screenshots."
+    },
+    "screenshot_item_6": "Buchweizen",
+    "screenshot_item_7": "Rote Beete",
+    "screenshot_item_8": "Körniger Frischkäse",
+    "screenshot_list_2": "Hausparty bei Christina",
+    "@screenshot_list_2": {
+        "description": "Inactive shopping list in app stores screenshots."
+    },
+    "screenshot_list_1": "Wocheneinkauf",
+    "@screenshot_list_1": {
+        "description": "Active shopping list in app stores screenshots."
     }
 }
