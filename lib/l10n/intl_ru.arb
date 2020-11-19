@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2020-11-19T16:29:51+00:00",
+    "@@last_modified": "2020-11-19T17:39:26+00:00",
     "menu_donate": "Пожертвовать",
     "menu_licenses": "Лицензии",
     "list_item_no_name": "Безымянный",
@@ -192,10 +192,6 @@
     "@shopping_lists_item_archived_at": {
         "description": ""
     },
-    "app_title": "Быстрые покупки",
-    "@app_title": {
-        "description": "Shown on top of the screen."
-    },
     "empty_list_add_some_items_message": "Добавьте несколько пунктов в свой список!",
     "@empty_list_add_some_items_message": {
         "description": ""
@@ -225,5 +221,9 @@
     "screenshot_list_2": "Вечеринка у Михаила",
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
+    },
+    "app_title": "Быстрые Покупки",
+    "@app_title": {
+        "description": "Shown on top of the screen."
     }
 }

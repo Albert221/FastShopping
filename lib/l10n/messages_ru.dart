@@ -36,7 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_list_dialog_cancel" : MessageLookupByLibrary.simpleMessage("ОТМЕНИТЬ"),
     "add_list_dialog_name_hint" : MessageLookupByLibrary.simpleMessage("Введите здесь название списка покупок..."),
     "add_list_dialog_title" : MessageLookupByLibrary.simpleMessage("Добавить новый список покупок"),
-    "app_title" : MessageLookupByLibrary.simpleMessage("Быстрые покупки"),
+    "app_title" : MessageLookupByLibrary.simpleMessage("Быстрые Покупки"),
     "archive_banner_archive" : MessageLookupByLibrary.simpleMessage("АРХИВИРОВАТЬ"),
     "archive_banner_content" : MessageLookupByLibrary.simpleMessage("Похоже, что всё отмечено как выполненное. Вы желаете заархивировать список покупок?"),
     "delete_shopping_list_dialog_body_after" : MessageLookupByLibrary.simpleMessage("список покупок? Эта операция не может быть отменена"),
