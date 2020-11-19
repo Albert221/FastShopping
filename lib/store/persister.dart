@@ -30,7 +30,7 @@ Middleware<FastShoppingState> persisterMiddleware() {
         if (prefs.containsKey(dataKey)) {
           // Load data
           final json = prefs.getString(dataKey);
-          final loadedState = _serializers.deserializeWith(
+          final loadedState = serializers.deserializeWith(
             FastShoppingState.serializer,
             jsonDecode(json),
           );
@@ -41,7 +41,7 @@ Middleware<FastShoppingState> persisterMiddleware() {
     } else {
       // Save data
       final json = jsonEncode(
-        _serializers.serializeWith(
+        serializers.serializeWith(
           FastShoppingState.serializer,
           store.state,
         ),
@@ -53,5 +53,5 @@ Middleware<FastShoppingState> persisterMiddleware() {
 }
 
 @SerializersFor([FastShoppingState])
-final Serializers _serializers =
-    (_$_serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
+final Serializers serializers =
+    (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
