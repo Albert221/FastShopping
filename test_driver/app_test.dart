@@ -14,7 +14,7 @@ void main() {
 
     tearDownAll(() => driver?.close());
 
-    final locales = ['de-DE', 'en-US', 'mk-MK', 'pl-PL'];
+    final locales = ['de-DE', 'en-US', 'mk-MK', 'pl-PL', 'ru-RU'];
     for (final locale in locales) {
       test(locale, () async {
         await driver.requestData('locale-$locale');
