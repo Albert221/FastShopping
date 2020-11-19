@@ -3,15 +3,15 @@ import 'package:fast_shopping/widgets/widgets.dart';
 import 'package:flutter/material.dart' hide SimpleDialog;
 import 'package:url_launcher/url_launcher.dart';
 
-class DonateDialog extends StatelessWidget {
+class SupportAuthorDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-      title: S.of(context).donate_dialog_title,
-      body: Text(S.of(context).donate_dialog_body),
+      title: S.of(context).support_author_dialog_title,
+      body: Text(S.of(context).support_author_dialog_body),
       primaryButton: PrimaryFlatButton(
-        text: S.of(context).donate_dialog_paypal,
-        onPressed: () => launch('https://www.paypal.me/Albert221'),
+        text: S.of(context).support_author_dialog_button,
+        onPressed: () => launch('https://wolszon.me/support-me'),
       ),
     );
   }

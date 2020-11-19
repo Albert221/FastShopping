@@ -44,9 +44,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "delete_shopping_list_dialog_cancel" : MessageLookupByLibrary.simpleMessage("ОТМЕНИТЬ"),
     "delete_shopping_list_dialog_delete" : MessageLookupByLibrary.simpleMessage("УДАЛИТЬ"),
     "delete_shopping_list_dialog_title" : MessageLookupByLibrary.simpleMessage("Удалить список покупок"),
-    "donate_dialog_body" : MessageLookupByLibrary.simpleMessage("Вы можете поддержать автора приложения, отправив ему пожертвование."),
-    "donate_dialog_paypal" : MessageLookupByLibrary.simpleMessage("ПЕРЕЙТИ К PAYPAL.ME"),
-    "donate_dialog_title" : MessageLookupByLibrary.simpleMessage("Пожертвовать"),
     "empty_list_add_some_items_message" : MessageLookupByLibrary.simpleMessage("Добавьте несколько пунктов в свой список!"),
     "item_removed_snackbar_message" : MessageLookupByLibrary.simpleMessage("Пункт был удалён из списка."),
     "item_removed_snackbar_undo" : MessageLookupByLibrary.simpleMessage("ОТМЕНИТЬ"),
@@ -64,9 +61,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "list_item_no_name" : MessageLookupByLibrary.simpleMessage("Безымянный"),
     "list_item_remove" : MessageLookupByLibrary.simpleMessage("УДАЛИТЬ"),
     "list_item_title_hint" : MessageLookupByLibrary.simpleMessage("Введите наименование пункта..."),
-    "menu_donate" : MessageLookupByLibrary.simpleMessage("Пожертвовать"),
     "menu_layout" : MessageLookupByLibrary.simpleMessage("Расположение"),
     "menu_licenses" : MessageLookupByLibrary.simpleMessage("Лицензии"),
+    "menu_support_author" : MessageLookupByLibrary.simpleMessage("Поддержите автора"),
     "no_archived_lists_message" : MessageLookupByLibrary.simpleMessage("Нет архивированных списков."),
     "no_current_lists_message" : MessageLookupByLibrary.simpleMessage("Нет текущих списков, создайте их!"),
     "rename_shopping_list_dialog_cancel" : MessageLookupByLibrary.simpleMessage("ОТМЕНИТЬ"),
@@ -94,6 +91,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "shopping_lists_item_elements" : m3,
     "shopping_lists_tab_archived" : MessageLookupByLibrary.simpleMessage("В архиве"),
     "shopping_lists_tab_current" : MessageLookupByLibrary.simpleMessage("Текущий"),
-    "shopping_lists_title" : MessageLookupByLibrary.simpleMessage("Списки покупок")
+    "shopping_lists_title" : MessageLookupByLibrary.simpleMessage("Списки покупок"),
+    "support_author_dialog_body" : MessageLookupByLibrary.simpleMessage("Вы можете поддержать меня, разработчика этого приложения, перейдя на страницу ниже."),
+    "support_author_dialog_button" : MessageLookupByLibrary.simpleMessage("ПОДДЕРЖИТЕ МЕНЯ"),
+    "support_author_dialog_title" : MessageLookupByLibrary.simpleMessage("Поддержите автора")
   };
 }

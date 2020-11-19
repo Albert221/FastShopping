@@ -1,11 +1,10 @@
 {
     "@@locale": "en",
-    "@@last_modified": "2020-11-18T18:54:21+00:00",
+    "@@last_modified": "2020-11-19T18:04:58+00:00",
     "app_title": "Fast Shopping",
     "@app_title": {
         "description": "Shown on top of the screen."
     },
-    "menu_donate": "Donate",
     "menu_licenses": "Licenses",
     "list_item_no_name": "No name",
     "@list_item_no_name": {
@@ -164,18 +163,6 @@
     "@list_from_old_version": {
         "description": ""
     },
-    "donate_dialog_title": "Donate",
-    "@donate_dialog_title": {
-        "description": ""
-    },
-    "donate_dialog_body": "You can support application's author by sending him a donation.",
-    "@donate_dialog_body": {
-        "description": ""
-    },
-    "donate_dialog_paypal": "GO TO PAYPAL.ME",
-    "@donate_dialog_paypal": {
-        "description": ""
-    },
     "shopping_lists_item_elements": "{count, plural, one {1 element} other {{count} elements}}",
     "@shopping_lists_item_elements": {
         "description": ""
@@ -225,5 +212,9 @@
     "screenshot_list_2": "Party at Mike's",
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
-    }
+    },
+    "menu_support_author": "Support the author",
+    "support_author_dialog_button": "SUPPORT ME",
+    "support_author_dialog_title": "Support the author",
+    "support_author_dialog_body": "You can support me, the developer of this app, by going to the page below."
 }

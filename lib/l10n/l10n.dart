@@ -31,11 +31,6 @@ class S {
         desc: 'Shown on top of the screen.',
       );
 
-  String get menu_donate => Intl.message(
-        'Donate',
-        name: 'menu_donate',
-      );
-
   String get menu_licenses => Intl.message(
         'Licenses',
         name: 'menu_licenses',
@@ -246,21 +241,6 @@ class S {
         name: 'list_from_old_version',
       );
 
-  String get donate_dialog_title => Intl.message(
-        'Donate',
-        name: 'donate_dialog_title',
-      );
-
-  String get donate_dialog_body => Intl.message(
-        'You can support application\'s author by sending him a donation.',
-        name: 'donate_dialog_body',
-      );
-
-  String get donate_dialog_paypal => Intl.message(
-        'GO TO PAYPAL.ME',
-        name: 'donate_dialog_paypal',
-      );
-
   String shopping_lists_item_elements(num count) => Intl.message(
         '${Intl.plural(count, one: '1 element', other: '${count} elements', args: [count])}',
         name: 'shopping_lists_item_elements',        
@@ -367,6 +347,26 @@ class S {
         'Party at Mike\'s',
         name: 'screenshot_list_2',        
         desc: 'Inactive shopping list in app stores screenshots.',
+      );
+
+  String get menu_support_author => Intl.message(
+        'Support the author',
+        name: 'menu_support_author',
+      );
+
+  String get support_author_dialog_button => Intl.message(
+        'SUPPORT ME',
+        name: 'support_author_dialog_button',
+      );
+
+  String get support_author_dialog_title => Intl.message(
+        'Support the author',
+        name: 'support_author_dialog_title',
+      );
+
+  String get support_author_dialog_body => Intl.message(
+        'You can support me, the developer of this app, by going to the page below.',
+        name: 'support_author_dialog_body',
       );
 }
 

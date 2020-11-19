@@ -44,9 +44,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "delete_shopping_list_dialog_cancel" : MessageLookupByLibrary.simpleMessage("ОТКАЖИ"),
     "delete_shopping_list_dialog_delete" : MessageLookupByLibrary.simpleMessage("Избриши"),
     "delete_shopping_list_dialog_title" : MessageLookupByLibrary.simpleMessage("Избриши шопинг листа"),
-    "donate_dialog_body" : MessageLookupByLibrary.simpleMessage("Можете да го подржите креаторот на оваа апликација така што ќе му испратите донација."),
-    "donate_dialog_paypal" : MessageLookupByLibrary.simpleMessage("ОДИ НА PAYPAL.ME"),
-    "donate_dialog_title" : MessageLookupByLibrary.simpleMessage("Донирај"),
     "empty_list_add_some_items_message" : MessageLookupByLibrary.simpleMessage("Додади некои предмети во твојата листа!"),
     "item_removed_snackbar_message" : MessageLookupByLibrary.simpleMessage("Предметот беше отстранет од листата."),
     "item_removed_snackbar_undo" : MessageLookupByLibrary.simpleMessage("ВРАТИ"),
@@ -64,9 +61,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "list_item_no_name" : MessageLookupByLibrary.simpleMessage("Нема име"),
     "list_item_remove" : MessageLookupByLibrary.simpleMessage("ОТСТРАНИ"),
     "list_item_title_hint" : MessageLookupByLibrary.simpleMessage("Напиши го името на предметот..."),
-    "menu_donate" : MessageLookupByLibrary.simpleMessage("Донирај"),
     "menu_layout" : MessageLookupByLibrary.simpleMessage("Изглед"),
     "menu_licenses" : MessageLookupByLibrary.simpleMessage("Лиценци"),
+    "menu_support_author" : MessageLookupByLibrary.simpleMessage("Поддржете го авторот"),
     "no_archived_lists_message" : MessageLookupByLibrary.simpleMessage("Нема архивирани листи."),
     "no_current_lists_message" : MessageLookupByLibrary.simpleMessage("Во моментот нема листи, создади една!"),
     "rename_shopping_list_dialog_cancel" : MessageLookupByLibrary.simpleMessage("ОТКАЖИ"),
@@ -94,6 +91,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "shopping_lists_item_elements" : m3,
     "shopping_lists_tab_archived" : MessageLookupByLibrary.simpleMessage("Архивирано"),
     "shopping_lists_tab_current" : MessageLookupByLibrary.simpleMessage("Моментално"),
-    "shopping_lists_title" : MessageLookupByLibrary.simpleMessage("Шопинг листи")
+    "shopping_lists_title" : MessageLookupByLibrary.simpleMessage("Шопинг листи"),
+    "support_author_dialog_body" : MessageLookupByLibrary.simpleMessage("Може да ме поддржите мене, развивачот на оваа апликација, со одење на страницата подолу."),
+    "support_author_dialog_button" : MessageLookupByLibrary.simpleMessage("ПОДДРШКА МЕ"),
+    "support_author_dialog_title" : MessageLookupByLibrary.simpleMessage("Поддржете го авторот")
   };
 }

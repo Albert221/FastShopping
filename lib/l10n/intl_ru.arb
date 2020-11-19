@@ -1,7 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2020-11-19T17:39:26+00:00",
-    "menu_donate": "Пожертвовать",
+    "@@last_modified": "2020-11-19T18:04:58+00:00",
     "menu_licenses": "Лицензии",
     "list_item_no_name": "Безымянный",
     "@list_item_no_name": {
@@ -141,18 +140,6 @@
     "@list_from_old_version": {
         "description": ""
     },
-    "donate_dialog_title": "Пожертвовать",
-    "@donate_dialog_title": {
-        "description": ""
-    },
-    "donate_dialog_body": "Вы можете поддержать автора приложения, отправив ему пожертвование.",
-    "@donate_dialog_body": {
-        "description": ""
-    },
-    "donate_dialog_paypal": "ПЕРЕЙТИ К PAYPAL.ME",
-    "@donate_dialog_paypal": {
-        "description": ""
-    },
     "menu_layout": "Расположение",
     "@menu_layout": {
         "description": "Shown on the main screen dropdown, next to the view_stream material icon."
@@ -225,5 +212,9 @@
     "app_title": "Быстрые Покупки",
     "@app_title": {
         "description": "Shown on top of the screen."
-    }
+    },
+    "menu_support_author": "Поддержите автора",
+    "support_author_dialog_button": "ПОДДЕРЖИТЕ МЕНЯ",
+    "support_author_dialog_title": "Поддержите автора",
+    "support_author_dialog_body": "Вы можете поддержать меня, разработчика этого приложения, перейдя на страницу ниже."
 }

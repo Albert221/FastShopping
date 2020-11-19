@@ -1,11 +1,10 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2020-11-18T22:55:18+00:00",
+    "@@last_modified": "2020-11-19T18:04:58+00:00",
     "app_title": "Fast Shopping",
     "@app_title": {
         "description": "Shown on top of the screen."
     },
-    "menu_donate": "Spenden",
     "menu_licenses": "Lizenzen",
     "list_item_no_name": "kein Inhalt",
     "@list_item_no_name": {
@@ -165,18 +164,6 @@
     "@list_from_old_version": {
         "description": ""
     },
-    "donate_dialog_title": "Spenden",
-    "@donate_dialog_title": {
-        "description": ""
-    },
-    "donate_dialog_body": "Du kannst den Autor dieser App unterstützen, indem du ihm eine Spende sendest.",
-    "@donate_dialog_body": {
-        "description": ""
-    },
-    "donate_dialog_paypal": "ÖFFNE PAYPAL.ME",
-    "@donate_dialog_paypal": {
-        "description": ""
-    },
     "menu_layout": "Layout",
     "@menu_layout": {
         "description": "Shown on the main screen dropdown, next to the view_stream material icon."
@@ -225,5 +212,9 @@
     "screenshot_list_1": "Wocheneinkauf",
     "@screenshot_list_1": {
         "description": "Active shopping list in app stores screenshots."
-    }
+    },
+    "menu_support_author": "Unterstützen Sie den Autor",
+    "support_author_dialog_button": "UNTERSTÜTZE MICH",
+    "support_author_dialog_title": "Unterstützen Sie den Autor",
+    "support_author_dialog_body": "Sie können mich, den Entwickler dieser App, auf der folgenden Seite unterstützen."
 }

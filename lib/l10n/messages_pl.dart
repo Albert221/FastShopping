@@ -44,9 +44,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "delete_shopping_list_dialog_cancel" : MessageLookupByLibrary.simpleMessage("ANULUJ"),
     "delete_shopping_list_dialog_delete" : MessageLookupByLibrary.simpleMessage("USUŃ"),
     "delete_shopping_list_dialog_title" : MessageLookupByLibrary.simpleMessage("Usuwanie listy zakupów"),
-    "donate_dialog_body" : MessageLookupByLibrary.simpleMessage("Możesz wesprzeć autora tej aplikacji wysyłając mu datek."),
-    "donate_dialog_paypal" : MessageLookupByLibrary.simpleMessage("PRZEJDŹ DO PAYPAL.ME"),
-    "donate_dialog_title" : MessageLookupByLibrary.simpleMessage("Podaruj datek"),
     "empty_list_add_some_items_message" : MessageLookupByLibrary.simpleMessage("Dodaj jakieś elementy do listy!"),
     "item_removed_snackbar_message" : MessageLookupByLibrary.simpleMessage("Element został usuniety z listy."),
     "item_removed_snackbar_undo" : MessageLookupByLibrary.simpleMessage("COFNIJ"),
@@ -64,9 +61,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "list_item_no_name" : MessageLookupByLibrary.simpleMessage("Bez nazwy"),
     "list_item_remove" : MessageLookupByLibrary.simpleMessage("USUŃ"),
     "list_item_title_hint" : MessageLookupByLibrary.simpleMessage("Wpisz tutaj nazwę..."),
-    "menu_donate" : MessageLookupByLibrary.simpleMessage("Podaruj datek"),
     "menu_layout" : MessageLookupByLibrary.simpleMessage("Układ"),
     "menu_licenses" : MessageLookupByLibrary.simpleMessage("Licencje"),
+    "menu_support_author" : MessageLookupByLibrary.simpleMessage("Wesprzyj autora"),
     "no_archived_lists_message" : MessageLookupByLibrary.simpleMessage("Nie ma żadnych zarchiwizowanych list."),
     "no_current_lists_message" : MessageLookupByLibrary.simpleMessage("Nie ma żadnych bieżących list, stwórz jakieś!"),
     "rename_shopping_list_dialog_cancel" : MessageLookupByLibrary.simpleMessage("ANULUJ"),
@@ -94,6 +91,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "shopping_lists_item_elements" : m3,
     "shopping_lists_tab_archived" : MessageLookupByLibrary.simpleMessage("Zarchiwizowane"),
     "shopping_lists_tab_current" : MessageLookupByLibrary.simpleMessage("Bieżące"),
-    "shopping_lists_title" : MessageLookupByLibrary.simpleMessage("Listy zakupów")
+    "shopping_lists_title" : MessageLookupByLibrary.simpleMessage("Listy zakupów"),
+    "support_author_dialog_body" : MessageLookupByLibrary.simpleMessage("Możesz wesprzeć mnie, autora tej aplikacji, przechodząc na stronę poniżej."),
+    "support_author_dialog_button" : MessageLookupByLibrary.simpleMessage("WESPRZYJ MNIE"),
+    "support_author_dialog_title" : MessageLookupByLibrary.simpleMessage("Wesprzyj autora")
   };
 }

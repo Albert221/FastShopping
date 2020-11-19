@@ -44,9 +44,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "delete_shopping_list_dialog_cancel" : MessageLookupByLibrary.simpleMessage("CANCEL"),
     "delete_shopping_list_dialog_delete" : MessageLookupByLibrary.simpleMessage("DELETE"),
     "delete_shopping_list_dialog_title" : MessageLookupByLibrary.simpleMessage("Deleting shopping list"),
-    "donate_dialog_body" : MessageLookupByLibrary.simpleMessage("You can support application\'s author by sending him a donation."),
-    "donate_dialog_paypal" : MessageLookupByLibrary.simpleMessage("GO TO PAYPAL.ME"),
-    "donate_dialog_title" : MessageLookupByLibrary.simpleMessage("Donate"),
     "empty_list_add_some_items_message" : MessageLookupByLibrary.simpleMessage("Add some items to your list!"),
     "item_removed_snackbar_message" : MessageLookupByLibrary.simpleMessage("Item has been removed from the list."),
     "item_removed_snackbar_undo" : MessageLookupByLibrary.simpleMessage("UNDO"),
@@ -64,9 +61,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "list_item_no_name" : MessageLookupByLibrary.simpleMessage("No name"),
     "list_item_remove" : MessageLookupByLibrary.simpleMessage("REMOVE"),
     "list_item_title_hint" : MessageLookupByLibrary.simpleMessage("Write item name here..."),
-    "menu_donate" : MessageLookupByLibrary.simpleMessage("Donate"),
     "menu_layout" : MessageLookupByLibrary.simpleMessage("Layout"),
     "menu_licenses" : MessageLookupByLibrary.simpleMessage("Licenses"),
+    "menu_support_author" : MessageLookupByLibrary.simpleMessage("Support the author"),
     "no_archived_lists_message" : MessageLookupByLibrary.simpleMessage("There are no archived lists."),
     "no_current_lists_message" : MessageLookupByLibrary.simpleMessage("There are no current lists, create one!"),
     "rename_shopping_list_dialog_cancel" : MessageLookupByLibrary.simpleMessage("CANCEL"),
@@ -94,6 +91,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "shopping_lists_item_elements" : m3,
     "shopping_lists_tab_archived" : MessageLookupByLibrary.simpleMessage("Archived"),
     "shopping_lists_tab_current" : MessageLookupByLibrary.simpleMessage("Current"),
-    "shopping_lists_title" : MessageLookupByLibrary.simpleMessage("Shopping lists")
+    "shopping_lists_title" : MessageLookupByLibrary.simpleMessage("Shopping lists"),
+    "support_author_dialog_body" : MessageLookupByLibrary.simpleMessage("You can support me, the developer of this app, by going to the page below."),
+    "support_author_dialog_button" : MessageLookupByLibrary.simpleMessage("SUPPORT ME"),
+    "support_author_dialog_title" : MessageLookupByLibrary.simpleMessage("Support the author")
   };
 }

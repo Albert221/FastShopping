@@ -1,7 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2020-11-18T18:34:24+00:00",
-    "menu_donate": "Podaruj datek",
+    "@@last_modified": "2020-11-19T18:04:58+00:00",
     "list_item_no_name": "Bez nazwy",
     "@list_item_no_name": {
         "description": "When the item has no\/empty name."
@@ -163,18 +162,6 @@
     "@list_from_old_version": {
         "description": ""
     },
-    "donate_dialog_title": "Podaruj datek",
-    "@donate_dialog_title": {
-        "description": ""
-    },
-    "donate_dialog_body": "Możesz wesprzeć autora tej aplikacji wysyłając mu datek.",
-    "@donate_dialog_body": {
-        "description": ""
-    },
-    "donate_dialog_paypal": "PRZEJDŹ DO PAYPAL.ME",
-    "@donate_dialog_paypal": {
-        "description": ""
-    },
     "app_title": "Szybkie Zakupy",
     "@app_title": {
         "description": "Shown on top of the screen."
@@ -225,5 +212,9 @@
     "screenshot_list_2": "Domówka u Krysi",
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
-    }
+    },
+    "menu_support_author": "Wesprzyj autora",
+    "support_author_dialog_button": "WESPRZYJ MNIE",
+    "support_author_dialog_title": "Wesprzyj autora",
+    "support_author_dialog_body": "Możesz wesprzeć mnie, autora tej aplikacji, przechodząc na stronę poniżej."
 }

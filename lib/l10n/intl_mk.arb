@@ -1,7 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2020-11-19T17:19:04+00:00",
-    "menu_donate": "Донирај",
+    "@@last_modified": "2020-11-19T18:04:58+00:00",
     "menu_licenses": "Лиценци",
     "list_item_no_name": "Нема име",
     "@list_item_no_name": {
@@ -164,18 +163,6 @@
     "@list_from_old_version": {
         "description": ""
     },
-    "donate_dialog_title": "Донирај",
-    "@donate_dialog_title": {
-        "description": ""
-    },
-    "donate_dialog_body": "Можете да го подржите креаторот на оваа апликација така што ќе му испратите донација.",
-    "@donate_dialog_body": {
-        "description": ""
-    },
-    "donate_dialog_paypal": "ОДИ НА PAYPAL.ME",
-    "@donate_dialog_paypal": {
-        "description": ""
-    },
     "shopping_lists_item_elements": "{count, plural, one {1 eлемент} other {{count} елементи}}",
     "@shopping_lists_item_elements": {
         "description": ""
@@ -225,5 +212,9 @@
     "screenshot_item_5": "Сос од домати",
     "@screenshot_item_5": {
         "description": "Expanded item on shopping list in app stores screenshots."
-    }
+    },
+    "menu_support_author": "Поддржете го авторот",
+    "support_author_dialog_button": "ПОДДРШКА МЕ",
+    "support_author_dialog_title": "Поддржете го авторот",
+    "support_author_dialog_body": "Може да ме поддржите мене, развивачот на оваа апликација, со одење на страницата подолу."
 }

@@ -52,12 +52,12 @@ class _MainScreenState extends State<MainScreen> {
         PopupMenuButton<String>(
           itemBuilder: (context) => [
             PopupMenuItem(
-              value: 'donate',
+              value: 'support-author',
               child: Row(
                 children: [
                   const Icon(Icons.attach_money),
                   const SizedBox(width: 16),
-                  Text(S.of(context).menu_donate),
+                  Text(S.of(context).menu_support_author),
                 ],
               ),
             ),
@@ -73,11 +73,11 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ],
           onSelected: (index) {
-            if (index == 'donate') {
+            if (index == 'support-author') {
               showModal(
                 context: context,
                 configuration: const FadeScaleTransitionConfiguration(),
-                builder: (context) => DonateDialog(),
+                builder: (context) => SupportAuthorDialog(),
               );
             } else if (index == 'licenses') {
               showLicensePage(
