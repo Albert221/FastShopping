@@ -53,7 +53,7 @@ flutter drive --target=test_driver/app.dart
 [google-play-link]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
 [fdroid-badge]: assets/fdroid-badge.png
 [fdroid-link]: https://www.f-droid.org/en/packages/me.wolszon.fastshopping/
-[app-screenshots]: https://i.imgur.com/biDOUms.jpg
+[app-screenshots]: fastlane/metadata/android/en-US/images/featureGraphic.png
 
 [Arbify]: https://github.com/Arbify/Arbify
 
