@@ -1,0 +1,211 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+
+part of 'item.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+/// @nodoc
+class _$ItemTearOff {
+  const _$ItemTearOff();
+
+// ignore: unused_element
+  _Item call(
+      {@required String id,
+      @required String shoppingListId,
+      @required String title,
+      DateTime doneAt,
+      bool removed = false}) {
+    return _Item(
+      id: id,
+      shoppingListId: shoppingListId,
+      title: title,
+      doneAt: doneAt,
+      removed: removed,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $Item = _$ItemTearOff();
+
+/// @nodoc
+mixin _$Item {
+  String get id;
+  String get shoppingListId;
+  String get title;
+  DateTime get doneAt;
+  bool get removed;
+
+  $ItemCopyWith<Item> get copyWith;
+}
+
+/// @nodoc
+abstract class $ItemCopyWith<$Res> {
+  factory $ItemCopyWith(Item value, $Res Function(Item) then) =
+      _$ItemCopyWithImpl<$Res>;
+  $Res call(
+      {String id,
+      String shoppingListId,
+      String title,
+      DateTime doneAt,
+      bool removed});
+}
+
+/// @nodoc
+class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
+  _$ItemCopyWithImpl(this._value, this._then);
+
+  final Item _value;
+  // ignore: unused_field
+  final $Res Function(Item) _then;
+
+  @override
+  $Res call({
+    Object id = freezed,
+    Object shoppingListId = freezed,
+    Object title = freezed,
+    Object doneAt = freezed,
+    Object removed = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed ? _value.id : id as String,
+      shoppingListId: shoppingListId == freezed
+          ? _value.shoppingListId
+          : shoppingListId as String,
+      title: title == freezed ? _value.title : title as String,
+      doneAt: doneAt == freezed ? _value.doneAt : doneAt as DateTime,
+      removed: removed == freezed ? _value.removed : removed as bool,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
+  factory _$ItemCopyWith(_Item value, $Res Function(_Item) then) =
+      __$ItemCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String id,
+      String shoppingListId,
+      String title,
+      DateTime doneAt,
+      bool removed});
+}
+
+/// @nodoc
+class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
+    implements _$ItemCopyWith<$Res> {
+  __$ItemCopyWithImpl(_Item _value, $Res Function(_Item) _then)
+      : super(_value, (v) => _then(v as _Item));
+
+  @override
+  _Item get _value => super._value as _Item;
+
+  @override
+  $Res call({
+    Object id = freezed,
+    Object shoppingListId = freezed,
+    Object title = freezed,
+    Object doneAt = freezed,
+    Object removed = freezed,
+  }) {
+    return _then(_Item(
+      id: id == freezed ? _value.id : id as String,
+      shoppingListId: shoppingListId == freezed
+          ? _value.shoppingListId
+          : shoppingListId as String,
+      title: title == freezed ? _value.title : title as String,
+      doneAt: doneAt == freezed ? _value.doneAt : doneAt as DateTime,
+      removed: removed == freezed ? _value.removed : removed as bool,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_Item implements _Item {
+  const _$_Item(
+      {@required this.id,
+      @required this.shoppingListId,
+      @required this.title,
+      this.doneAt,
+      this.removed = false})
+      : assert(id != null),
+        assert(shoppingListId != null),
+        assert(title != null),
+        assert(removed != null);
+
+  @override
+  final String id;
+  @override
+  final String shoppingListId;
+  @override
+  final String title;
+  @override
+  final DateTime doneAt;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool removed;
+
+  @override
+  String toString() {
+    return 'Item(id: $id, shoppingListId: $shoppingListId, title: $title, doneAt: $doneAt, removed: $removed)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Item &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.shoppingListId, shoppingListId) ||
+                const DeepCollectionEquality()
+                    .equals(other.shoppingListId, shoppingListId)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.doneAt, doneAt) ||
+                const DeepCollectionEquality().equals(other.doneAt, doneAt)) &&
+            (identical(other.removed, removed) ||
+                const DeepCollectionEquality().equals(other.removed, removed)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(shoppingListId) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(doneAt) ^
+      const DeepCollectionEquality().hash(removed);
+
+  @override
+  _$ItemCopyWith<_Item> get copyWith =>
+      __$ItemCopyWithImpl<_Item>(this, _$identity);
+}
+
+abstract class _Item implements Item {
+  const factory _Item(
+      {@required String id,
+      @required String shoppingListId,
+      @required String title,
+      DateTime doneAt,
+      bool removed}) = _$_Item;
+
+  @override
+  String get id;
+  @override
+  String get shoppingListId;
+  @override
+  String get title;
+  @override
+  DateTime get doneAt;
+  @override
+  bool get removed;
+  @override
+  _$ItemCopyWith<_Item> get copyWith;
+}

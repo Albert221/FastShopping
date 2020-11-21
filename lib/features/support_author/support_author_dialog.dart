@@ -11,6 +11,7 @@ class SupportAuthorDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       title: Text(S.of(context).support_author_dialog_title),
       content: Text(S.of(context).support_author_dialog_body),
       actions: [

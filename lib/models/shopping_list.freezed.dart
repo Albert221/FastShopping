@@ -1,0 +1,215 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+
+part of 'shopping_list.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+/// @nodoc
+class _$ShoppingListTearOff {
+  const _$ShoppingListTearOff();
+
+// ignore: unused_element
+  _ShoppingList call(
+      {@required String id,
+      @required String name,
+      DateTime createdAt,
+      dynamic archived = false,
+      List<Item> items = const []}) {
+    return _ShoppingList(
+      id: id,
+      name: name,
+      createdAt: createdAt,
+      archived: archived,
+      items: items,
+    );
+  }
+}
+
+/// @nodoc
+// ignore: unused_element
+const $ShoppingList = _$ShoppingListTearOff();
+
+/// @nodoc
+mixin _$ShoppingList {
+  String get id;
+  String get name;
+  DateTime get createdAt;
+  dynamic get archived;
+  List<Item> get items;
+
+  $ShoppingListCopyWith<ShoppingList> get copyWith;
+}
+
+/// @nodoc
+abstract class $ShoppingListCopyWith<$Res> {
+  factory $ShoppingListCopyWith(
+          ShoppingList value, $Res Function(ShoppingList) then) =
+      _$ShoppingListCopyWithImpl<$Res>;
+  $Res call(
+      {String id,
+      String name,
+      DateTime createdAt,
+      dynamic archived,
+      List<Item> items});
+}
+
+/// @nodoc
+class _$ShoppingListCopyWithImpl<$Res> implements $ShoppingListCopyWith<$Res> {
+  _$ShoppingListCopyWithImpl(this._value, this._then);
+
+  final ShoppingList _value;
+  // ignore: unused_field
+  final $Res Function(ShoppingList) _then;
+
+  @override
+  $Res call({
+    Object id = freezed,
+    Object name = freezed,
+    Object createdAt = freezed,
+    Object archived = freezed,
+    Object items = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: id == freezed ? _value.id : id as String,
+      name: name == freezed ? _value.name : name as String,
+      createdAt:
+          createdAt == freezed ? _value.createdAt : createdAt as DateTime,
+      archived: archived == freezed ? _value.archived : archived as dynamic,
+      items: items == freezed ? _value.items : items as List<Item>,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$ShoppingListCopyWith<$Res>
+    implements $ShoppingListCopyWith<$Res> {
+  factory _$ShoppingListCopyWith(
+          _ShoppingList value, $Res Function(_ShoppingList) then) =
+      __$ShoppingListCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String id,
+      String name,
+      DateTime createdAt,
+      dynamic archived,
+      List<Item> items});
+}
+
+/// @nodoc
+class __$ShoppingListCopyWithImpl<$Res> extends _$ShoppingListCopyWithImpl<$Res>
+    implements _$ShoppingListCopyWith<$Res> {
+  __$ShoppingListCopyWithImpl(
+      _ShoppingList _value, $Res Function(_ShoppingList) _then)
+      : super(_value, (v) => _then(v as _ShoppingList));
+
+  @override
+  _ShoppingList get _value => super._value as _ShoppingList;
+
+  @override
+  $Res call({
+    Object id = freezed,
+    Object name = freezed,
+    Object createdAt = freezed,
+    Object archived = freezed,
+    Object items = freezed,
+  }) {
+    return _then(_ShoppingList(
+      id: id == freezed ? _value.id : id as String,
+      name: name == freezed ? _value.name : name as String,
+      createdAt:
+          createdAt == freezed ? _value.createdAt : createdAt as DateTime,
+      archived: archived == freezed ? _value.archived : archived,
+      items: items == freezed ? _value.items : items as List<Item>,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_ShoppingList implements _ShoppingList {
+  const _$_ShoppingList(
+      {@required this.id,
+      @required this.name,
+      this.createdAt,
+      this.archived = false,
+      this.items = const []})
+      : assert(id != null),
+        assert(name != null),
+        assert(archived != null),
+        assert(items != null);
+
+  @override
+  final String id;
+  @override
+  final String name;
+  @override
+  final DateTime createdAt;
+  @JsonKey(defaultValue: false)
+  @override
+  final dynamic archived;
+  @JsonKey(defaultValue: const [])
+  @override
+  final List<Item> items;
+
+  @override
+  String toString() {
+    return 'ShoppingList(id: $id, name: $name, createdAt: $createdAt, archived: $archived, items: $items)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ShoppingList &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.createdAt, createdAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAt, createdAt)) &&
+            (identical(other.archived, archived) ||
+                const DeepCollectionEquality()
+                    .equals(other.archived, archived)) &&
+            (identical(other.items, items) ||
+                const DeepCollectionEquality().equals(other.items, items)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(createdAt) ^
+      const DeepCollectionEquality().hash(archived) ^
+      const DeepCollectionEquality().hash(items);
+
+  @override
+  _$ShoppingListCopyWith<_ShoppingList> get copyWith =>
+      __$ShoppingListCopyWithImpl<_ShoppingList>(this, _$identity);
+}
+
+abstract class _ShoppingList implements ShoppingList {
+  const factory _ShoppingList(
+      {@required String id,
+      @required String name,
+      DateTime createdAt,
+      dynamic archived,
+      List<Item> items}) = _$_ShoppingList;
+
+  @override
+  String get id;
+  @override
+  String get name;
+  @override
+  DateTime get createdAt;
+  @override
+  dynamic get archived;
+  @override
+  List<Item> get items;
+  @override
+  _$ShoppingListCopyWith<_ShoppingList> get copyWith;
+}
