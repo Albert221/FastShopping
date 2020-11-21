@@ -43,7 +43,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "me.wolszon.fast_shopping"
+        applicationId "me.wolszon.fastshopping"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
