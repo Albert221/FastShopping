@@ -10,6 +10,7 @@ class ItemsScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final expanded = useState(false);
+    final editing = useState(false);
     final title = useState('');
     final doneAt = useState<DateTime>(null);
 
@@ -37,7 +38,12 @@ class ItemsScreen extends HookWidget {
             onTitleChanged: (value) => title.value = value,
             onRemoved: () {},
             expanded: expanded.value,
-            onExpandedChanged: (value) => expanded.value = value,
+            onExpandedChanged: (value) {
+              if (!value) editing.value = false;
+              expanded.value = value;
+            },
+            editing: editing.value,
+            onEditingChanged: (value) => editing.value = value,
           ),
         ],
       ),

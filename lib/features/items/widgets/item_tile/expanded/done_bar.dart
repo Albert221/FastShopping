@@ -17,7 +17,7 @@ class DoneBar extends StatelessWidget {
     final item = ItemTile.of(context).item;
 
     return InkWell(
-      onTap: () => ItemTile.of(context).onExpandedChanged?.call(false),
+      onTap: () => ItemTile.of(context).onExpandedChanged(false),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(17, 0, 16, 0),
         child: Row(

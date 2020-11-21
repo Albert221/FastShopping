@@ -10,7 +10,11 @@ class ContentSpace extends HookWidget {
 
   final TextEditingController titleController;
 
-  void _onItemTileUpdate(BuildContext context, FocusNode focusNode) {
+  void _onItemTileUpdate(
+    BuildContext context, {
+    @required FocusNode focusNode,
+    @required ItemTileData previousItemTile,
+  }) {
     final itemTile = ItemTile.of(context);
 
     // Focus or unfocus title field based on the item tile state
@@ -20,28 +24,36 @@ class ContentSpace extends HookWidget {
       FocusScope.of(context).unfocus();
     }
 
-    // Update the title field value
-    titleController.value = TextEditingValue(
-      text: itemTile.item.title,
-      selection: TextSelection.collapsed(offset: itemTile.item.title.length),
-    );
+    // Update the title field value if the editing state changed so we don't
+    // lose the title that is being composed.
+    if (previousItemTile?.editing != itemTile.editing) {
+      titleController.value = TextEditingValue(
+        text: itemTile.item.title,
+        selection: TextSelection.collapsed(offset: itemTile.item.title.length),
+      );
+    }
   }
 
   void _onEdit(BuildContext context) {
-    ItemTile.of(context).editing = true;
+    ItemTile.of(context).onEditingChanged(true);
   }
 
   void _onTitleSubmit(BuildContext context, String title) {
     ItemTile.of(context)
-      ..editing = false
+      ..onEditingChanged(false)
       ..onTitleChanged?.call(title);
   }
 
   @override
   Widget build(BuildContext context) {
     final focusNode = useFocusNode();
+    final previousItemTile = usePrevious(ItemTile.of(context));
 
-    _onItemTileUpdate(context, focusNode);
+    _onItemTileUpdate(
+      context,
+      focusNode: focusNode,
+      previousItemTile: previousItemTile,
+    );
 
     final editing = ItemTile.of(context).editing;
 

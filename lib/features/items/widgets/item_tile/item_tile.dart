@@ -5,21 +5,28 @@ import 'package:flutter/material.dart';
 
 import 'collapsed_item_tile.dart';
 
-class _ItemTileData extends ChangeNotifier {
-  _ItemTileData({
+class ItemTileData extends ChangeNotifier {
+  ItemTileData({
     @required Item item,
     ValueChanged<bool> onDoneChanged,
     ValueChanged<String> onTitleChanged,
     VoidCallback onRemoved,
-    bool expanded = false,
+    bool expanded,
     @required ValueChanged<bool> onExpandedChanged,
+    bool editing,
+    @required ValueChanged<bool> onEditingChanged,
   })  : _item = item,
         _onDoneChanged = onDoneChanged,
         _onTitleChanged = onTitleChanged,
         _onRemoved = onRemoved,
         _expanded = expanded,
         _onExpandedChanged = onExpandedChanged,
-        _editing = false;
+        _editing = editing,
+        _onEditingChanged = onEditingChanged,
+        assert(
+          !editing || editing && expanded,
+          'expanded must be true if editing is true',
+        );
 
   // Item & events
   Item _item;
@@ -51,13 +58,8 @@ class _ItemTileData extends ChangeNotifier {
   }
 
   // Expanding
-  bool _expanded;
+  final bool _expanded;
   bool get expanded => _expanded;
-  set expanded(bool value) {
-    if (!value) _editing = false;
-    _expanded = value;
-    notifyListeners();
-  }
 
   ValueChanged<bool> _onExpandedChanged;
   ValueChanged<bool> get onExpandedChanged => _onExpandedChanged;
@@ -67,37 +69,44 @@ class _ItemTileData extends ChangeNotifier {
   }
 
   // Local state
-  bool _editing;
+  final bool _editing;
   bool get editing => _editing;
-  set editing(bool value) {
-    _editing = value;
+
+  ValueChanged<bool> _onEditingChanged;
+  ValueChanged<bool> get onEditingChanged => _onEditingChanged;
+  set onEditingChanged(ValueChanged<bool> value) {
+    _onEditingChanged = value;
     notifyListeners();
   }
 }
 
-class ItemTile extends InheritedNotifier<_ItemTileData> {
+class ItemTile extends InheritedNotifier<ItemTileData> {
   ItemTile({
     Key key,
-    Item item,
+    @required Item item,
     ValueChanged<bool> onDoneChanged,
     ValueChanged<String> onTitleChanged,
     VoidCallback onRemoved,
     bool expanded = false,
-    ValueChanged<bool> onExpandedChanged,
+    @required ValueChanged<bool> onExpandedChanged,
+    bool editing = false,
+    @required ValueChanged<bool> onEditingChanged,
   }) : super(
           key: key,
-          notifier: _ItemTileData(
+          notifier: ItemTileData(
             item: item,
             onDoneChanged: onDoneChanged,
             onTitleChanged: onTitleChanged,
             onRemoved: onRemoved,
             expanded: expanded,
             onExpandedChanged: onExpandedChanged,
+            editing: editing,
+            onEditingChanged: onEditingChanged,
           ),
           child: const _ItemTile(),
         );
 
-  static _ItemTileData of(BuildContext context) =>
+  static ItemTileData of(BuildContext context) =>
       context.dependOnInheritedWidgetOfExactType<ItemTile>().notifier;
 }
 
@@ -108,7 +117,7 @@ class _ItemTile extends StatelessWidget {
     final itemTile = ItemTile.of(context);
 
     if (itemTile.editing) {
-      itemTile.editing = false;
+      itemTile.onEditingChanged?.call(false);
       return SynchronousFuture(false);
     } else if (itemTile.expanded) {
       itemTile.onExpandedChanged?.call(false);

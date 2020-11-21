@@ -10,7 +10,7 @@ class ActionsBar extends StatelessWidget {
   final TextEditingController titleController;
 
   void _onEdit(BuildContext context) {
-    ItemTile.of(context).editing = true;
+    ItemTile.of(context).onEditingChanged(true);
   }
 
   @override
@@ -46,12 +46,12 @@ class _EditActions extends StatelessWidget {
   final TextEditingController titleController;
 
   void _onCancel(BuildContext context) {
-    ItemTile.of(context).editing = false;
+    ItemTile.of(context).onEditingChanged(false);
   }
 
   void _onSave(BuildContext context) {
     ItemTile.of(context)
-      ..editing = false
+      ..onEditingChanged(false)
       ..onTitleChanged?.call(titleController.text);
   }
 
