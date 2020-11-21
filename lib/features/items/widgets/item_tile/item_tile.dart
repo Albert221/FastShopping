@@ -1,5 +1,6 @@
 import 'package:fast_shopping/features/items/widgets/item_tile/expanded_item_tile.dart';
 import 'package:fast_shopping/models/item.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'collapsed_item_tile.dart';
@@ -53,6 +54,7 @@ class _ItemTileData extends ChangeNotifier {
   bool _expanded;
   bool get expanded => _expanded;
   set expanded(bool value) {
+    if (!value) _editing = false;
     _expanded = value;
     notifyListeners();
   }
@@ -102,18 +104,35 @@ class ItemTile extends InheritedNotifier<_ItemTileData> {
 class _ItemTile extends StatelessWidget {
   const _ItemTile({Key key}) : super(key: key);
 
+  Future<bool> _onPop(BuildContext context) {
+    final itemTile = ItemTile.of(context);
+
+    if (itemTile.editing) {
+      itemTile.editing = false;
+      return SynchronousFuture(false);
+    } else if (itemTile.expanded) {
+      itemTile.onExpandedChanged?.call(false);
+      return SynchronousFuture(false);
+    }
+
+    return SynchronousFuture(true);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return AnimatedCrossFade(
-      crossFadeState: ItemTile.of(context).expanded
-          ? CrossFadeState.showSecond
-          : CrossFadeState.showFirst,
-      firstCurve: Curves.ease,
-      secondCurve: Curves.ease,
-      sizeCurve: Curves.ease,
-      duration: const Duration(milliseconds: 300),
-      firstChild: const CollapsedItemTile(),
-      secondChild: const ExpandedItemTile(),
+    return WillPopScope(
+      onWillPop: () => _onPop(context),
+      child: AnimatedCrossFade(
+        crossFadeState: ItemTile.of(context).expanded
+            ? CrossFadeState.showSecond
+            : CrossFadeState.showFirst,
+        firstCurve: Curves.ease,
+        secondCurve: Curves.ease,
+        sizeCurve: Curves.ease,
+        duration: const Duration(milliseconds: 300),
+        firstChild: const CollapsedItemTile(),
+        secondChild: const ExpandedItemTile(),
+      ),
     );
   }
 }

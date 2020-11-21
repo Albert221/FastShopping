@@ -27,6 +27,16 @@ class ContentSpace extends HookWidget {
     );
   }
 
+  void _onEdit(BuildContext context) {
+    ItemTile.of(context).editing = true;
+  }
+
+  void _onTitleSubmit(BuildContext context, String title) {
+    ItemTile.of(context)
+      ..editing = false
+      ..onTitleChanged?.call(title);
+  }
+
   @override
   Widget build(BuildContext context) {
     final focusNode = useFocusNode();
@@ -56,7 +66,8 @@ class ContentSpace extends HookWidget {
         readOnly: !editing,
         controller: titleController,
         focusNode: focusNode,
-        // onSubmitted: (_) => _onEditingTitleComplete(),
+        onTap: () => _onEdit(context),
+        onSubmitted: (title) => _onTitleSubmit(context, title),
       ),
     );
   }
