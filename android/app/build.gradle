@@ -43,12 +43,11 @@ android {
     }
 
     defaultConfig {
-        applicationId "me.wolszon.fastshopping"
+        applicationId "me.wolszon.fast_shopping"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
