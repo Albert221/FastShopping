@@ -1,0 +1,1 @@
+Fast Shopping est une application mobile développée dans un souci de simplicité, permettant de disposer d'un ensemble de listes de courses facile à gérer. Sans pubs, elle s'adresse à tous ceux qui veulent une application sans fioriture qui fasse bien son travail. Elle n'est pas limitée aux utilisateurs avertis.

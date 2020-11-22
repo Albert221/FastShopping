@@ -376,6 +376,7 @@ class ArbifyLocalizationsDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales => [
         Locale.fromSubtags(languageCode: 'de'),
         Locale.fromSubtags(languageCode: 'en'),
+        Locale.fromSubtags(languageCode: 'fr'),
         Locale.fromSubtags(languageCode: 'mk'),
         Locale.fromSubtags(languageCode: 'pl'),
         Locale.fromSubtags(languageCode: 'ru'),
@@ -385,6 +386,7 @@ class ArbifyLocalizationsDelegate extends LocalizationsDelegate<S> {
   bool isSupported(Locale locale) => [
         'de',
         'en',
+        'fr',
         'mk',
         'pl',
         'ru',
