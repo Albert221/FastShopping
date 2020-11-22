@@ -1,3 +1,4 @@
+import 'package:fast_shopping/features/items/widgets/item_tile/animated_line_through_text.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -27,16 +28,28 @@ class CollapsedItemTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(4),
             ),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Checkbox(
-                  value: item.doneAt != null,
-                  onChanged: ItemTile.of(context).onDoneChanged,
+                Padding(
+                  padding: const EdgeInsets.only(top: 1),
+                  child: Checkbox(
+                    value: item.doneAt != null,
+                    onChanged: ItemTile.of(context).onDoneChanged,
+                  ),
                 ),
-                Text(
-                  item.title.isNotEmpty
-                      ? item.title
-                      : S.of(context).list_item_no_name,
-                  style: item.title.isEmpty ? _emptyTitleStyle : null,
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 16, 16, 16),
+                    child: AnimatedLineThroughText(
+                      item.title.isNotEmpty
+                          ? item.title
+                          : S.of(context).list_item_no_name,
+                      stroked: item.doneAt != null,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.ease,
+                      style: item.title.isEmpty ? _emptyTitleStyle : null,
+                    ),
+                  ),
                 ),
               ],
             ),
