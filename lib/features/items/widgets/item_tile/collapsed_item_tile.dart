@@ -46,7 +46,7 @@ class CollapsedItemTile extends StatelessWidget {
                           : S.of(context).list_item_no_name,
                       stroked: item.doneAt != null,
                       duration: const Duration(milliseconds: 300),
-                      curve: Curves.ease,
+                      curve: standardEasing,
                       style: item.title.isEmpty ? _emptyTitleStyle : null,
                     ),
                   ),

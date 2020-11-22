@@ -135,9 +135,9 @@ class _ItemTile extends StatelessWidget {
         crossFadeState: ItemTile.of(context).expanded
             ? CrossFadeState.showSecond
             : CrossFadeState.showFirst,
-        firstCurve: Curves.ease,
-        secondCurve: Curves.ease,
-        sizeCurve: Curves.ease,
+        firstCurve: standardEasing,
+        secondCurve: standardEasing,
+        sizeCurve: standardEasing,
         duration: const Duration(milliseconds: 300),
         firstChild: const CollapsedItemTile(),
         secondChild: const ExpandedItemTile(),
