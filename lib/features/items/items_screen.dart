@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'widgets/item_tile/item_tile.dart';
+import 'widgets/items_list.dart';
 
 class ItemsScreen extends HookWidget {
   @override
@@ -23,16 +24,20 @@ class ItemsScreen extends HookWidget {
       ),
       bottomNavigationBar: const ShoppingListBar(),
       //
-      body: ListView(
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        children: [
-          ItemTile(
-            item: Item(
-              id: 'id',
-              title: title.value,
-              shoppingListId: 'shid',
-              doneAt: doneAt.value,
-            ),
+      body: ItemsList(
+        items: [
+          Item(
+            id: '65c083de-2534-49cc-9f61-cbb41aa4894b',
+            title: title.value,
+            shoppingListId: '03bc7af7-23f9-414f-8747-d6a7121def83',
+            doneAt: doneAt.value,
+          ),
+        ],
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        itemBuilder: (item) => Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: ItemTile(
+            item: item,
             onDoneChanged: (done) =>
                 doneAt.value = done ? DateTime.now() : null,
             onTitleChanged: (value) => title.value = value,
@@ -45,7 +50,7 @@ class ItemsScreen extends HookWidget {
             editing: editing.value,
             onEditingChanged: (value) => editing.value = value,
           ),
-        ],
+        ),
       ),
     );
   }
