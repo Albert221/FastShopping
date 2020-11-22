@@ -48,6 +48,7 @@ flutter drive --target=test_driver/app.dart
 - Македонски ([@MatejMecka])
 - Deutsch ([@kojid0], [@divadsn])
 - Русский ([@rikishi0071])
+- French ([@ashledombos])
 
 [google-play-badge]: assets/google-play-badge.png
 [google-play-link]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
@@ -61,3 +62,4 @@ flutter drive --target=test_driver/app.dart
 [@kojid0]: https://github.com/kojid0
 [@divadsn]: https://github.com/divadsn
 [@rikishi0071]: https://github.com/rikishi0071
+[@ashledombos]: https://github.com/ashledombos
