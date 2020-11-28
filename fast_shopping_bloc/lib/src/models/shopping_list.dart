@@ -10,7 +10,7 @@ abstract class ShoppingList with _$ShoppingList {
     @required String id,
     @required String name,
     DateTime createdAt,
-    @Default(false) archived,
+    DateTime archivedAt,
     @Default([]) List<Item> items,
   }) = _ShoppingList;
 }

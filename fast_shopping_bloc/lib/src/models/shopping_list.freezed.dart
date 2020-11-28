@@ -18,13 +18,13 @@ class _$ShoppingListTearOff {
       {@required String id,
       @required String name,
       DateTime createdAt,
-      dynamic archived = false,
+      DateTime archivedAt,
       List<Item> items = const []}) {
     return _ShoppingList(
       id: id,
       name: name,
       createdAt: createdAt,
-      archived: archived,
+      archivedAt: archivedAt,
       items: items,
     );
   }
@@ -39,7 +39,7 @@ mixin _$ShoppingList {
   String get id;
   String get name;
   DateTime get createdAt;
-  dynamic get archived;
+  DateTime get archivedAt;
   List<Item> get items;
 
   $ShoppingListCopyWith<ShoppingList> get copyWith;
@@ -54,7 +54,7 @@ abstract class $ShoppingListCopyWith<$Res> {
       {String id,
       String name,
       DateTime createdAt,
-      dynamic archived,
+      DateTime archivedAt,
       List<Item> items});
 }
 
@@ -71,7 +71,7 @@ class _$ShoppingListCopyWithImpl<$Res> implements $ShoppingListCopyWith<$Res> {
     Object id = freezed,
     Object name = freezed,
     Object createdAt = freezed,
-    Object archived = freezed,
+    Object archivedAt = freezed,
     Object items = freezed,
   }) {
     return _then(_value.copyWith(
@@ -79,7 +79,8 @@ class _$ShoppingListCopyWithImpl<$Res> implements $ShoppingListCopyWith<$Res> {
       name: name == freezed ? _value.name : name as String,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
-      archived: archived == freezed ? _value.archived : archived as dynamic,
+      archivedAt:
+          archivedAt == freezed ? _value.archivedAt : archivedAt as DateTime,
       items: items == freezed ? _value.items : items as List<Item>,
     ));
   }
@@ -96,7 +97,7 @@ abstract class _$ShoppingListCopyWith<$Res>
       {String id,
       String name,
       DateTime createdAt,
-      dynamic archived,
+      DateTime archivedAt,
       List<Item> items});
 }
 
@@ -115,7 +116,7 @@ class __$ShoppingListCopyWithImpl<$Res> extends _$ShoppingListCopyWithImpl<$Res>
     Object id = freezed,
     Object name = freezed,
     Object createdAt = freezed,
-    Object archived = freezed,
+    Object archivedAt = freezed,
     Object items = freezed,
   }) {
     return _then(_ShoppingList(
@@ -123,7 +124,8 @@ class __$ShoppingListCopyWithImpl<$Res> extends _$ShoppingListCopyWithImpl<$Res>
       name: name == freezed ? _value.name : name as String,
       createdAt:
           createdAt == freezed ? _value.createdAt : createdAt as DateTime,
-      archived: archived == freezed ? _value.archived : archived,
+      archivedAt:
+          archivedAt == freezed ? _value.archivedAt : archivedAt as DateTime,
       items: items == freezed ? _value.items : items as List<Item>,
     ));
   }
@@ -135,11 +137,10 @@ class _$_ShoppingList implements _ShoppingList {
       {@required this.id,
       @required this.name,
       this.createdAt,
-      this.archived = false,
+      this.archivedAt,
       this.items = const []})
       : assert(id != null),
         assert(name != null),
-        assert(archived != null),
         assert(items != null);
 
   @override
@@ -148,16 +149,15 @@ class _$_ShoppingList implements _ShoppingList {
   final String name;
   @override
   final DateTime createdAt;
-  @JsonKey(defaultValue: false)
   @override
-  final dynamic archived;
+  final DateTime archivedAt;
   @JsonKey(defaultValue: const [])
   @override
   final List<Item> items;
 
   @override
   String toString() {
-    return 'ShoppingList(id: $id, name: $name, createdAt: $createdAt, archived: $archived, items: $items)';
+    return 'ShoppingList(id: $id, name: $name, createdAt: $createdAt, archivedAt: $archivedAt, items: $items)';
   }
 
   @override
@@ -171,9 +171,9 @@ class _$_ShoppingList implements _ShoppingList {
             (identical(other.createdAt, createdAt) ||
                 const DeepCollectionEquality()
                     .equals(other.createdAt, createdAt)) &&
-            (identical(other.archived, archived) ||
+            (identical(other.archivedAt, archivedAt) ||
                 const DeepCollectionEquality()
-                    .equals(other.archived, archived)) &&
+                    .equals(other.archivedAt, archivedAt)) &&
             (identical(other.items, items) ||
                 const DeepCollectionEquality().equals(other.items, items)));
   }
@@ -184,7 +184,7 @@ class _$_ShoppingList implements _ShoppingList {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(createdAt) ^
-      const DeepCollectionEquality().hash(archived) ^
+      const DeepCollectionEquality().hash(archivedAt) ^
       const DeepCollectionEquality().hash(items);
 
   @override
@@ -197,7 +197,7 @@ abstract class _ShoppingList implements ShoppingList {
       {@required String id,
       @required String name,
       DateTime createdAt,
-      dynamic archived,
+      DateTime archivedAt,
       List<Item> items}) = _$_ShoppingList;
 
   @override
@@ -207,7 +207,7 @@ abstract class _ShoppingList implements ShoppingList {
   @override
   DateTime get createdAt;
   @override
-  dynamic get archived;
+  DateTime get archivedAt;
   @override
   List<Item> get items;
   @override

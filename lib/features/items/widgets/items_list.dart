@@ -1,4 +1,4 @@
-import 'package:fast_shopping/models/item.dart';
+import 'package:fast_shopping_bloc/models.dart';
 import 'package:flutter/material.dart';
 import 'package:list_diff/list_diff.dart';
 

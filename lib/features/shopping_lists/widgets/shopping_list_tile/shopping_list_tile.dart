@@ -1,6 +1,6 @@
 import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/l10n/timeago.dart';
-import 'package:fast_shopping/models/shopping_list.dart';
+import 'package:fast_shopping_bloc/models.dart';
 import 'package:flutter/material.dart';
 
 import 'actions_menu.dart';

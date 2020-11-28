@@ -1,6 +1,6 @@
 import 'package:fast_shopping/features/items/widgets/app_bar.dart';
 import 'package:fast_shopping/features/items/widgets/shopping_list_bar.dart';
-import 'package:fast_shopping/models/item.dart';
+import 'package:fast_shopping_bloc/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
