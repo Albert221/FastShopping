@@ -40,3 +40,40 @@ jobs:
 
       - name: Run tests
         run: flutter test
+
+  test-bloc:
+    name: Test business logic on stable
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: fast_shopping_bloc
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: stable
+
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.FLUTTER_HOME }}/.pub-cache
+          key: ${{ runner.os }}-bloc-pub--${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: ${{ runner.os }}-bloc-pub-
+
+      - name: Download pub dependencies
+        run: flutter pub get
+
+      - name: Run analyzer
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter pub run test
