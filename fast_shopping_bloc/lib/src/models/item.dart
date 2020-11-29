@@ -6,9 +6,7 @@ part 'item.freezed.dart';
 abstract class Item with _$Item {
   const factory Item({
     @required String id,
-    @required String shoppingListId,
     @required String title,
     DateTime doneAt,
-    @Default(false) bool removed,
   }) = _Item;
 }
