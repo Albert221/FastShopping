@@ -39,6 +39,19 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     ));
   }
 
+  void remove(String itemId) {
+    if (state.list == null) {
+      throw Exception(
+        'You cannot remove an item without any shopping list selected.',
+      );
+    }
+
+    _listsCubit.update(state.list.copyWith(
+      items: List.of(state.list.items)
+        ..removeWhere((item) => item.id == itemId),
+    ));
+  }
+
   // ignore: avoid_positional_boolean_parameters
   void setDone(String itemId, bool done) {
     _updateItem(

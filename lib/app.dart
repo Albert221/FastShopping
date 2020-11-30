@@ -5,6 +5,7 @@ import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/l10n/sort_locales.dart';
 import 'package:fast_shopping/theme.dart';
 import 'package:fast_shopping_bloc/data.dart' as data;
+import 'package:fast_shopping_bloc/selected_shopping_list.dart';
 import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +28,12 @@ class FastShoppingApp extends StatelessWidget {
               context.read<data.ShoppingListRepository>(),
               context.read<Clock>(),
             )..load(),
+          ),
+          BlocProvider(
+            create: (context) => SelectedShoppingListCubit(
+              context.read<ShoppingListsCubit>(),
+              context.read<Clock>(),
+            ),
           ),
         ],
         child: MaterialApp(
