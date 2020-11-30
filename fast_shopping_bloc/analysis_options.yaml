@@ -7,6 +7,4 @@ linter:
 
 analyzer:
     exclude:
-        - lib/l10n/messages_*.dart
-        - lib/l10n/l10n.dart
         - lib/**/*.g.dart

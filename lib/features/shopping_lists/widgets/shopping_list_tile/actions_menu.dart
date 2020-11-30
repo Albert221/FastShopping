@@ -42,9 +42,9 @@ class ActionsMenu extends StatelessWidget {
                 PopupMenuItem(
                   value: ShoppingListActions.rename,
                   child: Row(
-                    children: [
-                      const Icon(Icons.edit),
-                      const SizedBox(width: 16),
+                    children: const [
+                      Icon(Icons.edit),
+                      SizedBox(width: 16),
                       Text('Rename'), // todo: i18n
                     ],
                   ),
@@ -53,9 +53,9 @@ class ActionsMenu extends StatelessWidget {
                 PopupMenuItem(
                   value: ShoppingListActions.archive,
                   child: Row(
-                    children: [
-                      const Icon(Icons.archive),
-                      const SizedBox(width: 16),
+                    children: const [
+                      Icon(Icons.archive),
+                      SizedBox(width: 16),
                       Text('Archive'), // todo: i18n
                     ],
                   ),
@@ -64,9 +64,9 @@ class ActionsMenu extends StatelessWidget {
                 PopupMenuItem(
                   value: ShoppingListActions.unarchive,
                   child: Row(
-                    children: [
-                      const Icon(Icons.unarchive),
-                      const SizedBox(width: 16),
+                    children: const [
+                      Icon(Icons.unarchive),
+                      SizedBox(width: 16),
                       Text('Unarchive'), // todo: i18n
                     ],
                   ),
@@ -75,9 +75,9 @@ class ActionsMenu extends StatelessWidget {
                 PopupMenuItem(
                   value: ShoppingListActions.delete,
                   child: Row(
-                    children: [
-                      const Icon(Icons.delete),
-                      const SizedBox(width: 16),
+                    children: const [
+                      Icon(Icons.delete),
+                      SizedBox(width: 16),
                       Text('Delete'), // todo: i18n
                     ],
                   ),

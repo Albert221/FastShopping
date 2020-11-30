@@ -1,69 +1,32 @@
-import 'package:fast_shopping_bloc/models.dart';
+import 'package:clock/clock.dart';
+import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'widgets/shopping_list_tile/shopping_list_tile.dart';
+import 'widgets/new_list/new_list_floating_action_button.dart';
 import 'widgets/shopping_lists_app_bar.dart';
+import 'widgets/tabs/archived_tab.dart';
+import 'widgets/tabs/current_tab.dart';
 
 class ShoppingListsScreen extends HookWidget {
+  const ShoppingListsScreen({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final tabController = useTabController(initialLength: 2);
 
     return Scaffold(
       appBar: ShoppingListsAppBar(tabController: tabController),
+      floatingActionButton: NewListFloatingActionButton(
+        shoppingListsCubit: context.watch<ShoppingListsCubit>(),
+        clock: context.watch<Clock>(),
+      ),
       body: TabBarView(
         controller: tabController,
         children: [
-          ListView(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: ShoppingListTile(
-                  shoppingList: ShoppingList(
-                    id: 'sdfs',
-                    name: 'This is a shopping list',
-                    createdAt: DateTime.now().subtract(const Duration(days: 4)),
-                    items: [],
-                  ),
-                  current: true,
-                  onTap: () {},
-                  onRenameTap: () {},
-                  onArchiveTap: () {},
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: ShoppingListTile(
-                  shoppingList: ShoppingList(
-                    id: 'sdfs',
-                    name: 'This is a shopping list',
-                    createdAt: DateTime.now().subtract(const Duration(days: 4)),
-                    items: [],
-                  ),
-                  onTap: () {},
-                  onRenameTap: () {},
-                  onArchiveTap: () {},
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: ShoppingListTile(
-                  shoppingList: ShoppingList(
-                    id: 'sdfs',
-                    name: '',
-                    createdAt: DateTime.now().subtract(const Duration(days: 4)),
-                    items: [],
-                  ),
-                  onTap: () {},
-                  onRenameTap: () {},
-                  onArchiveTap: () {},
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(),
+          CurrentTab(shoppingListsCubit: context.watch<ShoppingListsCubit>()),
+          ArchivedTab(shoppingListsCubit: context.watch<ShoppingListsCubit>()),
         ],
       ),
     );

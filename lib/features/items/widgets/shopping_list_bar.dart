@@ -11,7 +11,7 @@ class ShoppingListBar extends StatelessWidget {
       notchMargin: 8,
       child: InkWell(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (_) => ShoppingListsScreen(),
+          builder: (_) => const ShoppingListsScreen(),
         )),
         child: Row(
           children: [
