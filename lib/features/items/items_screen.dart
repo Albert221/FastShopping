@@ -29,7 +29,6 @@ class ItemsScreen extends HookWidget {
           Item(
             id: '65c083de-2534-49cc-9f61-cbb41aa4894b',
             title: title.value,
-            shoppingListId: '03bc7af7-23f9-414f-8747-d6a7121def83',
             doneAt: doneAt.value,
           ),
         ],
