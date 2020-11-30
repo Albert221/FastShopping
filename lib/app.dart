@@ -1,4 +1,5 @@
 import 'package:fast_shopping/l10n/l10n.dart';
+import 'package:fast_shopping/l10n/sort_locales.dart';
 import 'package:fast_shopping/screens/screens.dart';
 import 'package:fast_shopping/store/store.dart';
 import 'package:fast_shopping/theme.dart';
@@ -44,7 +45,7 @@ class _FastShoppingAppState extends State<FastShoppingApp> {
         home: MainScreen(),
         theme: FastShoppingTheme.light(),
         locale: widget.screenshottingLocale,
-        supportedLocales: S.delegate.supportedLocales,
+        supportedLocales: S.delegate.supportedLocales.sortLocales,
         localizationsDelegates: const [
           S.delegate,
           GlobalMaterialLocalizations.delegate,
