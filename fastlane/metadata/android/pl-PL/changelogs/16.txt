@@ -1,0 +1,1 @@
+Poprawiono błąd z działaniem aplikacji w złym języku.

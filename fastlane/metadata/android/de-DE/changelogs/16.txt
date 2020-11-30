@@ -1,0 +1,1 @@
+Es wurde ein Fehler behoben, durch den die Anwendung in der falschen Sprache arbeitete.

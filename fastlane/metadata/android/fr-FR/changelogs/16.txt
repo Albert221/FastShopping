@@ -1,0 +1,1 @@
+Correction d'un bug avec l'application fonctionnant dans la mauvaise langue.
