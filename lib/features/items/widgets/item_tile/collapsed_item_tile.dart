@@ -1,11 +1,19 @@
 import 'package:fast_shopping/features/items/widgets/item_tile/animated_line_through_text.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
+import 'package:fast_shopping_bloc/models.dart';
 import 'package:flutter/material.dart';
 
-import 'item_tile.dart';
-
 class CollapsedItemTile extends StatelessWidget {
-  const CollapsedItemTile({Key key}) : super(key: key);
+  const CollapsedItemTile({
+    Key key,
+    @required this.item,
+    this.onDoneChanged,
+    @required this.onExpandedChanged,
+  }) : super(key: key);
+
+  final Item item;
+  final ValueChanged<bool> onDoneChanged;
+  final ValueChanged<bool> onExpandedChanged;
 
   static const _emptyTitleStyle = TextStyle(
     color: Colors.black54,
@@ -14,14 +22,12 @@ class CollapsedItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final item = ItemTile.of(context).item;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Material(
         color: Theme.of(context).colorScheme.surface,
         child: InkWell(
-          onTap: () => ItemTile.of(context).onExpandedChanged?.call(true),
+          onTap: () => onExpandedChanged?.call(true),
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black12),
@@ -34,7 +40,7 @@ class CollapsedItemTile extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 1),
                   child: Checkbox(
                     value: item.doneAt != null,
-                    onChanged: ItemTile.of(context).onDoneChanged,
+                    onChanged: onDoneChanged,
                   ),
                 ),
                 Expanded(

@@ -52,6 +52,7 @@ class ItemsScreen extends StatelessWidget {
                 itemBuilder: (item) => Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: ItemTile(
+                    key: ValueKey(item.id),
                     item: item,
                     onDoneChanged: (done) => context
                         .read<SelectedShoppingListCubit>()
@@ -65,13 +66,15 @@ class ItemsScreen extends StatelessWidget {
                       editing: (itemId) => itemId == item.id,
                       orElse: () => false,
                     ),
-                    onExpandedChanged: (value) => value
-                        ? context
-                            .read<SelectedShoppingListCubit>()
-                            .expandItem(item.id)
-                        : context
-                            .read<SelectedShoppingListCubit>()
-                            .collapseItem(),
+                    onExpandedChanged: (value) {
+                      value
+                          ? context
+                              .read<SelectedShoppingListCubit>()
+                              .expandItem(item.id)
+                          : context
+                              .read<SelectedShoppingListCubit>()
+                              .collapseItem();
+                    },
                     editing: state.itemActionState.maybeWhen(
                       editing: (itemId) => itemId == item.id,
                       orElse: () => false,

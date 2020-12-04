@@ -15,7 +15,7 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   SelectedShoppingListCubit(this._listsCubit, this._clock, this._uuid)
       : super(SelectedShoppingListState(_listsCubit.state.selected)) {
     _listsCubitSubscription = _listsCubit
-        .listen((state) => emit(SelectedShoppingListState(state.selected)));
+        .listen((state) => emit(this.state.copyWith(list: state.selected)));
   }
 
   final ShoppingListsCubit _listsCubit;

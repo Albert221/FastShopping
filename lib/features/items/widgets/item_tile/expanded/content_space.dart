@@ -1,24 +1,32 @@
 import 'package:fast_shopping/l10n/l10n.dart';
+import 'package:fast_shopping_bloc/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import '../item_tile.dart';
-
 class ContentSpace extends HookWidget {
-  const ContentSpace({Key key, @required this.titleController})
-      : super(key: key);
+  const ContentSpace({
+    Key key,
+    @required this.titleController,
+    @required this.item,
+    @required this.editing,
+    @required this.onEditingChanged,
+    this.onTitleChanged,
+  }) : super(key: key);
 
   final TextEditingController titleController;
+
+  final Item item;
+  final bool editing;
+  final ValueChanged<bool> onEditingChanged;
+  final ValueChanged<String> onTitleChanged;
 
   void _onItemTileUpdate(
     BuildContext context, {
     @required FocusNode focusNode,
-    @required ItemTileData previousItemTile,
+    @required bool previousEditing,
   }) {
-    final itemTile = ItemTile.of(context);
-
     // Focus or unfocus title field based on the item tile state
-    if (itemTile.editing) {
+    if (editing) {
       FocusScope.of(context).requestFocus(focusNode);
     } else if (focusNode.hasFocus) {
       FocusScope.of(context).unfocus();
@@ -26,36 +34,33 @@ class ContentSpace extends HookWidget {
 
     // Update the title field value if the editing state changed so we don't
     // lose the title that is being composed.
-    if (previousItemTile?.editing != itemTile.editing) {
+    if (previousEditing != editing) {
       titleController.value = TextEditingValue(
-        text: itemTile.item.title,
-        selection: TextSelection.collapsed(offset: itemTile.item.title.length),
+        text: item.title,
+        selection: TextSelection.collapsed(offset: item.title.length),
       );
     }
   }
 
   void _onEdit(BuildContext context) {
-    ItemTile.of(context).onEditingChanged(true);
+    onEditingChanged(true);
   }
 
   void _onTitleSubmit(BuildContext context, String title) {
-    ItemTile.of(context)
-      ..onEditingChanged(false)
-      ..onTitleChanged?.call(title);
+    onEditingChanged(false);
+    onTitleChanged?.call(title);
   }
 
   @override
   Widget build(BuildContext context) {
     final focusNode = useFocusNode();
-    final previousItemTile = usePrevious(ItemTile.of(context));
+    final previousEditing = usePrevious(editing);
 
     _onItemTileUpdate(
       context,
       focusNode: focusNode,
-      previousItemTile: previousItemTile,
+      previousEditing: previousEditing,
     );
-
-    final editing = ItemTile.of(context).editing;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),

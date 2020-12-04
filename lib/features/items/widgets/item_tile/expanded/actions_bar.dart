@@ -2,16 +2,22 @@ import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/theme.dart';
 import 'package:flutter/material.dart';
 
-import '../item_tile.dart';
-
 class ActionsBar extends StatelessWidget {
-  const ActionsBar({Key key, @required this.titleController}) : super(key: key);
+  const ActionsBar({
+    Key key,
+    @required this.titleController,
+    @required this.editing,
+    this.onTitleChanged,
+    this.onRemoved,
+    @required this.onEditingChanged,
+  }) : super(key: key);
 
   final TextEditingController titleController;
 
-  void _onEdit(BuildContext context) {
-    ItemTile.of(context).onEditingChanged(true);
-  }
+  final bool editing;
+  final ValueChanged<String> onTitleChanged;
+  final VoidCallback onRemoved;
+  final ValueChanged<bool> onEditingChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +27,19 @@ class ActionsBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           TextButton(
-            onPressed: ItemTile.of(context).onRemoved,
+            onPressed: onRemoved,
             child: Text(S.of(context).list_item_remove),
           ).danger,
           const Spacer(),
-          if (ItemTile.of(context).editing)
-            _EditActions(titleController: titleController)
+          if (editing)
+            _EditActions(
+              titleController: titleController,
+              onTitleChanged: onTitleChanged,
+              onEditingChanged: onEditingChanged,
+            )
           else
             TextButton.icon(
-              onPressed: () => _onEdit(context),
+              onPressed: () => onEditingChanged(true),
               icon: const Icon(Icons.edit, size: 16),
               label: Text(S.of(context).list_item_edit),
             ).primary,
@@ -40,19 +50,24 @@ class ActionsBar extends StatelessWidget {
 }
 
 class _EditActions extends StatelessWidget {
-  const _EditActions({Key key, @required this.titleController})
-      : super(key: key);
+  const _EditActions({
+    Key key,
+    @required this.titleController,
+    this.onTitleChanged,
+    @required this.onEditingChanged,
+  }) : super(key: key);
 
   final TextEditingController titleController;
+  final ValueChanged<String> onTitleChanged;
+  final ValueChanged<bool> onEditingChanged;
 
   void _onCancel(BuildContext context) {
-    ItemTile.of(context).onEditingChanged(false);
+    onEditingChanged(false);
   }
 
   void _onSave(BuildContext context) {
-    ItemTile.of(context)
-      ..onEditingChanged(false)
-      ..onTitleChanged?.call(titleController.text);
+    onEditingChanged(false);
+    onTitleChanged?.call(titleController.text);
   }
 
   @override
