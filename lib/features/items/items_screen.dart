@@ -31,13 +31,18 @@ class ItemsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fabShown =
+        context.watch<SelectedShoppingListCubit>().state.list != null;
+
     return Scaffold(
       appBar: const ItemsAppBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _onAddItemTap(context),
-        child: const Icon(Icons.add),
-      ),
+      floatingActionButton: fabShown
+          ? FloatingActionButton(
+              onPressed: () => _onAddItemTap(context),
+              child: const Icon(Icons.add),
+            )
+          : null,
       bottomNavigationBar: const ShoppingListBar(),
       body: BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
         builder: (context, state) => state.list != null
