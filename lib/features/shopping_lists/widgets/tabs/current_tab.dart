@@ -37,6 +37,7 @@ class CurrentTab extends StatelessWidget {
     Scaffold.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(SnackBar(
+        behavior: SnackBarBehavior.floating,
         content: Text(S.of(context).shopping_list_archived_snackbar_message),
       ));
   }

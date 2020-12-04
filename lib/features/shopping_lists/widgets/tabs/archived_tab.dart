@@ -18,6 +18,7 @@ class ArchivedTab extends StatelessWidget {
     Scaffold.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(SnackBar(
+        behavior: SnackBarBehavior.floating,
         content: Text(S.of(context).shopping_list_unarchived_snackbar_message),
       ));
   }
@@ -28,6 +29,7 @@ class ArchivedTab extends StatelessWidget {
     Scaffold.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(SnackBar(
+        behavior: SnackBarBehavior.floating,
         content: Text(S.of(context).shopping_list_unarchived_snackbar_message),
       ));
   }
