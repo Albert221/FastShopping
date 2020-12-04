@@ -24,6 +24,8 @@ class ShoppingListsScreen extends HookWidget {
 
     final listId = context.read<ShoppingListsCubit>().addList(name);
     context.read<ShoppingListsCubit>().select(listId);
+
+    Navigator.of(context).pop();
   }
 
   @override
