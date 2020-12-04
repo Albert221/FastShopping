@@ -1,8 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:fast_shopping_bloc/src/bloc/selected_shopping_list_cubit.dart';
 import 'package:fast_shopping_bloc/src/bloc/shopping_lists_cubit.dart';
+import 'package:fast_shopping_bloc/src/models/item.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
+import 'package:uuid/uuid.dart';
 
 import '../clock.dart';
 import '../fixtures.dart';
@@ -11,6 +13,7 @@ import '../mocks.dart';
 void main() {
   group('SelectedShoppingListCubit', () {
     ShoppingListsCubit shoppingListsCubit;
+    Uuid uuid;
     SelectedShoppingListCubit cubit;
 
     setUp(() {
@@ -23,7 +26,9 @@ void main() {
       );
       whenListen<ShoppingListsState>(shoppingListsCubit, const Stream.empty());
 
-      cubit = SelectedShoppingListCubit(shoppingListsCubit, clock);
+      uuid = MockUuid();
+
+      cubit = SelectedShoppingListCubit(shoppingListsCubit, clock, uuid);
     });
     tearDown(() => cubit.close());
 
@@ -51,7 +56,7 @@ void main() {
           ]),
         );
 
-        return SelectedShoppingListCubit(shoppingListsCubit, clock);
+        return SelectedShoppingListCubit(shoppingListsCubit, clock, uuid);
       },
       expect: [
         const SelectedShoppingListState(null),
@@ -62,12 +67,20 @@ void main() {
 
     blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
       'adds an item to the shopping list correctly',
-      build: () => cubit,
-      act: (cubit) => cubit.add(orphanItem1),
+      build: () {
+        when(uuid.v4()).thenReturn('some id');
+        return cubit;
+      },
+      act: (cubit) => cubit.addItem('Title'),
       verify: (cubit) {
         verify(
           shoppingListsCubit.update(shoppingList1.copyWith(
-            items: [item1, item2, item3, orphanItem1],
+            items: [
+              item1,
+              item2,
+              item3,
+              const Item(id: 'some id', title: 'Title'),
+            ],
           )),
         ).called(1);
       },
@@ -77,7 +90,7 @@ void main() {
       'fails adding an item to the shopping list without one selected',
       build: () => cubit,
       seed: const SelectedShoppingListState(null),
-      act: (cubit) => cubit.add(item1),
+      act: (cubit) => cubit.addItem('some id'),
       errors: [isA<Exception>()],
     );
 

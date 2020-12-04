@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:clock/clock.dart';
 import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 import '../models/item.dart';
 import '../models/shopping_list.dart';
@@ -11,7 +12,7 @@ import '../models/shopping_list.dart';
 part 'selected_shopping_list_cubit.freezed.dart';
 
 class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
-  SelectedShoppingListCubit(this._listsCubit, this._clock)
+  SelectedShoppingListCubit(this._listsCubit, this._clock, this._uuid)
       : super(SelectedShoppingListState(_listsCubit.state.selected)) {
     _listsCubitSubscription = _listsCubit
         .listen((state) => emit(SelectedShoppingListState(state.selected)));
@@ -19,6 +20,7 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
 
   final ShoppingListsCubit _listsCubit;
   final Clock _clock;
+  final Uuid _uuid;
   StreamSubscription _listsCubitSubscription;
 
   @override
@@ -27,7 +29,7 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     return super.close();
   }
 
-  void add(Item item) {
+  void addItem(String title) {
     if (state.list == null) {
       throw Exception(
         'You cannot add an item without any shopping list selected.',
@@ -35,7 +37,11 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     }
 
     _listsCubit.update(state.list.copyWith(
-      items: List.of(state.list.items)..add(item),
+      items: List.of(state.list.items)
+        ..add(Item(
+          id: _uuid.v4(),
+          title: title,
+        )),
     ));
   }
 

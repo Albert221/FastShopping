@@ -2,17 +2,19 @@ import 'package:bloc/bloc.dart';
 import 'package:clock/clock.dart';
 import 'package:fast_shopping_bloc/src/data/shopping_list_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 import '../models/shopping_list.dart';
 
 part 'shopping_lists_cubit.freezed.dart';
 
 class ShoppingListsCubit extends Cubit<ShoppingListsState> {
-  ShoppingListsCubit(this._repository, this._clock)
+  ShoppingListsCubit(this._repository, this._clock, this._uuid)
       : super(ShoppingListsState());
 
   final ShoppingListRepository _repository;
   final Clock _clock;
+  final Uuid _uuid;
 
   @override
   void onChange(Change<ShoppingListsState> change) {
@@ -34,8 +36,19 @@ class ShoppingListsCubit extends Cubit<ShoppingListsState> {
     ));
   }
 
-  void add(ShoppingList list) {
-    emit(state.copyWith(lists: List.of(state.lists)..add(list)));
+  String addList(String name) {
+    final listId = _uuid.v4();
+
+    emit(state.copyWith(
+      lists: List.of(state.lists)
+        ..add(ShoppingList(
+          id: listId,
+          createdAt: _clock.now(),
+          name: name,
+        )),
+    ));
+
+    return listId;
   }
 
   void update(ShoppingList list) {

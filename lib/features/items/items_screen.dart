@@ -3,7 +3,6 @@ import 'package:fast_shopping_bloc/models.dart';
 import 'package:fast_shopping_bloc/selected_shopping_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:uuid/uuid.dart';
 
 import 'widgets/add_item_dialog.dart';
 import 'widgets/app_bar.dart';
@@ -21,12 +20,7 @@ class ItemsScreen extends StatelessWidget {
 
     if (title == null) return;
 
-    context.read<SelectedShoppingListCubit>().add(
-          Item(
-            id: Uuid().v4(),
-            title: title,
-          ),
-        );
+    context.read<SelectedShoppingListCubit>().addItem(title);
   }
 
   void _onRemoveTap(BuildContext context, Item item) {

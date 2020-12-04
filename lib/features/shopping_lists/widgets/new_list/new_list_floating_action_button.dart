@@ -26,15 +26,8 @@ class NewListFloatingActionButton extends StatelessWidget {
 
     if (name == null) return;
 
-    final shoppingList = ShoppingList(
-      id: Uuid().v4(),
-      createdAt: clock.now(),
-      name: name,
-    );
-
-    shoppingListsCubit
-      ..add(shoppingList)
-      ..select(shoppingList.id);
+    final listId = shoppingListsCubit.addList(name);
+    shoppingListsCubit.select(listId);
   }
 
   @override

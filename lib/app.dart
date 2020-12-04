@@ -10,16 +10,18 @@ import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:uuid/uuid.dart';
 
 class FastShoppingApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
+        RepositoryProvider<Clock>.value(value: const Clock()),
+        RepositoryProvider<Uuid>.value(value: Uuid()),
         RepositoryProvider<data.ShoppingListRepository>.value(
           value: ShoppingListRepository(),
         ),
-        RepositoryProvider<Clock>.value(value: const Clock()),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -27,12 +29,14 @@ class FastShoppingApp extends StatelessWidget {
             create: (context) => ShoppingListsCubit(
               context.read<data.ShoppingListRepository>(),
               context.read<Clock>(),
+              context.read<Uuid>(),
             )..load(),
           ),
           BlocProvider(
             create: (context) => SelectedShoppingListCubit(
               context.read<ShoppingListsCubit>(),
               context.read<Clock>(),
+              context.read<Uuid>(),
             ),
           ),
         ],

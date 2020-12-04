@@ -1,8 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:fast_shopping_bloc/src/bloc/shopping_lists_cubit.dart';
 import 'package:fast_shopping_bloc/src/data/shopping_list_repository.dart';
+import 'package:fast_shopping_bloc/src/models/shopping_list.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
+import 'package:uuid/uuid.dart';
 
 import '../clock.dart';
 import '../fixtures.dart';
@@ -11,10 +13,12 @@ import '../mocks.dart';
 void main() {
   group('ShoppingListsCubit', () {
     ShoppingListRepository repository;
+    Uuid uuid;
     ShoppingListsCubit cubit;
     setUp(() {
       repository = MockShoppingListRepository();
-      cubit = ShoppingListsCubit(repository, clock);
+      uuid = MockUuid();
+      cubit = ShoppingListsCubit(repository, clock, uuid);
     });
     tearDown(() => cubit.close());
 
@@ -53,10 +57,19 @@ void main() {
 
     blocTest<ShoppingListsCubit, ShoppingListsState>(
       'adds a shopping list correctly',
-      build: () => cubit,
-      act: (cubit) => cubit.add(shoppingList1),
+      build: () {
+        when(uuid.v4()).thenReturn('some id');
+        return cubit;
+      },
+      act: (cubit) => cubit.addList('Nice list'),
       expect: [
-        ShoppingListsState(lists: [shoppingList1]),
+        ShoppingListsState(lists: [
+          ShoppingList(
+            id: 'some id',
+            name: 'Nice list',
+            createdAt: clock.now(),
+          ),
+        ]),
       ],
     );
 
