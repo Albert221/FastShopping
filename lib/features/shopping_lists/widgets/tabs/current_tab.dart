@@ -5,6 +5,7 @@ import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:flutter/material.dart';
 
 import '../../rename_list_dialog.dart';
+import '../no_current_lists_placeholder.dart';
 import '../shopping_list_tile/shopping_list_tile.dart';
 import 'shopping_lists_tab.dart';
 
@@ -44,15 +45,17 @@ class CurrentTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShoppingListsTab(
-      shoppingLists: shoppingListsCubit.state.current,
-      itemBuilder: (list) => ShoppingListTile(
-        shoppingList: list,
-        current: shoppingListsCubit.state.selectedId == list.id,
-        onTap: () => _onListTap(context, list),
-        onRenameTap: () => _onRenameTap(context, list),
-        onArchiveTap: () => _onArchive(context, list),
-      ),
-    );
+    return shoppingListsCubit.state.current.isNotEmpty
+        ? ShoppingListsTab(
+            shoppingLists: shoppingListsCubit.state.current,
+            itemBuilder: (list) => ShoppingListTile(
+              shoppingList: list,
+              current: shoppingListsCubit.state.selectedId == list.id,
+              onTap: () => _onListTap(context, list),
+              onRenameTap: () => _onRenameTap(context, list),
+              onArchiveTap: () => _onArchive(context, list),
+            ),
+          )
+        : const CurrentTabPlaceholder();
   }
 }

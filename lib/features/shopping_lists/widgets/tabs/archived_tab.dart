@@ -5,6 +5,7 @@ import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:flutter/material.dart';
 
 import '../../delete_list_dialog.dart';
+import '../no_archived_lists_placeholder.dart';
 import '../shopping_list_tile/shopping_list_tile.dart';
 import 'shopping_lists_tab.dart';
 
@@ -39,15 +40,17 @@ class ArchivedTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ShoppingListsTab(
-      shoppingLists: shoppingListsCubit.state.archived,
-      itemBuilder: (list) => ShoppingListTile(
-        shoppingList: list,
-        current: shoppingListsCubit.state.selectedId == list.id,
-        onUnarchiveTap: () => _onUnarchive(context, list),
-        // TODO(Albert221): Add confirmation dialog
-        onDeleteTap: () => _onDelete(context, list),
-      ),
-    );
+    return shoppingListsCubit.state.archived.isNotEmpty
+        ? ShoppingListsTab(
+            shoppingLists: shoppingListsCubit.state.archived,
+            itemBuilder: (list) => ShoppingListTile(
+              shoppingList: list,
+              current: shoppingListsCubit.state.selectedId == list.id,
+              onUnarchiveTap: () => _onUnarchive(context, list),
+              // TODO(Albert221): Add confirmation dialog
+              onDeleteTap: () => _onDelete(context, list),
+            ),
+          )
+        : const NoArchivedListsPlaceholder();
   }
 }
