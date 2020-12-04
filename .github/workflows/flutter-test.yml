@@ -39,7 +39,10 @@ jobs:
         run: flutter analyze
 
       - name: Run tests
-        run: flutter test
+        run: flutter test --coverage
+        
+      - name: Upload code coverage to Codecov
+        uses: codecov/codecov-action@v1
 
   test-bloc:
     name: Test business logic on stable
@@ -76,4 +79,7 @@ jobs:
         run: flutter analyze
 
       - name: Run tests
-        run: flutter pub run test
+        run: flutter pub run test_coverage --no-badge --print-test-output
+        
+      - name: Upload code coverage to Codecov
+        uses: codecov/codecov-action@v1
