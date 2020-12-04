@@ -8,6 +8,8 @@ import 'add_item_dialog.dart';
 import 'widgets/app_bar.dart';
 import 'widgets/item_tile/item_tile.dart';
 import 'widgets/items_list.dart';
+import 'widgets/no_items_placeholder.dart';
+import 'widgets/no_list_selected_placeholder.dart';
 import 'widgets/shopping_list_bar.dart';
 
 class ItemsScreen extends StatelessWidget {
@@ -35,6 +37,7 @@ class ItemsScreen extends StatelessWidget {
         context.watch<SelectedShoppingListCubit>().state.list != null;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: const ItemsAppBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: fabShown
@@ -48,51 +51,53 @@ class ItemsScreen extends StatelessWidget {
         builder: (context, state) => ShoppingListBar(shoppingList: state.list),
       ),
       body: BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
-        builder: (context, state) => state.list != null
-            ? ItemsList(
-                items: state.list.items,
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                itemBuilder: (item) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: ItemTile(
-                    key: ValueKey(item.id),
-                    item: item,
-                    onDoneChanged: (done) => context
-                        .read<SelectedShoppingListCubit>()
-                        .setDone(item.id, done),
-                    onTitleChanged: (value) => context
-                        .read<SelectedShoppingListCubit>()
-                        .setTitle(item.id, value),
-                    onRemoved: () => _onRemoveTap(context, item),
-                    expanded: state.itemActionState.maybeWhen(
-                      expanded: (itemId) => itemId == item.id,
-                      editing: (itemId) => itemId == item.id,
-                      orElse: () => false,
-                    ),
-                    onExpandedChanged: (value) {
-                      value
-                          ? context
-                              .read<SelectedShoppingListCubit>()
-                              .expandItem(item.id)
-                          : context
-                              .read<SelectedShoppingListCubit>()
-                              .collapseItem();
-                    },
-                    editing: state.itemActionState.maybeWhen(
-                      editing: (itemId) => itemId == item.id,
-                      orElse: () => false,
-                    ),
-                    onEditingChanged: (value) => value
-                        ? context
-                            .read<SelectedShoppingListCubit>()
-                            .startEditing()
-                        : context
-                            .read<SelectedShoppingListCubit>()
-                            .stopEditing(),
-                  ),
+        builder: (context, state) {
+          if (state.list == null) {
+            return const NoListSelectedPlaceholder();
+          } else if (state.list.items.isEmpty) {
+            return const NoItemsPlaceholder();
+          }
+
+          return ItemsList(
+            items: state.list.items,
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            itemBuilder: (item) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: ItemTile(
+                key: ValueKey(item.id),
+                item: item,
+                onDoneChanged: (done) => context
+                    .read<SelectedShoppingListCubit>()
+                    .setDone(item.id, done),
+                onTitleChanged: (value) => context
+                    .read<SelectedShoppingListCubit>()
+                    .setTitle(item.id, value),
+                onRemoved: () => _onRemoveTap(context, item),
+                expanded: state.itemActionState.maybeWhen(
+                  expanded: (itemId) => itemId == item.id,
+                  editing: (itemId) => itemId == item.id,
+                  orElse: () => false,
                 ),
-              )
-            : const SizedBox(),
+                onExpandedChanged: (value) {
+                  value
+                      ? context
+                          .read<SelectedShoppingListCubit>()
+                          .expandItem(item.id)
+                      : context
+                          .read<SelectedShoppingListCubit>()
+                          .collapseItem();
+                },
+                editing: state.itemActionState.maybeWhen(
+                  editing: (itemId) => itemId == item.id,
+                  orElse: () => false,
+                ),
+                onEditingChanged: (value) => value
+                    ? context.read<SelectedShoppingListCubit>().startEditing()
+                    : context.read<SelectedShoppingListCubit>().stopEditing(),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
