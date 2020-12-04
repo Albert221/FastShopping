@@ -43,7 +43,10 @@ class ItemsScreen extends StatelessWidget {
               child: const Icon(Icons.add),
             )
           : null,
-      bottomNavigationBar: const ShoppingListBar(),
+      bottomNavigationBar:
+          BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
+        builder: (context, state) => ShoppingListBar(shoppingList: state.list),
+      ),
       body: BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
         builder: (context, state) => state.list != null
             ? ItemsList(
