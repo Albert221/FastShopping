@@ -15,13 +15,17 @@ class ShoppingListsScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final tabController = useTabController(initialLength: 2);
+    final fabShown = useListenable(tabController.animation).value < 0.5;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: ShoppingListsAppBar(tabController: tabController),
-      floatingActionButton: NewListFloatingActionButton(
-        shoppingListsCubit: context.watch<ShoppingListsCubit>(),
-        clock: context.watch<Clock>(),
-      ),
+      floatingActionButton: fabShown
+          ? NewListFloatingActionButton(
+              shoppingListsCubit: context.watch<ShoppingListsCubit>(),
+              clock: context.watch<Clock>(),
+            )
+          : null,
       body: TabBarView(
         controller: tabController,
         children: [
