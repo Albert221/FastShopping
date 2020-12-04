@@ -8,7 +8,7 @@ class ShoppingListsTabBar extends StatelessWidget
       : super(key: key);
 
   // _kTextAndIconTabHeight + indicatorHeight
-  static const height = 78.0 + 3;
+  static const height = 72.0 + 3;
 
   final TabController controller;
 

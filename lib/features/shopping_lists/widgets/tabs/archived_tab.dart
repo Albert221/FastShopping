@@ -1,3 +1,5 @@
+import 'package:fast_shopping/l10n/l10n.dart';
+import 'package:fast_shopping_bloc/models.dart';
 import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,26 @@ class ArchivedTab extends StatelessWidget {
 
   final ShoppingListsCubit shoppingListsCubit;
 
+  void _onUnarchive(BuildContext context, ShoppingList list) {
+    shoppingListsCubit.unarchive(list.id);
+
+    Scaffold.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(
+        content: Text(S.of(context).shopping_list_unarchived_snackbar_message),
+      ));
+  }
+
+  void _onDelete(BuildContext context, ShoppingList list) {
+    shoppingListsCubit.remove(list.id);
+
+    Scaffold.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(
+        content: Text(S.of(context).shopping_list_unarchived_snackbar_message),
+      ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return ShoppingListsTab(
@@ -18,9 +40,9 @@ class ArchivedTab extends StatelessWidget {
         shoppingList: list,
         current: shoppingListsCubit.state.selectedId == list.id,
         onTap: () => shoppingListsCubit.select(list.id),
-        onUnarchiveTap: () => shoppingListsCubit.unarchive(list.id),
+        onUnarchiveTap: () => _onUnarchive(context, list),
         // TODO(Albert221): Add confirmation dialog
-        onDeleteTap: () => shoppingListsCubit.remove(list.id),
+        onDeleteTap: () => _onDelete(context, list),
       ),
     );
   }

@@ -1,9 +1,10 @@
 import 'package:animations/animations.dart';
-import 'package:fast_shopping/features/shopping_lists/widgets/rename_list_dialog.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping_bloc/models.dart';
 import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:flutter/material.dart';
 
+import '../../rename_list_dialog.dart';
 import '../shopping_list_tile/shopping_list_tile.dart';
 import 'shopping_lists_tab.dart';
 
@@ -30,6 +31,16 @@ class CurrentTab extends StatelessWidget {
     shoppingListsCubit.rename(list.id, newName);
   }
 
+  void _onArchive(BuildContext context, ShoppingList list) {
+    shoppingListsCubit.archive(list.id);
+
+    Scaffold.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(
+        content: Text(S.of(context).shopping_list_archived_snackbar_message),
+      ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return ShoppingListsTab(
@@ -39,7 +50,7 @@ class CurrentTab extends StatelessWidget {
         current: shoppingListsCubit.state.selectedId == list.id,
         onTap: () => _onListTap(context, list),
         onRenameTap: () => _onRenameTap(context, list),
-        onArchiveTap: () => shoppingListsCubit.archive(list.id),
+        onArchiveTap: () => _onArchive(context, list),
       ),
     );
   }

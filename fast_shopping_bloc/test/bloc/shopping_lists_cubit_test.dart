@@ -137,6 +137,23 @@ void main() {
     );
 
     blocTest<ShoppingListsCubit, ShoppingListsState>(
+      'archives a selected shopping list correctly and deselects it',
+      build: () => cubit,
+      seed: ShoppingListsState(
+        selectedId: shoppingList1.id,
+        lists: [shoppingList1],
+      ),
+      act: (cubit) => cubit.archive(shoppingList1.id),
+      expect: [
+        ShoppingListsState(
+          lists: [
+            shoppingList1.copyWith(archivedAt: clock.now()),
+          ],
+        ),
+      ],
+    );
+
+    blocTest<ShoppingListsCubit, ShoppingListsState>(
       'unarchives a shopping list correctly',
       build: () => cubit,
       seed: ShoppingListsState(lists: [

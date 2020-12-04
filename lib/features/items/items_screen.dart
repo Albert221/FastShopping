@@ -4,7 +4,7 @@ import 'package:fast_shopping_bloc/selected_shopping_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'widgets/add_item_dialog.dart';
+import 'add_item_dialog.dart';
 import 'widgets/app_bar.dart';
 import 'widgets/item_tile/item_tile.dart';
 import 'widgets/items_list.dart';
@@ -39,7 +39,6 @@ class ItemsScreen extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       bottomNavigationBar: const ShoppingListBar(),
-      //
       body: BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
         builder: (context, state) => state.list != null
             ? ItemsList(

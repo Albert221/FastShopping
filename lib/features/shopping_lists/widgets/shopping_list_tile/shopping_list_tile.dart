@@ -57,10 +57,7 @@ class ShoppingListTile extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Icon(
-                        Icons.list,
-                        color: Colors.black45,
-                      ),
+                      const Icon(Icons.list, color: Colors.black45),
                       const SizedBox(width: 24),
                       Expanded(
                         child: Text(
@@ -73,6 +70,7 @@ class ShoppingListTile extends StatelessWidget {
                                 fontStyle: shoppingList.name.isEmpty
                                     ? FontStyle.italic
                                     : null,
+                                fontWeight: current ? FontWeight.w500 : null,
                               ),
                         ),
                       ),

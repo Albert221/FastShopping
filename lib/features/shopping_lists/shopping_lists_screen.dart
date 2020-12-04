@@ -1,16 +1,30 @@
-import 'package:clock/clock.dart';
+import 'package:animations/animations.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'widgets/new_list/new_list_floating_action_button.dart';
+import 'new_list_dialog.dart';
 import 'widgets/shopping_lists_app_bar.dart';
 import 'widgets/tabs/archived_tab.dart';
 import 'widgets/tabs/current_tab.dart';
 
 class ShoppingListsScreen extends HookWidget {
   const ShoppingListsScreen({Key key}) : super(key: key);
+
+  Future<void> _onNewListTapped(BuildContext context) async {
+    final name = await showModal<String>(
+      context: context,
+      configuration: const FadeScaleTransitionConfiguration(),
+      builder: (context) => const NewListDialog(),
+    );
+
+    if (name == null) return;
+
+    final listId = context.read<ShoppingListsCubit>().addList(name);
+    context.read<ShoppingListsCubit>().select(listId);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +35,10 @@ class ShoppingListsScreen extends HookWidget {
       resizeToAvoidBottomInset: false,
       appBar: ShoppingListsAppBar(tabController: tabController),
       floatingActionButton: fabShown
-          ? NewListFloatingActionButton(
-              shoppingListsCubit: context.watch<ShoppingListsCubit>(),
-              clock: context.watch<Clock>(),
+          ? FloatingActionButton.extended(
+              onPressed: () => _onNewListTapped(context),
+              icon: const Icon(Icons.add),
+              label: Text(S.of(context).shopping_lists_add_new),
             )
           : null,
       body: TabBarView(

@@ -79,6 +79,7 @@ class ShoppingListsCubit extends Cubit<ShoppingListsState> {
 
   void archive(String id) {
     emit(state.copyWith(
+      selectedId: id == state.selectedId ? null : state.selectedId,
       lists: state.lists
           .map((list) =>
               list.id == id ? list.copyWith(archivedAt: _clock.now()) : list)
