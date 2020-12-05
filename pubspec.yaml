@@ -48,6 +48,7 @@ flutter:
     - assets/logo.svg
     - assets/arrow_fab.svg
     - assets/arrow_bottom_app_bar.svg
+    - assets/gone_shopping.svg
     - assets/shopping_bags_woman.svg
 
 arbify:

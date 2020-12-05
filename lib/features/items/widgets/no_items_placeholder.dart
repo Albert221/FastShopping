@@ -9,19 +9,25 @@ class NoItemsPlaceholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Expanded(
           flex: 3,
-          child: Container(
-            padding: const EdgeInsets.only(bottom: 32),
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              S.of(context).empty_list_add_some_items_message,
-              textAlign: TextAlign.center,
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SvgPicture.asset(
+                'assets/gone_shopping.svg',
+                width: 150,
+              ),
+              const SizedBox(height: 32),
+              Text(
+                S.of(context).empty_list_add_some_items_message,
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
         ),
+        const SizedBox(height: 32),
         Expanded(
           flex: 2,
           child: Padding(
