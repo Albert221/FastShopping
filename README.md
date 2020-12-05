@@ -2,6 +2,9 @@
 
 # Fast Shopping
 
+[![Build status][build-status-badge]][build-status-link]
+[![Codecov][codecov-badge]][codecov-link]
+
 [![Get it on Google Play][google-play-badge]][google-play-link]
 [![Get it on F-Droid][fdroid-badge]][fdroid-link]
 
@@ -49,6 +52,11 @@ flutter drive --target=test_driver/app.dart
 - Deutsch ([@kojid0], [@divadsn])
 - Русский ([@rikishi0071])
 - French ([@ashledombos])
+
+[build-status-badge]: https://img.shields.io/github/workflow/status/Albert221/FastShopping/Flutter%20test
+[build-status-link]: https://github.com/Albert221/FastShopping/actions?query=workflow%3A%22Flutter+test%22
+[codecov-badge]: https://img.shields.io/codecov/c/gh/Albert221/FastShopping?logo=codecov
+[codecov-link]: https://codecov.io/gh/Albert221/FastShopping
 
 [google-play-badge]: assets/google-play-badge.png
 [google-play-link]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
