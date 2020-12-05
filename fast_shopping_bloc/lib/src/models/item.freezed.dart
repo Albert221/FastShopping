@@ -14,11 +14,16 @@ class _$ItemTearOff {
   const _$ItemTearOff();
 
 // ignore: unused_element
-  _Item call({@required String id, @required String title, DateTime doneAt}) {
+  _Item call(
+      {@required String id,
+      @required String title,
+      DateTime doneAt,
+      bool removed = false}) {
     return _Item(
       id: id,
       title: title,
       doneAt: doneAt,
+      removed: removed,
     );
   }
 }
@@ -32,6 +37,7 @@ mixin _$Item {
   String get id;
   String get title;
   DateTime get doneAt;
+  bool get removed;
 
   $ItemCopyWith<Item> get copyWith;
 }
@@ -40,7 +46,7 @@ mixin _$Item {
 abstract class $ItemCopyWith<$Res> {
   factory $ItemCopyWith(Item value, $Res Function(Item) then) =
       _$ItemCopyWithImpl<$Res>;
-  $Res call({String id, String title, DateTime doneAt});
+  $Res call({String id, String title, DateTime doneAt, bool removed});
 }
 
 /// @nodoc
@@ -56,11 +62,13 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
     Object id = freezed,
     Object title = freezed,
     Object doneAt = freezed,
+    Object removed = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
       doneAt: doneAt == freezed ? _value.doneAt : doneAt as DateTime,
+      removed: removed == freezed ? _value.removed : removed as bool,
     ));
   }
 }
@@ -70,7 +78,7 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
   factory _$ItemCopyWith(_Item value, $Res Function(_Item) then) =
       __$ItemCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String title, DateTime doneAt});
+  $Res call({String id, String title, DateTime doneAt, bool removed});
 }
 
 /// @nodoc
@@ -87,20 +95,27 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
     Object id = freezed,
     Object title = freezed,
     Object doneAt = freezed,
+    Object removed = freezed,
   }) {
     return _then(_Item(
       id: id == freezed ? _value.id : id as String,
       title: title == freezed ? _value.title : title as String,
       doneAt: doneAt == freezed ? _value.doneAt : doneAt as DateTime,
+      removed: removed == freezed ? _value.removed : removed as bool,
     ));
   }
 }
 
 /// @nodoc
 class _$_Item implements _Item {
-  const _$_Item({@required this.id, @required this.title, this.doneAt})
+  const _$_Item(
+      {@required this.id,
+      @required this.title,
+      this.doneAt,
+      this.removed = false})
       : assert(id != null),
-        assert(title != null);
+        assert(title != null),
+        assert(removed != null);
 
   @override
   final String id;
@@ -108,10 +123,13 @@ class _$_Item implements _Item {
   final String title;
   @override
   final DateTime doneAt;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool removed;
 
   @override
   String toString() {
-    return 'Item(id: $id, title: $title, doneAt: $doneAt)';
+    return 'Item(id: $id, title: $title, doneAt: $doneAt, removed: $removed)';
   }
 
   @override
@@ -123,7 +141,9 @@ class _$_Item implements _Item {
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.doneAt, doneAt) ||
-                const DeepCollectionEquality().equals(other.doneAt, doneAt)));
+                const DeepCollectionEquality().equals(other.doneAt, doneAt)) &&
+            (identical(other.removed, removed) ||
+                const DeepCollectionEquality().equals(other.removed, removed)));
   }
 
   @override
@@ -131,7 +151,8 @@ class _$_Item implements _Item {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(doneAt);
+      const DeepCollectionEquality().hash(doneAt) ^
+      const DeepCollectionEquality().hash(removed);
 
   @override
   _$ItemCopyWith<_Item> get copyWith =>
@@ -140,7 +161,10 @@ class _$_Item implements _Item {
 
 abstract class _Item implements Item {
   const factory _Item(
-      {@required String id, @required String title, DateTime doneAt}) = _$_Item;
+      {@required String id,
+      @required String title,
+      DateTime doneAt,
+      bool removed}) = _$_Item;
 
   @override
   String get id;
@@ -148,6 +172,8 @@ abstract class _Item implements Item {
   String get title;
   @override
   DateTime get doneAt;
+  @override
+  bool get removed;
   @override
   _$ItemCopyWith<_Item> get copyWith;
 }

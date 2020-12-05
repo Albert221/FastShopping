@@ -8,5 +8,6 @@ abstract class Item with _$Item {
     @required String id,
     @required String title,
     DateTime doneAt,
+    @Default(false) bool removed,
   }) = _Item;
 }

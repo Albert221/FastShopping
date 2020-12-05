@@ -95,9 +95,56 @@ void main() {
     );
 
     blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+      'removes an item from the shopping list',
+      build: () => cubit,
+      seed: SelectedShoppingListState(shoppingList1),
+      act: (cubit) => cubit.removeItem(item3.id),
+      verify: (cubit) {
+        verify(
+          shoppingListsCubit.update(shoppingList1.copyWith(
+            items: [item1, item2, item3.copyWith(removed: true)],
+          )),
+        ).called(1);
+      },
+    );
+
+    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+      'fails to remove an item from the shopping list without one selected',
+      build: () => cubit,
+      seed: const SelectedShoppingListState(null),
+      act: (cubit) => cubit.removeItem(item3.id),
+      errors: [isA<Exception>()],
+    );
+
+    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+      'undoes remove an item from the shopping list',
+      build: () => cubit,
+      seed: SelectedShoppingListState(shoppingList1.copyWith(
+        items: [item1, item2.copyWith(removed: true), item3],
+      )),
+      act: (cubit) => cubit.undoRemoveItem(item2.id),
+      verify: (cubit) {
+        verify(
+          shoppingListsCubit.update(shoppingList1.copyWith(
+            items: [item1, item2, item3],
+          )),
+        ).called(1);
+      },
+    );
+
+    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+      'fails to undo remove an item from '
+      'the shopping list without one selected',
+      build: () => cubit,
+      seed: const SelectedShoppingListState(null),
+      act: (cubit) => cubit.undoRemoveItem(item2.id),
+      errors: [isA<Exception>()],
+    );
+
+    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
       'sets an item done correctly',
       build: () => cubit,
-      act: (cubit) => cubit.setDone(item2.id, true),
+      act: (cubit) => cubit.setItemDone(item2.id, true),
       verify: (cubit) {
         verify(
           shoppingListsCubit.update(shoppingList1.copyWith(
@@ -110,7 +157,7 @@ void main() {
     blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
       'sets an item not done correctly',
       build: () => cubit,
-      act: (cubit) => cubit.setDone(item2.id, false),
+      act: (cubit) => cubit.setItemDone(item2.id, false),
       seed: SelectedShoppingListState(shoppingList1.copyWith(
         items: [item1, item2.copyWith(doneAt: clock.now()), item3],
       )),
@@ -126,7 +173,7 @@ void main() {
     blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
       'sets an item title correctly',
       build: () => cubit,
-      act: (cubit) => cubit.setTitle(item2.id, 'New title!'),
+      act: (cubit) => cubit.setItemTitle(item2.id, 'New title!'),
       verify: (cubit) {
         verify(
           shoppingListsCubit.update(shoppingList1.copyWith(
@@ -184,7 +231,7 @@ void main() {
         shoppingList1,
         itemActionState: ItemActionState.expanded(item2.id),
       ),
-      act: (cubit) => cubit.startEditing(),
+      act: (cubit) => cubit.startEditingItem(),
       expect: [
         SelectedShoppingListState(
           shoppingList1,
@@ -196,7 +243,7 @@ void main() {
     blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
       'fails starting editing an item when none are expanded',
       build: () => cubit,
-      act: (cubit) => cubit.startEditing(),
+      act: (cubit) => cubit.startEditingItem(),
       errors: [isA<Exception>()],
     );
 
@@ -207,7 +254,7 @@ void main() {
         shoppingList1,
         itemActionState: ItemActionState.editing(item2.id),
       ),
-      act: (cubit) => cubit.stopEditing(),
+      act: (cubit) => cubit.stopEditingItem(),
       expect: [
         SelectedShoppingListState(
           shoppingList1,
@@ -220,7 +267,7 @@ void main() {
       'fails stopping editing an item when none is being edited correctly',
       build: () => cubit,
       seed: SelectedShoppingListState(shoppingList1),
-      act: (cubit) => cubit.stopEditing(),
+      act: (cubit) => cubit.stopEditingItem(),
       errors: [isA<Exception>()],
     );
   });

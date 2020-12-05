@@ -29,9 +29,19 @@ class ItemsScreen extends StatelessWidget {
   }
 
   void _onRemoveTap(BuildContext context, Item item) {
-    // TODO(Albert221): Show confirmation dialog
+    context.read<SelectedShoppingListCubit>().removeItem(item.id);
 
-    context.read<SelectedShoppingListCubit>().remove(item.id);
+    Scaffold.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(
+        behavior: SnackBarBehavior.floating,
+        content: Text(S.of(context).item_removed_snackbar_message),
+        action: SnackBarAction(
+          label: S.of(context).item_removed_snackbar_undo,
+          onPressed: () =>
+              context.read<SelectedShoppingListCubit>().undoRemoveItem(item.id),
+        ),
+      ));
   }
 
   void _onArchiveTap(BuildContext context, ShoppingList list) {
@@ -76,7 +86,7 @@ class ItemsScreen extends StatelessWidget {
         builder: (context, state) {
           if (state.list == null) {
             return const NoListSelectedPlaceholder();
-          } else if (state.list.items.isEmpty) {
+          } else if (state.list.availableItems.isEmpty) {
             return const NoItemsPlaceholder();
           }
 
@@ -87,7 +97,7 @@ class ItemsScreen extends StatelessWidget {
                 onArchiveTap: () => _onArchiveTap(context, state.list),
               ),
               ItemsList(
-                items: state.list.items,
+                items: state.list.availableItems,
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 itemBuilder: (item) => Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8),
@@ -96,10 +106,10 @@ class ItemsScreen extends StatelessWidget {
                     item: item,
                     onDoneChanged: (done) => context
                         .read<SelectedShoppingListCubit>()
-                        .setDone(item.id, done),
+                        .setItemDone(item.id, done),
                     onTitleChanged: (value) => context
                         .read<SelectedShoppingListCubit>()
-                        .setTitle(item.id, value),
+                        .setItemTitle(item.id, value),
                     onRemoved: () => _onRemoveTap(context, item),
                     expanded: state.itemActionState.maybeWhen(
                       expanded: (itemId) => itemId == item.id,
@@ -122,10 +132,10 @@ class ItemsScreen extends StatelessWidget {
                     onEditingChanged: (value) => value
                         ? context
                             .read<SelectedShoppingListCubit>()
-                            .startEditing()
+                            .startEditingItem()
                         : context
                             .read<SelectedShoppingListCubit>()
-                            .stopEditing(),
+                            .stopEditingItem(),
                   ),
                 ),
               ),

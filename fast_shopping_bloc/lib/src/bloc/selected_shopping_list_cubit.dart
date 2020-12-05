@@ -45,28 +45,23 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     ));
   }
 
-  void remove(String itemId) {
-    if (state.list == null) {
-      throw Exception(
-        'You cannot remove an item without any shopping list selected.',
-      );
-    }
+  void removeItem(String itemId) {
+    _updateItem(itemId, (item) => item.copyWith(removed: true));
+  }
 
-    _listsCubit.update(state.list.copyWith(
-      items: List.of(state.list.items)
-        ..removeWhere((item) => item.id == itemId),
-    ));
+  void undoRemoveItem(String itemId) {
+    _updateItem(itemId, (item) => item.copyWith(removed: false));
   }
 
   // ignore: avoid_positional_boolean_parameters
-  void setDone(String itemId, bool done) {
+  void setItemDone(String itemId, bool done) {
     _updateItem(
       itemId,
       (item) => item.copyWith(doneAt: done ? _clock.now() : null),
     );
   }
 
-  void setTitle(String itemId, String newTitle) {
+  void setItemTitle(String itemId, String newTitle) {
     _updateItem(itemId, (item) => item.copyWith(title: newTitle));
   }
 
@@ -92,7 +87,7 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     emit(state.copyWith(itemActionState: const ItemActionState.none()));
   }
 
-  void startEditing() {
+  void startEditingItem() {
     state.itemActionState.maybeWhen(
       expanded: (itemId) => emit(state.copyWith(
         itemActionState: ItemActionState.editing(itemId),
@@ -103,7 +98,7 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     );
   }
 
-  void stopEditing() {
+  void stopEditingItem() {
     state.itemActionState.maybeWhen(
       editing: (itemId) => emit(state.copyWith(
         itemActionState: ItemActionState.expanded(itemId),

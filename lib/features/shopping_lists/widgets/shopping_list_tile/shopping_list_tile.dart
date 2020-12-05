@@ -85,7 +85,7 @@ class ShoppingListTile extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: S.of(context).shopping_lists_item_elements(
-                                  shoppingList.items.length,
+                                  shoppingList.availableItems.length,
                                 ),
                           ),
                           const TextSpan(text: ' • '),

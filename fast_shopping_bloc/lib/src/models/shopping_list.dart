@@ -16,6 +16,10 @@ abstract class ShoppingList implements _$ShoppingList {
 
   const ShoppingList._();
 
+  List<Item> get availableItems =>
+      items.where((item) => !item.removed).toList();
+
   bool get allItemsDone =>
-      items.isNotEmpty && items.every((item) => item.doneAt != null);
+      availableItems.isNotEmpty &&
+      availableItems.every((item) => item.doneAt != null);
 }
