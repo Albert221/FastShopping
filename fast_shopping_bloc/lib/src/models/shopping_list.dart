@@ -5,7 +5,7 @@ import 'item.dart';
 part 'shopping_list.freezed.dart';
 
 @freezed
-abstract class ShoppingList with _$ShoppingList {
+abstract class ShoppingList implements _$ShoppingList {
   const factory ShoppingList({
     @required String id,
     @required String name,
@@ -13,4 +13,9 @@ abstract class ShoppingList with _$ShoppingList {
     DateTime archivedAt,
     @Default([]) List<Item> items,
   }) = _ShoppingList;
+
+  const ShoppingList._();
+
+  bool get allItemsDone =>
+      items.isNotEmpty && items.every((item) => item.doneAt != null);
 }

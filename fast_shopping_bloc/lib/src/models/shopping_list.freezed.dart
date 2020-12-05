@@ -132,7 +132,7 @@ class __$ShoppingListCopyWithImpl<$Res> extends _$ShoppingListCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$_ShoppingList implements _ShoppingList {
+class _$_ShoppingList extends _ShoppingList {
   const _$_ShoppingList(
       {@required this.id,
       @required this.name,
@@ -141,7 +141,8 @@ class _$_ShoppingList implements _ShoppingList {
       this.items = const []})
       : assert(id != null),
         assert(name != null),
-        assert(items != null);
+        assert(items != null),
+        super._();
 
   @override
   final String id;
@@ -192,7 +193,8 @@ class _$_ShoppingList implements _ShoppingList {
       __$ShoppingListCopyWithImpl<_ShoppingList>(this, _$identity);
 }
 
-abstract class _ShoppingList implements ShoppingList {
+abstract class _ShoppingList extends ShoppingList {
+  const _ShoppingList._() : super._();
   const factory _ShoppingList(
       {@required String id,
       @required String name,

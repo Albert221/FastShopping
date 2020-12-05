@@ -20,7 +20,7 @@ class ItemsList extends StatefulWidget {
 }
 
 class _ItemsListState<T> extends State<ItemsList> {
-  final listKey = GlobalKey<AnimatedListState>();
+  final listKey = GlobalKey<SliverAnimatedListState>();
 
   @override
   void didUpdateWidget(ItemsList oldWidget) {
@@ -58,12 +58,14 @@ class _ItemsListState<T> extends State<ItemsList> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedList(
-      key: listKey,
+    return SliverPadding(
       padding: widget.padding,
-      initialItemCount: widget.items.length,
-      itemBuilder: (context, i, animation) =>
-          _buildItem(context, widget.items[i], animation, true),
+      sliver: SliverAnimatedList(
+        key: listKey,
+        initialItemCount: widget.items.length,
+        itemBuilder: (context, i, animation) =>
+            _buildItem(context, widget.items[i], animation, true),
+      ),
     );
   }
 
