@@ -41,3 +41,5 @@ app.*.symbols
 app.*.map.json
 
 .secret.arbify
+
+ios
