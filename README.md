@@ -40,8 +40,8 @@ Translate the app launcher name too. To do this, create a new folder in `android
 ### Generate screenshots and feature graphics for stores
 
 ```bash
-# Firstly open your Pixel 2 XL emulator and then
-flutter drive --target=test_driver/app.dart
+# Firstly open your Pixel 2 XL emulator with API 28 and then
+flutter drive --target=test_driver/screenshots.dart
 ```
 
 ### Available languages

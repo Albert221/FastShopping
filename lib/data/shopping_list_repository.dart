@@ -26,11 +26,12 @@ class ShoppingListRepository extends data.ShoppingListRepository {
   @override
   Future<List<ShoppingList>> getLists() async {
     final prefs = await _sharedPrefs;
-    final json = List<Map<String, dynamic>>.from(
-      jsonDecode(prefs.getString(_listsKey)) as List,
-    );
+    final json = prefs.getString(_listsKey);
+    if (json == null) return [];
 
-    return json.map((list) => ShoppingList.fromJson(list)).toList();
+    final data = List<Map<String, dynamic>>.from(jsonDecode(json) as List);
+
+    return data.map((list) => ShoppingList.fromJson(list)).toList();
   }
 
   @override

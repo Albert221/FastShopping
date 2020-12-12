@@ -1,6 +1,7 @@
 import 'package:clock/clock.dart';
 import 'package:fast_shopping/features/items/items_screen.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
+import 'package:fast_shopping/l10n/override_locale.dart';
 import 'package:fast_shopping/l10n/sort_locales.dart';
 import 'package:fast_shopping/theme.dart';
 import 'package:fast_shopping_bloc/data.dart';
@@ -49,6 +50,7 @@ class FastShoppingApp extends StatelessWidget {
           theme: FastShoppingTheme.light(),
           home: ItemsScreen(),
           // Localization stuff
+          locale: OverrideLocale.of(context),
           onGenerateTitle: (context) => S.of(context).app_title,
           supportedLocales: S.delegate.supportedLocales.sortLocales,
           localizationsDelegates: const [

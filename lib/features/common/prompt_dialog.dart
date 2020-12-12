@@ -71,6 +71,7 @@ class PromptDialog extends HookWidget {
                 children: [
                   if (cancelText != null)
                     TextButton(
+                      key: const Key('cancel-dialog'),
                       onPressed: () => _onCancel(context),
                       child: Text(cancelText),
                     ),
