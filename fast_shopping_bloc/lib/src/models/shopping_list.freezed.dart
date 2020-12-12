@@ -8,6 +8,9 @@ part of 'shopping_list.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+ShoppingList _$ShoppingListFromJson(Map<String, dynamic> json) {
+  return _ShoppingList.fromJson(json);
+}
 
 /// @nodoc
 class _$ShoppingListTearOff {
@@ -28,6 +31,11 @@ class _$ShoppingListTearOff {
       items: items,
     );
   }
+
+// ignore: unused_element
+  ShoppingList fromJson(Map<String, Object> json) {
+    return ShoppingList.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -42,6 +50,7 @@ mixin _$ShoppingList {
   DateTime get archivedAt;
   List<Item> get items;
 
+  Map<String, dynamic> toJson();
   $ShoppingListCopyWith<ShoppingList> get copyWith;
 }
 
@@ -131,6 +140,8 @@ class __$ShoppingListCopyWithImpl<$Res> extends _$ShoppingListCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_ShoppingList extends _ShoppingList {
   const _$_ShoppingList(
@@ -143,6 +154,9 @@ class _$_ShoppingList extends _ShoppingList {
         assert(name != null),
         assert(items != null),
         super._();
+
+  factory _$_ShoppingList.fromJson(Map<String, dynamic> json) =>
+      _$_$_ShoppingListFromJson(json);
 
   @override
   final String id;
@@ -191,6 +205,11 @@ class _$_ShoppingList extends _ShoppingList {
   @override
   _$ShoppingListCopyWith<_ShoppingList> get copyWith =>
       __$ShoppingListCopyWithImpl<_ShoppingList>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ShoppingListToJson(this);
+  }
 }
 
 abstract class _ShoppingList extends ShoppingList {
@@ -201,6 +220,9 @@ abstract class _ShoppingList extends ShoppingList {
       DateTime createdAt,
       DateTime archivedAt,
       List<Item> items}) = _$_ShoppingList;
+
+  factory _ShoppingList.fromJson(Map<String, dynamic> json) =
+      _$_ShoppingList.fromJson;
 
   @override
   String get id;

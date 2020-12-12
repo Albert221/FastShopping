@@ -8,6 +8,9 @@ part of 'item.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+Item _$ItemFromJson(Map<String, dynamic> json) {
+  return _Item.fromJson(json);
+}
 
 /// @nodoc
 class _$ItemTearOff {
@@ -26,6 +29,11 @@ class _$ItemTearOff {
       removed: removed,
     );
   }
+
+// ignore: unused_element
+  Item fromJson(Map<String, Object> json) {
+    return Item.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -39,6 +47,7 @@ mixin _$Item {
   DateTime get doneAt;
   bool get removed;
 
+  Map<String, dynamic> toJson();
   $ItemCopyWith<Item> get copyWith;
 }
 
@@ -106,6 +115,8 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
   }
 }
 
+@JsonSerializable()
+
 /// @nodoc
 class _$_Item implements _Item {
   const _$_Item(
@@ -116,6 +127,9 @@ class _$_Item implements _Item {
       : assert(id != null),
         assert(title != null),
         assert(removed != null);
+
+  factory _$_Item.fromJson(Map<String, dynamic> json) =>
+      _$_$_ItemFromJson(json);
 
   @override
   final String id;
@@ -157,6 +171,11 @@ class _$_Item implements _Item {
   @override
   _$ItemCopyWith<_Item> get copyWith =>
       __$ItemCopyWithImpl<_Item>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ItemToJson(this);
+  }
 }
 
 abstract class _Item implements Item {
@@ -165,6 +184,8 @@ abstract class _Item implements Item {
       @required String title,
       DateTime doneAt,
       bool removed}) = _$_Item;
+
+  factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
   @override
   String get id;

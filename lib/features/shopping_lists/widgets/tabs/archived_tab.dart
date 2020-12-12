@@ -47,7 +47,6 @@ class ArchivedTab extends StatelessWidget {
               shoppingList: list,
               current: shoppingListsCubit.state.selectedId == list.id,
               onUnarchiveTap: () => _onUnarchive(context, list),
-              // TODO(Albert221): Add confirmation dialog
               onDeleteTap: () => _onDelete(context, list),
             ),
           )

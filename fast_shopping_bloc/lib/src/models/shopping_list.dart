@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'item.dart';
 
 part 'shopping_list.freezed.dart';
+part 'shopping_list.g.dart';
 
 @freezed
 abstract class ShoppingList implements _$ShoppingList {
@@ -15,6 +16,9 @@ abstract class ShoppingList implements _$ShoppingList {
   }) = _ShoppingList;
 
   const ShoppingList._();
+
+  factory ShoppingList.fromJson(Map<String, dynamic> json) =>
+      _$ShoppingListFromJson(json);
 
   List<Item> get availableItems =>
       items.where((item) => !item.removed).toList();

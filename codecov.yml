@@ -1,1 +1,1 @@
-ignore: ['**/*.freezed.dart']
+ignore: ['**/*.freezed.dart', '**/*.g.dart']
