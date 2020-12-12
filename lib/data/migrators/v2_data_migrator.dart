@@ -62,12 +62,12 @@ class V2DataMigrator {
     final data = sharedPrefs.getString(_v2DataKey);
     final json = jsonDecode(data) as Map<String, dynamic>;
 
-    await map(json, repository);
+    await _map(json, repository);
 
     await sharedPrefs.remove(_v2DataKey);
   }
 
-  static Future<void> map(
+  static Future<void> _map(
     Map<String, dynamic> json,
     ShoppingListRepository repository,
   ) async {

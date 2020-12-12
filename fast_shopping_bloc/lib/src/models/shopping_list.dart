@@ -10,7 +10,7 @@ abstract class ShoppingList implements _$ShoppingList {
   const factory ShoppingList({
     @required String id,
     @required String name,
-    DateTime createdAt,
+    @required DateTime createdAt,
     DateTime archivedAt,
     @Default([]) List<Item> items,
   }) = _ShoppingList;
