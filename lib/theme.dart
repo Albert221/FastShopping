@@ -35,7 +35,10 @@ class FastShoppingTheme {
     return theme.copyWith(
       bottomAppBarColor: primary,
       textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(primary: button),
+        style: TextButton.styleFrom(
+          primary: button,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+        ),
       ),
     );
   }
