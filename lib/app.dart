@@ -1,57 +1,65 @@
+import 'package:clock/clock.dart';
+import 'package:fast_shopping/features/items/items_screen.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
+import 'package:fast_shopping/l10n/override_locale.dart';
 import 'package:fast_shopping/l10n/sort_locales.dart';
-import 'package:fast_shopping/screens/screens.dart';
-import 'package:fast_shopping/store/store.dart';
 import 'package:fast_shopping/theme.dart';
-import 'package:fast_shopping/utils/mocked_state_factory.dart';
+import 'package:fast_shopping_bloc/data.dart';
+import 'package:fast_shopping_bloc/selected_shopping_list.dart';
+import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
+import 'package:uuid/uuid.dart';
 
-class FastShoppingApp extends StatefulWidget {
-  const FastShoppingApp({
-    Key key,
-    @required this.store,
-    this.screenshottingLocale,
-  }) : super(key: key);
+class FastShoppingApp extends StatelessWidget {
+  const FastShoppingApp({Key key, @required this.shoppingListRepository})
+      : super(key: key);
 
-  final Store<FastShoppingState> store;
+  final ShoppingListRepository shoppingListRepository;
 
-  /// `screenshottingLocale` is a locale that overrides the system one. When not
-  /// null, fills store with mocked data.
-  final Locale screenshottingLocale;
-
-  @override
-  _FastShoppingAppState createState() => _FastShoppingAppState();
-}
-
-class _FastShoppingAppState extends State<FastShoppingApp> {
   @override
   Widget build(BuildContext context) {
-    return StoreProvider<FastShoppingState>(
-      store: widget.store,
-      child: MaterialApp(
-        key: widget.screenshottingLocale != null ? UniqueKey() : null,
-        debugShowCheckedModeBanner: false,
-        onGenerateTitle: (context) {
-          if (widget.screenshottingLocale != null) {
-            StoreProvider.of<FastShoppingState>(context)
-                .dispatch(LoadedData(getMockedState(context)));
-          }
-
-          return S.of(context).app_title;
-        },
-        home: MainScreen(),
-        theme: FastShoppingTheme.light(),
-        locale: widget.screenshottingLocale,
-        supportedLocales: S.delegate.supportedLocales.sortLocales,
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<Clock>.value(value: const Clock()),
+        RepositoryProvider<Uuid>.value(value: Uuid()),
+        RepositoryProvider<ShoppingListRepository>.value(
+          value: shoppingListRepository,
+        ),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => ShoppingListsCubit(
+              context.read<ShoppingListRepository>(),
+              context.read<Clock>(),
+              context.read<Uuid>(),
+            )..load(),
+          ),
+          BlocProvider(
+            create: (context) => SelectedShoppingListCubit(
+              context.read<ShoppingListsCubit>(),
+              context.read<Clock>(),
+              context.read<Uuid>(),
+            ),
+          ),
         ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: FastShoppingTheme.light(),
+          home: ItemsScreen(),
+          // Localization stuff
+          locale: OverrideLocale.of(context),
+          onGenerateTitle: (context) => S.of(context).app_title,
+          supportedLocales: S.delegate.supportedLocales.sortLocales,
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+        ),
       ),
     );
   }

@@ -1,26 +1,15 @@
 import 'package:fast_shopping/app.dart';
-import 'package:fast_shopping/store/store.dart';
+import 'package:fast_shopping/data/shopping_list_repository.dart';
+import 'package:fast_shopping/data/migrators/v2_data_migrator.dart';
 import 'package:flutter/material.dart';
-import 'package:redux/redux.dart';
-import 'package:redux_thunk/redux_thunk.dart';
 
-void main({Locale screenshottingLocale}) {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final store = _setupStore();
-  runApp(FastShoppingApp(
-    store: store,
-    screenshottingLocale: screenshottingLocale,
-  ));
-}
+  final shoppingListsRepository = ShoppingListRepository();
+  await V2DataMigrator.migrate(shoppingListsRepository);
 
-Store<FastShoppingState> _setupStore() {
-  return Store<FastShoppingState>(
-    rootReducer,
-    middleware: [
-      thunkMiddleware,
-      persisterMiddleware(),
-    ],
-    initialState: FastShoppingState(),
-  )..dispatch(LoadData());
+  runApp(FastShoppingApp(
+    shoppingListRepository: shoppingListsRepository,
+  ));
 }

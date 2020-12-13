@@ -1,0 +1,11 @@
+include: package:lint/analysis_options.yaml
+
+linter:
+    rules:
+        - sort_constructors_first
+        - prefer_single_quotes
+
+analyzer:
+    exclude:
+        - lib/**/*.freezed.dart
+        - lib/**/*.g.dart

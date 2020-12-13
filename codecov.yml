@@ -1,0 +1,1 @@
+ignore: ['**/*.freezed.dart', '**/*.g.dart']
