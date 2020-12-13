@@ -1,3 +1,4 @@
+import 'package:fast_shopping/features/shopping_lists/widgets/shopping_list_tile/shopping_list_tile_details.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/l10n/timeago.dart';
 import 'package:fast_shopping_bloc/models.dart';
@@ -80,29 +81,7 @@ class ShoppingListTile extends StatelessWidget {
                   const SizedBox(height: 4),
                   Padding(
                     padding: const EdgeInsets.only(left: 48),
-                    child: Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: S.of(context).shopping_lists_item_elements(
-                                  shoppingList.availableItems.length,
-                                ),
-                          ),
-                          const TextSpan(text: ' • '),
-                          TextSpan(
-                            text: S.of(context).shopping_lists_item_archived_at(
-                                  shoppingList.createdAt.timeAgo(context),
-                                ),
-                          ),
-                        ],
-                        style: TextStyle(
-                          color: Theme.of(context).textTheme.caption.color,
-                          fontSize: 15,
-                        ),
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                    child: ShoppingListTileDetails(shoppingList: shoppingList),
                   ),
                 ],
               ),
