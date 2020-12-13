@@ -20,8 +20,8 @@ class ShoppingListsCubit extends Cubit<ShoppingListsState> {
   void onChange(Change<ShoppingListsState> change) {
     super.onChange(change);
 
-    _repository.saveSelectedListId(state.selectedId);
-    _repository.saveLists(state.lists);
+    _repository.saveSelectedListId(change.nextState.selectedId);
+    _repository.saveLists(change.nextState.lists);
   }
 
   Future<void> load() async {

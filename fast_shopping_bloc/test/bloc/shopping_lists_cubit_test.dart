@@ -50,8 +50,10 @@ void main() {
         ..emit(ShoppingListsState(lists: []))
         ..emit(ShoppingListsState(lists: [shoppingList1])),
       verify: (cubit) {
-        verify(repository.saveSelectedListId(any)).called(2);
-        verify(repository.saveLists(any)).called(2);
+        verify(repository.saveSelectedListId(null)).called(2);
+
+        verify(repository.saveLists([])).called(1);
+        verify(repository.saveLists([shoppingList1])).called(1);
       },
     );
 
