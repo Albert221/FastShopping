@@ -30,10 +30,10 @@ void main() {
             '''[{"id":"it's id","name":"Groceries","createdAt":"2020-12-12T19:46:00.000Z","archivedAt":null,"items":[]}]''',
       });
 
-      final id = ShoppingListRepository().getLists();
+      final lists = ShoppingListRepository().getLists();
 
       expect(
-        id,
+        lists,
         completion([
           ShoppingList(
             id: "it's id",
@@ -42,6 +42,14 @@ void main() {
           ),
         ]),
       );
+    });
+
+    test('returns empty list when no saved lists', () {
+      SharedPreferences.setMockInitialValues({});
+
+      final lists = ShoppingListRepository().getLists();
+
+      expect(lists, completion(isEmpty));
     });
 
     test('saves lists', () async {
