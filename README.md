@@ -24,11 +24,15 @@ There are many people that don't want to use a voice assistant and find other ap
 
 ```bash
 git clone git@github.com:Albert221/FastShopping.git && cd FastShopping
-flutter packages pub get
-flutter packages pub run build_runner build
-flutter build apk
-# or if you want to build the debug version and run it
+flutter pub get
 flutter run
+```
+
+After you've edited your [freezed][freezed] models:
+
+```bash
+# You may also use `watch` instead of `build`
+flutter pub run build_runner build --delete-conflicting outputs
 ```
 
 ## Translating
@@ -57,6 +61,7 @@ There are current or past translation maintainers in the parentheses next to eac
 [fdroid-link]: https://www.f-droid.org/en/packages/me.wolszon.fastshopping/
 [app-screenshots]: fastlane/metadata/android/en-US/images/featureGraphic.png
 
+[freezed]: https://pub.dev/packages/freezed
 [TRANSLATING.md]: TRANSLATING.md
 
 [@matejmecka]: https://github.com/MatejMecka

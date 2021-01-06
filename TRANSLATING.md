@@ -36,7 +36,7 @@ After you've forked the project, create the directories and files below and fill
         └── title.txt
 ```
 
-Remember after the character limits for each of those:
+Remember about the character limits for each of those:
 
 | App title         | Short description | Full description    |
 |-------------------|-------------------|---------------------|
