@@ -33,24 +33,17 @@ flutter run
 
 ## Translating
 
-If you want to fix translations or add your mother tounge, contact me through email. I'll add you to the [Arbify].
+Please read the [TRANSLATING.md].
 
-Translate the app launcher name too. To do this, create a new folder in `android/app/src/main/res` called `values-<your language>` and put a `strings.xml` file there. For reference, check `android\app\src\main\res\values\strings.xml` file.
+## Available languages
 
-### Generate screenshots and feature graphics for stores
+There are current or past translation maintainers in the parentheses next to each language.
 
-```bash
-# Firstly open your Pixel 2 XL emulator with API 28 and then
-flutter drive --target=test_driver/screenshots.dart
-```
-
-### Available languages
-
-- English
-- Polski
-- Македонски ([@MatejMecka])
-- Deutsch ([@kojid0], [@divadsn])
-- Русский ([@rikishi0071])
+- English (me)
+- Polish (me)
+- Macedonian ([@MatejMecka])
+- German ([@kojid0], [@divadsn])
+- Russian ([@rikishi0071])
 - French ([@ashledombos])
 
 [build-status-badge]: https://img.shields.io/github/workflow/status/Albert221/FastShopping/Flutter%20test
@@ -64,7 +57,7 @@ flutter drive --target=test_driver/screenshots.dart
 [fdroid-link]: https://www.f-droid.org/en/packages/me.wolszon.fastshopping/
 [app-screenshots]: fastlane/metadata/android/en-US/images/featureGraphic.png
 
-[Arbify]: https://github.com/Arbify/Arbify
+[TRANSLATING.md]: TRANSLATING.md
 
 [@matejmecka]: https://github.com/MatejMecka
 [@kojid0]: https://github.com/kojid0
