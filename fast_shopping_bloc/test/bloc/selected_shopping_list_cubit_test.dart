@@ -142,6 +142,20 @@ void main() {
     );
 
     blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+      'moves item correctly to new index',
+      build: () => cubit,
+      seed: SelectedShoppingListState(shoppingList1),
+      act: (cubit) => cubit.moveItem(shoppingList1.items[0].id, 2),
+      verify: (cubit) {
+        verify(
+          shoppingListsCubit.update(shoppingList1.copyWith(
+            items: [item2, item3, item1],
+          )),
+        ).called(1);
+      },
+    );
+
+    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
       'sets an item done correctly',
       build: () => cubit,
       act: (cubit) => cubit.setItemDone(item2.id, true),

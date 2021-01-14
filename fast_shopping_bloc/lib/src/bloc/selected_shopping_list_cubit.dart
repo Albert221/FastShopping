@@ -53,6 +53,17 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     _updateItem(itemId, (item) => item.copyWith(removed: false));
   }
 
+  void moveItem(String itemId, int newIndex) {
+    _assertListSelected();
+
+    final newList = List.of(state.list.items);
+    final oldIndex = newList.indexWhere((item) => item.id == itemId);
+    final item = newList.removeAt(oldIndex);
+    newList.insert(newIndex, item);
+
+    _listsCubit.update(state.list.copyWith(items: newList));
+  }
+
   // ignore: avoid_positional_boolean_parameters
   void setItemDone(String itemId, bool done) {
     _updateItem(
@@ -66,17 +77,21 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   }
 
   void _updateItem(String itemId, Item Function(Item) itemUpdate) {
-    if (state.list == null) {
-      throw Exception(
-        'You cannot update an item without any shopping list selected.',
-      );
-    }
+    _assertListSelected();
 
     _listsCubit.update(state.list.copyWith(
       items: state.list.items
           .map((item) => item.id == itemId ? itemUpdate(item) : item)
           .toList(),
     ));
+  }
+
+  void _assertListSelected() {
+    if (state.list == null) {
+      throw Exception(
+        'You cannot update an item without any shopping list selected.',
+      );
+    }
   }
 
   void expandItem(String itemId) {
