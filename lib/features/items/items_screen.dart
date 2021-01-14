@@ -69,37 +69,45 @@ class ItemsScreen extends StatelessWidget {
       ),
       body: BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
         builder: (context, state) {
+          Widget child;
           if (state.list == null) {
-            return const NoListSelectedPlaceholder();
+            child = const NoListSelectedPlaceholder();
           } else if (state.list.availableItems.isEmpty) {
-            return const NoItemsPlaceholder();
+            child = const NoItemsPlaceholder();
+          } else {
+            child = ImplicitlyAnimatedReorderableList<Item>(
+              areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
+              items: state.list.availableItems,
+              onReorderFinished: (item, from, to, newItems) {
+                // todo
+              },
+              header: ArchiveBanner(
+                visible: state.list.allItemsDone,
+                onArchiveTap: () => _onArchiveTap(context, state.list),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              itemBuilder: (context, itemAnimation, item, index) {
+                return Reorderable(
+                  key: ValueKey(item.id),
+                  builder: (context, dragAnimation, child) =>
+                      SizeFadeTransition(
+                    curve: standardEasing,
+                    animation: itemAnimation,
+                    child: _ItemTile(
+                      item: item,
+                      itemActionState: state.itemActionState,
+                    ),
+                  ),
+                );
+              },
+            );
           }
 
-          return ImplicitlyAnimatedReorderableList<Item>(
-            areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
-            items: state.list.availableItems,
-            onReorderFinished: (item, from, to, newItems) {
-              // todo
-            },
-            shrinkWrap: true,
-            header: ArchiveBanner(
-              visible: state.list.allItemsDone,
-              onArchiveTap: () => _onArchiveTap(context, state.list),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            itemBuilder: (context, itemAnimation, item, index) {
-              return Reorderable(
-                key: ValueKey(item.id),
-                builder: (context, dragAnimation, child) => SizeFadeTransition(
-                  curve: standardEasing,
-                  animation: itemAnimation,
-                  child: _ItemTile(
-                    item: item,
-                    itemActionState: state.itemActionState,
-                  ),
-                ),
-              );
-            },
+          return AnimatedSwitcher(
+            switchInCurve: standardEasing,
+            switchOutCurve: standardEasing,
+            duration: const Duration(milliseconds: 300),
+            child: child,
           );
         },
       ),
@@ -118,7 +126,8 @@ class _ItemTile extends StatelessWidget {
   final ItemActionState itemActionState;
 
   void _onRemoveTap(BuildContext context, Item item) {
-    context.read<SelectedShoppingListCubit>().removeItem(item.id);
+    final selectedShoppingListCubit = context.read<SelectedShoppingListCubit>();
+    selectedShoppingListCubit.removeItem(item.id);
 
     Scaffold.of(context)
       ..hideCurrentSnackBar()
@@ -127,8 +136,7 @@ class _ItemTile extends StatelessWidget {
         content: Text(S.of(context).item_removed_snackbar_message),
         action: SnackBarAction(
           label: S.of(context).item_removed_snackbar_undo,
-          onPressed: () =>
-              context.read<SelectedShoppingListCubit>().undoRemoveItem(item.id),
+          onPressed: () => selectedShoppingListCubit.undoRemoveItem(item.id),
         ),
       ));
   }
