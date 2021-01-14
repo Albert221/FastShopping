@@ -20,7 +20,7 @@ class _$ShoppingListTearOff {
   _ShoppingList call(
       {@required String id,
       @required String name,
-      DateTime createdAt,
+      @required DateTime createdAt,
       DateTime archivedAt,
       List<Item> items = const []}) {
     return _ShoppingList(
@@ -147,11 +147,12 @@ class _$_ShoppingList extends _ShoppingList {
   const _$_ShoppingList(
       {@required this.id,
       @required this.name,
-      this.createdAt,
+      @required this.createdAt,
       this.archivedAt,
       this.items = const []})
       : assert(id != null),
         assert(name != null),
+        assert(createdAt != null),
         assert(items != null),
         super._();
 
@@ -217,7 +218,7 @@ abstract class _ShoppingList extends ShoppingList {
   const factory _ShoppingList(
       {@required String id,
       @required String name,
-      DateTime createdAt,
+      @required DateTime createdAt,
       DateTime archivedAt,
       List<Item> items}) = _$_ShoppingList;
 

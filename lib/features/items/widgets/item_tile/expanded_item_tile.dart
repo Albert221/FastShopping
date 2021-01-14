@@ -41,6 +41,7 @@ class ExpandedItemTile extends HookWidget {
           ),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             DoneBar(
               item: item,

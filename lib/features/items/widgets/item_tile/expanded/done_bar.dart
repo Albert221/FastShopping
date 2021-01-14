@@ -24,6 +24,7 @@ class DoneBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => onExpandedChanged(false),
+      onLongPress: () {}, // don't handle tap on reordering
       child: Padding(
         padding: const EdgeInsets.fromLTRB(17, 0, 16, 0),
         child: Row(

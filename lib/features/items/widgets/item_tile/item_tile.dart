@@ -50,10 +50,13 @@ class ItemTile extends StatelessWidget {
         secondCurve: standardEasing,
         sizeCurve: standardEasing,
         duration: const Duration(milliseconds: 300),
-        firstChild: CollapsedItemTile(
-          item: item,
-          onDoneChanged: onDoneChanged,
-          onExpandedChanged: onExpandedChanged,
+        firstChild: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: CollapsedItemTile(
+            item: item,
+            onDoneChanged: onDoneChanged,
+            onExpandedChanged: onExpandedChanged,
+          ),
         ),
         secondChild: ExpandedItemTile(
           item: item,

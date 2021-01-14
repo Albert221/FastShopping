@@ -126,10 +126,23 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
 }
 
 @freezed
-abstract class ItemActionState with _$ItemActionState {
+abstract class ItemActionState implements _$ItemActionState {
   const factory ItemActionState.none() = ItemActionNone;
   const factory ItemActionState.expanded(String itemId) = ItemActionExpanded;
   const factory ItemActionState.editing(String itemId) = ItemActionEditing;
+
+  const ItemActionState._();
+
+  bool isExpanded(String itemId) => maybeWhen(
+        expanded: (id) => itemId == id,
+        editing: (id) => itemId == id,
+        orElse: () => false,
+      );
+
+  bool isEditing(String itemId) => maybeWhen(
+        editing: (id) => itemId == id,
+        orElse: () => false,
+      );
 }
 
 @freezed

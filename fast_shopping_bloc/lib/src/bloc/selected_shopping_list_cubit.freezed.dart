@@ -104,8 +104,8 @@ class _$ItemActionNoneCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$ItemActionNone implements ItemActionNone {
-  const _$ItemActionNone();
+class _$ItemActionNone extends ItemActionNone {
+  const _$ItemActionNone() : super._();
 
   @override
   String toString() {
@@ -177,7 +177,8 @@ class _$ItemActionNone implements ItemActionNone {
   }
 }
 
-abstract class ItemActionNone implements ItemActionState {
+abstract class ItemActionNone extends ItemActionState {
+  const ItemActionNone._() : super._();
   const factory ItemActionNone() = _$ItemActionNone;
 }
 
@@ -211,8 +212,10 @@ class _$ItemActionExpandedCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$ItemActionExpanded implements ItemActionExpanded {
-  const _$ItemActionExpanded(this.itemId) : assert(itemId != null);
+class _$ItemActionExpanded extends ItemActionExpanded {
+  const _$ItemActionExpanded(this.itemId)
+      : assert(itemId != null),
+        super._();
 
   @override
   final String itemId;
@@ -295,7 +298,8 @@ class _$ItemActionExpanded implements ItemActionExpanded {
   }
 }
 
-abstract class ItemActionExpanded implements ItemActionState {
+abstract class ItemActionExpanded extends ItemActionState {
+  const ItemActionExpanded._() : super._();
   const factory ItemActionExpanded(String itemId) = _$ItemActionExpanded;
 
   String get itemId;
@@ -332,8 +336,10 @@ class _$ItemActionEditingCopyWithImpl<$Res>
 }
 
 /// @nodoc
-class _$ItemActionEditing implements ItemActionEditing {
-  const _$ItemActionEditing(this.itemId) : assert(itemId != null);
+class _$ItemActionEditing extends ItemActionEditing {
+  const _$ItemActionEditing(this.itemId)
+      : assert(itemId != null),
+        super._();
 
   @override
   final String itemId;
@@ -416,7 +422,8 @@ class _$ItemActionEditing implements ItemActionEditing {
   }
 }
 
-abstract class ItemActionEditing implements ItemActionState {
+abstract class ItemActionEditing extends ItemActionState {
+  const ItemActionEditing._() : super._();
   const factory ItemActionEditing(String itemId) = _$ItemActionEditing;
 
   String get itemId;
