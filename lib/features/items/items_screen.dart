@@ -113,6 +113,9 @@ class ItemsScreen extends StatelessWidget {
                                           horizontal: 16),
                                   child: Material(
                                     elevation: elevation,
+                                    borderRadius: expanded
+                                        ? null
+                                        : BorderRadius.circular(4),
                                     color: Colors.transparent,
                                   ),
                                 ),
