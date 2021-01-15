@@ -65,111 +65,118 @@ void main() {
       ],
     );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'adds an item to the shopping list correctly',
-      build: () {
-        when(uuid.v4()).thenReturn('some id');
-        return cubit;
-      },
-      act: (cubit) => cubit.addItem('Title'),
-      verify: (cubit) {
-        verify(
-          shoppingListsCubit.update(shoppingList1.copyWith(
-            items: [
-              item1,
-              item2,
-              item3,
-              const Item(id: 'some id', title: 'Title'),
-            ],
-          )),
-        ).called(1);
-      },
-    );
+    group('adds item to shopping list', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'correctly',
+        build: () {
+          when(uuid.v4()).thenReturn('some id');
+          return cubit;
+        },
+        act: (cubit) => cubit.addItem('Title'),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [
+                item1,
+                item2,
+                item3,
+                const Item(id: 'some id', title: 'Title'),
+              ],
+            )),
+          ).called(1);
+        },
+      );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'fails adding an item to the shopping list without one selected',
-      build: () => cubit,
-      seed: const SelectedShoppingListState(null),
-      act: (cubit) => cubit.addItem('some id'),
-      errors: [isA<Exception>()],
-    );
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'with exception if none is selected',
+        build: () => cubit,
+        seed: const SelectedShoppingListState(null),
+        act: (cubit) => cubit.addItem('some id'),
+        errors: [isA<Exception>()],
+      );
+    });
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'removes an item from the shopping list',
-      build: () => cubit,
-      seed: SelectedShoppingListState(shoppingList1),
-      act: (cubit) => cubit.removeItem(item3.id),
-      verify: (cubit) {
-        verify(
-          shoppingListsCubit.update(shoppingList1.copyWith(
-            items: [item1, item2, item3.copyWith(removed: true)],
-          )),
-        ).called(1);
-      },
-    );
+    group('removes item from shopping list', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'correctly',
+        build: () => cubit,
+        seed: SelectedShoppingListState(shoppingList1),
+        act: (cubit) => cubit.removeItem(item3.id),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [item1, item2, item3.copyWith(removed: true)],
+            )),
+          ).called(1);
+        },
+      );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'fails to remove an item from the shopping list without one selected',
-      build: () => cubit,
-      seed: const SelectedShoppingListState(null),
-      act: (cubit) => cubit.removeItem(item3.id),
-      errors: [isA<Exception>()],
-    );
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'with exception if none is selected',
+        build: () => cubit,
+        seed: const SelectedShoppingListState(null),
+        act: (cubit) => cubit.removeItem(item3.id),
+        errors: [isA<Exception>()],
+      );
+    });
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'undoes remove an item from the shopping list',
-      build: () => cubit,
-      seed: SelectedShoppingListState(shoppingList1.copyWith(
-        items: [item1, item2.copyWith(removed: true), item3],
-      )),
-      act: (cubit) => cubit.undoRemoveItem(item2.id),
-      verify: (cubit) {
-        verify(
-          shoppingListsCubit.update(shoppingList1.copyWith(
-            items: [item1, item2, item3],
-          )),
-        ).called(1);
-      },
-    );
+    group('undoes removing item from shopping list', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'correctly',
+        build: () => cubit,
+        seed: SelectedShoppingListState(shoppingList1.copyWith(
+          items: [item1, item2.copyWith(removed: true), item3],
+        )),
+        act: (cubit) => cubit.undoRemoveItem(item2.id),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [item1, item2, item3],
+            )),
+          ).called(1);
+        },
+      );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'fails to undo remove an item from '
-      'the shopping list without one selected',
-      build: () => cubit,
-      seed: const SelectedShoppingListState(null),
-      act: (cubit) => cubit.undoRemoveItem(item2.id),
-      errors: [isA<Exception>()],
-    );
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'with exception if none is selected',
+        build: () => cubit,
+        seed: const SelectedShoppingListState(null),
+        act: (cubit) => cubit.undoRemoveItem(item2.id),
+        errors: [isA<Exception>()],
+      );
+    });
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'moves item correctly to new index',
-      build: () => cubit,
-      seed: SelectedShoppingListState(shoppingList1),
-      act: (cubit) => cubit.moveItem(0, 2),
-      verify: (cubit) {
-        verify(
-          shoppingListsCubit.update(shoppingList1.copyWith(
-            items: [item2, item3, item1],
-          )),
-        ).called(1);
-      },
-    );
+    group('moves item correctly from old to new index', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'correctly',
+        build: () => cubit,
+        seed: SelectedShoppingListState(shoppingList1),
+        act: (cubit) => cubit.moveItem(0, 2),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [item2, item3, item1],
+            )),
+          ).called(1);
+        },
+      );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'moves item correctly to new index after removed item',
-      build: () => cubit,
-      seed: SelectedShoppingListState(shoppingList1.copyWith(
-        items: [item1, item2, removedItem, item3],
-      )),
-      act: (cubit) => cubit.moveItem(0, 2),
-      verify: (cubit) {
-        verify(
-          shoppingListsCubit.update(shoppingList1.copyWith(
-            items: [item2, removedItem, item3, item1],
-          )),
-        ).called(1);
-      },
-    );
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'with removed items correctly',
+        build: () => cubit,
+        seed: SelectedShoppingListState(shoppingList1.copyWith(
+          items: [item1, item2, removedItem, item3],
+        )),
+        act: (cubit) => cubit.moveItem(0, 2),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [item2, removedItem, item3, item1],
+            )),
+          ).called(1);
+        },
+      );
+    });
 
     blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
       'sets an item done correctly',
@@ -213,33 +220,35 @@ void main() {
       },
     );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'expands item correctly',
-      build: () => cubit,
-      act: (cubit) => cubit.expandItem(item2.id),
-      expect: [
-        SelectedShoppingListState(
-          shoppingList1,
-          itemActionState: ItemActionState.expanded(item2.id),
-        ),
-      ],
-    );
+    group('expands item', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'correctly',
+        build: () => cubit,
+        act: (cubit) => cubit.expandItem(item2.id),
+        expect: [
+          SelectedShoppingListState(
+            shoppingList1,
+            itemActionState: ItemActionState.expanded(item2.id),
+          ),
+        ],
+      );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'expands item while editing correctly',
-      build: () => cubit,
-      seed: SelectedShoppingListState(
-        shoppingList1,
-        itemActionState: ItemActionState.editing(item3.id),
-      ),
-      act: (cubit) => cubit.expandItem(item2.id),
-      expect: [
-        SelectedShoppingListState(
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'while editing correctly',
+        build: () => cubit,
+        seed: SelectedShoppingListState(
           shoppingList1,
-          itemActionState: ItemActionState.expanded(item2.id),
+          itemActionState: ItemActionState.editing(item3.id),
         ),
-      ],
-    );
+        act: (cubit) => cubit.expandItem(item2.id),
+        expect: [
+          SelectedShoppingListState(
+            shoppingList1,
+            itemActionState: ItemActionState.expanded(item2.id),
+          ),
+        ],
+      );
+    });
 
     blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
       'collapses item correctly',
@@ -254,51 +263,95 @@ void main() {
       ],
     );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'starts editing an item correctly',
-      build: () => cubit,
-      seed: SelectedShoppingListState(
-        shoppingList1,
-        itemActionState: ItemActionState.expanded(item2.id),
-      ),
-      act: (cubit) => cubit.startEditingItem(),
-      expect: [
-        SelectedShoppingListState(
-          shoppingList1,
-          itemActionState: ItemActionState.editing(item2.id),
-        ),
-      ],
-    );
-
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'fails starting editing an item when none are expanded',
-      build: () => cubit,
-      act: (cubit) => cubit.startEditingItem(),
-      errors: [isA<Exception>()],
-    );
-
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'stops editing an item correctly',
-      build: () => cubit,
-      seed: SelectedShoppingListState(
-        shoppingList1,
-        itemActionState: ItemActionState.editing(item2.id),
-      ),
-      act: (cubit) => cubit.stopEditingItem(),
-      expect: [
-        SelectedShoppingListState(
+    group('starts editing item', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'correctly',
+        build: () => cubit,
+        seed: SelectedShoppingListState(
           shoppingList1,
           itemActionState: ItemActionState.expanded(item2.id),
         ),
-      ],
-    );
+        act: (cubit) => cubit.startEditingItem(),
+        expect: [
+          SelectedShoppingListState(
+            shoppingList1,
+            itemActionState: ItemActionState.editing(item2.id),
+          ),
+        ],
+      );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'fails stopping editing an item when none is being edited correctly',
-      build: () => cubit,
-      seed: SelectedShoppingListState(shoppingList1),
-      act: (cubit) => cubit.stopEditingItem(),
-      errors: [isA<Exception>()],
-    );
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'with exception when none are expanded',
+        build: () => cubit,
+        act: (cubit) => cubit.startEditingItem(),
+        errors: [isA<Exception>()],
+      );
+    });
+
+    group('stops editing item', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'correctly',
+        build: () => cubit,
+        seed: SelectedShoppingListState(
+          shoppingList1,
+          itemActionState: ItemActionState.editing(item2.id),
+        ),
+        act: (cubit) => cubit.stopEditingItem(),
+        expect: [
+          SelectedShoppingListState(
+            shoppingList1,
+            itemActionState: ItemActionState.expanded(item2.id),
+          ),
+        ],
+      );
+
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'with exception when none are being edited',
+        build: () => cubit,
+        seed: SelectedShoppingListState(shoppingList1),
+        act: (cubit) => cubit.stopEditingItem(),
+        errors: [isA<Exception>()],
+      );
+    });
+  });
+
+  group('ItemActionState', () {
+    group('isExpanded', () {
+      test('returns false for none', () {
+        const state = ItemActionState.none();
+
+        expect(state.isExpanded('id'), false);
+      });
+      test('returns true for expanded item', () {
+        const state = ItemActionState.expanded('id');
+
+        expect(state.isExpanded('id'), true);
+      });
+
+      test('returns true for editing item', () {
+        const state = ItemActionState.editing('id');
+
+        expect(state.isExpanded('id'), true);
+      });
+    });
+
+    group('isEditing', () {
+      test('returns false for none', () {
+        const state = ItemActionState.none();
+
+        expect(state.isEditing('id'), false);
+      });
+      test('returns false for expanded item', () {
+        const state = ItemActionState.expanded('id');
+
+        expect(state.isEditing('id'), false);
+      });
+
+      test('returns true for editing item', () {
+        const state = ItemActionState.editing('id');
+
+        expect(state.isEditing('id'), true);
+      });
+    });
   });
 }
