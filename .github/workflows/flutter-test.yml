@@ -43,6 +43,8 @@ jobs:
         
       - name: Upload code coverage to Codecov
         uses: codecov/codecov-action@v1
+        with:
+          flags: app
 
   test-bloc:
     name: Test business logic on stable
@@ -83,3 +85,5 @@ jobs:
         
       - name: Upload code coverage to Codecov
         uses: codecov/codecov-action@v1
+        with:
+          flags: bloc
