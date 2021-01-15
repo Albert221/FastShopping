@@ -3,7 +3,8 @@
 # Fast Shopping
 
 [![Build status][build-status-badge]][build-status-link]
-[![Codecov][codecov-badge]][codecov-link]
+[![App Codecov][app-codecov-badge]][codecov-link]
+[![Bloc Codecov][bloc-codecov-badge]][codecov-link]
 
 [![Get it on Google Play][google-play-badge]][google-play-link]
 [![Get it on F-Droid][fdroid-badge]][fdroid-link]
@@ -52,7 +53,8 @@ There are current or past translation maintainers in the parentheses next to eac
 
 [build-status-badge]: https://img.shields.io/github/workflow/status/Albert221/FastShopping/Flutter%20test
 [build-status-link]: https://github.com/Albert221/FastShopping/actions?query=workflow%3A%22Flutter+test%22
-[codecov-badge]: https://img.shields.io/codecov/c/gh/Albert221/FastShopping?logo=codecov
+[app-codecov-badge]: https://img.shields.io/codecov/c/gh/Albert221/FastShopping?logo=codecov&flag=app&label=app%20coverage
+[bloc-codecov-badge]: https://img.shields.io/codecov/c/gh/Albert221/FastShopping?logo=codecov&flag=bloc&label=bloc%20coverage
 [codecov-link]: https://codecov.io/gh/Albert221/FastShopping
 
 [google-play-badge]: assets/google-play-badge.png
