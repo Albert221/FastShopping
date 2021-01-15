@@ -26,7 +26,7 @@ There are many people that don't want to use a voice assistant and find other ap
 ```bash
 git clone git@github.com:Albert221/FastShopping.git && cd FastShopping
 flutter pub get
-flutter run
+flutter run --flavor foss # or just launch from VS Code
 ```
 
 After you've edited your [freezed][freezed] models:

@@ -58,7 +58,7 @@ jobs:
           echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> android/key.properties
 
       - name: Build Android App Bundle
-        run: flutter build appbundle
+        run: flutter build appbundle --flavor full
 
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
@@ -84,5 +84,5 @@ jobs:
           SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
         run: |
           bundle exec fastlane supply \
-          --aab build/app/outputs/bundle/release/app-release.aab \
+          --aab build/app/outputs/bundle/fullRelease/app-full-release.aab \
           --track production

@@ -7,7 +7,8 @@
         {
             "name": "Run Fast Shopping",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": ["--flavor", "foss"]
         }
     ]
 }

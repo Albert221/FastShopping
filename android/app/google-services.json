@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1090642900641",
+    "project_id": "fastshopping-6beb9",
+    "storage_bucket": "fastshopping-6beb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090642900641:android:bee6346aadc33508b762e0",
+        "android_client_info": {
+          "package_name": "me.wolszon.fastshopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090642900641-utoqlnsdcqn49cfv6f75mt6dpr4ect33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkSsfCrKZpUmgasTeOg83wrqZzaV79q8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090642900641-utoqlnsdcqn49cfv6f75mt6dpr4ect33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090642900641:android:b9fbd326eb580b7db762e0",
+        "android_client_info": {
+          "package_name": "me.wolszon.fastshopping.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090642900641-utoqlnsdcqn49cfv6f75mt6dpr4ect33.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkSsfCrKZpUmgasTeOg83wrqZzaV79q8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090642900641-utoqlnsdcqn49cfv6f75mt6dpr4ect33.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

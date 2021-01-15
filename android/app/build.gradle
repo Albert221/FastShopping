@@ -8,7 +8,7 @@ if (localPropertiesFile.exists()) {
 
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+    throw new GradleException('Flutter SDK not found. Define location with flutter.sdk in the local.properties file.')
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -31,6 +31,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+// Load proprietary libraries for `full` flavor
+android.productFlavors.each { flavor ->
+    if (getGradle().getStartParameter().getTaskRequests()
+            .toString().toLowerCase().contains('full')) {
+        apply plugin: 'com.google.gms.google-services'
+        apply plugin: 'com.google.firebase.crashlytics'
+    }
+}
+
 android {
     compileSdkVersion 29
 
@@ -43,11 +52,22 @@ android {
     }
 
     defaultConfig {
-        applicationId "me.wolszon.fastshopping"
+        applicationId 'me.wolszon.fastshopping'
         minSdkVersion 16
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+    }
+
+    flavorDimensions 'license'
+    productFlavors {
+        foss {
+            dimension 'license'
+        }
+
+        full {
+            dimension 'license'
+        }
     }
 
     signingConfigs {
@@ -65,7 +85,7 @@ android {
         }
 
         debug {
-            applicationIdSuffix ".debug"
+            applicationIdSuffix '.debug'
             debuggable true
         }
     }
