@@ -30,11 +30,7 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   }
 
   void addItem(String title) {
-    if (state.list == null) {
-      throw Exception(
-        'You cannot add an item without any shopping list selected.',
-      );
-    }
+    _assertListSelected();
 
     _listsCubit.update(state.list.copyWith(
       items: List.of(state.list.items)
@@ -53,13 +49,28 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     _updateItem(itemId, (item) => item.copyWith(removed: false));
   }
 
-  void moveItem(String itemId, int newIndex) {
+  void deleteItemPermanently(String itemId) {
     _assertListSelected();
 
+    _listsCubit.update(state.list.copyWith(
+      items: List.of(state.list.items)
+        ..removeWhere((item) => item.id == itemId),
+    ));
+  }
+
+  /// [oldIndex] and [newIndex] refer to indices
+  /// in the [state.list.availableItems].
+  void moveItem(int oldIndex, int newIndex) {
+    _assertListSelected();
+
+    int translateIndex(int index) {
+      final id = state.list.availableItems[index].id;
+      return state.list.items.indexWhere((item) => item.id == id);
+    }
+
     final newList = List.of(state.list.items);
-    final oldIndex = newList.indexWhere((item) => item.id == itemId);
-    final item = newList.removeAt(oldIndex);
-    newList.insert(newIndex, item);
+    final item = newList.removeAt(translateIndex(oldIndex));
+    newList.insert(translateIndex(newIndex), item);
 
     _listsCubit.update(state.list.copyWith(items: newList));
   }
@@ -89,8 +100,7 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   void _assertListSelected() {
     if (state.list == null) {
       throw Exception(
-        'You cannot update an item without any shopping list selected.',
-      );
+          'You must have any shopping list selected to perform that action.');
     }
   }
 

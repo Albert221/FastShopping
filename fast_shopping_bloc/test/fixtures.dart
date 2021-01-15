@@ -33,6 +33,12 @@ const item3 = Item(
   title: 'Pan',
 );
 
+const removedItem = Item(
+  id: '6457003e-320e-42e6-9d8d-fe929766a083',
+  title: 'Ketchup',
+  removed: true,
+);
+
 const orphanItem1 = Item(
   id: 'ba603f43-fa4a-4196-bbec-f4207c7b30d3',
   title: 'Cheese',

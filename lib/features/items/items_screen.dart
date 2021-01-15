@@ -78,9 +78,8 @@ class ItemsScreen extends StatelessWidget {
             child = ImplicitlyAnimatedReorderableList<Item>(
               areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
               items: state.list.availableItems,
-              onReorderFinished: (item, from, to, newItems) => context
-                  .read<SelectedShoppingListCubit>()
-                  .moveItem(item.id, to),
+              onReorderFinished: (item, from, to, newItems) =>
+                  context.read<SelectedShoppingListCubit>().moveItem(from, to),
               header: ArchiveBanner(
                 visible: state.list.allItemsDone,
                 onArchiveTap: () => _onArchiveTap(context, state.list),
@@ -93,38 +92,9 @@ class ItemsScreen extends StatelessWidget {
                   animation: itemAnimation,
                   child: Handle(
                     delay: const Duration(milliseconds: 500),
-                    child: AnimatedBuilder(
-                      animation: dragAnimation,
-                      builder: (context, child) {
-                        final expanded =
-                            state.itemActionState.isExpanded(item.id);
-                        final elevation =
-                            standardEasing.transform(dragAnimation.value) * 4;
-
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          child: Stack(
-                            children: [
-                              Positioned.fill(
-                                child: Padding(
-                                  padding: expanded
-                                      ? EdgeInsets.zero
-                                      : const EdgeInsets.symmetric(
-                                          horizontal: 16),
-                                  child: Material(
-                                    elevation: elevation,
-                                    borderRadius: expanded
-                                        ? null
-                                        : BorderRadius.circular(4),
-                                    color: Colors.transparent,
-                                  ),
-                                ),
-                              ),
-                              child,
-                            ],
-                          ),
-                        );
-                      },
+                    child: _DraggableTileContainer(
+                      dragAnimation: dragAnimation,
+                      expanded: state.itemActionState.isExpanded(item.id),
                       child: _ItemTile(
                         item: item,
                         itemActionState: state.itemActionState,
@@ -144,6 +114,51 @@ class ItemsScreen extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class _DraggableTileContainer extends StatelessWidget {
+  const _DraggableTileContainer({
+    Key key,
+    @required this.expanded,
+    @required this.child,
+    this.dragAnimation,
+  }) : super(key: key);
+
+  final Animation<double> dragAnimation;
+  final bool expanded;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: dragAnimation,
+      builder: (context, child) {
+        final elevation = standardEasing.transform(dragAnimation.value) * 4;
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Padding(
+                  padding: expanded
+                      ? EdgeInsets.zero
+                      : const EdgeInsets.symmetric(horizontal: 16),
+                  child: Material(
+                    elevation: elevation,
+                    borderRadius: expanded ? null : BorderRadius.circular(4),
+                    color: Colors.transparent,
+                  ),
+                ),
+              ),
+              child,
+            ],
+          ),
+        );
+      },
+      child: child,
     );
   }
 }
