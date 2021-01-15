@@ -21,7 +21,12 @@ class ShoppingListsCubit extends Cubit<ShoppingListsState> {
     super.onChange(change);
 
     _repository.saveSelectedListId(change.nextState.selectedId);
-    _repository.saveLists(change.nextState.lists);
+    _repository.saveLists(change.nextState.lists.map((list) {
+      // Don't save removed items
+      return list.copyWith(
+        items: list.items.where((item) => !item.removed).toList(),
+      );
+    }).toList());
   }
 
   Future<void> load() async {

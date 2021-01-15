@@ -145,11 +145,27 @@ void main() {
       'moves item correctly to new index',
       build: () => cubit,
       seed: SelectedShoppingListState(shoppingList1),
-      act: (cubit) => cubit.moveItem(shoppingList1.items[0].id, 2),
+      act: (cubit) => cubit.moveItem(0, 2),
       verify: (cubit) {
         verify(
           shoppingListsCubit.update(shoppingList1.copyWith(
             items: [item2, item3, item1],
+          )),
+        ).called(1);
+      },
+    );
+
+    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+      'moves item correctly to new index after removed item',
+      build: () => cubit,
+      seed: SelectedShoppingListState(shoppingList1.copyWith(
+        items: [item1, item2, removedItem, item3],
+      )),
+      act: (cubit) => cubit.moveItem(0, 2),
+      verify: (cubit) {
+        verify(
+          shoppingListsCubit.update(shoppingList1.copyWith(
+            items: [item2, removedItem, item3, item1],
           )),
         ).called(1);
       },

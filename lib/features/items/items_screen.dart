@@ -78,28 +78,31 @@ class ItemsScreen extends StatelessWidget {
             child = ImplicitlyAnimatedReorderableList<Item>(
               areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
               items: state.list.availableItems,
-              onReorderFinished: (item, from, to, newItems) {
-                // todo
-              },
+              onReorderFinished: (item, from, to, newItems) =>
+                  context.read<SelectedShoppingListCubit>().moveItem(from, to),
               header: ArchiveBanner(
                 visible: state.list.allItemsDone,
                 onArchiveTap: () => _onArchiveTap(context, state.list),
               ),
               padding: const EdgeInsets.symmetric(vertical: 8),
-              itemBuilder: (context, itemAnimation, item, index) {
-                return Reorderable(
-                  key: ValueKey(item.id),
-                  builder: (context, dragAnimation, child) =>
-                      SizeFadeTransition(
-                    curve: standardEasing,
-                    animation: itemAnimation,
-                    child: _ItemTile(
-                      item: item,
-                      itemActionState: state.itemActionState,
+              itemBuilder: (context, itemAnimation, item, index) => Reorderable(
+                key: ValueKey(item.id),
+                builder: (context, dragAnimation, inDrag) => SizeFadeTransition(
+                  curve: standardEasing,
+                  animation: itemAnimation,
+                  child: Handle(
+                    delay: const Duration(milliseconds: 500),
+                    child: _DraggableTileContainer(
+                      dragAnimation: dragAnimation,
+                      expanded: state.itemActionState.isExpanded(item.id),
+                      child: _ItemTile(
+                        item: item,
+                        itemActionState: state.itemActionState,
+                      ),
                     ),
                   ),
-                );
-              },
+                ),
+              ),
             );
           }
 
@@ -111,6 +114,51 @@ class ItemsScreen extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class _DraggableTileContainer extends StatelessWidget {
+  const _DraggableTileContainer({
+    Key key,
+    @required this.expanded,
+    @required this.child,
+    this.dragAnimation,
+  }) : super(key: key);
+
+  final Animation<double> dragAnimation;
+  final bool expanded;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: dragAnimation,
+      builder: (context, child) {
+        final elevation = standardEasing.transform(dragAnimation.value) * 4;
+
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Padding(
+                  padding: expanded
+                      ? EdgeInsets.zero
+                      : const EdgeInsets.symmetric(horizontal: 16),
+                  child: Material(
+                    elevation: elevation,
+                    borderRadius: expanded ? null : BorderRadius.circular(4),
+                    color: Colors.transparent,
+                  ),
+                ),
+              ),
+              child,
+            ],
+          ),
+        );
+      },
+      child: child,
     );
   }
 }
@@ -143,36 +191,24 @@ class _ItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: ItemTile(
-        key: ValueKey(item.id),
-        item: item,
-        onDoneChanged: (done) => context
-            .read<SelectedShoppingListCubit>()
-            .setItemDone(item.id, done),
-        onTitleChanged: (value) => context
-            .read<SelectedShoppingListCubit>()
-            .setItemTitle(item.id, value),
-        onRemoved: () => _onRemoveTap(context, item),
-        expanded: itemActionState.maybeWhen(
-          expanded: (itemId) => itemId == item.id,
-          editing: (itemId) => itemId == item.id,
-          orElse: () => false,
-        ),
-        onExpandedChanged: (value) {
-          value
-              ? context.read<SelectedShoppingListCubit>().expandItem(item.id)
-              : context.read<SelectedShoppingListCubit>().collapseItem();
-        },
-        editing: itemActionState.maybeWhen(
-          editing: (itemId) => itemId == item.id,
-          orElse: () => false,
-        ),
-        onEditingChanged: (value) => value
-            ? context.read<SelectedShoppingListCubit>().startEditingItem()
-            : context.read<SelectedShoppingListCubit>().stopEditingItem(),
-      ),
+    return ItemTile(
+      item: item,
+      onDoneChanged: (done) =>
+          context.read<SelectedShoppingListCubit>().setItemDone(item.id, done),
+      onTitleChanged: (value) => context
+          .read<SelectedShoppingListCubit>()
+          .setItemTitle(item.id, value),
+      onRemoved: () => _onRemoveTap(context, item),
+      expanded: itemActionState.isExpanded(item.id),
+      onExpandedChanged: (value) {
+        value
+            ? context.read<SelectedShoppingListCubit>().expandItem(item.id)
+            : context.read<SelectedShoppingListCubit>().collapseItem();
+      },
+      editing: itemActionState.isEditing(item.id),
+      onEditingChanged: (value) => value
+          ? context.read<SelectedShoppingListCubit>().startEditingItem()
+          : context.read<SelectedShoppingListCubit>().stopEditingItem(),
     );
   }
 }
