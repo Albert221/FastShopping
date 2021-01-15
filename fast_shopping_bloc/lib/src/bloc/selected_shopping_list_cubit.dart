@@ -49,15 +49,6 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     _updateItem(itemId, (item) => item.copyWith(removed: false));
   }
 
-  void deleteItemPermanently(String itemId) {
-    _assertListSelected();
-
-    _listsCubit.update(state.list.copyWith(
-      items: List.of(state.list.items)
-        ..removeWhere((item) => item.id == itemId),
-    ));
-  }
-
   /// [oldIndex] and [newIndex] refer to indices
   /// in the [state.list.availableItems].
   void moveItem(int oldIndex, int newIndex) {
