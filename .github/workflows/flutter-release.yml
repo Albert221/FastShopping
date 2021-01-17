@@ -1,4 +1,4 @@
-name: Flutter release
+name: Release
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   release:
-    name: Test, build and release
+    name: Release to Google Play
 
     runs-on: ubuntu-latest
 
@@ -34,14 +34,12 @@ jobs:
           key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
           restore-keys: ${{ runner.os }}-pub-
 
+      - name: Enable Firebase Crashlytics
+        run: |
+          sed -i 's/crashlytics\/foss/crashlytics\/full/g' pubspec.yaml
+
       - name: Download pub dependencies
         run: flutter pub get
-
-      - name: Run analyzer
-        run: flutter analyze
-
-      - name: Run tests
-        run: flutter test
 
       - name: Download Android keystore
         id: android_keystore

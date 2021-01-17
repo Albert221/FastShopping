@@ -15,10 +15,10 @@ dependencies:
     sdk: flutter
   animations: ^1.0.0+5
   clock: ^1.0.1
+  crashlytics:
+    path: crashlytics/foss # CD changes me 🤖
   fast_shopping_bloc:
     path: fast_shopping_bloc
-  firebase_core: ^0.7.0
-  firebase_crashlytics: ^0.4.0+1
   flutter_hooks: ^0.15.0
   flutter_bloc: ^7.0.0-dev.2
   flutter_svg: ^0.19.0
