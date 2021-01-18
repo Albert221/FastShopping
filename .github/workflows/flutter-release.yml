@@ -5,7 +5,7 @@ on:
     tags: ['v*']
 
 jobs:
-  release:
+  google-play:
     name: Release to Google Play
 
     runs-on: ubuntu-latest
@@ -81,6 +81,83 @@ jobs:
           SUPPLY_PACKAGE_NAME: ${{ secrets.ANDROID_PACKAGE_NAME }}
           SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
         run: |
-          bundle exec fastlane supply \
-          --aab build/app/outputs/bundle/fullRelease/app-full-release.aab \
-          --track production
+          bundle exec fastlane run supply \
+          aab:build/app/outputs/bundle/fullRelease/app-full-release.aab \
+          track:production
+
+  huawei-appgallery:
+    name: Release to Huawei AppGallery
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: stable
+
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.FLUTTER_HOME }}/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: ${{ runner.os }}-pub-
+
+      - name: Download pub dependencies
+        run: flutter pub get
+
+      - name: Download Android keystore
+        id: android_keystore
+        uses: timheuer/base64-to-file@v1.0.3
+        with:
+          fileName: key.jks
+          encodedString: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+
+      - name: Create key.properties
+        run: |
+          echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" > android/key.properties
+          echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> android/key.properties
+          echo "keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> android/key.properties
+
+      - name: Build Android App Bundle
+        run: flutter build appbundle --flavor foss
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
+
+      - name: Cache bundle dependencies
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-gems-
+
+      - name: Download bundle dependencies
+        run: |
+          gem install bundler:2.0.2
+          bundle config path vendor/bundle
+          bundle install
+      
+      - name: Release to Huawei AppGallery
+        env:
+          HUAWEI_APPGALLERY_CONNECT_APP_ID: ${{ secrets.APPGALLERY_APP_ID }}
+          HUAWEI_APPGALLERY_CONNECT_CLIENT_ID: ${{ secrets.APPGALLERY_CLIENT_ID }}
+          HUAWEI_APPGALLERY_CONNECT_CLIENT_SECRET: ${{ secrets.APPGALLERY_CLIENT_SECRET }}
+        run: |
+          bundle exec fastlane run huawei_appgallery_connect \
+          apk_path:build/app/outputs/bundle/fullRelease/app-full-release.aab \
+          is_aab
