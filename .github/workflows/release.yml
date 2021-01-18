@@ -12,12 +12,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      
-      - name: Setup Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: '12.x'
+        uses: actions/checkout@v2
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
@@ -58,11 +53,6 @@ jobs:
       - name: Build Android App Bundle
         run: flutter build appbundle --flavor full
 
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.6'
-
       - name: Cache bundle dependencies
         uses: actions/cache@v2
         with:
@@ -92,12 +82,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Setup Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: '12.x'
+        uses: actions/checkout@v2
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
@@ -134,11 +119,6 @@ jobs:
       - name: Build Android App Bundle
         run: flutter build appbundle --flavor foss
 
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: '2.6'
-
       - name: Cache bundle dependencies
         uses: actions/cache@v2
         with:
@@ -169,12 +149,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Setup Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: '12.x'
+        uses: actions/checkout@v2
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
