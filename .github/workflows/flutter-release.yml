@@ -160,4 +160,4 @@ jobs:
         run: |
           bundle exec fastlane run huawei_appgallery_connect \
           apk_path:build/app/outputs/bundle/fullRelease/app-full-release.aab \
-          is_aab
+          is_aab:true
