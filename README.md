@@ -8,6 +8,7 @@
 
 [![Get it on Google Play][google-play-badge]][google-play-link]
 [![Get it on F-Droid][fdroid-badge]][fdroid-link]
+[![Explore it on AppGallery][appgallery-badge]][appgallery-link]
 
 **Fast Shopping** is a mobile application developed with simplicity in mind. It allows you on having a simple set of shopping lists, that you can easily manage. It contains **no** ads. Targetted to everyone who wants a simple app to get the job done. Not limited to tech-savy users.
 
@@ -61,6 +62,8 @@ There are current or past translation maintainers in the parentheses next to eac
 [google-play-link]: https://play.google.com/store/apps/details?id=me.wolszon.fastshopping
 [fdroid-badge]: assets/fdroid-badge.png
 [fdroid-link]: https://www.f-droid.org/en/packages/me.wolszon.fastshopping/
+[appgallery-badge]: assets/appgallery-badge.png
+[appgallery-link]: https://appgallery.huawei.com/#/app/C103706177
 [app-screenshots]: fastlane/metadata/android/en-US/images/featureGraphic.png
 
 [freezed]: https://pub.dev/packages/freezed
