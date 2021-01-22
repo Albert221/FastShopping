@@ -1,6 +1,6 @@
 import 'package:fast_shopping/features/common/prompt_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
 
 class NewListDialog extends StatelessWidget {
   const NewListDialog({Key key}) : super(key: key);

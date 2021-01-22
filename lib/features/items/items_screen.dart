@@ -3,7 +3,7 @@ import 'package:fast_shopping_bloc/models.dart';
 import 'package:fast_shopping_bloc/selected_shopping_list.dart';
 import 'package:fast_shopping_bloc/shopping_lists.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';

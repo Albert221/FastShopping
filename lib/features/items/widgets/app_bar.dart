@@ -1,7 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:fast_shopping/features/support_author/support_author_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fast_shopping/l10n/l10n.dart';
 
 import 'app_logo.dart';
 
