@@ -112,10 +112,7 @@
     "shopping_lists_item_elements": "{count, plural, =1 {1 element} few {{count} elementy} many {{count} elementów} other {{count} elementu}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
-            "count": {
-                "type": "int",
-                "format": "decimalPattern"
-            }
+            "count": {}
         }
     },
     "list_item_title_hint": "Wpisz tutaj nazwę...",
