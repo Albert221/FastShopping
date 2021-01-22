@@ -1,0 +1,181 @@
+{
+    "app_title": "Fast Shopping",
+    "@app_title": {
+        "description": "Shown on top of the screen."
+    },
+    "menu_licenses": "Lizenzen",
+    "@menu_licenses": {},
+    "list_item_no_name": "kein Inhalt",
+    "@list_item_no_name": {
+        "description": "When the item has no/empty name."
+    },
+    "list_item_done_ago": "fertig {when}",
+    "@list_item_done_ago": {
+        "description": "Small caps date when item was marked as done.",
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "a minute ago"
+            }
+        }
+    },
+    "list_item_editing_cancel": "ABBRECHEN",
+    "@list_item_editing_cancel": {},
+    "list_item_editing_save": "SPEICHERN",
+    "@list_item_editing_save": {},
+    "list_item_remove": "ENTFERNEN",
+    "@list_item_remove": {},
+    "list_item_edit": "BEARBEITEN",
+    "@list_item_edit": {},
+    "item_removed_snackbar_message": "Artikel wurde von der Liste entfernt.",
+    "@item_removed_snackbar_message": {},
+    "item_removed_snackbar_undo": "RÜCKGÄNGIG",
+    "@item_removed_snackbar_undo": {},
+    "add_item_dialog_title": "Artikel hinzufügen",
+    "@add_item_dialog_title": {},
+    "add_item_dialog_cancel": "ABBRECHEN",
+    "@add_item_dialog_cancel": {},
+    "add_item_dialog_add": "HINZUFÜGEN",
+    "@add_item_dialog_add": {},
+    "archive_banner_content": "Sieht aus, als sei alles als erledigt gekennzeichnet. Einkaufsliste archivieren?",
+    "@archive_banner_content": {},
+    "archive_banner_archive": "ARCHIVIEREN",
+    "@archive_banner_archive": {},
+    "shopping_list_not_selected_placeholder": "Keine Liste ausgewählt",
+    "@shopping_list_not_selected_placeholder": {},
+    "shopping_list_not_selected_message": "Es ist keine Liste ausgewählt, erstelle eine.",
+    "@shopping_list_not_selected_message": {},
+    "empty_list_add_some_items_message": "Füge Artikel der Liste hinzu!",
+    "@empty_list_add_some_items_message": {},
+    "list_archived_snackbar_message": "Die Liste wurde erfolgreich archiviert.",
+    "@list_archived_snackbar_message": {},
+    "list_archived_snackbar_undo": "RÜCKGÄNGIG",
+    "@list_archived_snackbar_undo": {},
+    "shopping_lists_title": "Einkaufslisten",
+    "@shopping_lists_title": {},
+    "shopping_lists_tab_archived": "Archiviert",
+    "@shopping_lists_tab_archived": {},
+    "shopping_lists_add_new": "NEUE LISTE",
+    "@shopping_lists_add_new": {},
+    "shopping_lists_item_created_at": "Erstellt {when}",
+    "@shopping_lists_item_created_at": {
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "3 days ago"
+            }
+        }
+    },
+    "shopping_lists_item_archived_at": "Archiviert {when}",
+    "@shopping_lists_item_archived_at": {
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "2 months ago"
+            }
+        }
+    },
+    "shopping_list_no_name": "Kein Name",
+    "@shopping_list_no_name": {},
+    "shopping_list_archived_snackbar_message": "Die",
+    "@shopping_list_archived_snackbar_message": {},
+    "shopping_list_unarchived_snackbar_message": "Die Liste wurde erfolgreich wiederher.",
+    "@shopping_list_unarchived_snackbar_message": {},
+    "add_list_dialog_title": "Neue Einkaufsliste hinzufügen",
+    "@add_list_dialog_title": {},
+    "add_list_dialog_name_hint": "Schreibe hier den Namen der Einkaufsliste...",
+    "@add_list_dialog_name_hint": {},
+    "add_list_dialog_cancel": "ABBRECHEN",
+    "@add_list_dialog_cancel": {},
+    "add_list_dialog_add": "HINZUFÜGEN",
+    "@add_list_dialog_add": {},
+    "rename_shopping_list_dialog_title": "Einkaufsliste umbenennen",
+    "@rename_shopping_list_dialog_title": {},
+    "rename_shopping_list_dialog_name_hint": "Schreibe hier den neuen Namen der Einkaufsliste...",
+    "@rename_shopping_list_dialog_name_hint": {},
+    "rename_shopping_list_dialog_cancel": "ABBRECHEN",
+    "@rename_shopping_list_dialog_cancel": {},
+    "rename_shopping_list_dialog_rename": "UMBENENNEN",
+    "@rename_shopping_list_dialog_rename": {},
+    "delete_shopping_list_dialog_title": "Einkaufsliste löschen",
+    "@delete_shopping_list_dialog_title": {},
+    "delete_shopping_list_dialog_cancel": "ABBRECHEN",
+    "@delete_shopping_list_dialog_cancel": {},
+    "delete_shopping_list_dialog_delete": "LÖSCHEN",
+    "@delete_shopping_list_dialog_delete": {},
+    "no_current_lists_message": "Keine Listen vorhanden, erstelle eine!",
+    "@no_current_lists_message": {},
+    "no_archived_lists_message": "Keine archivierten Listen.",
+    "@no_archived_lists_message": {},
+    "list_from_old_version": "Liste von alter Version",
+    "@list_from_old_version": {},
+    "shopping_lists_item_elements": "{count, plural, one {1 Element} other {{count} Elemente}}",
+    "@shopping_lists_item_elements": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
+    },
+    "list_item_title_hint": "Schreibe hier den Namen des Artikels...",
+    "@list_item_title_hint": {
+        "description": "Placeholder in item name text field."
+    },
+    "shopping_lists_tab_current": "Aktuell",
+    "@shopping_lists_tab_current": {},
+    "menu_layout": "Layout",
+    "@menu_layout": {
+        "description": "Shown on the main screen dropdown, next to the view_stream material icon."
+    },
+    "layout_dialog_title": "Layout",
+    "@layout_dialog_title": {},
+    "layout_dialog_one_list_title": "Eine Liste",
+    "@layout_dialog_one_list_title": {},
+    "layout_dialog_multiple_lists_title": "Mehrere Listen",
+    "@layout_dialog_multiple_lists_title": {},
+    "layout_dialog_content": "Du kannst dies später noch ändern.",
+    "@layout_dialog_content": {
+        "description": "Small text shown under one/multiple lists options."
+    },
+    "delete_shopping_list_dialog_body_before": "Soll ",
+    "@delete_shopping_list_dialog_body_before": {},
+    "delete_shopping_list_dialog_body_after": " wirklich gelöscht werden? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "@delete_shopping_list_dialog_body_after": {},
+    "screenshot_item_1": "Markenbutter",
+    "@screenshot_item_1": {
+        "description": "Item visible on app stores screenshots."
+    },
+    "screenshot_item_2": "Käse",
+    "@screenshot_item_2": {},
+    "screenshot_item_3": "Kopfsalat",
+    "@screenshot_item_3": {},
+    "screenshot_item_4": "Naturreis",
+    "@screenshot_item_4": {},
+    "screenshot_item_5": "Tiefgefrorene Gemüsepfanne",
+    "@screenshot_item_5": {
+        "description": "Expanded item on shopping list in app stores screenshots."
+    },
+    "screenshot_item_6": "Buchweizen",
+    "@screenshot_item_6": {},
+    "screenshot_item_7": "Rote Beete",
+    "@screenshot_item_7": {},
+    "screenshot_item_8": "Körniger Frischkäse",
+    "@screenshot_item_8": {},
+    "screenshot_list_1": "Wocheneinkauf",
+    "@screenshot_list_1": {
+        "description": "Active shopping list in app stores screenshots."
+    },
+    "screenshot_list_2": "Hausparty bei Christina",
+    "@screenshot_list_2": {
+        "description": "Inactive shopping list in app stores screenshots."
+    },
+    "menu_support_author": "Unterstützen Sie den Autor",
+    "@menu_support_author": {},
+    "support_author_dialog_button": "UNTERSTÜTZE MICH",
+    "@support_author_dialog_button": {},
+    "support_author_dialog_title": "Unterstützen Sie den Autor",
+    "@support_author_dialog_title": {},
+    "support_author_dialog_body": "Sie können mich, den Entwickler dieser App, auf der folgenden Seite unterstützen.",
+    "@support_author_dialog_body": {}
+}

@@ -1,210 +1,167 @@
 {
-    "@@locale": "pl",
-    "@@last_modified": "2020-11-19T18:04:58+00:00",
+    "app_title": "Szybkie Zakupy",
+    "@app_title": {
+        "description": "Shown on top of the screen."
+    },
+    "menu_licenses": "Licencje",
+    "@menu_licenses": {},
     "list_item_no_name": "Bez nazwy",
     "@list_item_no_name": {
-        "description": "When the item has no\/empty name."
+        "description": "When the item has no/empty name."
     },
     "list_item_done_ago": "oznaczono {when}",
     "@list_item_done_ago": {
-        "description": "Small caps date when item was marked as done."
+        "description": "Small caps date when item was marked as done.",
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "a minute ago"
+            }
+        }
+    },
+    "list_item_editing_cancel": "ANULUJ",
+    "@list_item_editing_cancel": {},
+    "list_item_editing_save": "ZAPISZ",
+    "@list_item_editing_save": {},
+    "list_item_remove": "USUŃ",
+    "@list_item_remove": {},
+    "list_item_edit": "EDYTUJ",
+    "@list_item_edit": {},
+    "item_removed_snackbar_message": "Element został usunięty z listy.",
+    "@item_removed_snackbar_message": {},
+    "item_removed_snackbar_undo": "COFNIJ",
+    "@item_removed_snackbar_undo": {},
+    "add_item_dialog_title": "Dodaj element",
+    "@add_item_dialog_title": {},
+    "add_item_dialog_cancel": "ANULUJ",
+    "@add_item_dialog_cancel": {},
+    "add_item_dialog_add": "DODAJ",
+    "@add_item_dialog_add": {},
+    "archive_banner_content": "Wygląda na to, że wszystko jest już kupione. Czy chcesz zarchiwizować listę zakupów?",
+    "@archive_banner_content": {},
+    "archive_banner_archive": "ARCHIWIZUJ",
+    "@archive_banner_archive": {},
+    "shopping_list_not_selected_placeholder": "Nie wybrano listy",
+    "@shopping_list_not_selected_placeholder": {},
+    "shopping_list_not_selected_message": "Żadna lista nie jest wybrana, stwórz ją.",
+    "@shopping_list_not_selected_message": {},
+    "empty_list_add_some_items_message": "Dodaj jakieś elementy do listy!",
+    "@empty_list_add_some_items_message": {},
+    "list_archived_snackbar_message": "Lista została zarchiwizowana pomyślnie.",
+    "@list_archived_snackbar_message": {},
+    "list_archived_snackbar_undo": "COFNIJ",
+    "@list_archived_snackbar_undo": {},
+    "shopping_lists_title": "Listy zakupów",
+    "@shopping_lists_title": {},
+    "shopping_lists_tab_archived": "Zarchiwizowane",
+    "@shopping_lists_tab_archived": {},
+    "shopping_lists_add_new": "NOWA LISTA",
+    "@shopping_lists_add_new": {},
+    "shopping_lists_item_created_at": "Stworzono {when}",
+    "@shopping_lists_item_created_at": {
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "3 days ago"
+            }
+        }
+    },
+    "shopping_lists_item_archived_at": "Zarchiwiz. {when}",
+    "@shopping_lists_item_archived_at": {
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "2 months ago"
+            }
+        }
+    },
+    "shopping_list_no_name": "Bez nazwy",
+    "@shopping_list_no_name": {},
+    "shopping_list_archived_snackbar_message": "Lista została zarchiwizowana pomyślnie.",
+    "@shopping_list_archived_snackbar_message": {},
+    "shopping_list_unarchived_snackbar_message": "Lista została przywrócona pomyślnie.",
+    "@shopping_list_unarchived_snackbar_message": {},
+    "add_list_dialog_title": "Dodaj nową listę zakupów",
+    "@add_list_dialog_title": {},
+    "add_list_dialog_name_hint": "Wpisz tutaj nazwę listy...",
+    "@add_list_dialog_name_hint": {},
+    "add_list_dialog_cancel": "ANULUJ",
+    "@add_list_dialog_cancel": {},
+    "add_list_dialog_add": "DODAJ",
+    "@add_list_dialog_add": {},
+    "rename_shopping_list_dialog_title": "Zmień nazwę listy",
+    "@rename_shopping_list_dialog_title": {},
+    "rename_shopping_list_dialog_name_hint": "Wpisz tutaj nową nazwę...",
+    "@rename_shopping_list_dialog_name_hint": {},
+    "rename_shopping_list_dialog_cancel": "ANULUJ",
+    "@rename_shopping_list_dialog_cancel": {},
+    "rename_shopping_list_dialog_rename": "ZMIEŃ NAZWĘ",
+    "@rename_shopping_list_dialog_rename": {},
+    "delete_shopping_list_dialog_title": "Usuwanie listy zakupów",
+    "@delete_shopping_list_dialog_title": {},
+    "delete_shopping_list_dialog_cancel": "ANULUJ",
+    "@delete_shopping_list_dialog_cancel": {},
+    "delete_shopping_list_dialog_delete": "USUŃ",
+    "@delete_shopping_list_dialog_delete": {},
+    "no_current_lists_message": "Nie ma żadnych bieżących list, stwórz jakieś!",
+    "@no_current_lists_message": {},
+    "no_archived_lists_message": "Nie ma żadnych zarchiwizowanych list.",
+    "@no_archived_lists_message": {},
+    "list_from_old_version": "Lista ze starej wersji",
+    "@list_from_old_version": {},
+    "shopping_lists_item_elements": "{count, plural, =1 {1 element} few {{count} elementy} many {{count} elementów} other {{count} elementu}}",
+    "@shopping_lists_item_elements": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "decimalPattern"
+            }
+        }
     },
     "list_item_title_hint": "Wpisz tutaj nazwę...",
     "@list_item_title_hint": {
         "description": "Placeholder in item name text field."
     },
-    "list_item_editing_cancel": "ANULUJ",
-    "@list_item_editing_cancel": {
-        "description": ""
-    },
-    "list_item_editing_save": "ZAPISZ",
-    "@list_item_editing_save": {
-        "description": ""
-    },
-    "list_item_remove": "USUŃ",
-    "@list_item_remove": {
-        "description": ""
-    },
-    "list_item_edit": "EDYTUJ",
-    "@list_item_edit": {
-        "description": ""
-    },
-    "item_removed_snackbar_message": "Element został usuniety z listy.",
-    "@item_removed_snackbar_message": {
-        "description": ""
-    },
-    "item_removed_snackbar_undo": "COFNIJ",
-    "@item_removed_snackbar_undo": {
-        "description": ""
-    },
-    "add_item_dialog_title": "Dodaj element",
-    "@add_item_dialog_title": {
-        "description": ""
-    },
-    "add_item_dialog_cancel": "ANULUJ",
-    "@add_item_dialog_cancel": {
-        "description": ""
-    },
-    "add_item_dialog_add": "DODAJ",
-    "@add_item_dialog_add": {
-        "description": ""
-    },
-    "archive_banner_content": "Wygląda na to, że wszystko jest już kupione. Czy chcesz zarchiwizować listę zakupów?",
-    "@archive_banner_content": {
-        "description": ""
-    },
-    "archive_banner_archive": "ARCHIWIZUJ",
-    "@archive_banner_archive": {
-        "description": ""
-    },
-    "shopping_list_not_selected_placeholder": "Nie wybrano listy",
-    "@shopping_list_not_selected_placeholder": {
-        "description": ""
-    },
-    "shopping_list_not_selected_message": "Żadna lista nie jest wybrana, stwórz ją.",
-    "@shopping_list_not_selected_message": {
-        "description": ""
-    },
-    "empty_list_add_some_items_message": "Dodaj jakieś elementy do listy!",
-    "@empty_list_add_some_items_message": {
-        "description": ""
-    },
-    "list_archived_snackbar_message": "Lista została zarchiwizowana pomyślnie.",
-    "@list_archived_snackbar_message": {
-        "description": ""
-    },
-    "list_archived_snackbar_undo": "COFNIJ",
-    "@list_archived_snackbar_undo": {
-        "description": ""
-    },
-    "shopping_lists_title": "Listy zakupów",
-    "@shopping_lists_title": {
-        "description": ""
-    },
-    "shopping_lists_tab_archived": "Zarchiwizowane",
-    "@shopping_lists_tab_archived": {
-        "description": ""
-    },
-    "shopping_lists_add_new": "NOWA LISTA",
-    "@shopping_lists_add_new": {
-        "description": ""
-    },
-    "shopping_lists_item_created_at": "Stworzono {when}",
-    "@shopping_lists_item_created_at": {
-        "description": ""
-    },
-    "shopping_lists_item_archived_at": "Zarchiwiz. {when}",
-    "@shopping_lists_item_archived_at": {
-        "description": ""
-    },
-    "shopping_list_no_name": "Bez nazwy",
-    "@shopping_list_no_name": {
-        "description": ""
-    },
-    "shopping_list_archived_snackbar_message": "Lista została zarchiwizowana pomyślnie.",
-    "@shopping_list_archived_snackbar_message": {
-        "description": ""
-    },
-    "shopping_list_unarchived_snackbar_message": "Lista została przywrócona pomyślnie.",
-    "@shopping_list_unarchived_snackbar_message": {
-        "description": ""
-    },
-    "add_list_dialog_title": "Dodaj nową listę zakupów",
-    "@add_list_dialog_title": {
-        "description": ""
-    },
-    "add_list_dialog_name_hint": "Wpisz tutaj nazwę listy...",
-    "@add_list_dialog_name_hint": {
-        "description": ""
-    },
-    "add_list_dialog_cancel": "ANULUJ",
-    "@add_list_dialog_cancel": {
-        "description": ""
-    },
-    "add_list_dialog_add": "DODAJ",
-    "@add_list_dialog_add": {
-        "description": ""
-    },
-    "rename_shopping_list_dialog_title": "Zmień nazwę listy",
-    "@rename_shopping_list_dialog_title": {
-        "description": ""
-    },
-    "rename_shopping_list_dialog_name_hint": "Wpisz tutaj nową nazwę...",
-    "@rename_shopping_list_dialog_name_hint": {
-        "description": ""
-    },
-    "rename_shopping_list_dialog_cancel": "ANULUJ",
-    "@rename_shopping_list_dialog_cancel": {
-        "description": ""
-    },
-    "rename_shopping_list_dialog_rename": "ZMIEŃ NAZWĘ",
-    "@rename_shopping_list_dialog_rename": {
-        "description": ""
-    },
-    "delete_shopping_list_dialog_title": "Usuwanie listy zakupów",
-    "@delete_shopping_list_dialog_title": {
-        "description": ""
-    },
-    "delete_shopping_list_dialog_cancel": "ANULUJ",
-    "delete_shopping_list_dialog_delete": "USUŃ",
-    "@delete_shopping_list_dialog_delete": {
-        "description": ""
-    },
-    "no_current_lists_message": "Nie ma żadnych bieżących list, stwórz jakieś!",
-    "@no_current_lists_message": {
-        "description": ""
-    },
-    "no_archived_lists_message": "Nie ma żadnych zarchiwizowanych list.",
-    "@no_archived_lists_message": {
-        "description": ""
-    },
-    "list_from_old_version": "Lista ze starej wersj",
-    "@list_from_old_version": {
-        "description": ""
-    },
-    "app_title": "Szybkie Zakupy",
-    "@app_title": {
-        "description": "Shown on top of the screen."
-    },
-    "shopping_lists_item_elements": "{count, plural, one {1 element} few {{count} elementy} many {{count} elementów} other {{count} elementu}}",
-    "@shopping_lists_item_elements": {
-        "description": ""
-    },
-    "menu_licenses": "Licencje",
     "shopping_lists_tab_current": "Bieżące",
+    "@shopping_lists_tab_current": {},
     "menu_layout": "Układ",
     "@menu_layout": {
         "description": "Shown on the main screen dropdown, next to the view_stream material icon."
     },
     "layout_dialog_title": "Układ",
+    "@layout_dialog_title": {},
     "layout_dialog_one_list_title": "Jedna lista",
+    "@layout_dialog_one_list_title": {},
     "layout_dialog_multiple_lists_title": "Wiele list",
+    "@layout_dialog_multiple_lists_title": {},
     "layout_dialog_content": "Będziesz mógł to później zmienić.",
     "@layout_dialog_content": {
-        "description": "Small text shown under one\/multiple lists options."
+        "description": "Small text shown under one/multiple lists options."
     },
     "delete_shopping_list_dialog_body_before": "Czy na pewno chcesz usunąć listę zakupów ",
-    "@delete_shopping_list_dialog_body_before": {
-        "description": ""
-    },
+    "@delete_shopping_list_dialog_body_before": {},
     "delete_shopping_list_dialog_body_after": "? Ta operacja nie może zostać cofnięta.",
-    "@delete_shopping_list_dialog_body_after": {
-        "description": ""
-    },
+    "@delete_shopping_list_dialog_body_after": {},
     "screenshot_item_1": "Masło osełkowe",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
     },
     "screenshot_item_2": "Ser żółty",
+    "@screenshot_item_2": {},
     "screenshot_item_3": "Sałatka roszponka",
+    "@screenshot_item_3": {},
     "screenshot_item_4": "Brązowy ryż",
+    "@screenshot_item_4": {},
     "screenshot_item_5": "Mrożonka warzyw na patelnię",
     "@screenshot_item_5": {
         "description": "Expanded item on shopping list in app stores screenshots."
     },
     "screenshot_item_6": "Kasza gryczana",
+    "@screenshot_item_6": {},
     "screenshot_item_7": "Buraki",
+    "@screenshot_item_7": {},
     "screenshot_item_8": "Serek wiejski",
+    "@screenshot_item_8": {},
     "screenshot_list_1": "Zakupy do domu",
     "@screenshot_list_1": {
         "description": "Active shopping list in app stores screenshots."
@@ -214,7 +171,11 @@
         "description": "Inactive shopping list in app stores screenshots."
     },
     "menu_support_author": "Wesprzyj autora",
+    "@menu_support_author": {},
     "support_author_dialog_button": "WESPRZYJ MNIE",
+    "@support_author_dialog_button": {},
     "support_author_dialog_title": "Wesprzyj autora",
-    "support_author_dialog_body": "Możesz wesprzeć mnie, autora tej aplikacji, przechodząc na stronę poniżej."
+    "@support_author_dialog_title": {},
+    "support_author_dialog_body": "Możesz wesprzeć mnie, autora tej aplikacji, przechodząc na stronę poniżej.",
+    "@support_author_dialog_body": {}
 }

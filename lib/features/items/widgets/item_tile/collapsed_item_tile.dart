@@ -1,7 +1,8 @@
-import 'package:fast_shopping/features/items/widgets/item_tile/animated_line_through_text.dart';
-import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping_bloc/models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'animated_line_through_text.dart';
 
 class CollapsedItemTile extends StatelessWidget {
   const CollapsedItemTile({

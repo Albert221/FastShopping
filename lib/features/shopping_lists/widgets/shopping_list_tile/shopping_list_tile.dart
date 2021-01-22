@@ -1,9 +1,9 @@
-import 'package:fast_shopping/features/shopping_lists/widgets/shopping_list_tile/shopping_list_tile_details.dart';
-import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping_bloc/models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'actions_menu.dart';
+import 'shopping_list_tile_details.dart';
 
 enum ShoppingListActions { rename, archive, unarchive, delete }
 

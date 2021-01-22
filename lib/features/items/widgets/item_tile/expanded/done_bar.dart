@@ -1,7 +1,7 @@
-import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/l10n/timeago.dart';
 import 'package:fast_shopping_bloc/models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DoneBar extends StatelessWidget {
   const DoneBar({

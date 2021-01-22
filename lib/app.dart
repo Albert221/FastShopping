@@ -1,15 +1,13 @@
 import 'package:clock/clock.dart';
 import 'package:fast_shopping/features/items/items_screen.dart';
-import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/l10n/override_locale.dart';
-import 'package:fast_shopping/l10n/sort_locales.dart';
 import 'package:fast_shopping/theme.dart';
 import 'package:fast_shopping_bloc/data.dart';
 import 'package:fast_shopping_bloc/selected_shopping_list.dart';
 import 'package:fast_shopping_bloc/shopping_lists.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:uuid/uuid.dart';
 
 class FastShoppingApp extends StatelessWidget {
@@ -52,13 +50,8 @@ class FastShoppingApp extends StatelessWidget {
           // Localization stuff
           locale: OverrideLocale.of(context),
           onGenerateTitle: (context) => S.of(context).app_title,
-          supportedLocales: S.delegate.supportedLocales.sortLocales,
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
+          supportedLocales: S.supportedLocales,
+          localizationsDelegates: S.localizationsDelegates,
         ),
       ),
     );
