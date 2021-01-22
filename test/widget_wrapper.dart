@@ -1,10 +1,9 @@
-import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Widget wrapper(Widget widget) {
   return MaterialApp(
-    localizationsDelegates: const [S.delegate],
+    localizationsDelegates: S.localizationsDelegates,
     locale: const Locale('en'),
     home: widget,
   );
