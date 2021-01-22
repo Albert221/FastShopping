@@ -1,1 +1,1 @@
-Une application qui vous aide à créer facilement des listes de courses.
+Simple app for easy shopping list making, developed with simplicity in mind.
