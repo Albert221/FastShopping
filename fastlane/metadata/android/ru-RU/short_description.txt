@@ -1,1 +1,1 @@
-Приложение для лёгкого создания списка покупок, созданное с упором на простоту.
+Simple app for easy shopping list making, developed with simplicity in mind.
