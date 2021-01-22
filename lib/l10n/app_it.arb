@@ -1,0 +1,178 @@
+{
+    "app_title": "Fast Shopping",
+    "@app_title": {
+        "description": "Shown on top of the screen."
+    },
+    "menu_licenses": "Licenze",
+    "@menu_licenses": {},
+    "list_item_no_name": "Senza nome",
+    "@list_item_no_name": {
+        "description": "When the item has no/empty name."
+    },
+    "list_item_done_ago": "Completato il {when}",
+    "@list_item_done_ago": {
+        "description": "Small caps date when item was marked as done.",
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "a minute ago"
+            }
+        }
+    },
+    "list_item_editing_cancel": "ANNULLA",
+    "@list_item_editing_cancel": {},
+    "list_item_editing_save": "SALVA",
+    "@list_item_editing_save": {},
+    "list_item_remove": "RIMUOVI",
+    "@list_item_remove": {},
+    "list_item_edit": "MODIFICA",
+    "@list_item_edit": {},
+    "item_removed_snackbar_message": "L'elemento è stato rimosso dalla lista",
+    "@item_removed_snackbar_message": {},
+    "item_removed_snackbar_undo": "RIPRISTINA",
+    "@item_removed_snackbar_undo": {},
+    "add_item_dialog_title": "Aggiungi",
+    "@add_item_dialog_title": {},
+    "add_item_dialog_cancel": "ANNULLA",
+    "@add_item_dialog_cancel": {},
+    "add_item_dialog_add": "AGGIUNGI",
+    "@add_item_dialog_add": {},
+    "archive_banner_content": "Sembra che tutto sia completato. Vuoi archiviare la lista?",
+    "@archive_banner_content": {},
+    "archive_banner_archive": "ARCHIVIA",
+    "@archive_banner_archive": {},
+    "shopping_list_not_selected_placeholder": "Nessuno elemento selezionato",
+    "@shopping_list_not_selected_placeholder": {},
+    "shopping_list_not_selected_message": "Nessuna lista, creane una.",
+    "@shopping_list_not_selected_message": {},
+    "empty_list_add_some_items_message": "Aggiungi un elemento alla tua lista!",
+    "@empty_list_add_some_items_message": {},
+    "list_archived_snackbar_message": "La lista è stata archiviata.",
+    "@list_archived_snackbar_message": {},
+    "list_archived_snackbar_undo": "RIPRISTINA",
+    "@list_archived_snackbar_undo": {},
+    "shopping_lists_title": "Liste",
+    "@shopping_lists_title": {},
+    "shopping_lists_tab_archived": "Archiviate",
+    "@shopping_lists_tab_archived": {},
+    "shopping_lists_add_new": "NUOVA LISTA",
+    "@shopping_lists_add_new": {},
+    "shopping_lists_item_created_at": "Creato il {when}",
+    "@shopping_lists_item_created_at": {
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "3 days ago"
+            }
+        }
+    },
+    "shopping_lists_item_archived_at": "Archiviato il {when}",
+    "@shopping_lists_item_archived_at": {
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "2 months ago"
+            }
+        }
+    },
+    "shopping_list_no_name": "Nessun nome",
+    "@shopping_list_no_name": {},
+    "shopping_list_archived_snackbar_message": "La lista è stata archiviata",
+    "@shopping_list_archived_snackbar_message": {},
+    "shopping_list_unarchived_snackbar_message": "La lista è stata",
+    "@shopping_list_unarchived_snackbar_message": {},
+    "add_list_dialog_title": "Aggiungi una nuova lista",
+    "@add_list_dialog_title": {},
+    "add_list_dialog_name_hint": "Scrivi il nome della lista..",
+    "@add_list_dialog_name_hint": {},
+    "add_list_dialog_cancel": "ANNULLA",
+    "@add_list_dialog_cancel": {},
+    "add_list_dialog_add": "AGGIUNGI",
+    "@add_list_dialog_add": {},
+    "rename_shopping_list_dialog_title": "Rinomina la lista",
+    "@rename_shopping_list_dialog_title": {},
+    "rename_shopping_list_dialog_name_hint": "Scrivi il nome della nuova lista...",
+    "@rename_shopping_list_dialog_name_hint": {},
+    "rename_shopping_list_dialog_cancel": "ANNULLA",
+    "@rename_shopping_list_dialog_cancel": {},
+    "rename_shopping_list_dialog_rename": "RINOMINA",
+    "@rename_shopping_list_dialog_rename": {},
+    "delete_shopping_list_dialog_title": "Cancella la shopping list",
+    "@delete_shopping_list_dialog_title": {},
+    "delete_shopping_list_dialog_cancel": "ANNULLA",
+    "@delete_shopping_list_dialog_cancel": {},
+    "delete_shopping_list_dialog_delete": "RIMUOVI",
+    "@delete_shopping_list_dialog_delete": {},
+    "no_current_lists_message": "Non ci sono liste, creane una!",
+    "@no_current_lists_message": {},
+    "no_archived_lists_message": "Non ci sono liste archiviate",
+    "@no_archived_lists_message": {},
+    "list_from_old_version": "Liste dalla vecchia versione",
+    "@list_from_old_version": {},
+    "shopping_lists_item_elements": "{count, plural, one {un elemento} other {{count} elementi}}",
+    "@shopping_lists_item_elements": {
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "list_item_title_hint": "Inserisci il nome qui...",
+    "@list_item_title_hint": {
+        "description": "Placeholder in item name text field."
+    },
+    "shopping_lists_tab_current": "Attuali",
+    "@shopping_lists_tab_current": {},
+    "menu_layout": "Disposizione",
+    "@menu_layout": {
+        "description": "Shown on the main screen dropdown, next to the view_stream material icon."
+    },
+    "layout_dialog_title": "Disposizione",
+    "@layout_dialog_title": {},
+    "layout_dialog_one_list_title": "Una Lista",
+    "@layout_dialog_one_list_title": {},
+    "layout_dialog_multiple_lists_title": "Liste",
+    "@layout_dialog_multiple_lists_title": {},
+    "layout_dialog_content": "E' possibile camibarlo poi",
+    "@layout_dialog_content": {
+        "description": "Small text shown under one/multiple lists options."
+    },
+    "delete_shopping_list_dialog_body_before": "Vuoi cancellare",
+    "@delete_shopping_list_dialog_body_before": {},
+    "delete_shopping_list_dialog_body_after": "la lista? Questa operazione non può essere annullata",
+    "@delete_shopping_list_dialog_body_after": {},
+    "screenshot_item_1": "Salsa al pomodoro",
+    "@screenshot_item_1": {
+        "description": "Item visible on app stores screenshots."
+    },
+    "screenshot_item_2": "Mostarda",
+    "@screenshot_item_2": {},
+    "screenshot_item_3": "Salsa ",
+    "@screenshot_item_3": {},
+    "screenshot_item_4": "Aceto",
+    "@screenshot_item_4": {},
+    "screenshot_item_5": "Salsa",
+    "@screenshot_item_5": {
+        "description": "Expanded item on shopping list in app stores screenshots."
+    },
+    "screenshot_item_6": "Olio di oliva",
+    "@screenshot_item_6": {},
+    "screenshot_item_7": "Capperi ed olive",
+    "@screenshot_item_7": {},
+    "screenshot_item_8": "Salsa al peperoncino",
+    "@screenshot_item_8": {},
+    "screenshot_list_1": "Drogheria",
+    "@screenshot_list_1": {
+        "description": "Active shopping list in app stores screenshots."
+    },
+    "screenshot_list_2": "Festa di Marco",
+    "@screenshot_list_2": {
+        "description": "Inactive shopping list in app stores screenshots."
+    },
+    "menu_support_author": "Supporta l'autore",
+    "@menu_support_author": {},
+    "support_author_dialog_button": "SUPPORTAMI",
+    "@support_author_dialog_button": {},
+    "support_author_dialog_title": "Supporta l'autore",
+    "@support_author_dialog_title": {},
+    "support_author_dialog_body": "Puoi supportare me e lo sviluppo dell'applicazione, visitando la pagina qui sotto.",
+    "@support_author_dialog_body": {}
+}
