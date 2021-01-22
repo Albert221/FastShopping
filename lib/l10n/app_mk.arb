@@ -112,10 +112,7 @@
     "shopping_lists_item_elements": "{count, plural, =1 {1 eлемент} other {{count} елементи}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
-            "count": {
-                "type": "int",
-                "format": "decimalPattern"
-            }
+            "count": {}
         }
     },
     "list_item_title_hint": "Напиши го името на предметот...",
