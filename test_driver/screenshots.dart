@@ -1,12 +1,12 @@
 import 'dart:ui';
 
 import 'package:fast_shopping/app.dart';
-import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping/l10n/override_locale.dart';
 import 'package:fast_shopping_bloc/data.dart';
 import 'package:fast_shopping_bloc/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_driver/driver_extension.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/locale.dart' as intl;
 
 void main() {
@@ -57,55 +57,55 @@ class ScreenshotsShoppingListRepository extends ShoppingListRepository {
     final threeDaysAgo =
         DateTime.now().toUtc().subtract(const Duration(days: 3));
 
-    await S.load(_locale);
+    final s = await S.delegate.load(_locale);
 
     return [
       ShoppingList(
         id: _selectedListId,
-        name: S(_locale.toLanguageTag()).screenshot_list_1,
+        name: s.screenshot_list_1,
         createdAt: yesterday,
         items: [
           Item(
             id: '00',
-            title: S(_locale.toLanguageTag()).screenshot_item_1,
+            title: s.screenshot_item_1,
           ),
           Item(
             id: '01',
-            title: S(_locale.toLanguageTag()).screenshot_item_2,
+            title: s.screenshot_item_2,
             doneAt: twoMinutesAgo,
           ),
           Item(
             id: '02',
-            title: S(_locale.toLanguageTag()).screenshot_item_3,
+            title: s.screenshot_item_3,
             doneAt: twoMinutesAgo,
           ),
           Item(
             id: '03',
-            title: S(_locale.toLanguageTag()).screenshot_item_4,
+            title: s.screenshot_item_4,
           ),
           Item(
             id: '04',
-            title: S(_locale.toLanguageTag()).screenshot_item_5,
+            title: s.screenshot_item_5,
             doneAt: twoMinutesAgo,
           ),
           Item(
             id: '05',
-            title: S(_locale.toLanguageTag()).screenshot_item_6,
+            title: s.screenshot_item_6,
           ),
           Item(
             id: '06',
-            title: S(_locale.toLanguageTag()).screenshot_item_7,
+            title: s.screenshot_item_7,
           ),
           Item(
             id: '07',
-            title: S(_locale.toLanguageTag()).screenshot_item_8,
+            title: s.screenshot_item_8,
             doneAt: twoMinutesAgo,
           ),
         ],
       ),
       ShoppingList(
         id: '235c5b31-4dfe-407c-ba19-0c39de15c460',
-        name: S(_locale.toLanguageTag()).screenshot_list_2,
+        name: s.screenshot_list_2,
         createdAt: threeDaysAgo,
         items: const [
           Item(id: '11', title: ''),

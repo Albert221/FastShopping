@@ -1,54 +1,17 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2020-11-19T18:04:58+00:00",
     "list_item_no_name": "Bez nazwy",
-    "@list_item_no_name": {
-        "description": "When the item has no\/empty name."
-    },
     "list_item_done_ago": "oznaczono {when}",
-    "@list_item_done_ago": {
-        "description": "Small caps date when item was marked as done."
-    },
     "list_item_title_hint": "Wpisz tutaj nazwę...",
-    "@list_item_title_hint": {
-        "description": "Placeholder in item name text field."
-    },
     "list_item_editing_cancel": "ANULUJ",
-    "@list_item_editing_cancel": {
-        "description": ""
-    },
     "list_item_editing_save": "ZAPISZ",
-    "@list_item_editing_save": {
-        "description": ""
-    },
     "list_item_remove": "USUŃ",
-    "@list_item_remove": {
-        "description": ""
-    },
     "list_item_edit": "EDYTUJ",
-    "@list_item_edit": {
-        "description": ""
-    },
     "item_removed_snackbar_message": "Element został usuniety z listy.",
-    "@item_removed_snackbar_message": {
-        "description": ""
-    },
     "item_removed_snackbar_undo": "COFNIJ",
-    "@item_removed_snackbar_undo": {
-        "description": ""
-    },
     "add_item_dialog_title": "Dodaj element",
-    "@add_item_dialog_title": {
-        "description": ""
-    },
     "add_item_dialog_cancel": "ANULUJ",
-    "@add_item_dialog_cancel": {
-        "description": ""
-    },
     "add_item_dialog_add": "DODAJ",
-    "@add_item_dialog_add": {
-        "description": ""
-    },
     "archive_banner_content": "Wygląda na to, że wszystko jest już kupione. Czy chcesz zarchiwizować listę zakupów?",
     "@archive_banner_content": {
         "description": ""
