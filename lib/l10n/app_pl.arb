@@ -119,6 +119,14 @@
     "@list_item_title_hint": {
         "description": "Placeholder in item name text field."
     },
+    "list_item_action_rename": "Zmień nazwę",
+    "@list_item_action_rename": {},
+    "list_item_action_archive": "Archiwizuj",
+    "@list_item_action_archive": {},
+    "list_item_action_unarchive": "Przywróć",
+    "@list_item_action_unarchive": {},
+    "list_item_action_delete": "Usuń",
+    "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Bieżące",
     "@shopping_lists_tab_current": {},
     "menu_layout": "Układ",
