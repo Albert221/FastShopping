@@ -43,7 +43,7 @@ flutter pub run build_runner build --delete-conflicting outputs
 
 ## Translating
 
-Please read the [TRANSLATING.md].
+[![Localization at Crowdin][crowdin-badge]][crowdin-link]
 
 ## Available languages
 
@@ -74,6 +74,9 @@ There are current or past translation maintainers in the parentheses next to eac
 
 [freezed]: https://pub.dev/packages/freezed
 [TRANSLATING.md]: TRANSLATING.md
+
+[crowdin-link]: https://crowdin.com/project/fast-shopping
+[crowdin-badge]: https://badges.crowdin.net/badge/dark/crowdin-on-light.png
 
 [@matejmecka]: https://github.com/MatejMecka
 [@kojid0]: https://github.com/kojid0
