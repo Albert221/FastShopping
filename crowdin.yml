@@ -1,0 +1,8 @@
+files:
+  - source: /lib/l10n/app_en.arb
+    translation: /lib/l10n/app_%two_letters_code%.arb
+  - source: /android/app/src/main/res/values/strings.xml
+    translation: /android/app/src/main/res/values-%two_letters_code%/strings.xml
+    translate_attributes: 0
+  - source: /fastlane/metadata/android/en-US/*.txt
+    translation: /fastlane/metadata/android/%locale%/%original_file_name%
