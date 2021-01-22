@@ -1,1 +1,1 @@
-Simple app for easy shopping list making, developed with simplicity in mind.
+Едноставна апликација за правење списоци за купување, направен за едноставност.
