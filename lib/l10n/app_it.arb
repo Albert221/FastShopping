@@ -119,6 +119,14 @@
     "@list_item_title_hint": {
         "description": "Placeholder in item name text field."
     },
+    "list_item_action_rename": "Rinomina",
+    "@list_item_action_rename": {},
+    "list_item_action_archive": "Archivio",
+    "@list_item_action_archive": {},
+    "list_item_action_unarchive": "Disarchivia",
+    "@list_item_action_unarchive": {},
+    "list_item_action_delete": "Elimina",
+    "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Attuali",
     "@shopping_lists_tab_current": {},
     "menu_layout": "Disposizione",
