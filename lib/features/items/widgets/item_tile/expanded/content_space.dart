@@ -32,18 +32,24 @@ class ContentSpace extends HookWidget {
       FocusScope.of(context).unfocus();
     }
 
+    // Why did I put it here in the first place?
+    // It doesn't work correctly when I uncomment it...
+    // TODO: Remove it sometime when I'm sure it's no longer needed.
+
     // Update the title field value if the editing state changed so we don't
     // lose the title that is being composed.
-    if (previousEditing != editing) {
-      titleController.value = TextEditingValue(
-        text: item.title,
-        selection: TextSelection.collapsed(offset: item.title.length),
-      );
-    }
+    // if (previousEditing != editing) {
+    //   titleController.value = TextEditingValue(
+    //     text: item.title,
+    //     selection: TextSelection.collapsed(offset: item.title.length),
+    //   );
+    // }
   }
 
   void _onEdit(BuildContext context) {
-    onEditingChanged(true);
+    if (!editing) {
+      onEditingChanged(true);
+    }
   }
 
   void _onTitleSubmit(BuildContext context, String title) {
