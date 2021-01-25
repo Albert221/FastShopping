@@ -48,71 +48,85 @@ class ItemsScreen extends StatelessWidget {
       );
   }
 
+  void _blurFocus(BuildContext context) {
+    final cubit = context.read<SelectedShoppingListCubit>();
+    if (cubit.state.itemActionState is ItemActionEditing) {
+      cubit.stopEditingItem();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final fabShown =
         context.watch<SelectedShoppingListCubit>().state.list != null;
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: const ItemsAppBar(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: fabShown
-          ? FloatingActionButton(
-              onPressed: () => _onAddItemTap(context),
-              child: const Icon(Icons.add),
-            )
-          : null,
-      bottomNavigationBar:
-          BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
-        builder: (context, state) => ShoppingListBar(shoppingList: state.list),
-      ),
-      body: BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
-        builder: (context, state) {
-          Widget child;
-          if (state.list == null) {
-            child = const NoListSelectedPlaceholder();
-          } else if (state.list.availableItems.isEmpty) {
-            child = const NoItemsPlaceholder();
-          } else {
-            child = ImplicitlyAnimatedReorderableList<Item>(
-              areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
-              items: state.list.availableItems,
-              onReorderFinished: (item, from, to, newItems) =>
-                  context.read<SelectedShoppingListCubit>().moveItem(from, to),
-              header: ArchiveBanner(
-                visible: state.list.allItemsDone,
-                onArchiveTap: () => _onArchiveTap(context, state.list),
-              ),
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              itemBuilder: (context, itemAnimation, item, index) => Reorderable(
-                key: ValueKey(item.id),
-                builder: (context, dragAnimation, inDrag) => SizeFadeTransition(
-                  curve: standardEasing,
-                  animation: itemAnimation,
-                  child: Handle(
-                    delay: const Duration(milliseconds: 500),
-                    child: _DraggableTileContainer(
-                      dragAnimation: dragAnimation,
-                      expanded: state.itemActionState.isExpanded(item.id),
-                      child: _ItemTile(
-                        item: item,
-                        itemActionState: state.itemActionState,
+    return GestureDetector(
+      onTap: () => _blurFocus(context),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: const ItemsAppBar(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButton: fabShown
+            ? FloatingActionButton(
+                onPressed: () => _onAddItemTap(context),
+                child: const Icon(Icons.add),
+              )
+            : null,
+        bottomNavigationBar:
+            BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
+          builder: (context, state) =>
+              ShoppingListBar(shoppingList: state.list),
+        ),
+        body: BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
+          builder: (context, state) {
+            Widget child;
+            if (state.list == null) {
+              child = const NoListSelectedPlaceholder();
+            } else if (state.list.availableItems.isEmpty) {
+              child = const NoItemsPlaceholder();
+            } else {
+              child = ImplicitlyAnimatedReorderableList<Item>(
+                areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
+                items: state.list.availableItems,
+                onReorderFinished: (item, from, to, newItems) => context
+                    .read<SelectedShoppingListCubit>()
+                    .moveItem(from, to),
+                header: ArchiveBanner(
+                  visible: state.list.allItemsDone,
+                  onArchiveTap: () => _onArchiveTap(context, state.list),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                itemBuilder: (context, itemAnimation, item, index) =>
+                    Reorderable(
+                  key: ValueKey(item.id),
+                  builder: (context, dragAnimation, inDrag) =>
+                      SizeFadeTransition(
+                    curve: standardEasing,
+                    animation: itemAnimation,
+                    child: Handle(
+                      delay: const Duration(milliseconds: 500),
+                      child: _DraggableTileContainer(
+                        dragAnimation: dragAnimation,
+                        expanded: state.itemActionState.isExpanded(item.id),
+                        child: _ItemTile(
+                          item: item,
+                          itemActionState: state.itemActionState,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            );
-          }
+              );
+            }
 
-          return AnimatedSwitcher(
-            switchInCurve: standardEasing,
-            switchOutCurve: standardEasing,
-            duration: const Duration(milliseconds: 300),
-            child: child,
-          );
-        },
+            return AnimatedSwitcher(
+              switchInCurve: standardEasing,
+              switchOutCurve: standardEasing,
+              duration: const Duration(milliseconds: 300),
+              child: child,
+            );
+          },
+        ),
       ),
     );
   }
