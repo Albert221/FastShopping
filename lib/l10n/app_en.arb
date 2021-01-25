@@ -3,8 +3,6 @@
     "@app_title": {
         "description": "Shown on top of the screen."
     },
-    "menu_licenses": "Licenses",
-    "@menu_licenses": {},
     "list_item_no_name": "No name",
     "@list_item_no_name": {
         "description": "When the item has no/empty name."
@@ -175,12 +173,36 @@
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
     },
-    "menu_support_author": "Support the author",
-    "@menu_support_author": {},
-    "support_author_dialog_button": "SUPPORT ME",
-    "@support_author_dialog_button": {},
-    "support_author_dialog_title": "Support the author",
-    "@support_author_dialog_title": {},
-    "support_author_dialog_body": "You can support me, the developer of this app, by going to the page below.",
-    "@support_author_dialog_body": {}
+    "settings_title": "Settings",
+    "@settings_title": {
+      "description": "Title on the Settings screen app bar."
+    },
+    "settings_dark_mode": "Dark mode",
+    "@settings_dark_mode": {},
+    "settings_dark_mode_enabled": "Enabled",
+    "@settings_dark_mode_enabled": {},
+    "settings_dark_mode_system": "Use system settings",
+    "@settings_dark_mode_system": {},
+    "settings_dark_mode_disabled": "Disabled",
+    "@settings_dark_mode_disabled": {},
+    "settings_layout": "Layout",
+    "@settings_layout": {
+      "description": "Whether the item tiles are layed out spaciously or dense."
+    },
+    "settings_layout_comfortable": "Comfortable",
+    "@settings_layout_comfortable": {},
+    "settings_layout_dense": "Dense",
+    "@settings_layout_dense": {},
+    "settings_move_done": "Move done items to the end",
+    "@settings_move_done": {},
+    "settings_support_author": "Support the author",
+    "@settings_support_author": {
+      "description": "Redirects the user to the author's website."
+    },
+    "settings_project_website": "Project website",
+    "@settings_project_website": {
+      "description": "Redirects the user to GitHub."
+    },
+    "settings_licenses": "Licenses",
+    "@settings_licenses": {}
 }
