@@ -24,6 +24,21 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
         children: [
+          RadioListTile(
+            value: false,
+            groupValue: false,
+            title: Text(S.of(context).settings_multiple_lists),
+            subtitle: Text(S.of(context).settings_multiple_lists_subtitle),
+            onChanged: (_) {},
+          ),
+          RadioListTile(
+            value: true,
+            groupValue: false,
+            title: Text(S.of(context).settings_one_list),
+            subtitle: Text(S.of(context).settings_one_list_subtitle),
+            onChanged: (_) {},
+          ),
+          const Divider(),
           ListTile(
             leading: const Icon(Icons.nights_stay),
             title: Text(S.of(context).settings_dark_mode),

@@ -127,20 +127,6 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Current",
     "@shopping_lists_tab_current": {},
-    "menu_layout": "Layout",
-    "@menu_layout": {
-        "description": "Shown on the main screen dropdown, next to the view_stream material icon."
-    },
-    "layout_dialog_title": "Layout",
-    "@layout_dialog_title": {},
-    "layout_dialog_one_list_title": "One list",
-    "@layout_dialog_one_list_title": {},
-    "layout_dialog_multiple_lists_title": "Multiple lists",
-    "@layout_dialog_multiple_lists_title": {},
-    "layout_dialog_content": "You can change that later.",
-    "@layout_dialog_content": {
-        "description": "Small text shown under one/multiple lists options."
-    },
     "delete_shopping_list_dialog_body_before": "Do you really want to delete ",
     "@delete_shopping_list_dialog_body_before": {},
     "delete_shopping_list_dialog_body_after": " shopping list? This operation cannot be undone.",
@@ -177,6 +163,14 @@
     "@settings_title": {
       "description": "Title on the Settings screen app bar."
     },
+    "settings_multiple_lists": "Multiple lists",
+    "@settings_multiple_lists": {},
+    "settings_multiple_lists_subtitle": "More features, better management.",
+    "@settings_multiple_lists_subtitle": {},
+    "settings_one_list": "One list",
+    "@settings_one_list": {},
+    "settings_one_list_subtitle": "Simpler feel, only one shopping list.",
+    "@settings_one_list_subtitle": {},
     "settings_dark_mode": "Dark mode",
     "@settings_dark_mode": {},
     "settings_dark_mode_enabled": "Enabled",

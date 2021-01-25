@@ -3,8 +3,8 @@
     "@app_title": {
         "description": "Shown on top of the screen."
     },
-    "menu_licenses": "Лиценци",
-    "@menu_licenses": {},
+    "settings_licenses": "Лиценци",
+    "@settings_licenses": {},
     "list_item_no_name": "Нема име",
     "@list_item_no_name": {
         "description": "When the item has no/empty name."
@@ -132,8 +132,8 @@
     "@layout_dialog_title": {},
     "layout_dialog_one_list_title": "Една листа",
     "@layout_dialog_one_list_title": {},
-    "layout_dialog_multiple_lists_title": "Повеќе листи",
-    "@layout_dialog_multiple_lists_title": {},
+    "settings_multiple_lists_subtitle": "Повеќе листи",
+    "@settings_multiple_lists_subtitle": {},
     "layout_dialog_content": "Ова можете да го промените подоцна.",
     "@layout_dialog_content": {
         "description": "Small text shown under one/multiple lists options."
@@ -170,8 +170,8 @@
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
     },
-    "menu_support_author": "Поддржете го авторот",
-    "@menu_support_author": {},
+    "settings_support_author": "Поддржете го авторот",
+    "@settings_support_author": {},
     "support_author_dialog_button": "ПОДДРШКА МЕ",
     "@support_author_dialog_button": {},
     "support_author_dialog_title": "Поддржете го авторот",
