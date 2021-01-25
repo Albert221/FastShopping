@@ -63,11 +63,12 @@ class ContentSpace extends HookWidget {
     );
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
+      padding: const EdgeInsets.symmetric(),
       child: TextField(
         decoration: InputDecoration(
           border: InputBorder.none,
-          contentPadding: EdgeInsets.zero,
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
           isDense: true,
           hintText: editing
               ? S.of(context).list_item_title_hint
