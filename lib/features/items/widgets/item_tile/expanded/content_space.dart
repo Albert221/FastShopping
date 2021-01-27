@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fast_shopping_bloc/models.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
@@ -25,6 +27,8 @@ class ContentSpace extends HookWidget {
     FocusScopeNode focusScopeNode,
     FocusNode focusNode,
   ) {
+    final debounce = useState<Timer>(null);
+
     return () {
       // Focus or unfocus title field based on the item tile state
       if (editing && !focusNode.hasFocus) {
@@ -33,13 +37,22 @@ class ContentSpace extends HookWidget {
         focusScopeNode.unfocus();
       }
 
-      // Update the content controller value with what's in the item
-      titleController.value = TextEditingValue(
-        text: item.title,
-        selection: TextSelection.collapsed(offset: item.title.length),
-      );
+      // Debounce so that the user doesn't see flickering because of how the
+      // states are emitted:
+      //     editing item -> not editing item -> not editing item with new title
+      // will become:
+      //     editing item -> not editing item with new title
+      // TODO: Add debouncing (ideally conditional) to the SelectedShoppingListCubit
+      //       after migrating to bloc 7.0.0 (transformTransitions in cubits).
+      if (debounce.value?.isActive ?? false) debounce.value.cancel();
+      debounce.value = Timer(const Duration(milliseconds: 50), () {
+        titleController.value = TextEditingValue(
+          text: item.title,
+          selection: TextSelection.collapsed(offset: item.title.length),
+        );
+      });
 
-      return () {};
+      return () => debounce.value?.cancel();
     };
   }
 
