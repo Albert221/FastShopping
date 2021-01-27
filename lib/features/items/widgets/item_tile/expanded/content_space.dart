@@ -20,30 +20,27 @@ class ContentSpace extends HookWidget {
   final ValueChanged<bool> onEditingChanged;
   final ValueChanged<String> onTitleChanged;
 
-  void _onItemTileUpdate(
-    BuildContext context, {
-    @required FocusNode focusNode,
-    @required bool previousEditing,
-  }) {
-    // Focus or unfocus title field based on the item tile state
-    if (editing) {
-      FocusScope.of(context).requestFocus(focusNode);
-    } else if (focusNode.hasFocus) {
-      FocusScope.of(context).unfocus();
-    }
+  VoidCallback Function() _onItemOrEditingUpdate(
+    BuildContext context,
+    FocusScopeNode focusScopeNode,
+    FocusNode focusNode,
+  ) {
+    return () {
+      // Focus or unfocus title field based on the item tile state
+      if (editing && !focusNode.hasFocus) {
+        focusScopeNode.requestFocus(focusNode);
+      } else if (!editing && focusNode.hasFocus) {
+        focusScopeNode.unfocus();
+      }
 
-    // Why did I put it here in the first place?
-    // It doesn't work correctly when I uncomment it...
-    // TODO: Remove it sometime when I'm sure it's no longer needed.
+      // Update the content controller value with what's in the item
+      titleController.value = TextEditingValue(
+        text: item.title,
+        selection: TextSelection.collapsed(offset: item.title.length),
+      );
 
-    // Update the title field value if the editing state changed so we don't
-    // lose the title that is being composed.
-    // if (previousEditing != editing) {
-    //   titleController.value = TextEditingValue(
-    //     text: item.title,
-    //     selection: TextSelection.collapsed(offset: item.title.length),
-    //   );
-    // }
+      return () {};
+    };
   }
 
   void _onEdit(BuildContext context) {
@@ -60,12 +57,13 @@ class ContentSpace extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final focusNode = useFocusNode();
-    final previousEditing = usePrevious(editing);
-
-    _onItemTileUpdate(
-      context,
-      focusNode: focusNode,
-      previousEditing: previousEditing,
+    useEffect(
+      _onItemOrEditingUpdate(
+        context,
+        FocusScope.of(context),
+        focusNode,
+      ),
+      [item, editing],
     );
 
     return Padding(
