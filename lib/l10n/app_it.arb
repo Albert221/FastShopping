@@ -9,7 +9,7 @@
     "@list_item_no_name": {
         "description": "When the item has no/empty name."
     },
-    "list_item_done_ago": "completato il {when}",
+    "list_item_done_ago": "completato {when}",
     "@list_item_done_ago": {
         "description": "Small caps date when item was marked as done.",
         "placeholders": {
@@ -29,7 +29,7 @@
     "@list_item_edit": {},
     "item_removed_snackbar_message": "L'elemento è stato rimosso dalla lista.",
     "@item_removed_snackbar_message": {},
-    "item_removed_snackbar_undo": "ANNULLA",
+    "item_removed_snackbar_undo": "RIPRISTINA",
     "@item_removed_snackbar_undo": {},
     "add_item_dialog_title": "Aggiungi articolo",
     "@add_item_dialog_title": {},
@@ -49,9 +49,9 @@
     "@empty_list_add_some_items_message": {},
     "list_archived_snackbar_message": "La lista è stata archiviata con successo.",
     "@list_archived_snackbar_message": {},
-    "list_archived_snackbar_undo": "ANNULLA",
+    "list_archived_snackbar_undo": "RIPRISTINA",
     "@list_archived_snackbar_undo": {},
-    "shopping_lists_title": "Liste",
+    "shopping_lists_title": "Liste della spesa",
     "@shopping_lists_title": {},
     "shopping_lists_tab_archived": "Archiviate",
     "@shopping_lists_tab_archived": {},
@@ -97,7 +97,7 @@
     "@rename_shopping_list_dialog_cancel": {},
     "rename_shopping_list_dialog_rename": "RINOMINA",
     "@rename_shopping_list_dialog_rename": {},
-    "delete_shopping_list_dialog_title": "Eliminazione lista della spesa",
+    "delete_shopping_list_dialog_title": "Cancella la lista della spesa",
     "@delete_shopping_list_dialog_title": {},
     "delete_shopping_list_dialog_cancel": "ANNULLA",
     "@delete_shopping_list_dialog_cancel": {},
@@ -129,11 +129,11 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Attuali",
     "@shopping_lists_tab_current": {},
-    "menu_layout": "Layout",
+    "menu_layout": "Disposizione",
     "@menu_layout": {
         "description": "Shown on the main screen dropdown, next to the view_stream material icon."
     },
-    "layout_dialog_title": "Layout",
+    "layout_dialog_title": "Disposizione",
     "@layout_dialog_title": {},
     "layout_dialog_one_list_title": "Una Lista",
     "@layout_dialog_one_list_title": {},
@@ -143,7 +143,7 @@
     "@layout_dialog_content": {
         "description": "Small text shown under one/multiple lists options."
     },
-    "delete_shopping_list_dialog_body_before": "Sei sicuro di voler cancellare ",
+    "delete_shopping_list_dialog_body_before": "Vuoi cancellare",
     "@delete_shopping_list_dialog_body_before": {},
     "delete_shopping_list_dialog_body_after": " la lista? Questa operazione non può essere annullata.",
     "@delete_shopping_list_dialog_body_after": {},
@@ -161,13 +161,13 @@
     "@screenshot_item_5": {
         "description": "Expanded item on shopping list in app stores screenshots."
     },
-    "screenshot_item_6": "Olio di oliva",
+    "screenshot_item_6": "Olio extra vergine d'oliva",
     "@screenshot_item_6": {},
-    "screenshot_item_7": "Capperi ed olive",
+    "screenshot_item_7": "Capperi e olive",
     "@screenshot_item_7": {},
     "screenshot_item_8": "Salsa al peperoncino",
     "@screenshot_item_8": {},
-    "screenshot_list_1": "Drogheria",
+    "screenshot_list_1": "Spesa",
     "@screenshot_list_1": {
         "description": "Active shopping list in app stores screenshots."
     },
@@ -181,6 +181,6 @@
     "@support_author_dialog_button": {},
     "support_author_dialog_title": "Supporta l'autore",
     "@support_author_dialog_title": {},
-    "support_author_dialog_body": "Puoi supportare me e lo sviluppo dell'applicazione, visitando la pagina qui sotto.",
+    "support_author_dialog_body": "Puoi supportare me, lo sviluppatore di quest'applicazione, visitando la pagina qui sotto.",
     "@support_author_dialog_body": {}
 }
