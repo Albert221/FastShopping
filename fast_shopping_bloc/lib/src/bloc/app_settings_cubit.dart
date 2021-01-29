@@ -5,30 +5,49 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'app_settings_cubit.freezed.dart';
 
 class AppSettingsCubit extends Cubit<AppSettings> {
-  AppSettingsCubit() : super(const AppSettings());
+  AppSettingsCubit(this._settingsRepository) : super(const AppSettings());
+
+  final AppSettingsRepository _settingsRepository;
 
   Future<void> load() async {
-    // TODO: Load
+    final settings = await Future.wait([
+      _settingsRepository.getShoppingListsMode(),
+      _settingsRepository.getDarkMode(),
+      _settingsRepository.getItemsLayout(),
+      _settingsRepository.getMoveDoneToEnd(),
+    ]);
+
+    final shoppingListsMode = settings[0] as ShoppingListsMode;
+    final darkMode = settings[1] as DarkMode;
+    final itemsLayout = settings[2] as ItemsLayout;
+    final moveDoneToEnd = settings[3] as bool;
+
+    emit(state.copyWith(
+      shoppingListsMode: shoppingListsMode ?? state.shoppingListsMode,
+      darkMode: darkMode ?? state.darkMode,
+      itemsLayout: itemsLayout ?? state.itemsLayout,
+      moveDoneToEnd: moveDoneToEnd ?? state.moveDoneToEnd,
+    ));
   }
 
   Future<void> setShoppingListsMode(ShoppingListsMode shoppingListsMode) async {
-    // TODO: Persist
+    await _settingsRepository.setShoppingListsMode(shoppingListsMode);
     emit(state.copyWith(shoppingListsMode: shoppingListsMode));
   }
 
   Future<void> setDarkMode(DarkMode darkMode) async {
-    // TODO: Persist
+    await _settingsRepository.setDarkMode(darkMode);
     emit(state.copyWith(darkMode: darkMode));
   }
 
   Future<void> setItemsLayout(ItemsLayout itemsLayout) async {
-    // TODO: Persist
+    await _settingsRepository.setItemsLayout(itemsLayout);
     emit(state.copyWith(itemsLayout: itemsLayout));
   }
 
   // ignore: avoid_positional_boolean_parameters
   Future<void> setMoveDoneToEnd(bool moveDoneToEnd) async {
-    // TODO: Persist
+    await _settingsRepository.setMoveDoneToEnd(moveDoneToEnd);
     emit(state.copyWith(moveDoneToEnd: moveDoneToEnd));
   }
 }

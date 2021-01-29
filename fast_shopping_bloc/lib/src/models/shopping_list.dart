@@ -1,6 +1,5 @@
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'item.dart';
 
 part 'shopping_list.freezed.dart';
 part 'shopping_list.g.dart';

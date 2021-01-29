@@ -4,6 +4,7 @@ export 'src/bloc/app_settings_cubit.dart';
 export 'src/bloc/selected_shopping_list_cubit.dart';
 export 'src/bloc/shopping_lists_cubit.dart';
 
+export 'src/data/app_settings_repository.dart';
 export 'src/data/shopping_list_repository.dart';
 
 export 'src/models/item.dart';
