@@ -1,5 +1,4 @@
-import 'package:fast_shopping_bloc/src/models/item.dart';
-import 'package:fast_shopping_bloc/src/models/shopping_list.dart';
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 
 import 'clock.dart';
 
