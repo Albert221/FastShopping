@@ -17,7 +17,7 @@ class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: const AppLogo(),
       actions: [
         IconButton(
-          icon: const Icon(Icons.settings),
+          icon: const Icon(Icons.settings_outlined),
           onPressed: () => Navigator.of(context).push(
             MaterialPageRoute(builder: (context) => SettingsScreen()),
           ),
