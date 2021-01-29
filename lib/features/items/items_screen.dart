@@ -1,7 +1,5 @@
 import 'package:animations/animations.dart';
-import 'package:fast_shopping_bloc/models.dart';
-import 'package:fast_shopping_bloc/selected_shopping_list.dart';
-import 'package:fast_shopping_bloc/shopping_lists.dart';
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

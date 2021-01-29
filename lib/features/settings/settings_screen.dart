@@ -1,11 +1,52 @@
+import 'package:fast_shopping/features/common/better_simple_dialog.dart';
 import 'package:fast_shopping/features/items/widgets/app_logo.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const _supportAuthorUrl = 'https://wolszon.me/support-me';
   static const _projectPage = 'https://github.com/Albert221/FastShopping';
+
+  Future<void> _onDarkModeTap(BuildContext context) async {
+    final darkMode = await showDialog<DarkMode>(
+      context: context,
+      builder: (context) => BetterSimpleDialog(
+        title: Text(S.of(context).settings_dark_mode),
+        children: DarkMode.values.map((option) {
+          return BetterSimpleDialogOption(
+            onPressed: () => Navigator.of(context).pop(option),
+            child: Text(option.localize(context)),
+          );
+        }).toList(),
+      ),
+    );
+
+    if (darkMode != null) {
+      context.read<AppSettingsCubit>().setDarkMode(darkMode);
+    }
+  }
+
+  Future<void> _onItemsLayoutTap(BuildContext context) async {
+    final layout = await showDialog<ItemsLayout>(
+      context: context,
+      builder: (context) => BetterSimpleDialog(
+        title: Text(S.of(context).settings_items_layout),
+        children: ItemsLayout.values.map((option) {
+          return BetterSimpleDialogOption(
+            onPressed: () => Navigator.of(context).pop(option),
+            child: Text(option.localize(context)),
+          );
+        }).toList(),
+      ),
+    );
+
+    if (layout != null) {
+      context.read<AppSettingsCubit>().setItemsLayout(layout);
+    }
+  }
 
   void _onLicensesTap(BuildContext context) {
     showLicensePage(
@@ -17,6 +58,8 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appSettings = context.watch<AppSettingsCubit>().state;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).settings_title),
@@ -24,38 +67,41 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
         children: [
-          RadioListTile(
-            value: false,
-            groupValue: false,
+          RadioListTile<ShoppingListsMode>(
+            value: ShoppingListsMode.multiple,
+            groupValue: appSettings.shoppingListsMode,
             title: Text(S.of(context).settings_multiple_lists),
             subtitle: Text(S.of(context).settings_multiple_lists_subtitle),
-            onChanged: (_) {},
+            onChanged: (mode) =>
+                context.read<AppSettingsCubit>().setShoppingListsMode(mode),
           ),
-          RadioListTile(
-            value: true,
-            groupValue: false,
-            title: Text(S.of(context).settings_one_list),
-            subtitle: Text(S.of(context).settings_one_list_subtitle),
-            onChanged: (_) {},
+          RadioListTile<ShoppingListsMode>(
+            value: ShoppingListsMode.single,
+            groupValue: appSettings.shoppingListsMode,
+            title: Text(S.of(context).settings_single_list),
+            subtitle: Text(S.of(context).settings_single_list_subtitle),
+            onChanged: (mode) =>
+                context.read<AppSettingsCubit>().setShoppingListsMode(mode),
           ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.nights_stay),
             title: Text(S.of(context).settings_dark_mode),
-            subtitle: Text(S.of(context).settings_dark_mode_system),
-            onTap: () {}, // TODO
+            subtitle: Text(appSettings.darkMode.localize(context)),
+            onTap: () => _onDarkModeTap(context),
           ),
           ListTile(
             leading: const Icon(Icons.view_stream),
-            title: Text(S.of(context).settings_layout),
-            subtitle: Text(S.of(context).settings_layout_comfortable),
-            onTap: () {}, // TODO
+            title: Text(S.of(context).settings_items_layout),
+            subtitle: Text(appSettings.itemsLayout.localize(context)),
+            onTap: () => _onItemsLayoutTap(context),
           ),
           SwitchListTile(
             secondary: const Icon(Icons.low_priority),
             title: Text(S.of(context).settings_move_done),
-            value: true,
-            onChanged: (_) {}, // TODO
+            value: appSettings.moveDoneToEnd,
+            onChanged: (moveDone) =>
+                context.read<AppSettingsCubit>().setMoveDoneToEnd(moveDone),
           ),
           const Divider(),
           ListTile(

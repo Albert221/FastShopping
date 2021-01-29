@@ -1,4 +1,4 @@
-import 'package:fast_shopping_bloc/models.dart';
+import '../models/shopping_list.dart';
 
 abstract class ShoppingListRepository {
   Future<String> getSelectedListId();

@@ -105,8 +105,6 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "There are no archived lists.",
     "@no_archived_lists_message": {},
-    "list_from_old_version": "List from old version",
-    "@list_from_old_version": {},
     "shopping_lists_item_elements": "{count, plural, =1 {1 element} other {{count} elements}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
@@ -163,14 +161,14 @@
     "@settings_title": {
       "description": "Title on the Settings screen app bar."
     },
-    "settings_multiple_lists": "Multiple lists",
+    "settings_multiple_lists": "Multiple shopping lists",
     "@settings_multiple_lists": {},
     "settings_multiple_lists_subtitle": "More features, better management.",
     "@settings_multiple_lists_subtitle": {},
-    "settings_one_list": "One list",
-    "@settings_one_list": {},
-    "settings_one_list_subtitle": "Simpler feel, only one shopping list.",
-    "@settings_one_list_subtitle": {},
+    "settings_single_list": "Single shopping list",
+    "@settings_single_list": {},
+    "settings_single_list_subtitle": "Simple feel.",
+    "@settings_single_list_subtitle": {},
     "settings_dark_mode": "Dark mode",
     "@settings_dark_mode": {},
     "settings_dark_mode_enabled": "Enabled",
@@ -179,14 +177,14 @@
     "@settings_dark_mode_system": {},
     "settings_dark_mode_disabled": "Disabled",
     "@settings_dark_mode_disabled": {},
-    "settings_layout": "Layout",
-    "@settings_layout": {
+    "settings_items_layout": "Items layout",
+    "@settings_items_layout": {
       "description": "Whether the item tiles are layed out spaciously or dense."
     },
-    "settings_layout_comfortable": "Comfortable",
-    "@settings_layout_comfortable": {},
-    "settings_layout_dense": "Dense",
-    "@settings_layout_dense": {},
+    "settings_items_layout_comfortable": "Comfortable",
+    "@settings_items_layout_comfortable": {},
+    "settings_items_layout_dense": "Dense",
+    "@settings_items_layout_dense": {},
     "settings_move_done": "Move done items to the end",
     "@settings_move_done": {},
     "settings_support_author": "Support the author",

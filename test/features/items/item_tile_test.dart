@@ -1,5 +1,5 @@
 import 'package:fast_shopping/features/items/widgets/item_tile/item_tile.dart';
-import 'package:fast_shopping_bloc/models.dart';
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../widget_wrapper.dart';
