@@ -3,8 +3,6 @@
     "@app_title": {
         "description": "Shown on top of the screen."
     },
-    "menu_licenses": "Licences",
-    "@menu_licenses": {},
     "list_item_no_name": "Sans nom",
     "@list_item_no_name": {
         "description": "When the item has no/empty name."
@@ -107,8 +105,6 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "Il n'y a pas de liste archivée.",
     "@no_archived_lists_message": {},
-    "list_from_old_version": "Liste de l'ancienne version",
-    "@list_from_old_version": {},
     "shopping_lists_item_elements": "{count, plural, =1 {1 article} other {{count} articles}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
@@ -121,20 +117,6 @@
     },
     "shopping_lists_tab_current": "En cours",
     "@shopping_lists_tab_current": {},
-    "menu_layout": "Disposition",
-    "@menu_layout": {
-        "description": "Shown on the main screen dropdown, next to the view_stream material icon."
-    },
-    "layout_dialog_title": "Disposition",
-    "@layout_dialog_title": {},
-    "layout_dialog_one_list_title": "Liste simple",
-    "@layout_dialog_one_list_title": {},
-    "layout_dialog_multiple_lists_title": "Listes multiples",
-    "@layout_dialog_multiple_lists_title": {},
-    "layout_dialog_content": "Vous pourrez modifier cela ultérieurement.",
-    "@layout_dialog_content": {
-        "description": "Small text shown under one/multiple lists options."
-    },
     "delete_shopping_list_dialog_body_before": "Êtes-vous sûr de vouloir supprimer",
     "@delete_shopping_list_dialog_body_before": {},
     "delete_shopping_list_dialog_body_after": "la liste de courses ? Cette opération est irréversible.",
@@ -166,13 +148,5 @@
     "screenshot_list_2": "Soirée chez Mikaël",
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
-    },
-    "menu_support_author": "Soutenir l'auteur",
-    "@menu_support_author": {},
-    "support_author_dialog_button": "SOUTENEZ-MOI",
-    "@support_author_dialog_button": {},
-    "support_author_dialog_title": "Soutenir l'auteur",
-    "@support_author_dialog_title": {},
-    "support_author_dialog_body": "Vous pouvez me soutenir, moi, le développeur de cette application, en allant à la page ci-dessous.",
-    "@support_author_dialog_body": {}
+    }
 }
