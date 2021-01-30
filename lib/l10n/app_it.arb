@@ -125,7 +125,7 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Attuali",
     "@shopping_lists_tab_current": {},
-    "delete_shopping_list_dialog_body_before": "Vuoi cancellare",
+    "delete_shopping_list_dialog_body_before": "Sei sicuro di voler cancellare ",
     "@delete_shopping_list_dialog_body_before": {},
     "delete_shopping_list_dialog_body_after": " la lista? Questa operazione non può essere annullata.",
     "@delete_shopping_list_dialog_body_after": {},
