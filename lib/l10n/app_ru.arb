@@ -3,8 +3,6 @@
     "@app_title": {
         "description": "Shown on top of the screen."
     },
-    "settings_licenses": "Лицензии",
-    "@settings_licenses": {},
     "list_item_no_name": "Безымянный",
     "@list_item_no_name": {
         "description": "When the item has no/empty name."
@@ -47,10 +45,6 @@
     "@shopping_list_not_selected_message": {},
     "empty_list_add_some_items_message": "Добавьте несколько пунктов в свой список!",
     "@empty_list_add_some_items_message": {},
-    "list_archived_snackbar_message": "Список успешно заархивирован.",
-    "@list_archived_snackbar_message": {},
-    "list_archived_snackbar_undo": "ОТМЕНИТЬ",
-    "@list_archived_snackbar_undo": {},
     "shopping_lists_title": "Списки покупок",
     "@shopping_lists_title": {},
     "shopping_lists_tab_archived": "В архиве",
@@ -107,37 +101,26 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "Нет архивированных списков.",
     "@no_archived_lists_message": {},
-    "list_from_old_version": "Список из старой версии",
-    "@list_from_old_version": {},
     "shopping_lists_item_elements": "{count, plural, few {{count} элемента} many {{count} элементов} other {{count} элементы} =1 {1 элемент}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
-            "count": {
-                "type": "int",
-                "format": "decimalPattern"
-            }
+            "count": {}
         }
     },
     "list_item_title_hint": "Введите наименование пункта...",
     "@list_item_title_hint": {
         "description": "Placeholder in item name text field."
     },
+    "list_item_action_rename": "Переименовать",
+    "@list_item_action_rename": {},
+    "list_item_action_archive": "Заархивировать",
+    "@list_item_action_archive": {},
+    "list_item_action_unarchive": "Разархивировать",
+    "@list_item_action_unarchive": {},
+    "list_item_action_delete": "Удалить",
+    "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Текущий",
     "@shopping_lists_tab_current": {},
-    "menu_layout": "Расположение",
-    "@menu_layout": {
-        "description": "Shown on the main screen dropdown, next to the view_stream material icon."
-    },
-    "layout_dialog_title": "Расположение",
-    "@layout_dialog_title": {},
-    "layout_dialog_one_list_title": "Один список",
-    "@layout_dialog_one_list_title": {},
-    "settings_multiple_lists_subtitle": "Несколько списков",
-    "@settings_multiple_lists_subtitle": {},
-    "layout_dialog_content": "Вы можете изменить это позже.",
-    "@layout_dialog_content": {
-        "description": "Small text shown under one/multiple lists options."
-    },
     "delete_shopping_list_dialog_body_before": "Вы действительно хотите удалить ",
     "@delete_shopping_list_dialog_body_before": {},
     "delete_shopping_list_dialog_body_after": " список покупок? Эта операция не может быть отменена.",
@@ -170,12 +153,12 @@
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
     },
+    "settings_multiple_lists_subtitle": "Несколько списков",
+    "@settings_multiple_lists_subtitle": {},
     "settings_support_author": "Поддержите автора",
-    "@settings_support_author": {},
-    "support_author_dialog_button": "ПОДДЕРЖИТЕ МЕНЯ",
-    "@support_author_dialog_button": {},
-    "support_author_dialog_title": "Поддержите автора",
-    "@support_author_dialog_title": {},
-    "support_author_dialog_body": "Вы можете поддержать меня, разработчика этого приложения, перейдя на страницу ниже.",
-    "@support_author_dialog_body": {}
+    "@settings_support_author": {
+        "description": "Redirects the user to the author's website."
+    },
+    "settings_licenses": "Лицензии",
+    "@settings_licenses": {}
 }
