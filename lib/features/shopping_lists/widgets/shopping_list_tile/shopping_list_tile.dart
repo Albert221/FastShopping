@@ -33,6 +33,8 @@ class ShoppingListTile extends StatelessWidget {
         ? Theme.of(context).colorScheme.primary.withOpacity(.2)
         : Theme.of(context).colorScheme.surface;
 
+    final textColor = DefaultTextStyle.of(context).style.color;
+
     return TweenAnimationBuilder<Color>(
       tween: ColorTween(begin: background, end: background),
       curve: standardEasing,
@@ -46,9 +48,9 @@ class ShoppingListTile extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 border: Border.symmetric(
-                  horizontal: BorderSide(color: Colors.black12),
+                  horizontal: BorderSide(color: textColor.withOpacity(.12)),
                 ),
               ),
               padding: const EdgeInsets.all(16),
@@ -57,7 +59,7 @@ class ShoppingListTile extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.list, color: Colors.black45),
+                      Icon(Icons.list, color: textColor.withOpacity(.45)),
                       const SizedBox(width: 24),
                       Expanded(
                         child: Text(

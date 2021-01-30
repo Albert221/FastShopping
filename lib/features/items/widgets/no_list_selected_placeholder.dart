@@ -30,6 +30,7 @@ class NoListSelectedPlaceholder extends StatelessWidget {
               'assets/arrow_bottom_app_bar.svg',
               alignment: Alignment.bottomLeft,
               height: double.infinity,
+              color: DefaultTextStyle.of(context).style.color,
             ),
           ),
         ),

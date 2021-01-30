@@ -36,6 +36,7 @@ class NoItemsPlaceholder extends StatelessWidget {
               'assets/arrow_fab.svg',
               alignment: Alignment.bottomRight,
               height: double.infinity,
+              color: DefaultTextStyle.of(context).style.color,
             ),
           ),
         ),
