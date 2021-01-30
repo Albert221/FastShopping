@@ -42,11 +42,11 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   }
 
   void removeItem(String itemId) {
-    _updateItem(itemId, (item) => item.copyWith(removed: true));
+    _updateItemAndEmit(itemId, (item) => item.copyWith(removed: true));
   }
 
   void undoRemoveItem(String itemId) {
-    _updateItem(itemId, (item) => item.copyWith(removed: false));
+    _updateItemAndEmit(itemId, (item) => item.copyWith(removed: false));
   }
 
   /// [oldIndex] and [newIndex] refer to indices
@@ -54,44 +54,125 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   void moveItem(int oldIndex, int newIndex) {
     _assertListSelected();
 
-    int translateIndex(int index) {
-      final id = state.list.availableItems[index].id;
-      return state.list.items.indexWhere((item) => item.id == id);
-    }
+    final newList = _moveItem(
+      state.list,
+      oldIndex,
+      newIndex,
+      availableItemsIndices: true,
+    );
 
-    final newList = List.of(state.list.items);
-    final item = newList.removeAt(translateIndex(oldIndex));
-    newList.insert(translateIndex(newIndex), item);
-
-    _listsCubit.update(state.list.copyWith(items: newList));
+    _listsCubit.update(newList);
   }
 
   // ignore: avoid_positional_boolean_parameters
-  void setItemDone(String itemId, bool done) {
-    _updateItem(
-      itemId,
-      (item) => item.copyWith(doneAt: done ? _clock.now() : null),
-    );
+  void setItemDone(String itemId, bool done, {bool moveDoneToEnd = false}) {
+    Item update(Item item) => item.copyWith(doneAt: done ? _clock.now() : null);
+
+    if (!moveDoneToEnd) {
+      _updateItemAndEmit(itemId, update);
+      return;
+    }
+
+    _assertListSelected();
+
+    /// There is a case when the user has few items, some of which are done
+    /// and are not positioned at the end of the list. That's why we search
+    /// the reversed list for first NOT done item and put the related item
+    /// just after that (in the not reversed order).
+    ///
+    ///     index done  reversed index
+    ///     0     yes   6
+    ///     1     YES   5   <-- our item
+    ///     2     no    4
+    ///     3     yes   3
+    ///     4     yes   2   list length = 7
+    ///     5     no    1
+    ///     6     no    0
+    ///
+    ///     newReversedIndex = 2
+    ///     newIndex = length - newReversedIndex = 5
+    ///
+    /// The final new index is the `newIndex`. Before passing it as a target
+    /// index should be decremented by 1 because the old item is deleted
+    /// from the old index.
+    ///
+    /// This works both when the user marks the item as done when it's moved
+    /// to the top of the last group of done items as well as when the done
+    /// item is marked undone but at the same time was at this last done items
+    /// group.
+    int indexBeforeLastGroupOfDoneItems() {
+      final newReversedIndex =
+          state.list.items.reversed.toList().indexWhere((item) => !item.done);
+      final newIndex = state.list.items.length - newReversedIndex;
+      return newIndex;
+    }
+
+    final oldIndex = state.list.items.indexWhere((item) => item.id == itemId);
+    final newIndex = indexBeforeLastGroupOfDoneItems();
+    var newList = _updateItem(state.list, itemId, update);
+
+    if (done) {
+      newList = _moveItem(newList, oldIndex, newIndex - 1);
+    } else if (oldIndex > newIndex) {
+      newList = _moveItem(newList, oldIndex, newIndex);
+    }
+
+    _listsCubit.update(newList);
+  }
+
+  /// `availableItemsIndices` decides whether the `oldIndex` and `newIndex`
+  /// correspond to the `items` or `availableItems` from the `list`.
+  static ShoppingList _moveItem(
+    ShoppingList list,
+    int oldIndex,
+    int newIndex, {
+    bool availableItemsIndices = false,
+  }) {
+    int mapAvailable(int index) {
+      final id = list.availableItems[index].id;
+      return list.items.indexWhere((item) => item.id == id);
+    }
+
+    final _oldIndex = availableItemsIndices ? mapAvailable(oldIndex) : oldIndex;
+    final _newIndex = availableItemsIndices ? mapAvailable(newIndex) : newIndex;
+
+    final items = List.of(list.items);
+    final item = items.removeAt(_oldIndex);
+    items.insert(_newIndex, item);
+
+    return list.copyWith(items: items);
   }
 
   void setItemTitle(String itemId, String newTitle) {
-    _updateItem(itemId, (item) => item.copyWith(title: newTitle.trim()));
+    _updateItemAndEmit(itemId, (item) => item.copyWith(title: newTitle.trim()));
   }
 
-  void _updateItem(String itemId, Item Function(Item) itemUpdate) {
+  /// Updates an item with specified `itemId` from the selected shopping
+  /// list in [state] and emits it (sends above to the shopping lists cubit).
+  void _updateItemAndEmit(String itemId, Item Function(Item) itemUpdate) {
     _assertListSelected();
 
-    _listsCubit.update(state.list.copyWith(
-      items: state.list.items
+    _listsCubit.update(_updateItem(state.list, itemId, itemUpdate));
+  }
+
+  /// Returns a `list` with an item with id `itemId` updated with `itemUpdate`.
+  static ShoppingList _updateItem(
+    ShoppingList list,
+    String itemId,
+    Item Function(Item) itemUpdate,
+  ) {
+    return list.copyWith(
+      items: list.items
           .map((item) => item.id == itemId ? itemUpdate(item) : item)
           .toList(),
-    ));
+    );
   }
 
   void _assertListSelected() {
     if (state.list == null) {
       throw Exception(
-          'You must have any shopping list selected to perform that action.');
+        'You must have any shopping list selected to perform that action.',
+      );
     }
   }
 

@@ -118,7 +118,7 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_Item implements _Item {
+class _$_Item extends _Item {
   const _$_Item(
       {@required this.id,
       @required this.title,
@@ -126,7 +126,8 @@ class _$_Item implements _Item {
       this.removed = false})
       : assert(id != null),
         assert(title != null),
-        assert(removed != null);
+        assert(removed != null),
+        super._();
 
   factory _$_Item.fromJson(Map<String, dynamic> json) =>
       _$_$_ItemFromJson(json);
@@ -178,7 +179,8 @@ class _$_Item implements _Item {
   }
 }
 
-abstract class _Item implements Item {
+abstract class _Item extends Item {
+  const _Item._() : super._();
   const factory _Item(
       {@required String id,
       @required String title,
