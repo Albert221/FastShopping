@@ -87,26 +87,28 @@ void main() {
       ],
     );
 
-    blocTest<ShoppingListsCubit, ShoppingListsState>(
-      'selects a shopping list correctly',
-      build: () => cubit,
-      seed: ShoppingListsState(lists: [shoppingList1]),
-      act: (cubit) => cubit.select(shoppingList1.id),
-      expect: [
-        ShoppingListsState(
-          selectedId: shoppingList1.id,
-          lists: [shoppingList1],
-        ),
-      ],
-    );
+    group('selects a shopping list', () {
+      blocTest<ShoppingListsCubit, ShoppingListsState>(
+        'correctly',
+        build: () => cubit,
+        seed: ShoppingListsState(lists: [shoppingList1]),
+        act: (cubit) => cubit.select(shoppingList1.id),
+        expect: [
+          ShoppingListsState(
+            selectedId: shoppingList1.id,
+            lists: [shoppingList1],
+          ),
+        ],
+      );
 
-    blocTest<ShoppingListsCubit, ShoppingListsState>(
-      'fails to select a shopping list not on the list',
-      build: () => cubit,
-      seed: ShoppingListsState(lists: [shoppingList1]),
-      act: (cubit) => cubit.select('im not here'),
-      errors: [isA<Exception>()],
-    );
+      blocTest<ShoppingListsCubit, ShoppingListsState>(
+        'with failure when its id is not in the lists',
+        build: () => cubit,
+        seed: ShoppingListsState(lists: [shoppingList1]),
+        act: (cubit) => cubit.select('im not here'),
+        errors: [isA<Exception>()],
+      );
+    });
 
     group('renames a shopping list', () {
       blocTest<ShoppingListsCubit, ShoppingListsState>(
@@ -136,36 +138,38 @@ void main() {
       );
     });
 
-    blocTest<ShoppingListsCubit, ShoppingListsState>(
-      'archives a shopping list correctly',
-      build: () => cubit,
-      seed: ShoppingListsState(lists: [shoppingList1]),
-      act: (cubit) => cubit.archive(shoppingList1.id),
-      expect: [
-        ShoppingListsState(
-          lists: [
-            shoppingList1.copyWith(archivedAt: clock.now()),
-          ],
-        ),
-      ],
-    );
+    group('archives a shopping list', () {
+      blocTest<ShoppingListsCubit, ShoppingListsState>(
+        'correctly',
+        build: () => cubit,
+        seed: ShoppingListsState(lists: [shoppingList1]),
+        act: (cubit) => cubit.archive(shoppingList1.id),
+        expect: [
+          ShoppingListsState(
+            lists: [
+              shoppingList1.copyWith(archivedAt: clock.now()),
+            ],
+          ),
+        ],
+      );
 
-    blocTest<ShoppingListsCubit, ShoppingListsState>(
-      'archives a selected shopping list correctly and deselects it',
-      build: () => cubit,
-      seed: ShoppingListsState(
-        selectedId: shoppingList1.id,
-        lists: [shoppingList1],
-      ),
-      act: (cubit) => cubit.archive(shoppingList1.id),
-      expect: [
-        ShoppingListsState(
-          lists: [
-            shoppingList1.copyWith(archivedAt: clock.now()),
-          ],
+      blocTest<ShoppingListsCubit, ShoppingListsState>(
+        'correctly and deselects it',
+        build: () => cubit,
+        seed: ShoppingListsState(
+          selectedId: shoppingList1.id,
+          lists: [shoppingList1],
         ),
-      ],
-    );
+        act: (cubit) => cubit.archive(shoppingList1.id),
+        expect: [
+          ShoppingListsState(
+            lists: [
+              shoppingList1.copyWith(archivedAt: clock.now()),
+            ],
+          ),
+        ],
+      );
+    });
 
     blocTest<ShoppingListsCubit, ShoppingListsState>(
       'unarchives a shopping list correctly',
@@ -195,26 +199,28 @@ void main() {
   });
 
   group('ShoppingListsState', () {
-    test('returns correct selected list', () {
-      expect(
-        ShoppingListsState(
-          selectedId: shoppingList1.id,
-          lists: [shoppingList1],
-        ).selected,
-        shoppingList1,
-      );
+    group('selected', () {
+      test('returns correct selected list', () {
+        expect(
+          ShoppingListsState(
+            selectedId: shoppingList1.id,
+            lists: [shoppingList1],
+          ).selected,
+          shoppingList1,
+        );
+      });
+
+      test('returns null if no list is selected', () {
+        expect(
+          ShoppingListsState(
+            lists: [shoppingList1],
+          ).selected,
+          null,
+        );
+      });
     });
 
-    test('returns null selected list if none is selected', () {
-      expect(
-        ShoppingListsState(
-          lists: [shoppingList1],
-        ).selected,
-        null,
-      );
-    });
-
-    test('returns current lists correctly', () {
+    test('current returns current lists correctly', () {
       expect(
         ShoppingListsState(
           lists: [shoppingList1, shoppingList2],
@@ -223,7 +229,7 @@ void main() {
       );
     });
 
-    test('returns archived lists correctly', () {
+    test('archived returns archived lists correctly', () {
       expect(
         ShoppingListsState(
           lists: [shoppingList1, shoppingList2],
