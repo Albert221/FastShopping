@@ -52,17 +52,42 @@ class FastShoppingApp extends StatelessWidget {
             ),
           ),
         ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: FastShoppingTheme.light(),
-          home: ItemsScreen(),
-          // Localization stuff
-          locale: OverrideLocale.of(context),
-          onGenerateTitle: (context) => S.of(context).app_title,
-          supportedLocales: S.supportedLocales,
-          localizationsDelegates: S.localizationsDelegates,
-        ),
+        child: const _App(),
       ),
+    );
+  }
+}
+
+class _App extends StatelessWidget {
+  const _App({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = context.select<AppSettingsCubit, ThemeData>(
+      (AppSettingsCubit c) {
+        switch (c.state.darkMode) {
+          case DarkMode.disabled:
+            return FastShoppingTheme.light();
+          case DarkMode.enabled:
+            return FastShoppingTheme.dark();
+          case DarkMode.system:
+          default:
+            return MediaQuery.platformBrightnessOf(context) == Brightness.light
+                ? FastShoppingTheme.light()
+                : FastShoppingTheme.dark();
+        }
+      },
+    );
+
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: theme,
+      home: ItemsScreen(),
+      // Localization stuff
+      locale: OverrideLocale.of(context),
+      onGenerateTitle: (context) => S.of(context).app_title,
+      supportedLocales: S.supportedLocales,
+      localizationsDelegates: S.localizationsDelegates,
     );
   }
 }
