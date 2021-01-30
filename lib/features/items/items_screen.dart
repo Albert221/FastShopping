@@ -99,6 +99,7 @@ class ItemsScreen extends StatelessWidget {
                   key: ValueKey(item.id),
                   builder: (context, dragAnimation, inDrag) =>
                       SizeFadeTransition(
+                    key: ValueKey('d-${item.id}'), // see: screenshots_test.dart
                     curve: standardEasing,
                     animation: itemAnimation,
                     child: Handle(

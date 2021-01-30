@@ -1,0 +1,52 @@
+name: Take screenshots
+
+on:
+  workflow_dispatch:
+
+jobs:
+  screenshots:
+    name: Launch AVD and take screenshots
+
+    runs-on: macos-10.15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: stable
+
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.FLUTTER_HOME }}/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: ${{ runner.os }}-pub-
+          
+
+      - name: Download pub dependencies
+        run: flutter pub get
+
+      - name: Launch AVD and take screenshots
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 28
+          profile: pixel_2_xl
+          script: flutter drive --target=test_driver/screenshots.dart --flavor foss
+
+      - name: Extract branch name
+        id: extract-branch
+        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+          
+      - name: Submit Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          branch: screenshots/${{ steps.extract-branch.outputs.branch }}
+          commit-message: Update screenshots
+          title: Update fastlane screenshots
+          body: ''

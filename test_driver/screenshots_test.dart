@@ -27,7 +27,7 @@ void main() {
         await driver.requestData('locale-$locale');
         await Future.delayed(const Duration(seconds: 2));
 
-        await driver.tap(find.byValueKey('04'));
+        await driver.tap(find.byValueKey('d-04'));
 
         final screenshot1 = await driver.screenshot();
         await _saveScreenshot(locale, '1', screenshot1);
@@ -37,7 +37,6 @@ void main() {
         final screenshot2 = await driver.screenshot();
         await _saveScreenshot(locale, '2', screenshot2);
 
-        // Try to tap on it, it will hide the dialog
         await driver.tap(find.byValueKey('cancel-dialog'));
         await driver.tap(find.byType('ShoppingListBar'));
 
@@ -50,7 +49,7 @@ void main() {
           screenshot2: screenshot2,
           screenshot3: screenshot3,
         );
-      });
+      }, timeout: const Timeout(Duration(minutes: 5)));
     }
   });
 }
