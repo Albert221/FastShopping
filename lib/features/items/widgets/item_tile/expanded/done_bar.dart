@@ -14,13 +14,10 @@ class DoneBar extends StatelessWidget {
   final ValueChanged<bool> onDoneChanged;
   final ValueChanged<bool> onExpandedChanged;
 
-  static const _doneStyle = TextStyle(
-    fontSize: 12,
-    color: Colors.black87,
-  );
-
   @override
   Widget build(BuildContext context) {
+    final doneColor = DefaultTextStyle.of(context).style.color.withOpacity(.87);
+
     return InkWell(
       onTap: () => onExpandedChanged(false),
       onLongPress: () {}, // don't handle tap on reordering
@@ -35,7 +32,7 @@ class DoneBar extends StatelessWidget {
             if (item.doneAt != null)
               Text(
                 S.of(context).list_item_done_ago(item.doneAt.timeAgo(context)),
-                style: _doneStyle,
+                style: TextStyle(color: doneColor, fontSize: 12),
               ),
           ],
         ),

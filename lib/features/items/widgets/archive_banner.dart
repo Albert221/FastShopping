@@ -21,7 +21,7 @@ class ArchiveBanner extends StatelessWidget {
       sizeCurve: standardEasing,
       duration: const Duration(milliseconds: 300),
       firstChild: Container(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         child: Column(
           children: [
             Padding(
@@ -38,9 +38,9 @@ class ArchiveBanner extends StatelessWidget {
                 ),
               ),
             ),
-            const Divider(
+            Divider(
               height: 0,
-              color: Colors.black12,
+              color: DefaultTextStyle.of(context).style.color.withOpacity(.12),
               thickness: 1,
             ),
           ],
