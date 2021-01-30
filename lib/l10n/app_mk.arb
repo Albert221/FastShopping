@@ -3,8 +3,6 @@
     "@app_title": {
         "description": "Shown on top of the screen."
     },
-    "menu_licenses": "Лиценци",
-    "@menu_licenses": {},
     "list_item_no_name": "Нема име",
     "@list_item_no_name": {
         "description": "When the item has no/empty name."
@@ -107,8 +105,6 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "Нема архивирани листи.",
     "@no_archived_lists_message": {},
-    "list_from_old_version": "Листа од стара верзија",
-    "@list_from_old_version": {},
     "shopping_lists_item_elements": "{count, plural, =1 {1 eлемент} other {{count} елементи}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
@@ -129,20 +125,6 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Моментално",
     "@shopping_lists_tab_current": {},
-    "menu_layout": "Изглед",
-    "@menu_layout": {
-        "description": "Shown on the main screen dropdown, next to the view_stream material icon."
-    },
-    "layout_dialog_title": "Изглед",
-    "@layout_dialog_title": {},
-    "layout_dialog_one_list_title": "Една листа",
-    "@layout_dialog_one_list_title": {},
-    "layout_dialog_multiple_lists_title": "Повеќе листи",
-    "@layout_dialog_multiple_lists_title": {},
-    "layout_dialog_content": "Ова можете да го промените подоцна.",
-    "@layout_dialog_content": {
-        "description": "Small text shown under one/multiple lists options."
-    },
     "delete_shopping_list_dialog_body_before": "Дали сигурно сакаш да избришеш ",
     "@delete_shopping_list_dialog_body_before": {},
     "delete_shopping_list_dialog_body_after": " шопинг листа? Оваа операција е трајна.",
@@ -174,13 +156,5 @@
     "screenshot_list_2": "Журката на Мајк",
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
-    },
-    "menu_support_author": "Поддржете го авторот",
-    "@menu_support_author": {},
-    "support_author_dialog_button": "ПОДДРШКА МЕ",
-    "@support_author_dialog_button": {},
-    "support_author_dialog_title": "Поддржете го авторот",
-    "@support_author_dialog_title": {},
-    "support_author_dialog_body": "Може да ме поддржите мене, развивачот на оваа апликација, со одење на страницата подолу.",
-    "@support_author_dialog_body": {}
+    }
 }
