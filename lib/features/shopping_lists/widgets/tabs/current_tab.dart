@@ -39,6 +39,10 @@ class CurrentTab extends StatelessWidget {
       ..showSnackBar(SnackBar(
         behavior: SnackBarBehavior.floating,
         content: Text(S.of(context).shopping_list_archived_snackbar_message),
+        action: SnackBarAction(
+          label: S.of(context).shopping_list_archived_snackbar_undo,
+          onPressed: () => shoppingListsCubit.unarchive(list.id),
+        ),
       ));
   }
 

@@ -35,9 +35,9 @@ class ItemsScreen extends StatelessWidget {
       ..showSnackBar(
         SnackBar(
           behavior: SnackBarBehavior.floating,
-          content: Text(S.of(context).list_archived_snackbar_message),
+          content: Text(S.of(context).shopping_list_archived_snackbar_message),
           action: SnackBarAction(
-            label: S.of(context).list_archived_snackbar_undo,
+            label: S.of(context).shopping_list_archived_snackbar_undo,
             onPressed: () => context.read<ShoppingListsCubit>()
               ..unarchive(list.id)
               ..select(list.id),
