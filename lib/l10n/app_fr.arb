@@ -3,8 +3,6 @@
     "@app_title": {
         "description": "Shown on top of the screen."
     },
-    "settings_licenses": "Licences",
-    "@settings_licenses": {},
     "list_item_no_name": "Sans nom",
     "@list_item_no_name": {
         "description": "When the item has no/empty name."
@@ -47,10 +45,6 @@
     "@shopping_list_not_selected_message": {},
     "empty_list_add_some_items_message": "Ajoutez des articles à votre liste !",
     "@empty_list_add_some_items_message": {},
-    "list_archived_snackbar_message": "La liste a été archivée avec succès.",
-    "@list_archived_snackbar_message": {},
-    "list_archived_snackbar_undo": "DÉFAIRE",
-    "@list_archived_snackbar_undo": {},
     "shopping_lists_title": "Listes de courses",
     "@shopping_lists_title": {},
     "shopping_lists_tab_archived": "Archivées",
@@ -107,15 +101,10 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "Il n'y a pas de liste archivée.",
     "@no_archived_lists_message": {},
-    "list_from_old_version": "Liste de l'ancienne version",
-    "@list_from_old_version": {},
     "shopping_lists_item_elements": "{count, plural, =1 {1 article} other {{count} articles}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
-            "count": {
-                "type": "int",
-                "format": "decimalPattern"
-            }
+            "count": {}
         }
     },
     "list_item_title_hint": "Écrivez le nom de l'article ici…",
@@ -124,20 +113,6 @@
     },
     "shopping_lists_tab_current": "En cours",
     "@shopping_lists_tab_current": {},
-    "menu_layout": "Disposition",
-    "@menu_layout": {
-        "description": "Shown on the main screen dropdown, next to the view_stream material icon."
-    },
-    "layout_dialog_title": "Disposition",
-    "@layout_dialog_title": {},
-    "layout_dialog_one_list_title": "Liste simple",
-    "@layout_dialog_one_list_title": {},
-    "settings_multiple_lists_subtitle": "Listes multiples",
-    "@settings_multiple_lists_subtitle": {},
-    "layout_dialog_content": "Vous pourrez modifier cela ultérieurement.",
-    "@layout_dialog_content": {
-        "description": "Small text shown under one/multiple lists options."
-    },
     "delete_shopping_list_dialog_body_before": "Êtes-vous sûr de vouloir supprimer",
     "@delete_shopping_list_dialog_body_before": {},
     "delete_shopping_list_dialog_body_after": "la liste de courses ? Cette opération est irréversible.",
@@ -170,12 +145,12 @@
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
     },
+    "settings_multiple_lists_subtitle": "Listes multiples",
+    "@settings_multiple_lists_subtitle": {},
     "settings_support_author": "Soutenir l'auteur",
-    "@settings_support_author": {},
-    "support_author_dialog_button": "SOUTENEZ-MOI",
-    "@support_author_dialog_button": {},
-    "support_author_dialog_title": "Soutenir l'auteur",
-    "@support_author_dialog_title": {},
-    "support_author_dialog_body": "Vous pouvez me soutenir, moi, le développeur de cette application, en allant à la page ci-dessous.",
-    "@support_author_dialog_body": {}
+    "@settings_support_author": {
+        "description": "Redirects the user to the author's website."
+    },
+    "settings_licenses": "Licences",
+    "@settings_licenses": {}
 }
