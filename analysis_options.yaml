@@ -9,6 +9,4 @@ analyzer:
     exclude:
         - crashlytics
         - fast_shopping_bloc
-        - lib/l10n/messages_*.dart
-        - lib/l10n/l10n.dart
         - lib/**/*.freezed.dart
