@@ -23,6 +23,5 @@ abstract class ShoppingList implements _$ShoppingList {
       items.where((item) => !item.removed).toList();
 
   bool get allItemsDone =>
-      availableItems.isNotEmpty &&
-      availableItems.every((item) => item.doneAt != null);
+      availableItems.isNotEmpty && availableItems.every((item) => item.done);
 }
