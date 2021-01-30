@@ -16,13 +16,13 @@ class CollapsedItemTile extends StatelessWidget {
   final ValueChanged<bool> onDoneChanged;
   final ValueChanged<bool> onExpandedChanged;
 
-  static const _emptyTitleStyle = TextStyle(
-    color: Colors.black54,
-    fontStyle: FontStyle.italic,
-  );
-
   @override
   Widget build(BuildContext context) {
+    final emptyTitleStyle = TextStyle(
+      color: DefaultTextStyle.of(context).style.color.withOpacity(.54),
+      fontStyle: FontStyle.italic,
+    );
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(4),
       child: Material(
@@ -32,7 +32,10 @@ class CollapsedItemTile extends StatelessWidget {
           onLongPress: () {}, // don't handle tap on reordering
           child: Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.black12),
+              border: Border.all(
+                color:
+                    DefaultTextStyle.of(context).style.color.withOpacity(.12),
+              ),
               borderRadius: BorderRadius.circular(4),
             ),
             child: Row(
@@ -55,7 +58,7 @@ class CollapsedItemTile extends StatelessWidget {
                       stroked: item.doneAt != null,
                       duration: const Duration(milliseconds: 300),
                       curve: standardEasing,
-                      style: item.title.isEmpty ? _emptyTitleStyle : null,
+                      style: item.title.isEmpty ? emptyTitleStyle : null,
                     ),
                   ),
                 ),

@@ -4,9 +4,9 @@ enum ShoppingListsMode {
 }
 
 enum DarkMode {
+  enabled,
   system,
   disabled,
-  enabled,
 }
 
 enum ItemsLayout {

@@ -35,9 +35,11 @@ class ExpandedItemTile extends HookWidget {
     return Material(
       color: Theme.of(context).colorScheme.surface,
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           border: Border.symmetric(
-            horizontal: BorderSide(color: Colors.black12),
+            horizontal: BorderSide(
+              color: DefaultTextStyle.of(context).style.color.withOpacity(.12),
+            ),
           ),
         ),
         child: Column(

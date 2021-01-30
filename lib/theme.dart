@@ -3,27 +3,60 @@ import 'package:flutter/material.dart';
 
 class FastShoppingTheme {
   static ThemeData light() {
-    const primary = Color(0xFFFFC107);
-    const button = Color(0xFF4D3900);
-    const text = Colors.black;
+    return _build(
+      brightness: Brightness.light,
+      primary: const Color(0xFFFFC107),
+      text: Colors.black,
+      surface: Colors.white,
+      background: const Color(0xFFF1F1F1),
+      error: const Color(0xFFD32F2F),
+      onError: Colors.white,
+    );
+  }
 
-    final defaultTextTheme =
-        Typography.material2014(platform: defaultTargetPlatform).black;
+  static ThemeData dark() {
+    return _build(
+      brightness: Brightness.dark,
+      primary: const Color(0xFFFFC107),
+      text: Colors.white,
+      surface: const Color(0xFF222222),
+      background: const Color(0xFF121212),
+      error: const Color(0xFFEA9A9A),
+      onError: Colors.black,
+    );
+  }
+
+  static ThemeData _build({
+    Brightness brightness,
+    Color primary,
+    Color text,
+    Color surface,
+    Color background,
+    Color error,
+    Color onError,
+  }) {
+    final isDark = brightness == Brightness.dark;
+    final defaultTextTheme = isDark
+        ? Typography.material2014(platform: defaultTargetPlatform).white
+        : Typography.material2014(platform: defaultTargetPlatform).black;
+
+    final darkPrimary = Color.lerp(primary, surface, 0.8);
+
     final theme = ThemeData.from(
-      colorScheme: const ColorScheme(
+      colorScheme: ColorScheme(
         primary: primary,
-        primaryVariant: primary,
-        secondary: primary,
-        secondaryVariant: primary,
-        surface: Colors.white,
-        background: Color(0xFFF1F1F1),
-        error: Color(0xFFD32F2F),
+        primaryVariant: isDark ? darkPrimary : primary,
+        secondary: isDark ? darkPrimary : primary,
+        secondaryVariant: isDark ? darkPrimary : primary,
+        surface: surface,
+        background: background,
+        error: error,
         onPrimary: text,
         onSecondary: text,
         onSurface: text,
         onBackground: text,
-        onError: Colors.white,
-        brightness: Brightness.light,
+        onError: onError,
+        brightness: brightness,
       ),
       textTheme: defaultTextTheme.copyWith(
         bodyText2: defaultTextTheme.bodyText2.copyWith(
@@ -32,11 +65,13 @@ class FastShoppingTheme {
       ),
     );
 
+    final buttonColor = isDark ? text : Color.lerp(primary, text, 0.8);
+
     return theme.copyWith(
-      bottomAppBarColor: primary,
+      bottomAppBarColor: isDark ? surface : primary,
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          primary: button,
+          primary: buttonColor,
           padding: const EdgeInsets.symmetric(horizontal: 16),
         ),
       ),
@@ -46,17 +81,29 @@ class FastShoppingTheme {
 
 extension TextButtonStyles on TextButton {
   Widget get primary {
-    return TextButton(
-      key: key,
-      onPressed: onPressed,
-      onLongPress: onLongPress,
-      style: TextButton.styleFrom(
-        backgroundColor: const Color(0xFFFFF0C3),
-      ).merge(style),
-      focusNode: focusNode,
-      autofocus: autofocus,
-      clipBehavior: clipBehavior,
-      child: child,
+    return Builder(
+      builder: (context) {
+        final primary = Theme.of(context).colorScheme.primary;
+        final surface = Theme.of(context).colorScheme.surface;
+        final onSurface = Theme.of(context).colorScheme.onSurface;
+
+        final text = Color.lerp(primary, onSurface, 0.75);
+        final background = Color.lerp(primary, surface, 0.75);
+
+        return TextButton(
+          key: key,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+          style: TextButton.styleFrom(
+            primary: text,
+            backgroundColor: background,
+          ).merge(style),
+          focusNode: focusNode,
+          autofocus: autofocus,
+          clipBehavior: clipBehavior,
+          child: child,
+        );
+      },
     );
   }
 

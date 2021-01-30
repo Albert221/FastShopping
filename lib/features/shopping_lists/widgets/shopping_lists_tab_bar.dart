@@ -28,8 +28,8 @@ class ShoppingListsTabBar extends StatelessWidget
       ],
       labelStyle: const TextStyle(fontWeight: FontWeight.w700),
       indicatorSize: TabBarIndicatorSize.label,
-      indicator: const MD2Indicator(
-        indicatorColor: Colors.black,
+      indicator: MD2Indicator(
+        indicatorColor: DefaultTextStyle.of(context).style.color,
         indicatorHeight: 3,
         indicatorSize: MD2IndicatorSize.normal,
       ),
