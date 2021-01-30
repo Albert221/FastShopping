@@ -108,19 +108,33 @@ void main() {
       errors: [isA<Exception>()],
     );
 
-    blocTest<ShoppingListsCubit, ShoppingListsState>(
-      'renames a shopping list correctly',
-      build: () => cubit,
-      seed: ShoppingListsState(lists: [shoppingList1]),
-      act: (cubit) => cubit.rename(shoppingList1.id, 'new name'),
-      expect: [
-        ShoppingListsState(
-          lists: [
-            shoppingList1.copyWith(name: 'new name'),
-          ],
-        ),
-      ],
-    );
+    group('renames a shopping list', () {
+      blocTest<ShoppingListsCubit, ShoppingListsState>(
+        'correctly',
+        build: () => cubit,
+        seed: ShoppingListsState(lists: [shoppingList1]),
+        act: (cubit) => cubit.rename(shoppingList1.id, 'new name'),
+        expect: [
+          ShoppingListsState(
+            lists: [
+              shoppingList1.copyWith(name: 'new name'),
+            ],
+          ),
+        ],
+      );
+
+      blocTest<ShoppingListsCubit, ShoppingListsState>(
+        'and trims its title correctly',
+        build: () => cubit,
+        seed: ShoppingListsState(lists: [shoppingList1]),
+        act: (cubit) => cubit.rename(shoppingList1.id, '  spaces '),
+        expect: [
+          ShoppingListsState(
+            lists: [shoppingList1.copyWith(name: 'spaces')],
+          ),
+        ],
+      );
+    });
 
     blocTest<ShoppingListsCubit, ShoppingListsState>(
       'archives a shopping list correctly',

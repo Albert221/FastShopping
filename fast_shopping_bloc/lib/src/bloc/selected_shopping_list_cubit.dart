@@ -75,7 +75,7 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   }
 
   void setItemTitle(String itemId, String newTitle) {
-    _updateItem(itemId, (item) => item.copyWith(title: newTitle));
+    _updateItem(itemId, (item) => item.copyWith(title: newTitle.trim()));
   }
 
   void _updateItem(String itemId, Item Function(Item) itemUpdate) {

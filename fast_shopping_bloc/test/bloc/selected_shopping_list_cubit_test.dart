@@ -205,18 +205,37 @@ void main() {
       },
     );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'sets an item title correctly',
-      build: () => cubit,
-      act: (cubit) => cubit.setItemTitle(item2.id, 'New title!'),
-      verify: (cubit) {
-        verify(
-          shoppingListsCubit.update(shoppingList1.copyWith(
-            items: [item1, item2.copyWith(title: 'New title!'), item3],
-          )),
-        ).called(1);
-      },
-    );
+    group('sets an item title', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'correctly',
+        build: () => cubit,
+        act: (cubit) => cubit.setItemTitle(item2.id, 'New title!'),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [item1, item2.copyWith(title: 'New title!'), item3],
+            )),
+          ).called(1);
+        },
+      );
+
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'and trims it correctly',
+        build: () => cubit,
+        act: (cubit) => cubit.setItemTitle(item2.id, ' I have many spaces    '),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [
+                item1,
+                item2.copyWith(title: 'I have many spaces'),
+                item3,
+              ],
+            )),
+          ).called(1);
+        },
+      );
+    });
 
     group('expands item', () {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(

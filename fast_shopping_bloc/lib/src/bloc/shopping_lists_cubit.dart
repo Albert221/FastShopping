@@ -76,9 +76,9 @@ class ShoppingListsCubit extends Cubit<ShoppingListsState> {
 
   void rename(String id, String newName) {
     emit(state.copyWith(
-      lists: state.lists
-          .map((list) => list.id == id ? list.copyWith(name: newName) : list)
-          .toList(),
+      lists: state.lists.map((list) {
+        return list.id == id ? list.copyWith(name: newName.trim()) : list;
+      }).toList(),
     ));
   }
 
