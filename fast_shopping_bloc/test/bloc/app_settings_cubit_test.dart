@@ -54,7 +54,7 @@ void main() {
         AppSettings(shoppingListsMode: ShoppingListsMode.single),
       ],
       verify: (cubit) => verify(
-        appSettingsRepository.setShoppingListsMode(ShoppingListsMode.single),
+        appSettingsRepository.saveShoppingListsMode(ShoppingListsMode.single),
       ).called(1),
     );
 
@@ -66,7 +66,7 @@ void main() {
         AppSettings(darkMode: DarkMode.enabled),
       ],
       verify: (cubit) => verify(
-        appSettingsRepository.setDarkMode(DarkMode.enabled),
+        appSettingsRepository.saveDarkMode(DarkMode.enabled),
       ).called(1),
     );
 
@@ -78,7 +78,7 @@ void main() {
         AppSettings(itemsLayout: ItemsLayout.dense),
       ],
       verify: (cubit) => verify(
-        appSettingsRepository.setItemsLayout(ItemsLayout.dense),
+        appSettingsRepository.saveItemsLayout(ItemsLayout.dense),
       ).called(1),
     );
 
@@ -90,7 +90,7 @@ void main() {
         AppSettings(moveDoneToEnd: false),
       ],
       verify: (cubit) => verify(
-        appSettingsRepository.setMoveDoneToEnd(false),
+        appSettingsRepository.saveMoveDoneToEnd(false),
       ).called(1),
     );
   });

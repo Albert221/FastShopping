@@ -8,9 +8,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 
 class FastShoppingApp extends StatelessWidget {
-  const FastShoppingApp({Key key, @required this.shoppingListRepository})
-      : super(key: key);
+  const FastShoppingApp({
+    Key key,
+    @required this.appSettingsRepository,
+    @required this.shoppingListRepository,
+  }) : super(key: key);
 
+  final AppSettingsRepository appSettingsRepository;
   final ShoppingListRepository shoppingListRepository;
 
   @override
@@ -19,13 +23,20 @@ class FastShoppingApp extends StatelessWidget {
       providers: [
         RepositoryProvider<Clock>.value(value: const Clock()),
         RepositoryProvider<Uuid>.value(value: Uuid()),
+        RepositoryProvider<AppSettingsRepository>.value(
+          value: appSettingsRepository,
+        ),
         RepositoryProvider<ShoppingListRepository>.value(
           value: shoppingListRepository,
         ),
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => AppSettingsCubit()..load()),
+          BlocProvider(
+            create: (context) => AppSettingsCubit(
+              context.read<AppSettingsRepository>(),
+            )..load(),
+          ),
           BlocProvider(
             create: (context) => ShoppingListsCubit(
               context.read<ShoppingListRepository>(),

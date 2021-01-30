@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:fast_shopping/app.dart';
 import 'package:fast_shopping/l10n/override_locale.dart';
+import 'package:fast_shopping/data/app_settings_repository.dart' as data;
 import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_driver/driver_extension.dart';
@@ -34,7 +35,10 @@ void _main(Locale locale) {
   runApp(OverrideLocale(
     key: UniqueKey(),
     locale: locale,
-    child: FastShoppingApp(shoppingListRepository: repository),
+    child: FastShoppingApp(
+      appSettingsRepository: data.AppSettingsRepository(),
+      shoppingListRepository: repository,
+    ),
   ));
 }
 

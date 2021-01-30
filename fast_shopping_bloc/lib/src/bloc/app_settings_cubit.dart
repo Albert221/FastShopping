@@ -31,23 +31,23 @@ class AppSettingsCubit extends Cubit<AppSettings> {
   }
 
   Future<void> setShoppingListsMode(ShoppingListsMode shoppingListsMode) async {
-    await _settingsRepository.setShoppingListsMode(shoppingListsMode);
+    await _settingsRepository.saveShoppingListsMode(shoppingListsMode);
     emit(state.copyWith(shoppingListsMode: shoppingListsMode));
   }
 
   Future<void> setDarkMode(DarkMode darkMode) async {
-    await _settingsRepository.setDarkMode(darkMode);
+    await _settingsRepository.saveDarkMode(darkMode);
     emit(state.copyWith(darkMode: darkMode));
   }
 
   Future<void> setItemsLayout(ItemsLayout itemsLayout) async {
-    await _settingsRepository.setItemsLayout(itemsLayout);
+    await _settingsRepository.saveItemsLayout(itemsLayout);
     emit(state.copyWith(itemsLayout: itemsLayout));
   }
 
   // ignore: avoid_positional_boolean_parameters
   Future<void> setMoveDoneToEnd(bool moveDoneToEnd) async {
-    await _settingsRepository.setMoveDoneToEnd(moveDoneToEnd);
+    await _settingsRepository.saveMoveDoneToEnd(moveDoneToEnd);
     emit(state.copyWith(moveDoneToEnd: moveDoneToEnd));
   }
 }
