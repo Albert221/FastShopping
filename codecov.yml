@@ -1,1 +1,19 @@
+coverage:
+  status:
+    project:
+      app:
+        informational: true
+        flags: [app]
+      bloc:
+        target: auto
+        threshold: 5%
+        flags: [bloc]
+    patch: off
+
+flags:
+  app:
+    paths: ['!fast_shopping_bloc']
+  bloc:
+    paths: [fast_shopping_bloc]
+
 ignore: ['**/*.freezed.dart', '**/*.g.dart']
