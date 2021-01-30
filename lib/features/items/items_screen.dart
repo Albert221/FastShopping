@@ -206,8 +206,14 @@ class _ItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ItemTile(
       item: item,
-      onDoneChanged: (done) =>
-          context.read<SelectedShoppingListCubit>().setItemDone(item.id, done),
+      onDoneChanged: (done) {
+        final moveDoneToEnd =
+            context.read<AppSettingsCubit>().state.moveDoneToEnd;
+
+        context
+            .read<SelectedShoppingListCubit>()
+            .setItemDone(item.id, done, moveDoneToEnd: moveDoneToEnd);
+      },
       onTitleChanged: (value) => context
           .read<SelectedShoppingListCubit>()
           .setItemTitle(item.id, value),

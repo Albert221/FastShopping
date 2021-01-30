@@ -26,10 +26,10 @@ class DoneBar extends StatelessWidget {
         child: Row(
           children: [
             Checkbox(
-              value: item.doneAt != null,
+              value: item.done,
               onChanged: onDoneChanged,
             ),
-            if (item.doneAt != null)
+            if (item.done)
               Text(
                 S.of(context).list_item_done_ago(item.doneAt.timeAgo(context)),
                 style: TextStyle(color: doneColor, fontSize: 12),

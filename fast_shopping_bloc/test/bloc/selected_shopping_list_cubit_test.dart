@@ -176,34 +176,136 @@ void main() {
       );
     });
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'sets an item done correctly',
-      build: () => cubit,
-      act: (cubit) => cubit.setItemDone(item2.id, true),
-      verify: (cubit) {
-        verify(
-          shoppingListsCubit.update(shoppingList1.copyWith(
-            items: [item1, item2.copyWith(doneAt: clock.now()), item3],
-          )),
-        ).called(1);
-      },
-    );
+    group('sets an item done', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'without moving done to the end correctly',
+        build: () => cubit,
+        act: (cubit) => cubit.setItemDone(item1.id, true),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [item1.copyWith(doneAt: clock.now()), item2, item3],
+            )),
+          ).called(1);
+        },
+      );
 
-    blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-      'sets an item not done correctly',
-      build: () => cubit,
-      act: (cubit) => cubit.setItemDone(item2.id, false),
-      seed: SelectedShoppingListState(shoppingList1.copyWith(
-        items: [item1, item2.copyWith(doneAt: clock.now()), item3],
-      )),
-      verify: (cubit) {
-        verify(
-          shoppingListsCubit.update(shoppingList1.copyWith(
-            items: [item1, item2.copyWith(doneAt: null), item3],
+      group('with moving done to the end', () {
+        blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+          'with one done item not at the end correctly',
+          build: () => cubit,
+          act: (cubit) =>
+              cubit.setItemDone(item1.id, true, moveDoneToEnd: true),
+          verify: (cubit) {
+            verify(
+              shoppingListsCubit.update(shoppingList1.copyWith(
+                items: [item2, item3, item1.copyWith(doneAt: clock.now())],
+              )),
+            ).called(1);
+          },
+        );
+
+        blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+          'with one done item at the end correctly',
+          build: () => cubit,
+          seed: SelectedShoppingListState(shoppingList1.copyWith(
+            items: [item1, item3, item2],
           )),
-        ).called(1);
-      },
-    );
+          act: (cubit) =>
+              cubit.setItemDone(item1.id, true, moveDoneToEnd: true),
+          verify: (cubit) {
+            verify(
+              shoppingListsCubit.update(shoppingList1.copyWith(
+                items: [item3, item1.copyWith(doneAt: clock.now()), item2],
+              )),
+            ).called(1);
+          },
+        );
+      });
+    });
+
+    group('sets an item not done', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'without moving done to the end correctly',
+        build: () => cubit,
+        seed: SelectedShoppingListState(shoppingList1.copyWith(
+          items: [item1, item2.copyWith(doneAt: clock.now()), item3],
+        )),
+        act: (cubit) => cubit.setItemDone(item2.id, false),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [item1, item2.copyWith(doneAt: null), item3],
+            )),
+          ).called(1);
+        },
+      );
+
+      group('with moving done to the end', () {
+        blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+          'when item is not in the last done items group correctly',
+          build: () => cubit,
+          seed: SelectedShoppingListState(shoppingList1.copyWith(
+            items: [item2, item1, item3.copyWith(doneAt: clock.now())],
+          )),
+          act: (cubit) =>
+              cubit.setItemDone(item2.id, false, moveDoneToEnd: true),
+          verify: (cubit) {
+            verify(
+              shoppingListsCubit.update(shoppingList1.copyWith(
+                items: [
+                  item2.copyWith(doneAt: null),
+                  item1,
+                  item3.copyWith(doneAt: clock.now()),
+                ],
+              )),
+            ).called(1);
+          },
+        );
+
+        blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+          'when item is at the beggining of the last done items group correctly',
+          build: () => cubit,
+          seed: SelectedShoppingListState(shoppingList1.copyWith(
+            items: [item1, item2, item3.copyWith(doneAt: clock.now())],
+          )),
+          act: (cubit) =>
+              cubit.setItemDone(item2.id, false, moveDoneToEnd: true),
+          verify: (cubit) {
+            verify(
+              shoppingListsCubit.update(shoppingList1.copyWith(
+                items: [
+                  item1,
+                  item2.copyWith(doneAt: null),
+                  item3.copyWith(doneAt: clock.now()),
+                ],
+              )),
+            ).called(1);
+          },
+        );
+
+        blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+          'when item is in the last done items group correctly',
+          build: () => cubit,
+          seed: SelectedShoppingListState(shoppingList1.copyWith(
+            items: [item1, item3.copyWith(doneAt: clock.now()), item2],
+          )),
+          act: (cubit) =>
+              cubit.setItemDone(item2.id, false, moveDoneToEnd: true),
+          verify: (cubit) {
+            verify(
+              shoppingListsCubit.update(shoppingList1.copyWith(
+                items: [
+                  item1,
+                  item2.copyWith(doneAt: null),
+                  item3.copyWith(doneAt: clock.now()),
+                ],
+              )),
+            ).called(1);
+          },
+        );
+      });
+    });
 
     group('sets an item title', () {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
@@ -251,7 +353,7 @@ void main() {
       );
 
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
-        'while editing correctly',
+        'while editing other item correctly',
         build: () => cubit,
         seed: SelectedShoppingListState(
           shoppingList1,

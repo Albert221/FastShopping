@@ -44,7 +44,7 @@ class CollapsedItemTile extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 1),
                   child: Checkbox(
-                    value: item.doneAt != null,
+                    value: item.done,
                     onChanged: onDoneChanged,
                   ),
                 ),
@@ -55,7 +55,7 @@ class CollapsedItemTile extends StatelessWidget {
                       item.title.isNotEmpty
                           ? item.title
                           : S.of(context).list_item_no_name,
-                      stroked: item.doneAt != null,
+                      stroked: item.done,
                       duration: const Duration(milliseconds: 300),
                       curve: standardEasing,
                       style: item.title.isEmpty ? emptyTitleStyle : null,

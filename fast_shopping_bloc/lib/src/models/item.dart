@@ -4,7 +4,7 @@ part 'item.freezed.dart';
 part 'item.g.dart';
 
 @freezed
-abstract class Item with _$Item {
+abstract class Item implements _$Item {
   const factory Item({
     @required String id,
     @required String title,
@@ -12,5 +12,9 @@ abstract class Item with _$Item {
     @Default(false) bool removed,
   }) = _Item;
 
+  const Item._();
+
   factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+
+  bool get done => doneAt != null;
 }

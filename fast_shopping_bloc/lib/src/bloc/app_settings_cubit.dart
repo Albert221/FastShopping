@@ -58,6 +58,6 @@ abstract class AppSettings with _$AppSettings {
     @Default(ShoppingListsMode.multiple) ShoppingListsMode shoppingListsMode,
     @Default(DarkMode.system) DarkMode darkMode,
     @Default(ItemsLayout.comfortable) ItemsLayout itemsLayout,
-    @Default(true) bool moveDoneToEnd,
+    @Default(false) bool moveDoneToEnd,
   }) = _AppSettings;
 }
