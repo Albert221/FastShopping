@@ -1,4 +1,4 @@
-import 'package:fast_shopping_bloc/models.dart';
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

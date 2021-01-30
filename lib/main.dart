@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:crashlytics/crashlytics.dart';
 import 'package:fast_shopping/app.dart';
+import 'package:fast_shopping/data/app_settings_repository.dart';
 import 'package:fast_shopping/data/migrators/v2_data_migrator.dart';
 import 'package:fast_shopping/data/shopping_list_repository.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,7 @@ Future<void> main() async {
 
   runZonedGuarded(() {
     runApp(FastShoppingApp(
+      appSettingsRepository: AppSettingsRepository(),
       shoppingListRepository: shoppingListsRepository,
     ));
   }, Crashlytics.recordError);

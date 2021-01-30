@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:fast_shopping_bloc/data.dart';
-import 'package:fast_shopping_bloc/models.dart';
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class V2DataMigrator {

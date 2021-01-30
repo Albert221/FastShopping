@@ -13,7 +13,6 @@ class ActionsBar extends StatelessWidget {
   }) : super(key: key);
 
   final TextEditingController titleController;
-
   final bool editing;
   final ValueChanged<String> onTitleChanged;
   final VoidCallback onRemoved;

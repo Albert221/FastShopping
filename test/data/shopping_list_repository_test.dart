@@ -1,5 +1,5 @@
 import 'package:fast_shopping/data/shopping_list_repository.dart';
-import 'package:fast_shopping_bloc/models.dart';
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart' as fsb;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -35,7 +35,7 @@ void main() {
       expect(
         lists,
         completion([
-          ShoppingList(
+          fsb.ShoppingList(
             id: "it's id",
             name: 'Groceries',
             createdAt: DateTime.utc(2020, 12, 12, 19, 46),
@@ -57,12 +57,12 @@ void main() {
       final prefs = await SharedPreferences.getInstance();
 
       await ShoppingListRepository().saveLists([
-        ShoppingList(
+        fsb.ShoppingList(
           id: 'some id',
           name: 'This is a name',
           createdAt: DateTime.utc(2020, 12, 12, 19, 43),
           items: const [
-            Item(id: 'item id', title: 'Butter'),
+            fsb.Item(id: 'item id', title: 'Butter'),
           ],
         ),
       ]);

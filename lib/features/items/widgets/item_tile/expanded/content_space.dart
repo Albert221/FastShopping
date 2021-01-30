@@ -1,4 +1,6 @@
-import 'package:fast_shopping_bloc/models.dart';
+import 'dart:async';
+
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -20,30 +22,38 @@ class ContentSpace extends HookWidget {
   final ValueChanged<bool> onEditingChanged;
   final ValueChanged<String> onTitleChanged;
 
-  void _onItemTileUpdate(
-    BuildContext context, {
-    @required FocusNode focusNode,
-    @required bool previousEditing,
-  }) {
-    // Focus or unfocus title field based on the item tile state
-    if (editing) {
-      FocusScope.of(context).requestFocus(focusNode);
-    } else if (focusNode.hasFocus) {
-      FocusScope.of(context).unfocus();
-    }
+  VoidCallback Function() _onItemOrEditingUpdate(
+    BuildContext context,
+    FocusScopeNode focusScopeNode,
+    FocusNode focusNode,
+  ) {
+    final debounce = useState<Timer>(null);
 
-    // Why did I put it here in the first place?
-    // It doesn't work correctly when I uncomment it...
-    // TODO: Remove it sometime when I'm sure it's no longer needed.
+    return () {
+      // Focus or unfocus title field based on the item tile state
+      if (editing && !focusNode.hasFocus) {
+        focusScopeNode.requestFocus(focusNode);
+      } else if (!editing && focusNode.hasFocus) {
+        focusScopeNode.unfocus();
+      }
 
-    // Update the title field value if the editing state changed so we don't
-    // lose the title that is being composed.
-    // if (previousEditing != editing) {
-    //   titleController.value = TextEditingValue(
-    //     text: item.title,
-    //     selection: TextSelection.collapsed(offset: item.title.length),
-    //   );
-    // }
+      // Debounce so that the user doesn't see flickering because of how the
+      // states are emitted:
+      //     editing item -> not editing item -> not editing item with new title
+      // will become:
+      //     editing item -> not editing item with new title
+      // TODO: Add debouncing (ideally conditional) to the SelectedShoppingListCubit
+      //       after migrating to bloc 7.0.0 (transformTransitions in cubits).
+      if (debounce.value?.isActive ?? false) debounce.value.cancel();
+      debounce.value = Timer(const Duration(milliseconds: 50), () {
+        titleController.value = TextEditingValue(
+          text: item.title,
+          selection: TextSelection.collapsed(offset: item.title.length),
+        );
+      });
+
+      return () => debounce.value?.cancel();
+    };
   }
 
   void _onEdit(BuildContext context) {
@@ -60,12 +70,13 @@ class ContentSpace extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final focusNode = useFocusNode();
-    final previousEditing = usePrevious(editing);
-
-    _onItemTileUpdate(
-      context,
-      focusNode: focusNode,
-      previousEditing: previousEditing,
+    useEffect(
+      _onItemOrEditingUpdate(
+        context,
+        FocusScope.of(context),
+        focusNode,
+      ),
+      [item, editing],
     );
 
     return Padding(

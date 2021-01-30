@@ -1,7 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
-import 'package:fast_shopping_bloc/src/bloc/shopping_lists_cubit.dart';
-import 'package:fast_shopping_bloc/src/data/shopping_list_repository.dart';
-import 'package:fast_shopping_bloc/src/models/shopping_list.dart';
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';

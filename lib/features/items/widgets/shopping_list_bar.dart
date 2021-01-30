@@ -1,6 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:fast_shopping/features/shopping_lists/shopping_lists_screen.dart';
-import 'package:fast_shopping_bloc/models.dart';
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

@@ -1,5 +1,5 @@
 import 'package:fast_shopping/theme.dart';
-import 'package:fast_shopping_bloc/models.dart';
+import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
 
