@@ -95,6 +95,15 @@
     "@rename_shopping_list_dialog_rename": {},
     "delete_shopping_list_dialog_title": "Cancella la lista della spesa",
     "@delete_shopping_list_dialog_title": {},
+    "delete_shopping_list_dialog_body": "Sei sicuro di voler cancellare {list_name} la lista? Questa operazione non può essere annullata.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "delete_shopping_list_dialog_cancel": "ANNULLA",
     "@delete_shopping_list_dialog_cancel": {},
     "delete_shopping_list_dialog_delete": "ELIMINA",
@@ -123,15 +132,6 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Attuali",
     "@shopping_lists_tab_current": {},
-    "delete_shopping_list_dialog_body": "Sei sicuro di voler cancellare {list_name} la lista? Questa operazione non può essere annullata.",
-    "@delete_shopping_list_dialog_body": {
-        "placeholders": {
-            "list_name": {
-                "type": "String",
-                "example": "Groceries"
-            }
-        }
-    },
     "screenshot_item_1": "Passata di pomodoro",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
