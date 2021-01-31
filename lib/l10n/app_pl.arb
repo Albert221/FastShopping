@@ -200,7 +200,11 @@
     },
     "settings_licenses": "Licencje",
     "@settings_licenses": {},
-    "menu_remove_all_done": "Usuń oznaczone",
+    "menu_undone_all_done": "Odznacz zaznaczone",
+    "@menu_undone_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_remove_all_done": "Usuń zaznaczone",
     "@menu_remove_all_done": {
         "description": "Shown only when the user is in the _Single shopping list_ mode."
     },
@@ -214,6 +218,15 @@
     },
     "remove_all_done_dialog_title": "Usuwanie wszystkich oznaczonych",
     "@remove_all_done_dialog_title": {},
+    "remove_all_done_dialog_body": "{count, plural, =1 {Czy na pewno chcesz usunąć 1 element? Tej operacji nie można cofnąć.} few {Czy na pewno chcesz usunąć wszystkie {count} elementy? Tej operacji nie można cofnąć.} many {Czy na pewno chcesz usunąć wszystkie {count} elementów? Tej operacji nie można cofnąć.} other {Czy na pewno chcesz usunąć wszystkie {count} elementu? Tej operacji nie można cofnąć.}}",
+    "@remove_all_done_dialog_body": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "compactLong"
+            }
+        }
+    },
     "remove_all_done_dialog_cancel": "ANULUJ",
     "@remove_all_done_dialog_cancel": {},
     "remove_all_done_dialog_remove": "USUŃ",
