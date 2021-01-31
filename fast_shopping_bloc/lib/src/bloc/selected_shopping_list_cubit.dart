@@ -6,9 +6,6 @@ import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
-import '../models/item.dart';
-import '../models/shopping_list.dart';
-
 part 'selected_shopping_list_cubit.freezed.dart';
 
 class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
@@ -43,6 +40,14 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
 
   void removeItem(String itemId) {
     _updateItemAndEmit(itemId, (item) => item.copyWith(removed: true));
+  }
+
+  void removeAllDoneItems() {
+    _assertListSelected();
+
+    _listsCubit.update(state.list.copyWith(
+      items: List.of(state.list.items)..removeWhere((item) => item.done),
+    ));
   }
 
   void undoRemoveItem(String itemId) {
@@ -141,6 +146,16 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     items.insert(_newIndex, item);
 
     return list.copyWith(items: items);
+  }
+
+  void setAllItemsUndone() {
+    _assertListSelected();
+
+    _listsCubit.update(state.list.copyWith(
+      items: state.list.items.map((item) {
+        return item.copyWith(doneAt: null);
+      }).toList(),
+    ));
   }
 
   void setItemTitle(String itemId, String newTitle) {

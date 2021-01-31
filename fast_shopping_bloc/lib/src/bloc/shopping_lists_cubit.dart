@@ -4,8 +4,6 @@ import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
-import '../models/shopping_list.dart';
-
 part 'shopping_lists_cubit.freezed.dart';
 
 class ShoppingListsCubit extends Cubit<ShoppingListsState> {

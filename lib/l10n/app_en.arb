@@ -95,6 +95,15 @@
     "@rename_shopping_list_dialog_rename": {},
     "delete_shopping_list_dialog_title": "Deleting shopping list",
     "@delete_shopping_list_dialog_title": {},
+    "delete_shopping_list_dialog_body": "Do you really want to delete {list_name} shopping list? This operation cannot be undone.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "delete_shopping_list_dialog_cancel": "CANCEL",
     "@delete_shopping_list_dialog_cancel": {},
     "delete_shopping_list_dialog_delete": "DELETE",
@@ -123,15 +132,6 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Current",
     "@shopping_lists_tab_current": {},
-    "delete_shopping_list_dialog_body": "Do you really want to delete {list_name} shopping list? This operation cannot be undone.",
-    "@delete_shopping_list_dialog_body": {
-        "placeholders": {
-            "list_name": {
-                "type": "String",
-                "example": "Groceries"
-            }
-        }
-    },
     "screenshot_item_1": "Tomato sauce",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
@@ -162,7 +162,7 @@
     },
     "settings_title": "Settings",
     "@settings_title": {
-      "description": "Title on the Settings screen app bar."
+        "description": "Title on the Settings screen app bar."
     },
     "settings_multiple_lists": "Multiple shopping lists",
     "@settings_multiple_lists": {},
@@ -182,7 +182,7 @@
     "@settings_dark_mode_disabled": {},
     "settings_items_layout": "Items layout",
     "@settings_items_layout": {
-      "description": "Whether the item tiles are layed out spaciously or dense."
+        "description": "Whether the item tiles are layed out spaciously or dense."
     },
     "settings_items_layout_comfortable": "Comfortable",
     "@settings_items_layout_comfortable": {},
@@ -192,12 +192,43 @@
     "@settings_move_done": {},
     "settings_support_author": "Support the author",
     "@settings_support_author": {
-      "description": "Redirects the user to the author's website."
+        "description": "Redirects the user to the author's website."
     },
     "settings_project_website": "Project website",
     "@settings_project_website": {
-      "description": "Redirects the user to GitHub."
+        "description": "Redirects the user to GitHub."
     },
     "settings_licenses": "Licenses",
-    "@settings_licenses": {}
+    "@settings_licenses": {},
+    "menu_undone_all_done": "Undone all done",
+    "@menu_undone_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_remove_all_done": "Remove all done",
+    "@menu_remove_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_archive_list": "Archive list",
+    "@menu_archive_list": {
+        "description": "Shown only when the user is in the _Multiple shopping lists_ mode."
+    },
+    "menu_settings": "Settings",
+    "@menu_settings": {
+        "description": "Opens the _Settings_ screen."
+    },
+    "remove_all_done_dialog_title": "Removing all done",
+    "@remove_all_done_dialog_title": {},
+    "remove_all_done_dialog_body": "{count, plural, =1 {Are you sure you want to remove 1 item? This operation cannot be undone.} other {Are you sure you want to remove all {count} items? This operation cannot be undone.}}",
+    "@remove_all_done_dialog_body": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "compactLong"
+            }
+        }
+    },
+    "remove_all_done_dialog_cancel": "CANCEL",
+    "@remove_all_done_dialog_cancel": {},
+    "remove_all_done_dialog_remove": "REMOVE",
+    "@remove_all_done_dialog_remove": {}
 }

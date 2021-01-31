@@ -18,7 +18,7 @@ class _$AppSettingsTearOff {
       {ShoppingListsMode shoppingListsMode = ShoppingListsMode.multiple,
       DarkMode darkMode = DarkMode.system,
       ItemsLayout itemsLayout = ItemsLayout.comfortable,
-      bool moveDoneToEnd = true}) {
+      bool moveDoneToEnd = false}) {
     return _AppSettings(
       shoppingListsMode: shoppingListsMode,
       darkMode: darkMode,
@@ -136,7 +136,7 @@ class _$_AppSettings implements _AppSettings {
       {this.shoppingListsMode = ShoppingListsMode.multiple,
       this.darkMode = DarkMode.system,
       this.itemsLayout = ItemsLayout.comfortable,
-      this.moveDoneToEnd = true})
+      this.moveDoneToEnd = false})
       : assert(shoppingListsMode != null),
         assert(darkMode != null),
         assert(itemsLayout != null),
@@ -151,7 +151,7 @@ class _$_AppSettings implements _AppSettings {
   @JsonKey(defaultValue: ItemsLayout.comfortable)
   @override
   final ItemsLayout itemsLayout;
-  @JsonKey(defaultValue: true)
+  @JsonKey(defaultValue: false)
   @override
   final bool moveDoneToEnd;
 
