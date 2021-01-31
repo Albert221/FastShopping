@@ -113,6 +113,15 @@
     },
     "shopping_lists_tab_current": "En cours",
     "@shopping_lists_tab_current": {},
+    "delete_shopping_list_dialog_body": "Êtes-vous sûr de vouloir supprimer {list_name} la liste de courses? Cette opération est irréversible.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "screenshot_item_1": "Sauce tomate",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
