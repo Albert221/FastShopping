@@ -123,6 +123,15 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Bieżące",
     "@shopping_lists_tab_current": {},
+    "delete_shopping_list_dialog_body": "Czy na pewno chcesz usunąć listę zakupów {list_name}? Ta operacja nie może zostać cofnięta.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "screenshot_item_1": "Masło osełkowe",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
