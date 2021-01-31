@@ -6,9 +6,6 @@ import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
-import '../models/item.dart';
-import '../models/shopping_list.dart';
-
 part 'selected_shopping_list_cubit.freezed.dart';
 
 class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {

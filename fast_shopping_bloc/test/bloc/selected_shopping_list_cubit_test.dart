@@ -118,6 +118,29 @@ void main() {
       );
     });
 
+    group('removes all done items', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'correctly',
+        build: () => cubit,
+        act: (cubit) => cubit.removeAllDoneItems(),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [item1, item3],
+            )),
+          ).called(1);
+        },
+      );
+
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'with exception if no list is selected',
+        build: () => cubit,
+        seed: const SelectedShoppingListState(null),
+        act: (cubit) => cubit.removeAllDoneItems(),
+        errors: [isA<Exception>()],
+      );
+    });
+
     group('undoes removing item from shopping list', () {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'correctly',
@@ -305,6 +328,29 @@ void main() {
           },
         );
       });
+    });
+
+    group('sets all items undone', () {
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'correctly',
+        build: () => cubit,
+        act: (cubit) => cubit.setAllItemsUndone(),
+        verify: (cubit) {
+          verify(
+            shoppingListsCubit.update(shoppingList1.copyWith(
+              items: [item1, item2.copyWith(doneAt: null), item3],
+            )),
+          ).called(1);
+        },
+      );
+
+      blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
+        'with exception if no list is selected',
+        build: () => cubit,
+        seed: const SelectedShoppingListState(null),
+        act: (cubit) => cubit.setAllItemsUndone(),
+        errors: [isA<Exception>()],
+      );
     });
 
     group('sets an item title', () {
