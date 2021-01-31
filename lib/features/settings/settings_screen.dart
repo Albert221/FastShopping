@@ -11,6 +11,17 @@ class SettingsScreen extends StatelessWidget {
   static const _supportAuthorUrl = 'https://wolszon.me/support-me';
   static const _projectPage = 'https://github.com/Albert221/FastShopping';
 
+  void _setShoppingListsMode(BuildContext context, ShoppingListsMode mode) {
+    final shoppingListsCubit = context.read<ShoppingListsCubit>();
+    if (mode == ShoppingListsMode.single &&
+        shoppingListsCubit.state.selected == null) {
+      final listId = shoppingListsCubit.addList('');
+      shoppingListsCubit.select(listId);
+    }
+
+    context.read<AppSettingsCubit>().setShoppingListsMode(mode);
+  }
+
   Future<void> _onDarkModeTap(BuildContext context) async {
     final darkMode = await showModal<DarkMode>(
       context: context,
@@ -75,16 +86,14 @@ class SettingsScreen extends StatelessWidget {
             groupValue: appSettings.shoppingListsMode,
             title: Text(S.of(context).settings_multiple_lists),
             subtitle: Text(S.of(context).settings_multiple_lists_subtitle),
-            onChanged: (mode) =>
-                context.read<AppSettingsCubit>().setShoppingListsMode(mode),
+            onChanged: (mode) => _setShoppingListsMode(context, mode),
           ),
           RadioListTile<ShoppingListsMode>(
             value: ShoppingListsMode.single,
             groupValue: appSettings.shoppingListsMode,
             title: Text(S.of(context).settings_single_list),
             subtitle: Text(S.of(context).settings_single_list_subtitle),
-            onChanged: (mode) =>
-                context.read<AppSettingsCubit>().setShoppingListsMode(mode),
+            onChanged: (mode) => _setShoppingListsMode(context, mode),
           ),
           const Divider(),
           ListTile(
