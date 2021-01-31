@@ -158,8 +158,14 @@
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
     },
+    "settings_title": "Подесувања",
+    "@settings_title": {
+        "description": "Title on the Settings screen app bar."
+    },
     "settings_multiple_lists_subtitle": "Повеќе листи",
     "@settings_multiple_lists_subtitle": {},
+    "settings_dark_mode_enabled": "Овозможено",
+    "@settings_dark_mode_enabled": {},
     "settings_support_author": "Поддржете го авторот",
     "@settings_support_author": {
         "description": "Redirects the user to the author's website."
