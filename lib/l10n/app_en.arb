@@ -123,10 +123,15 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Current",
     "@shopping_lists_tab_current": {},
-    "delete_shopping_list_dialog_body_before": "Do you really want to delete ",
-    "@delete_shopping_list_dialog_body_before": {},
-    "delete_shopping_list_dialog_body_after": " shopping list? This operation cannot be undone.",
-    "@delete_shopping_list_dialog_body_after": {},
+    "delete_shopping_list_dialog_body": "Do you really want to delete {list_name} shopping list? This operation cannot be undone.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "screenshot_item_1": "Tomato sauce",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."

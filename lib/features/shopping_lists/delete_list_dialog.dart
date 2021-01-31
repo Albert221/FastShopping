@@ -13,20 +13,22 @@ class DeleteListDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const divider = r'$$DIVIDER$$';
+    final bodyParts =
+        S.of(context).delete_shopping_list_dialog_body(divider).split(divider);
+    final bodyBefore = bodyParts.first;
+    final bodyAfter = bodyParts.last;
+
     return AlertDialog(
       backgroundColor: Theme.of(context).colorScheme.surface,
       title: Text(S.of(context).delete_shopping_list_dialog_title),
       content: Text.rich(TextSpan(children: [
-        TextSpan(
-          text: S.of(context).delete_shopping_list_dialog_body_before,
-        ),
+        TextSpan(text: bodyBefore),
         TextSpan(
           text: shoppingList.name,
           style: const TextStyle(fontStyle: FontStyle.italic),
         ),
-        TextSpan(
-          text: S.of(context).delete_shopping_list_dialog_body_after,
-        ),
+        TextSpan(text: bodyAfter),
       ])),
       actions: [
         TextButton(
