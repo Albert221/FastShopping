@@ -55,33 +55,43 @@ class ItemsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fabShown =
-        context.watch<SelectedShoppingListCubit>().state.list != null;
+    final fabShown = context.select(
+      (SelectedShoppingListCubit c) => c.state.list != null,
+    );
+    final shoppingListsMultiple = context.select(
+      (AppSettingsCubit c) =>
+          c.state.shoppingListsMode == ShoppingListsMode.multiple,
+    );
+
+    final fabLocation = shoppingListsMultiple
+        ? FloatingActionButtonLocation.endDocked
+        : FloatingActionButtonLocation.endFloat;
 
     return GestureDetector(
       onTap: () => _blurFocus(context),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: const ItemsAppBar(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButtonLocation: fabLocation,
         floatingActionButton: fabShown
             ? FloatingActionButton(
                 onPressed: () => _onAddItemTap(context),
                 child: const Icon(Icons.add),
               )
             : null,
-        bottomNavigationBar:
-            BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
-          builder: (context, state) =>
-              ShoppingListBar(shoppingList: state.list),
-        ),
+        bottomNavigationBar: shoppingListsMultiple
+            ? BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
+                builder: (context, state) =>
+                    ShoppingListBar(shoppingList: state.list),
+              )
+            : null,
         body: BlocBuilder<SelectedShoppingListCubit, SelectedShoppingListState>(
           builder: (context, state) {
             Widget child;
             if (state.list == null) {
               child = const NoListSelectedPlaceholder();
             } else if (state.list.availableItems.isEmpty) {
-              child = const NoItemsPlaceholder();
+              child = NoItemsPlaceholder(fabLocation: fabLocation);
             } else {
               child = ImplicitlyAnimatedReorderableList<Item>(
                 areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
@@ -89,10 +99,12 @@ class ItemsScreen extends StatelessWidget {
                 onReorderFinished: (item, from, to, newItems) => context
                     .read<SelectedShoppingListCubit>()
                     .moveItem(from, to),
-                header: ArchiveBanner(
-                  visible: state.list.allItemsDone,
-                  onArchiveTap: () => _onArchiveTap(context, state.list),
-                ),
+                header: shoppingListsMultiple
+                    ? ArchiveBanner(
+                        visible: state.list.allItemsDone,
+                        onArchiveTap: () => _onArchiveTap(context, state.list),
+                      )
+                    : null,
                 padding: const EdgeInsets.symmetric(vertical: 8),
                 itemBuilder: (context, itemAnimation, item, index) =>
                     Reorderable(
