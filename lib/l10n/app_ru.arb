@@ -121,6 +121,15 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Текущий",
     "@shopping_lists_tab_current": {},
+    "delete_shopping_list_dialog_body": "Вы действительно хотите удалить {list_name} список покупок? Эта операция не может быть отменена.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "screenshot_item_1": "Томатный соус",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
