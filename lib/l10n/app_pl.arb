@@ -199,5 +199,23 @@
         "description": "Redirects the user to GitHub."
     },
     "settings_licenses": "Licencje",
-    "@settings_licenses": {}
+    "@settings_licenses": {},
+    "menu_remove_all_done": "Usuń oznaczone",
+    "@menu_remove_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_archive_list": "Zarchiwizuj listę",
+    "@menu_archive_list": {
+        "description": "Shown only when the user is in the _Multiple shopping lists_ mode."
+    },
+    "menu_settings": "Ustawienia",
+    "@menu_settings": {
+        "description": "Opens the _Settings_ screen."
+    },
+    "remove_all_done_dialog_title": "Usuwanie wszystkich oznaczonych",
+    "@remove_all_done_dialog_title": {},
+    "remove_all_done_dialog_cancel": "ANULUJ",
+    "@remove_all_done_dialog_cancel": {},
+    "remove_all_done_dialog_remove": "USUŃ",
+    "@remove_all_done_dialog_remove": {}
 }
