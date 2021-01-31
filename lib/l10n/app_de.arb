@@ -121,6 +121,15 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Aktuell",
     "@shopping_lists_tab_current": {},
+    "delete_shopping_list_dialog_body": "Soll {list_name} wirklich gelöscht werden? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "screenshot_item_1": "Markenbutter",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
