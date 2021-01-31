@@ -93,6 +93,15 @@
     "@rename_shopping_list_dialog_rename": {},
     "delete_shopping_list_dialog_title": "Избриши шопинг листа",
     "@delete_shopping_list_dialog_title": {},
+    "delete_shopping_list_dialog_body": "Дали сигурно сакаш да избришеш {list_name} шопинг листа? Оваа операција е трајна.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "delete_shopping_list_dialog_cancel": "ОТКАЖИ",
     "@delete_shopping_list_dialog_cancel": {},
     "delete_shopping_list_dialog_delete": "Избриши",
@@ -121,15 +130,6 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Моментално",
     "@shopping_lists_tab_current": {},
-    "delete_shopping_list_dialog_body": "Дали сигурно сакаш да избришеш {list_name} шопинг листа? Оваа операција е трајна.",
-    "@delete_shopping_list_dialog_body": {
-        "placeholders": {
-            "list_name": {
-                "type": "String",
-                "example": "Groceries"
-            }
-        }
-    },
     "screenshot_item_1": "Доматно пире",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
