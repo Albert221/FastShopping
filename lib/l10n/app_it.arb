@@ -123,6 +123,15 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Attuali",
     "@shopping_lists_tab_current": {},
+    "delete_shopping_list_dialog_body": "Sei sicuro di voler cancellare {list_name} la lista? Questa operazione non può essere annullata.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "screenshot_item_1": "Passata di pomodoro",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
