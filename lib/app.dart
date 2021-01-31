@@ -5,9 +5,10 @@ import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:uuid/uuid.dart';
 
-class FastShoppingApp extends StatelessWidget {
+class FastShoppingApp extends HookWidget {
   const FastShoppingApp({
     Key key,
     @required this.appSettingsRepository,
@@ -19,6 +20,11 @@ class FastShoppingApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    useEffect(() {
+      setupTimeagoMessages();
+      return;
+    }, const []);
+
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<Clock>.value(value: const Clock()),
