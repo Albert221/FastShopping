@@ -172,14 +172,6 @@
     "@settings_single_list": {},
     "settings_single_list_subtitle": "Proste w użyciu.",
     "@settings_single_list_subtitle": {},
-    "settings_dark_mode": "Ciemny motyw",
-    "@settings_dark_mode": {},
-    "settings_dark_mode_enabled": "Włączony",
-    "@settings_dark_mode_enabled": {},
-    "settings_dark_mode_system": "Użyj ustawień systemowych",
-    "@settings_dark_mode_system": {},
-    "settings_dark_mode_disabled": "Wyłączony",
-    "@settings_dark_mode_disabled": {},
     "settings_items_layout": "Układ elementów",
     "@settings_items_layout": {
         "description": "Whether the item tiles are layed out spaciously or dense."
