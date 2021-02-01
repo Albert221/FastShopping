@@ -164,8 +164,6 @@
     },
     "settings_multiple_lists_subtitle": "Повеќе листи",
     "@settings_multiple_lists_subtitle": {},
-    "settings_dark_mode_enabled": "Овозможено",
-    "@settings_dark_mode_enabled": {},
     "settings_support_author": "Поддржете го авторот",
     "@settings_support_author": {
         "description": "Redirects the user to the author's website."
