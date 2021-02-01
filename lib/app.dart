@@ -69,14 +69,14 @@ class _App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final darkMode = context.select((AppSettingsCubit c) => c.state.darkMode);
+    final darkTheme = context.select((AppSettingsCubit c) => c.state.darkTheme);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: darkMode == DarkMode.enabled
+      theme: darkTheme == DarkTheme.enabled
           ? FastShoppingTheme.dark()
           : FastShoppingTheme.light(),
-      darkTheme: darkMode == DarkMode.disabled
+      darkTheme: darkTheme == DarkTheme.disabled
           ? FastShoppingTheme.light()
           : FastShoppingTheme.dark(),
       home: ItemsScreen(),

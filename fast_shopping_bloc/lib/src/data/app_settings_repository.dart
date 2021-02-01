@@ -4,8 +4,8 @@ abstract class AppSettingsRepository {
   Future<ShoppingListsMode> getShoppingListsMode();
   Future<void> saveShoppingListsMode(ShoppingListsMode shoppingListsMode);
 
-  Future<DarkMode> getDarkMode();
-  Future<void> saveDarkMode(DarkMode darkMode);
+  Future<DarkTheme> getDarkTheme();
+  Future<void> saveDarkTheme(DarkTheme darkTheme);
 
   Future<ItemsLayout> getItemsLayout();
   Future<void> saveItemsLayout(ItemsLayout itemsLayout);

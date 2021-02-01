@@ -22,13 +22,13 @@ class SettingsScreen extends StatelessWidget {
     context.read<AppSettingsCubit>().setShoppingListsMode(mode);
   }
 
-  Future<void> _onDarkModeTap(BuildContext context) async {
-    final darkMode = await showModal<DarkMode>(
+  Future<void> _onDarkThemeTap(BuildContext context) async {
+    final darkTheme = await showModal<DarkTheme>(
       context: context,
       configuration: const FadeScaleTransitionConfiguration(),
       builder: (context) => BetterSimpleDialog(
-        title: Text(S.of(context).settings_dark_mode),
-        children: DarkMode.values.map((option) {
+        title: Text(S.of(context).settings_dark_theme),
+        children: DarkTheme.values.map((option) {
           return BetterSimpleDialogOption(
             onPressed: () => Navigator.of(context).pop(option),
             child: Text(option.localize(context)),
@@ -37,8 +37,8 @@ class SettingsScreen extends StatelessWidget {
       ),
     );
 
-    if (darkMode != null) {
-      context.read<AppSettingsCubit>().setDarkMode(darkMode);
+    if (darkTheme != null) {
+      context.read<AppSettingsCubit>().setDarkTheme(darkTheme);
     }
   }
 
@@ -98,9 +98,9 @@ class SettingsScreen extends StatelessWidget {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.nights_stay),
-            title: Text(S.of(context).settings_dark_mode),
-            subtitle: Text(appSettings.darkMode.localize(context)),
-            onTap: () => _onDarkModeTap(context),
+            title: Text(S.of(context).settings_dark_theme),
+            subtitle: Text(appSettings.darkTheme.localize(context)),
+            onTap: () => _onDarkThemeTap(context),
           ),
           ListTile(
             leading: const Icon(Icons.view_stream),

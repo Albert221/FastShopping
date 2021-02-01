@@ -48,6 +48,7 @@ mixin _$Item {
   bool get removed;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $ItemCopyWith<Item> get copyWith;
 }
 
@@ -169,6 +170,7 @@ class _$_Item extends _Item {
       const DeepCollectionEquality().hash(doneAt) ^
       const DeepCollectionEquality().hash(removed);
 
+  @JsonKey(ignore: true)
   @override
   _$ItemCopyWith<_Item> get copyWith =>
       __$ItemCopyWithImpl<_Item>(this, _$identity);
@@ -198,5 +200,6 @@ abstract class _Item extends Item {
   @override
   bool get removed;
   @override
+  @JsonKey(ignore: true)
   _$ItemCopyWith<_Item> get copyWith;
 }

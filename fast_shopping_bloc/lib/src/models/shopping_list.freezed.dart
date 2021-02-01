@@ -51,6 +51,7 @@ mixin _$ShoppingList {
   List<Item> get items;
 
   Map<String, dynamic> toJson();
+  @JsonKey(ignore: true)
   $ShoppingListCopyWith<ShoppingList> get copyWith;
 }
 
@@ -203,6 +204,7 @@ class _$_ShoppingList extends _ShoppingList {
       const DeepCollectionEquality().hash(archivedAt) ^
       const DeepCollectionEquality().hash(items);
 
+  @JsonKey(ignore: true)
   @override
   _$ShoppingListCopyWith<_ShoppingList> get copyWith =>
       __$ShoppingListCopyWithImpl<_ShoppingList>(this, _$identity);
@@ -236,5 +238,6 @@ abstract class _ShoppingList extends ShoppingList {
   @override
   List<Item> get items;
   @override
+  @JsonKey(ignore: true)
   _$ShoppingListCopyWith<_ShoppingList> get copyWith;
 }

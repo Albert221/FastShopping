@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AppSettingsRepository extends fsb.AppSettingsRepository {
   static const _prefix = 'v3';
   static const _shoppingListsModeKey = '$_prefix-shopping-lists-mode';
-  static const _darkModeKey = '$_prefix-dark-mode';
+  static const _darkThemeKey = '$_prefix-dark-theme';
   static const _itemsLayoutKey = '$_prefix-items-layout';
   static const _moveDoneToEndKey = '$_prefix-move-done-to-end';
 
@@ -26,16 +26,16 @@ class AppSettingsRepository extends fsb.AppSettingsRepository {
   }
 
   @override
-  Future<fsb.DarkMode> getDarkMode() async {
+  Future<fsb.DarkTheme> getDarkTheme() async {
     final prefs = await _sharedPrefs;
-    final value = prefs.getInt(_darkModeKey);
-    return value != null ? fsb.DarkMode.values[value] : null;
+    final value = prefs.getInt(_darkThemeKey);
+    return value != null ? fsb.DarkTheme.values[value] : null;
   }
 
   @override
-  Future<void> saveDarkMode(fsb.DarkMode darkMode) async {
+  Future<void> saveDarkTheme(fsb.DarkTheme darkTheme) async {
     final prefs = await _sharedPrefs;
-    return prefs.setInt(_darkModeKey, darkMode.index);
+    return prefs.setInt(_darkThemeKey, darkTheme.index);
   }
 
   @override

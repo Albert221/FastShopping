@@ -3,7 +3,7 @@ enum ShoppingListsMode {
   single,
 }
 
-enum DarkMode {
+enum DarkTheme {
   enabled,
   system,
   disabled,

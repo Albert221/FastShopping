@@ -2,15 +2,15 @@ import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:flutter/widgets.dart';
 
-extension DarkModeLocalize on DarkMode {
+extension DarkThemeLocalize on DarkTheme {
   String localize(BuildContext context) {
     switch (this) {
-      case DarkMode.system:
-        return S.of(context).settings_dark_mode_system;
-      case DarkMode.disabled:
-        return S.of(context).settings_dark_mode_disabled;
-      case DarkMode.enabled:
-        return S.of(context).settings_dark_mode_enabled;
+      case DarkTheme.system:
+        return S.of(context).settings_dark_theme_system;
+      case DarkTheme.disabled:
+        return S.of(context).settings_dark_theme_disabled;
+      case DarkTheme.enabled:
+        return S.of(context).settings_dark_theme_enabled;
       default:
         return null;
     }

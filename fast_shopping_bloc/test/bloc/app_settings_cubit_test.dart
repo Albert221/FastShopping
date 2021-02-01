@@ -24,7 +24,8 @@ void main() {
       build: () {
         when(appSettingsRepository.getShoppingListsMode())
             .thenAnswer((_) async => ShoppingListsMode.single);
-        when(appSettingsRepository.getDarkMode()).thenAnswer((_) async => null);
+        when(appSettingsRepository.getDarkTheme())
+            .thenAnswer((_) async => null);
         when(appSettingsRepository.getItemsLayout())
             .thenAnswer((_) async => null);
         when(appSettingsRepository.getMoveDoneToEnd())
@@ -40,7 +41,7 @@ void main() {
       ],
       verify: (cubit) {
         verify(appSettingsRepository.getShoppingListsMode()).called(1);
-        verify(appSettingsRepository.getDarkMode()).called(1);
+        verify(appSettingsRepository.getDarkTheme()).called(1);
         verify(appSettingsRepository.getItemsLayout()).called(1);
         verify(appSettingsRepository.getMoveDoneToEnd()).called(1);
       },
@@ -61,12 +62,12 @@ void main() {
     blocTest<AppSettingsCubit, AppSettings>(
       'sets dark mode correctly',
       build: () => cubit,
-      act: (cubit) => cubit.setDarkMode(DarkMode.enabled),
+      act: (cubit) => cubit.setDarkTheme(DarkTheme.enabled),
       expect: const [
-        AppSettings(darkMode: DarkMode.enabled),
+        AppSettings(darkTheme: DarkTheme.enabled),
       ],
       verify: (cubit) => verify(
-        appSettingsRepository.saveDarkMode(DarkMode.enabled),
+        appSettingsRepository.saveDarkTheme(DarkTheme.enabled),
       ).called(1),
     );
 

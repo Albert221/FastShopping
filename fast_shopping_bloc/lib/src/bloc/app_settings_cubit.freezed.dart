@@ -16,12 +16,12 @@ class _$AppSettingsTearOff {
 // ignore: unused_element
   _AppSettings call(
       {ShoppingListsMode shoppingListsMode = ShoppingListsMode.multiple,
-      DarkMode darkMode = DarkMode.system,
+      DarkTheme darkTheme = DarkTheme.system,
       ItemsLayout itemsLayout = ItemsLayout.comfortable,
       bool moveDoneToEnd = false}) {
     return _AppSettings(
       shoppingListsMode: shoppingListsMode,
-      darkMode: darkMode,
+      darkTheme: darkTheme,
       itemsLayout: itemsLayout,
       moveDoneToEnd: moveDoneToEnd,
     );
@@ -35,10 +35,11 @@ const $AppSettings = _$AppSettingsTearOff();
 /// @nodoc
 mixin _$AppSettings {
   ShoppingListsMode get shoppingListsMode;
-  DarkMode get darkMode;
+  DarkTheme get darkTheme;
   ItemsLayout get itemsLayout;
   bool get moveDoneToEnd;
 
+  @JsonKey(ignore: true)
   $AppSettingsCopyWith<AppSettings> get copyWith;
 }
 
@@ -49,7 +50,7 @@ abstract class $AppSettingsCopyWith<$Res> {
       _$AppSettingsCopyWithImpl<$Res>;
   $Res call(
       {ShoppingListsMode shoppingListsMode,
-      DarkMode darkMode,
+      DarkTheme darkTheme,
       ItemsLayout itemsLayout,
       bool moveDoneToEnd});
 }
@@ -65,7 +66,7 @@ class _$AppSettingsCopyWithImpl<$Res> implements $AppSettingsCopyWith<$Res> {
   @override
   $Res call({
     Object shoppingListsMode = freezed,
-    Object darkMode = freezed,
+    Object darkTheme = freezed,
     Object itemsLayout = freezed,
     Object moveDoneToEnd = freezed,
   }) {
@@ -73,7 +74,8 @@ class _$AppSettingsCopyWithImpl<$Res> implements $AppSettingsCopyWith<$Res> {
       shoppingListsMode: shoppingListsMode == freezed
           ? _value.shoppingListsMode
           : shoppingListsMode as ShoppingListsMode,
-      darkMode: darkMode == freezed ? _value.darkMode : darkMode as DarkMode,
+      darkTheme:
+          darkTheme == freezed ? _value.darkTheme : darkTheme as DarkTheme,
       itemsLayout: itemsLayout == freezed
           ? _value.itemsLayout
           : itemsLayout as ItemsLayout,
@@ -93,7 +95,7 @@ abstract class _$AppSettingsCopyWith<$Res>
   @override
   $Res call(
       {ShoppingListsMode shoppingListsMode,
-      DarkMode darkMode,
+      DarkTheme darkTheme,
       ItemsLayout itemsLayout,
       bool moveDoneToEnd});
 }
@@ -111,7 +113,7 @@ class __$AppSettingsCopyWithImpl<$Res> extends _$AppSettingsCopyWithImpl<$Res>
   @override
   $Res call({
     Object shoppingListsMode = freezed,
-    Object darkMode = freezed,
+    Object darkTheme = freezed,
     Object itemsLayout = freezed,
     Object moveDoneToEnd = freezed,
   }) {
@@ -119,7 +121,8 @@ class __$AppSettingsCopyWithImpl<$Res> extends _$AppSettingsCopyWithImpl<$Res>
       shoppingListsMode: shoppingListsMode == freezed
           ? _value.shoppingListsMode
           : shoppingListsMode as ShoppingListsMode,
-      darkMode: darkMode == freezed ? _value.darkMode : darkMode as DarkMode,
+      darkTheme:
+          darkTheme == freezed ? _value.darkTheme : darkTheme as DarkTheme,
       itemsLayout: itemsLayout == freezed
           ? _value.itemsLayout
           : itemsLayout as ItemsLayout,
@@ -134,20 +137,20 @@ class __$AppSettingsCopyWithImpl<$Res> extends _$AppSettingsCopyWithImpl<$Res>
 class _$_AppSettings implements _AppSettings {
   const _$_AppSettings(
       {this.shoppingListsMode = ShoppingListsMode.multiple,
-      this.darkMode = DarkMode.system,
+      this.darkTheme = DarkTheme.system,
       this.itemsLayout = ItemsLayout.comfortable,
       this.moveDoneToEnd = false})
       : assert(shoppingListsMode != null),
-        assert(darkMode != null),
+        assert(darkTheme != null),
         assert(itemsLayout != null),
         assert(moveDoneToEnd != null);
 
   @JsonKey(defaultValue: ShoppingListsMode.multiple)
   @override
   final ShoppingListsMode shoppingListsMode;
-  @JsonKey(defaultValue: DarkMode.system)
+  @JsonKey(defaultValue: DarkTheme.system)
   @override
-  final DarkMode darkMode;
+  final DarkTheme darkTheme;
   @JsonKey(defaultValue: ItemsLayout.comfortable)
   @override
   final ItemsLayout itemsLayout;
@@ -157,7 +160,7 @@ class _$_AppSettings implements _AppSettings {
 
   @override
   String toString() {
-    return 'AppSettings(shoppingListsMode: $shoppingListsMode, darkMode: $darkMode, itemsLayout: $itemsLayout, moveDoneToEnd: $moveDoneToEnd)';
+    return 'AppSettings(shoppingListsMode: $shoppingListsMode, darkTheme: $darkTheme, itemsLayout: $itemsLayout, moveDoneToEnd: $moveDoneToEnd)';
   }
 
   @override
@@ -167,9 +170,9 @@ class _$_AppSettings implements _AppSettings {
             (identical(other.shoppingListsMode, shoppingListsMode) ||
                 const DeepCollectionEquality()
                     .equals(other.shoppingListsMode, shoppingListsMode)) &&
-            (identical(other.darkMode, darkMode) ||
+            (identical(other.darkTheme, darkTheme) ||
                 const DeepCollectionEquality()
-                    .equals(other.darkMode, darkMode)) &&
+                    .equals(other.darkTheme, darkTheme)) &&
             (identical(other.itemsLayout, itemsLayout) ||
                 const DeepCollectionEquality()
                     .equals(other.itemsLayout, itemsLayout)) &&
@@ -182,10 +185,11 @@ class _$_AppSettings implements _AppSettings {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(shoppingListsMode) ^
-      const DeepCollectionEquality().hash(darkMode) ^
+      const DeepCollectionEquality().hash(darkTheme) ^
       const DeepCollectionEquality().hash(itemsLayout) ^
       const DeepCollectionEquality().hash(moveDoneToEnd);
 
+  @JsonKey(ignore: true)
   @override
   _$AppSettingsCopyWith<_AppSettings> get copyWith =>
       __$AppSettingsCopyWithImpl<_AppSettings>(this, _$identity);
@@ -194,18 +198,19 @@ class _$_AppSettings implements _AppSettings {
 abstract class _AppSettings implements AppSettings {
   const factory _AppSettings(
       {ShoppingListsMode shoppingListsMode,
-      DarkMode darkMode,
+      DarkTheme darkTheme,
       ItemsLayout itemsLayout,
       bool moveDoneToEnd}) = _$_AppSettings;
 
   @override
   ShoppingListsMode get shoppingListsMode;
   @override
-  DarkMode get darkMode;
+  DarkTheme get darkTheme;
   @override
   ItemsLayout get itemsLayout;
   @override
   bool get moveDoneToEnd;
   @override
+  @JsonKey(ignore: true)
   _$AppSettingsCopyWith<_AppSettings> get copyWith;
 }

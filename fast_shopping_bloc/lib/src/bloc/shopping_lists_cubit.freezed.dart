@@ -32,6 +32,7 @@ mixin _$ShoppingListsState {
   String get selectedId;
   List<ShoppingList> get lists;
 
+  @JsonKey(ignore: true)
   $ShoppingListsStateCopyWith<ShoppingListsState> get copyWith;
 }
 
@@ -172,6 +173,7 @@ class _$_ShoppingListsState extends _ShoppingListsState {
       const DeepCollectionEquality().hash(selectedId) ^
       const DeepCollectionEquality().hash(lists);
 
+  @JsonKey(ignore: true)
   @override
   _$ShoppingListsStateCopyWith<_ShoppingListsState> get copyWith =>
       __$ShoppingListsStateCopyWithImpl<_ShoppingListsState>(this, _$identity);
@@ -187,5 +189,6 @@ abstract class _ShoppingListsState extends ShoppingListsState {
   @override
   List<ShoppingList> get lists;
   @override
+  @JsonKey(ignore: true)
   _$ShoppingListsStateCopyWith<_ShoppingListsState> get copyWith;
 }

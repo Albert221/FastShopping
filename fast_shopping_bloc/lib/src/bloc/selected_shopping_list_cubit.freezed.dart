@@ -237,6 +237,7 @@ class _$ItemActionExpanded extends ItemActionExpanded {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(itemId);
 
+  @JsonKey(ignore: true)
   @override
   $ItemActionExpandedCopyWith<ItemActionExpanded> get copyWith =>
       _$ItemActionExpandedCopyWithImpl<ItemActionExpanded>(this, _$identity);
@@ -303,6 +304,7 @@ abstract class ItemActionExpanded extends ItemActionState {
   const factory ItemActionExpanded(String itemId) = _$ItemActionExpanded;
 
   String get itemId;
+  @JsonKey(ignore: true)
   $ItemActionExpandedCopyWith<ItemActionExpanded> get copyWith;
 }
 
@@ -361,6 +363,7 @@ class _$ItemActionEditing extends ItemActionEditing {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(itemId);
 
+  @JsonKey(ignore: true)
   @override
   $ItemActionEditingCopyWith<ItemActionEditing> get copyWith =>
       _$ItemActionEditingCopyWithImpl<ItemActionEditing>(this, _$identity);
@@ -427,6 +430,7 @@ abstract class ItemActionEditing extends ItemActionState {
   const factory ItemActionEditing(String itemId) = _$ItemActionEditing;
 
   String get itemId;
+  @JsonKey(ignore: true)
   $ItemActionEditingCopyWith<ItemActionEditing> get copyWith;
 }
 
@@ -454,6 +458,7 @@ mixin _$SelectedShoppingListState {
   ShoppingList get list;
   ItemActionState get itemActionState;
 
+  @JsonKey(ignore: true)
   $SelectedShoppingListStateCopyWith<SelectedShoppingListState> get copyWith;
 }
 
@@ -587,6 +592,7 @@ class _$_SelectedShoppingListState implements _SelectedShoppingListState {
       const DeepCollectionEquality().hash(list) ^
       const DeepCollectionEquality().hash(itemActionState);
 
+  @JsonKey(ignore: true)
   @override
   _$SelectedShoppingListStateCopyWith<_SelectedShoppingListState>
       get copyWith =>
@@ -604,5 +610,6 @@ abstract class _SelectedShoppingListState implements SelectedShoppingListState {
   @override
   ItemActionState get itemActionState;
   @override
+  @JsonKey(ignore: true)
   _$SelectedShoppingListStateCopyWith<_SelectedShoppingListState> get copyWith;
 }
