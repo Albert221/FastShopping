@@ -42,25 +42,25 @@ class SettingsScreen extends StatelessWidget {
     }
   }
 
-  Future<void> _onItemsLayoutTap(BuildContext context) async {
-    final layout = await showModal<ItemsLayout>(
-      context: context,
-      configuration: const FadeScaleTransitionConfiguration(),
-      builder: (context) => BetterSimpleDialog(
-        title: Text(S.of(context).settings_items_layout),
-        children: ItemsLayout.values.map((option) {
-          return BetterSimpleDialogOption(
-            onPressed: () => Navigator.of(context).pop(option),
-            child: Text(option.localize(context)),
-          );
-        }).toList(),
-      ),
-    );
-
-    if (layout != null) {
-      context.read<AppSettingsCubit>().setItemsLayout(layout);
-    }
-  }
+  // Future<void> _onItemsLayoutTap(BuildContext context) async {
+  //   final layout = await showModal<ItemsLayout>(
+  //     context: context,
+  //     configuration: const FadeScaleTransitionConfiguration(),
+  //     builder: (context) => BetterSimpleDialog(
+  //       title: Text(S.of(context).settings_items_layout),
+  //       children: ItemsLayout.values.map((option) {
+  //         return BetterSimpleDialogOption(
+  //           onPressed: () => Navigator.of(context).pop(option),
+  //           child: Text(option.localize(context)),
+  //         );
+  //       }).toList(),
+  //     ),
+  //   );
+  //
+  //   if (layout != null) {
+  //     context.read<AppSettingsCubit>().setItemsLayout(layout);
+  //   }
+  // }
 
   void _onLicensesTap(BuildContext context) {
     showLicensePage(
@@ -102,12 +102,12 @@ class SettingsScreen extends StatelessWidget {
             subtitle: Text(appSettings.darkTheme.localize(context)),
             onTap: () => _onDarkThemeTap(context),
           ),
-          ListTile(
-            leading: const Icon(Icons.view_stream),
-            title: Text(S.of(context).settings_items_layout),
-            subtitle: Text(appSettings.itemsLayout.localize(context)),
-            onTap: () => _onItemsLayoutTap(context),
-          ),
+          // ListTile(
+          //   leading: const Icon(Icons.view_stream),
+          //   title: Text(S.of(context).settings_items_layout),
+          //   subtitle: Text(appSettings.itemsLayout.localize(context)),
+          //   onTap: () => _onItemsLayoutTap(context),
+          // ),
           SwitchListTile(
             secondary: const Icon(Icons.low_priority),
             title: Text(S.of(context).settings_move_done),
