@@ -21,6 +21,7 @@ class ShoppingListBar extends HookWidget {
       notchMargin: 8,
       child: OpenContainer(
         closedColor: Theme.of(context).bottomAppBarColor,
+        closedElevation: 0,
         openBuilder: (context, _) => const ShoppingListsScreen(),
         closedBuilder: (context, open) => GestureDetector(
           onVerticalDragUpdate: (details) =>
