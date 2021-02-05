@@ -164,6 +164,14 @@
     },
     "settings_multiple_lists_subtitle": "Повеќе листи",
     "@settings_multiple_lists_subtitle": {},
+    "settings_dark_theme": "Темна позадина",
+    "@settings_dark_theme": {},
+    "settings_dark_theme_enabled": "Овозможено",
+    "@settings_dark_theme_enabled": {},
+    "settings_dark_theme_system": "Користи системски поставки",
+    "@settings_dark_theme_system": {},
+    "settings_dark_theme_disabled": "Оневозможено",
+    "@settings_dark_theme_disabled": {},
     "settings_support_author": "Поддржете го авторот",
     "@settings_support_author": {
         "description": "Redirects the user to the author's website."
