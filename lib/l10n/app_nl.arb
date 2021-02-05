@@ -1,1 +1,94 @@
-{}
+{
+    "list_item_no_name": "Geen naam",
+    "@list_item_no_name": {
+        "description": "When the item has no/empty name."
+    },
+    "list_item_done_ago": "{when} gedaan",
+    "@list_item_done_ago": {
+        "description": "Small caps date when item was marked as done.",
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "a minute ago"
+            }
+        }
+    },
+    "list_item_editing_cancel": "ANNULEER",
+    "@list_item_editing_cancel": {},
+    "list_item_editing_save": "OPSLAAN",
+    "@list_item_editing_save": {},
+    "list_item_remove": "VERWIJDER",
+    "@list_item_remove": {},
+    "list_item_edit": "BEWERKEN",
+    "@list_item_edit": {},
+    "item_removed_snackbar_message": "Artikel is uit de lijst verwijderd.",
+    "@item_removed_snackbar_message": {},
+    "item_removed_snackbar_undo": "ONGEDAAN MAKEN",
+    "@item_removed_snackbar_undo": {},
+    "add_item_dialog_title": "Artikel toevoegen",
+    "@add_item_dialog_title": {},
+    "add_item_dialog_cancel": "ANNULEER",
+    "@add_item_dialog_cancel": {},
+    "add_item_dialog_add": "TOEVOEGEN",
+    "@add_item_dialog_add": {},
+    "archive_banner_content": "Het lijkt erop dat alles als gedaan is gemarkeerd. Wilt u uw boodschappenlijstje archiveren?",
+    "@archive_banner_content": {},
+    "archive_banner_archive": "ARCHIVEER",
+    "@archive_banner_archive": {},
+    "shopping_list_not_selected_placeholder": "Geen lijst geselecteerd",
+    "@shopping_list_not_selected_placeholder": {},
+    "shopping_list_not_selected_message": "Er is geen lijst geselecteerd, maak er een aan.",
+    "@shopping_list_not_selected_message": {},
+    "empty_list_add_some_items_message": "Voeg wat artikelen toe!",
+    "@empty_list_add_some_items_message": {},
+    "shopping_lists_title": "Boodschappenlijstjes",
+    "@shopping_lists_title": {},
+    "shopping_lists_tab_archived": "Gearchiveerd",
+    "@shopping_lists_tab_archived": {},
+    "shopping_lists_add_new": "NIEUWE LIJST",
+    "@shopping_lists_add_new": {},
+    "shopping_lists_item_created_at": "Aangemaakt op {when}",
+    "@shopping_lists_item_created_at": {
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "3 days ago"
+            }
+        }
+    },
+    "shopping_lists_item_archived_at": "Gearchiveerd op {when}",
+    "@shopping_lists_item_archived_at": {
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "2 months ago"
+            }
+        }
+    },
+    "shopping_list_no_name": "Geen naam",
+    "@shopping_list_no_name": {},
+    "shopping_list_archived_snackbar_message": "Lijst is met succes gearchiveerd.",
+    "@shopping_list_archived_snackbar_message": {},
+    "shopping_list_archived_snackbar_undo": "ONGEDAAN MAKEN",
+    "@shopping_list_archived_snackbar_undo": {},
+    "shopping_list_unarchived_snackbar_message": "Lijst is niet langer gearchiveerd.",
+    "@shopping_list_unarchived_snackbar_message": {},
+    "add_list_dialog_title": "Voeg een nieuw boodschappenlijstje toe",
+    "@add_list_dialog_title": {},
+    "add_list_dialog_name_hint": "Schrijf de naam van het boodschappenlijstje hier...",
+    "@add_list_dialog_name_hint": {},
+    "add_list_dialog_cancel": "ANNULEER",
+    "@add_list_dialog_cancel": {},
+    "add_list_dialog_add": "TOEVOEGEN",
+    "@add_list_dialog_add": {},
+    "rename_shopping_list_dialog_title": "Boodschappenlijst hernoemen",
+    "@rename_shopping_list_dialog_title": {},
+    "rename_shopping_list_dialog_name_hint": "Schrijf de nieuwe naam hier...",
+    "@rename_shopping_list_dialog_name_hint": {},
+    "rename_shopping_list_dialog_cancel": "ANNULEER",
+    "@rename_shopping_list_dialog_cancel": {},
+    "rename_shopping_list_dialog_rename": "HERNOEMEN",
+    "@rename_shopping_list_dialog_rename": {},
+    "delete_shopping_list_dialog_title": "Boodschappenlijst verwijderen",
+    "@delete_shopping_list_dialog_title": {}
+}
