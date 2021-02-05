@@ -90,5 +90,58 @@
     "rename_shopping_list_dialog_rename": "HERNOEMEN",
     "@rename_shopping_list_dialog_rename": {},
     "delete_shopping_list_dialog_title": "Boodschappenlijst verwijderen",
-    "@delete_shopping_list_dialog_title": {}
+    "@delete_shopping_list_dialog_title": {},
+    "delete_shopping_list_dialog_body": "Weet u zeker dat u {list_name} boodschappenlijstje wilt verwijderen? Dit kan niet ongedaan gemaakt worden.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
+    "delete_shopping_list_dialog_cancel": "ANNULEER",
+    "@delete_shopping_list_dialog_cancel": {},
+    "no_current_lists_message": "Er zijn geen huidige lijsten, maak er een aan!",
+    "@no_current_lists_message": {},
+    "no_archived_lists_message": "Er zijn geen gearchiveerde lijsten.",
+    "@no_archived_lists_message": {},
+    "list_item_title_hint": "Schrijf artikel naam hier...",
+    "@list_item_title_hint": {
+        "description": "Placeholder in item name text field."
+    },
+    "list_item_action_rename": "Naam wijzigen",
+    "@list_item_action_rename": {},
+    "list_item_action_archive": "Archiveren",
+    "@list_item_action_archive": {},
+    "list_item_action_unarchive": "Uit archief halen",
+    "@list_item_action_unarchive": {},
+    "list_item_action_delete": "Verwijder",
+    "@list_item_action_delete": {},
+    "shopping_lists_tab_current": "Huidig",
+    "@shopping_lists_tab_current": {},
+    "screenshot_item_1": "Tomatensaus",
+    "@screenshot_item_1": {
+        "description": "Item visible on app stores screenshots."
+    },
+    "screenshot_item_2": "Mosterd",
+    "@screenshot_item_2": {},
+    "screenshot_item_3": "Barbecue saus",
+    "@screenshot_item_3": {},
+    "screenshot_item_4": "Rode wijnazijn",
+    "@screenshot_item_4": {},
+    "screenshot_item_5": "Salsa",
+    "@screenshot_item_5": {
+        "description": "Expanded item on shopping list in app stores screenshots."
+    },
+    "screenshot_item_6": "Extra vergine olijfolie",
+    "@screenshot_item_6": {},
+    "screenshot_item_7": "Kappertjes en olijven",
+    "@screenshot_item_7": {},
+    "screenshot_item_8": "Hete pepersaus",
+    "@screenshot_item_8": {},
+    "screenshot_list_1": "Boodschappen",
+    "@screenshot_list_1": {
+        "description": "Active shopping list in app stores screenshots."
+    }
 }
