@@ -110,6 +110,12 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "Нет архивированных списков.",
     "@no_archived_lists_message": {},
+    "shopping_lists_item_elements": "{count, plural, =1 {1 элемент} few {{count} элемента} many {{count} элементов} other {{count} элементы}}",
+    "@shopping_lists_item_elements": {
+        "placeholders": {
+            "count": {}
+        }
+    },
     "list_item_title_hint": "Введите наименование пункта...",
     "@list_item_title_hint": {
         "description": "Placeholder in item name text field."
