@@ -112,6 +112,12 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "Er zijn geen gearchiveerde lijsten.",
     "@no_archived_lists_message": {},
+    "shopping_lists_item_elements": "{count, plural, =1 {1 artikel} other {{count} artikelen}}",
+    "@shopping_lists_item_elements": {
+        "placeholders": {
+            "count": {}
+        }
+    },
     "list_item_title_hint": "Schrijf artikel naam hier...",
     "@list_item_title_hint": {
         "description": "Placeholder in item name text field."
