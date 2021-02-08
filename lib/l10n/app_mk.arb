@@ -73,6 +73,8 @@
     "@shopping_list_no_name": {},
     "shopping_list_archived_snackbar_message": "Листата е успешно архивирана.",
     "@shopping_list_archived_snackbar_message": {},
+    "shopping_list_archived_snackbar_undo": "ВРАТИ",
+    "@shopping_list_archived_snackbar_undo": {},
     "shopping_list_unarchived_snackbar_message": "Листата повеќе не е архивирана.",
     "@shopping_list_unarchived_snackbar_message": {},
     "add_list_dialog_title": "Додади нова шопинг листа",
@@ -176,6 +178,22 @@
     "@settings_support_author": {
         "description": "Redirects the user to the author's website."
     },
+    "settings_project_website": "Мрежно место на проектот",
+    "@settings_project_website": {
+        "description": "Redirects the user to GitHub."
+    },
     "settings_licenses": "Лиценци",
-    "@settings_licenses": {}
+    "@settings_licenses": {},
+    "menu_archive_list": "Архивирај листа",
+    "@menu_archive_list": {
+        "description": "Shown only when the user is in the _Multiple shopping lists_ mode."
+    },
+    "menu_settings": "Поставки",
+    "@menu_settings": {
+        "description": "Opens the _Settings_ screen."
+    },
+    "remove_all_done_dialog_cancel": "ОТКАЖИ",
+    "@remove_all_done_dialog_cancel": {},
+    "remove_all_done_dialog_remove": "ОТСТРАНИ",
+    "@remove_all_done_dialog_remove": {}
 }
