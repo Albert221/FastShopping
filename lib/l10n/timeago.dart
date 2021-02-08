@@ -9,6 +9,7 @@ void setupTimeagoMessages() {
   timeago.setLocaleMessages('ru', timeago.RuMessages());
   timeago.setLocaleMessages('fr', timeago.FrMessages());
   timeago.setLocaleMessages('it', timeago.ItMessages());
+  timeago.setLocaleMessages('nl', timeago.NlMessages());
 }
 
 extension TimeAgoI18n on DateTime {
