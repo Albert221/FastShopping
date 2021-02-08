@@ -110,6 +110,12 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "Il n'y a pas de liste archivée.",
     "@no_archived_lists_message": {},
+    "shopping_lists_item_elements": "{count, plural, =1 {1 article} other {{count} articles}}",
+    "@shopping_lists_item_elements": {
+        "placeholders": {
+            "count": {}
+        }
+    },
     "list_item_title_hint": "Écrivez le nom de l'article ici…",
     "@list_item_title_hint": {
         "description": "Placeholder in item name text field."
