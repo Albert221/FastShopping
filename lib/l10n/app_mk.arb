@@ -164,8 +164,14 @@
     "@settings_title": {
         "description": "Title on the Settings screen app bar."
     },
+    "settings_multiple_lists": "Повеќе шопинг листи",
+    "@settings_multiple_lists": {},
     "settings_multiple_lists_subtitle": "Повеќе листи",
     "@settings_multiple_lists_subtitle": {},
+    "settings_single_list": "Една шопинг листа",
+    "@settings_single_list": {},
+    "settings_single_list_subtitle": "Едноставно чувство.",
+    "@settings_single_list_subtitle": {},
     "settings_dark_theme": "Темна позадина",
     "@settings_dark_theme": {},
     "settings_dark_theme_enabled": "Овозможено",
@@ -174,6 +180,12 @@
     "@settings_dark_theme_system": {},
     "settings_dark_theme_disabled": "Оневозможено",
     "@settings_dark_theme_disabled": {},
+    "settings_items_layout_comfortable": "Удобно",
+    "@settings_items_layout_comfortable": {},
+    "settings_items_layout_dense": "Густо",
+    "@settings_items_layout_dense": {},
+    "settings_move_done": "Премести ги готовите предмети на крај",
+    "@settings_move_done": {},
     "settings_support_author": "Поддржете го авторот",
     "@settings_support_author": {
         "description": "Redirects the user to the author's website."
@@ -184,6 +196,14 @@
     },
     "settings_licenses": "Лиценци",
     "@settings_licenses": {},
+    "menu_undone_all_done": "Врати ги сите готови",
+    "@menu_undone_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_remove_all_done": "Отстрани ги сите готови",
+    "@menu_remove_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
     "menu_archive_list": "Архивирај листа",
     "@menu_archive_list": {
         "description": "Shown only when the user is in the _Multiple shopping lists_ mode."
@@ -192,6 +212,8 @@
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
+    "remove_all_done_dialog_title": "Ги отстранувам сите готови",
+    "@remove_all_done_dialog_title": {},
     "remove_all_done_dialog_cancel": "ОТКАЖИ",
     "@remove_all_done_dialog_cancel": {},
     "remove_all_done_dialog_remove": "ОТСТРАНИ",
