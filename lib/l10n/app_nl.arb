@@ -212,6 +212,15 @@
     },
     "remove_all_done_dialog_title": "Verwijder alle voltooide artikelen",
     "@remove_all_done_dialog_title": {},
+    "remove_all_done_dialog_body": "{count, plural, =1 {Weet u zeker dat u 1 artikel wilt verwijderen? Dit kan niet ongedaan gemaakt worden.} other {Weet u zeker dat u {count} artikelen wilt verwijderen? Dit kan niet ongedaan gemaakt worden.}}",
+    "@remove_all_done_dialog_body": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "compactLong"
+            }
+        }
+    },
     "remove_all_done_dialog_cancel": "ANNULEER",
     "@remove_all_done_dialog_cancel": {},
     "remove_all_done_dialog_remove": "VERWIJDER",
