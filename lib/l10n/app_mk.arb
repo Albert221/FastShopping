@@ -112,6 +112,12 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "Нема архивирани листи.",
     "@no_archived_lists_message": {},
+    "shopping_lists_item_elements": "{count, plural, =1 {1 eлемент} other {{count} елементи}}",
+    "@shopping_lists_item_elements": {
+        "placeholders": {
+            "count": {}
+        }
+    },
     "list_item_title_hint": "Напиши го името на предметот...",
     "@list_item_title_hint": {
         "description": "Placeholder in item name text field."
