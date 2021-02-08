@@ -112,7 +112,7 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "There are no archived lists.",
     "@no_archived_lists_message": {},
-    "shopping_lists_item_elements": "{count, plural, =1 {1 element} other {{count} elements}}",
+    "shopping_lists_item_elements": "{count, plural, =1 {1 item} other {{count} items}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
             "count": {}
