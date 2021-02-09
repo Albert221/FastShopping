@@ -214,7 +214,7 @@
     },
     "remove_all_done_dialog_title": "Rimozione di tutti i contrassegnati",
     "@remove_all_done_dialog_title": {},
-    "remove_all_done_dialog_body": "{count, plural, one {} =1 {Sei sicuro di voler rimuovere 1 oggetto? Questa operazione non può essere annullata.} other {Sei sicuro di voler rimuovere tutti i {count} elementi? Questa operazione non può essere annullata.}}",
+    "remove_all_done_dialog_body": "{count, plural, =1 {Sei sicuro di voler rimuovere 1 oggetto? Questa operazione non può essere annullata.} other {Sei sicuro di voler rimuovere tutti i {count} elementi? Questa operazione non può essere annullata.}}",
     "@remove_all_done_dialog_body": {
         "placeholders": {
             "count": {
