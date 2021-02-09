@@ -30,6 +30,7 @@ class SettingsScreen extends StatelessWidget {
         title: Text(S.of(context).settings_dark_theme),
         children: DarkTheme.values.map((option) {
           return BetterSimpleDialogOption(
+            key: ValueKey('dark-theme-${option.index}'),
             onPressed: () => Navigator.of(context).pop(option),
             child: Text(option.localize(context)),
           );
@@ -76,6 +77,7 @@ class SettingsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: const BackButton(key: ValueKey('settings-back')),
         title: Text(S.of(context).settings_title),
       ),
       body: ListView(
@@ -97,6 +99,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           const Divider(),
           ListTile(
+            key: const ValueKey('dark-theme'),
             leading: const Icon(Icons.nights_stay),
             title: Text(S.of(context).settings_dark_theme),
             subtitle: Text(appSettings.darkTheme.localize(context)),

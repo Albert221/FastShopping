@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:fast_shopping/app.dart';
 import 'package:fast_shopping/l10n/override_locale.dart';
-import 'package:fast_shopping/data/app_settings_repository.dart' as data;
 import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_driver/driver_extension.dart';
@@ -36,10 +35,34 @@ void _main(Locale locale) {
     key: UniqueKey(),
     locale: locale,
     child: FastShoppingApp(
-      appSettingsRepository: data.AppSettingsRepository(),
+      appSettingsRepository: NullAppSettingsRepository(),
       shoppingListRepository: repository,
     ),
   ));
+}
+
+class NullAppSettingsRepository extends AppSettingsRepository {
+  @override
+  Future<ShoppingListsMode> getShoppingListsMode() async => null;
+  @override
+  Future<void> saveShoppingListsMode(
+    ShoppingListsMode shoppingListsMode,
+  ) async {}
+
+  @override
+  Future<DarkTheme> getDarkTheme() async => null;
+  @override
+  Future<void> saveDarkTheme(DarkTheme darkTheme) async {}
+
+  @override
+  Future<ItemsLayout> getItemsLayout() async => null;
+  @override
+  Future<void> saveItemsLayout(ItemsLayout itemsLayout) async {}
+
+  @override
+  Future<bool> getMoveDoneToEnd() async => null;
+  @override
+  Future<void> saveMoveDoneToEnd(bool moveDoneToEnd) async {}
 }
 
 class ScreenshotsShoppingListRepository extends ShoppingListRepository {

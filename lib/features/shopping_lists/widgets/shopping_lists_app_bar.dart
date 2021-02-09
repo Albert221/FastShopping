@@ -13,6 +13,7 @@ class ShoppingListsAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: const BackButton(key: ValueKey('lists-back')),
       title: Text(S.of(context).shopping_lists_title),
       bottom: ShoppingListsTabBar(controller: tabController),
     );

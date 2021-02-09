@@ -26,26 +26,36 @@ void main() {
 
         await driver.tap(find.byValueKey('d-04'));
 
-        final screenshot1 = await driver.screenshot();
-        await _saveScreenshot(locale, '1', screenshot1);
+        final screenshotItems = await driver.screenshot();
+        await _saveScreenshot(locale, '1', screenshotItems);
 
         await driver.tap(find.byType('FloatingActionButton'));
 
-        final screenshot2 = await driver.screenshot();
-        await _saveScreenshot(locale, '2', screenshot2);
+        final screenshotAddItem = await driver.screenshot();
+        await _saveScreenshot(locale, '2', screenshotAddItem);
 
         await driver.tap(find.byValueKey('cancel-dialog'));
         await driver.tap(find.byType('ShoppingListBar'));
 
-        final screenshot3 = await driver.screenshot();
-        await _saveScreenshot(locale, '3', screenshot3);
+        final screenshotShoppingLists = await driver.screenshot();
+        await _saveScreenshot(locale, '3', screenshotShoppingLists);
 
         await _saveFeatureGraphic(
           locale,
-          screenshot1: screenshot1,
-          screenshot2: screenshot2,
-          screenshot3: screenshot3,
+          screenshot1: screenshotItems,
+          screenshot2: screenshotAddItem,
+          screenshot3: screenshotShoppingLists,
         );
+
+        await driver.tap(find.byValueKey('lists-back'));
+        await driver.tap(find.byValueKey('menu'));
+        await driver.tap(find.byValueKey('settings'));
+        await driver.tap(find.byValueKey('dark-theme'));
+        await driver.tap(find.byValueKey('dark-theme-0'));
+        await driver.tap(find.byValueKey('settings-back'));
+
+        final screenshotDarkTheme = await driver.screenshot();
+        await _saveScreenshot(locale, '4', screenshotDarkTheme);
       }, timeout: const Timeout(Duration(minutes: 5)));
     }
   });

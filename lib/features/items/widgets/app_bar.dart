@@ -50,6 +50,7 @@ class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: const AppLogo(),
       actions: [
         PopupMenuButton<_MenuItem>(
+          key: const ValueKey('menu'),
           onSelected: (item) => _onMenuItemSelected(context, item),
           itemBuilder: (context) => [
             if (shoppingListsMode == ShoppingListsMode.multiple)
@@ -75,6 +76,7 @@ class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
             ],
             const PopupMenuDivider(),
             _PopupMenuItem(
+              key: const ValueKey('settings'),
               value: _MenuItem.settings,
               icon: const Icon(Icons.settings),
               label: Text(S.of(context).settings_title),
