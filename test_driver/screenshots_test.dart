@@ -26,18 +26,18 @@ void main() {
 
         await driver.tap(find.byValueKey('d-04'));
 
-        final screenshotItems = await driver.screenshot();
+        final screenshotItems = await _takeScreenshot();
         await _saveScreenshot(locale, '1', screenshotItems);
 
         await driver.tap(find.byType('FloatingActionButton'));
 
-        final screenshotAddItem = await driver.screenshot();
+        final screenshotAddItem = await _takeScreenshot();
         await _saveScreenshot(locale, '2', screenshotAddItem);
 
         await driver.tap(find.byValueKey('cancel-dialog'));
         await driver.tap(find.byType('ShoppingListBar'));
 
-        final screenshotShoppingLists = await driver.screenshot();
+        final screenshotShoppingLists = await _takeScreenshot();
         await _saveScreenshot(locale, '3', screenshotShoppingLists);
 
         await _saveFeatureGraphic(
@@ -54,11 +54,20 @@ void main() {
         await driver.tap(find.byValueKey('dark-theme-0'));
         await driver.tap(find.byValueKey('settings-back'));
 
-        final screenshotDarkTheme = await driver.screenshot();
+        final screenshotDarkTheme = await _takeScreenshot();
         await _saveScreenshot(locale, '4', screenshotDarkTheme);
       }, timeout: const Timeout(Duration(minutes: 5)));
     }
   });
+}
+
+Future<List<int>> _takeScreenshot() async {
+  await Process.run('flutter', ['screenshot']);
+  final file = File('flutter_01.png');
+  final bytes = await file.readAsBytes();
+  await file.delete();
+
+  return bytes;
 }
 
 Future<void> _saveScreenshot(

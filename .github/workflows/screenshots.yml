@@ -37,7 +37,11 @@ jobs:
         with:
           api-level: 28
           profile: pixel_2_xl
-          script: flutter drive --target=test_driver/screenshots.dart --flavor foss
+          script: |
+            adb shell settings put global sysui_demo_allowed 1
+            adb shell am broadcast -a com.android.systemui.demo -e command enter
+            adb shell am broadcast -a com.android.systemui.demo -e command clock -e hhmm 0941
+            flutter drive --target=test_driver/screenshots.dart --flavor foss
 
       - name: Extract branch name
         id: extract-branch
