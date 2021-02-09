@@ -73,6 +73,8 @@
     "@shopping_list_no_name": {},
     "shopping_list_archived_snackbar_message": "Список успешно заархивирован.",
     "@shopping_list_archived_snackbar_message": {},
+    "shopping_list_archived_snackbar_undo": "ОТМЕНИТЬ",
+    "@shopping_list_archived_snackbar_undo": {},
     "shopping_list_unarchived_snackbar_message": "Список успешно разархивирован.",
     "@shopping_list_unarchived_snackbar_message": {},
     "add_list_dialog_title": "Добавить новый список покупок",
@@ -93,6 +95,15 @@
     "@rename_shopping_list_dialog_rename": {},
     "delete_shopping_list_dialog_title": "Удалить список покупок",
     "@delete_shopping_list_dialog_title": {},
+    "delete_shopping_list_dialog_body": "Вы действительно хотите удалить {list_name} список покупок? Эта операция не может быть отменена.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "delete_shopping_list_dialog_cancel": "ОТМЕНИТЬ",
     "@delete_shopping_list_dialog_cancel": {},
     "delete_shopping_list_dialog_delete": "УДАЛИТЬ",
@@ -101,7 +112,7 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "Нет архивированных списков.",
     "@no_archived_lists_message": {},
-    "shopping_lists_item_elements": "{count, plural, few {{count} элемента} many {{count} элементов} other {{count} элементы} =1 {1 элемент}}",
+    "shopping_lists_item_elements": "{count, plural, =1 {1 элемент} few {{count} элемента} many {{count} элементов} other {{count} элементы}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
             "count": {}
@@ -121,15 +132,6 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Текущий",
     "@shopping_lists_tab_current": {},
-    "delete_shopping_list_dialog_body": "Вы действительно хотите удалить {list_name} список покупок? Эта операция не может быть отменена.",
-    "@delete_shopping_list_dialog_body": {
-        "placeholders": {
-            "list_name": {
-                "type": "String",
-                "example": "Groceries"
-            }
-        }
-    },
     "screenshot_item_1": "Томатный соус",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
@@ -158,12 +160,75 @@
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
     },
-    "settings_multiple_lists_subtitle": "Несколько списков",
+    "settings_title": "Параметры",
+    "@settings_title": {
+        "description": "Title on the Settings screen app bar."
+    },
+    "settings_multiple_lists": "Несколько списков покупок",
+    "@settings_multiple_lists": {},
+    "settings_multiple_lists_subtitle": "Больше возможностей, улучшение управления.",
     "@settings_multiple_lists_subtitle": {},
+    "settings_single_list": "Один список покупок",
+    "@settings_single_list": {},
+    "settings_single_list_subtitle": "Простота.",
+    "@settings_single_list_subtitle": {},
+    "settings_dark_theme": "Тёмная тема",
+    "@settings_dark_theme": {},
+    "settings_dark_theme_enabled": "Включена",
+    "@settings_dark_theme_enabled": {},
+    "settings_dark_theme_system": "Использовать настройки системы",
+    "@settings_dark_theme_system": {},
+    "settings_dark_theme_disabled": "Отключена",
+    "@settings_dark_theme_disabled": {},
+    "settings_items_layout": "Расположение элементов",
+    "@settings_items_layout": {
+        "description": "Whether the item tiles are layed out spaciously or dense."
+    },
+    "settings_items_layout_comfortable": "Удобное",
+    "@settings_items_layout_comfortable": {},
+    "settings_items_layout_dense": "Плотное",
+    "@settings_items_layout_dense": {},
+    "settings_move_done": "Переместить завершенные элементы в конец",
+    "@settings_move_done": {},
     "settings_support_author": "Поддержите автора",
     "@settings_support_author": {
         "description": "Redirects the user to the author's website."
     },
+    "settings_project_website": "Сайт проекта",
+    "@settings_project_website": {
+        "description": "Redirects the user to GitHub."
+    },
     "settings_licenses": "Лицензии",
-    "@settings_licenses": {}
+    "@settings_licenses": {},
+    "menu_undone_all_done": "Отменить все выполненные",
+    "@menu_undone_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_remove_all_done": "Удалить все выполненные",
+    "@menu_remove_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_archive_list": "Архивировать список",
+    "@menu_archive_list": {
+        "description": "Shown only when the user is in the _Multiple shopping lists_ mode."
+    },
+    "menu_settings": "Параметры",
+    "@menu_settings": {
+        "description": "Opens the _Settings_ screen."
+    },
+    "remove_all_done_dialog_title": "Удалить все выполненные",
+    "@remove_all_done_dialog_title": {},
+    "remove_all_done_dialog_body": "{count, plural, =1 {Вы уверены, что хотите удалить 1 элемент? Эту операцию нельзя отменить.} few {Вы уверены, что хотите удалить все {count} элемента? Эту операцию нельзя отменить.} many {Вы уверены, что хотите удалить все {count} элементов? Эту операцию нельзя отменить.} other {Вы уверены, что хотите удалить все {count} элементов? Эту операцию нельзя отменить.}}",
+    "@remove_all_done_dialog_body": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "compactLong"
+            }
+        }
+    },
+    "remove_all_done_dialog_cancel": "ОТМЕНИТЬ",
+    "@remove_all_done_dialog_cancel": {},
+    "remove_all_done_dialog_remove": "УДАЛИТЬ",
+    "@remove_all_done_dialog_remove": {}
 }

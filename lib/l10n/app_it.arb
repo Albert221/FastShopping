@@ -95,6 +95,15 @@
     "@rename_shopping_list_dialog_rename": {},
     "delete_shopping_list_dialog_title": "Cancella la lista della spesa",
     "@delete_shopping_list_dialog_title": {},
+    "delete_shopping_list_dialog_body": "Sei sicuro di voler cancellare {list_name} la lista? Questa operazione non può essere annullata.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
     "delete_shopping_list_dialog_cancel": "ANNULLA",
     "@delete_shopping_list_dialog_cancel": {},
     "delete_shopping_list_dialog_delete": "ELIMINA",
@@ -103,7 +112,7 @@
     "@no_current_lists_message": {},
     "no_archived_lists_message": "Non ci sono liste archiviate.",
     "@no_archived_lists_message": {},
-    "shopping_lists_item_elements": "{count, plural, one {un elemento} other {{count} elementi}}",
+    "shopping_lists_item_elements": "{count, plural, one {1 elemento} other {{count} elementi}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
             "count": {}
@@ -123,15 +132,6 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Attuali",
     "@shopping_lists_tab_current": {},
-    "delete_shopping_list_dialog_body": "Sei sicuro di voler cancellare {list_name} la lista? Questa operazione non può essere annullata.",
-    "@delete_shopping_list_dialog_body": {
-        "placeholders": {
-            "list_name": {
-                "type": "String",
-                "example": "Groceries"
-            }
-        }
-    },
     "screenshot_item_1": "Passata di pomodoro",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
@@ -172,14 +172,14 @@
     "@settings_single_list": {},
     "settings_single_list_subtitle": "Semplicità.",
     "@settings_single_list_subtitle": {},
-    "settings_dark_mode": "Tema scuro",
-    "@settings_dark_mode": {},
-    "settings_dark_mode_enabled": "Abilitato",
-    "@settings_dark_mode_enabled": {},
-    "settings_dark_mode_system": "Usa le impostazioni di sistema",
-    "@settings_dark_mode_system": {},
-    "settings_dark_mode_disabled": "Disabilitato",
-    "@settings_dark_mode_disabled": {},
+    "settings_dark_theme": "Tema scuro",
+    "@settings_dark_theme": {},
+    "settings_dark_theme_enabled": "Abilitato",
+    "@settings_dark_theme_enabled": {},
+    "settings_dark_theme_system": "Usa le impostazioni di sistema",
+    "@settings_dark_theme_system": {},
+    "settings_dark_theme_disabled": "Disabilitato",
+    "@settings_dark_theme_disabled": {},
     "settings_items_layout": "Disposizione elementi",
     "@settings_items_layout": {
         "description": "Whether the item tiles are layed out spaciously or dense."
@@ -199,5 +199,36 @@
         "description": "Redirects the user to GitHub."
     },
     "settings_licenses": "Licenze",
-    "@settings_licenses": {}
+    "@settings_licenses": {},
+    "menu_undone_all_done": "Annullato tutti i contrassegnati",
+    "@menu_undone_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_remove_all_done": "Rimuovi tutti i contrassegnati",
+    "@menu_remove_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_archive_list": "Archivia lista",
+    "@menu_archive_list": {
+        "description": "Shown only when the user is in the _Multiple shopping lists_ mode."
+    },
+    "menu_settings": "Impostazioni",
+    "@menu_settings": {
+        "description": "Opens the _Settings_ screen."
+    },
+    "remove_all_done_dialog_title": "Rimozione di tutti i contrassegnati",
+    "@remove_all_done_dialog_title": {},
+    "remove_all_done_dialog_body": "{count, plural, =1 {Sei sicuro di voler rimuovere 1 oggetto? Questa operazione non può essere annullata.} other {Sei sicuro di voler rimuovere tutti i {count} elementi? Questa operazione non può essere annullata.}}",
+    "@remove_all_done_dialog_body": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "compactLong"
+            }
+        }
+    },
+    "remove_all_done_dialog_cancel": "ANNULLA",
+    "@remove_all_done_dialog_cancel": {},
+    "remove_all_done_dialog_remove": "RIMUOVI",
+    "@remove_all_done_dialog_remove": {}
 }

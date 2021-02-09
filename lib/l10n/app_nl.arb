@@ -1,13 +1,13 @@
 {
-    "app_title": "Szybkie Zakupy",
+    "app_title": "Fast Shopping",
     "@app_title": {
         "description": "Shown on top of the screen."
     },
-    "list_item_no_name": "Bez nazwy",
+    "list_item_no_name": "Geen naam",
     "@list_item_no_name": {
         "description": "When the item has no/empty name."
     },
-    "list_item_done_ago": "oznaczono {when}",
+    "list_item_done_ago": "{when} gedaan",
     "@list_item_done_ago": {
         "description": "Small caps date when item was marked as done.",
         "placeholders": {
@@ -17,41 +17,41 @@
             }
         }
     },
-    "list_item_editing_cancel": "ANULUJ",
+    "list_item_editing_cancel": "ANNULEER",
     "@list_item_editing_cancel": {},
-    "list_item_editing_save": "ZAPISZ",
+    "list_item_editing_save": "OPSLAAN",
     "@list_item_editing_save": {},
-    "list_item_remove": "USUŃ",
+    "list_item_remove": "VERWIJDER",
     "@list_item_remove": {},
-    "list_item_edit": "EDYTUJ",
+    "list_item_edit": "BEWERKEN",
     "@list_item_edit": {},
-    "item_removed_snackbar_message": "Element został usunięty z listy.",
+    "item_removed_snackbar_message": "Artikel is uit de lijst verwijderd.",
     "@item_removed_snackbar_message": {},
-    "item_removed_snackbar_undo": "COFNIJ",
+    "item_removed_snackbar_undo": "ONGEDAAN MAKEN",
     "@item_removed_snackbar_undo": {},
-    "add_item_dialog_title": "Dodaj element",
+    "add_item_dialog_title": "Artikel toevoegen",
     "@add_item_dialog_title": {},
-    "add_item_dialog_cancel": "ANULUJ",
+    "add_item_dialog_cancel": "ANNULEER",
     "@add_item_dialog_cancel": {},
-    "add_item_dialog_add": "DODAJ",
+    "add_item_dialog_add": "TOEVOEGEN",
     "@add_item_dialog_add": {},
-    "archive_banner_content": "Wygląda na to, że wszystko jest już kupione. Czy chcesz zarchiwizować listę zakupów?",
+    "archive_banner_content": "Het lijkt erop dat alles als gedaan is gemarkeerd. Wilt u uw boodschappenlijstje archiveren?",
     "@archive_banner_content": {},
-    "archive_banner_archive": "ARCHIWIZUJ",
+    "archive_banner_archive": "ARCHIVEER",
     "@archive_banner_archive": {},
-    "shopping_list_not_selected_placeholder": "Nie wybrano listy",
+    "shopping_list_not_selected_placeholder": "Geen lijst geselecteerd",
     "@shopping_list_not_selected_placeholder": {},
-    "shopping_list_not_selected_message": "Żadna lista nie jest wybrana, stwórz ją.",
+    "shopping_list_not_selected_message": "Er is geen lijst geselecteerd, maak er een aan.",
     "@shopping_list_not_selected_message": {},
-    "empty_list_add_some_items_message": "Dodaj jakieś elementy do listy!",
+    "empty_list_add_some_items_message": "Voeg wat artikelen toe!",
     "@empty_list_add_some_items_message": {},
-    "shopping_lists_title": "Listy zakupów",
+    "shopping_lists_title": "Boodschappenlijstjes",
     "@shopping_lists_title": {},
-    "shopping_lists_tab_archived": "Zarchiwizowane",
+    "shopping_lists_tab_archived": "Gearchiveerd",
     "@shopping_lists_tab_archived": {},
-    "shopping_lists_add_new": "NOWA LISTA",
+    "shopping_lists_add_new": "NIEUWE LIJST",
     "@shopping_lists_add_new": {},
-    "shopping_lists_item_created_at": "Stworzono {when}",
+    "shopping_lists_item_created_at": "Aangemaakt op {when}",
     "@shopping_lists_item_created_at": {
         "placeholders": {
             "when": {
@@ -60,7 +60,7 @@
             }
         }
     },
-    "shopping_lists_item_archived_at": "Zarchiwiz. {when}",
+    "shopping_lists_item_archived_at": "Gearchiveerd op {when}",
     "@shopping_lists_item_archived_at": {
         "placeholders": {
             "when": {
@@ -69,33 +69,33 @@
             }
         }
     },
-    "shopping_list_no_name": "Bez nazwy",
+    "shopping_list_no_name": "Geen naam",
     "@shopping_list_no_name": {},
-    "shopping_list_archived_snackbar_message": "Lista została zarchiwizowana pomyślnie.",
+    "shopping_list_archived_snackbar_message": "Lijst is met succes gearchiveerd.",
     "@shopping_list_archived_snackbar_message": {},
-    "shopping_list_archived_snackbar_undo": "COFNIJ",
+    "shopping_list_archived_snackbar_undo": "ONGEDAAN MAKEN",
     "@shopping_list_archived_snackbar_undo": {},
-    "shopping_list_unarchived_snackbar_message": "Lista została przywrócona pomyślnie.",
+    "shopping_list_unarchived_snackbar_message": "Lijst is niet langer gearchiveerd.",
     "@shopping_list_unarchived_snackbar_message": {},
-    "add_list_dialog_title": "Dodaj nową listę zakupów",
+    "add_list_dialog_title": "Voeg een nieuw boodschappenlijstje toe",
     "@add_list_dialog_title": {},
-    "add_list_dialog_name_hint": "Wpisz tutaj nazwę listy...",
+    "add_list_dialog_name_hint": "Schrijf de naam van het boodschappenlijstje hier...",
     "@add_list_dialog_name_hint": {},
-    "add_list_dialog_cancel": "ANULUJ",
+    "add_list_dialog_cancel": "ANNULEER",
     "@add_list_dialog_cancel": {},
-    "add_list_dialog_add": "DODAJ",
+    "add_list_dialog_add": "TOEVOEGEN",
     "@add_list_dialog_add": {},
-    "rename_shopping_list_dialog_title": "Zmień nazwę listy",
+    "rename_shopping_list_dialog_title": "Boodschappenlijst hernoemen",
     "@rename_shopping_list_dialog_title": {},
-    "rename_shopping_list_dialog_name_hint": "Wpisz tutaj nową nazwę...",
+    "rename_shopping_list_dialog_name_hint": "Schrijf de nieuwe naam hier...",
     "@rename_shopping_list_dialog_name_hint": {},
-    "rename_shopping_list_dialog_cancel": "ANULUJ",
+    "rename_shopping_list_dialog_cancel": "ANNULEER",
     "@rename_shopping_list_dialog_cancel": {},
-    "rename_shopping_list_dialog_rename": "ZMIEŃ NAZWĘ",
+    "rename_shopping_list_dialog_rename": "HERNOEMEN",
     "@rename_shopping_list_dialog_rename": {},
-    "delete_shopping_list_dialog_title": "Usuwanie listy zakupów",
+    "delete_shopping_list_dialog_title": "Boodschappenlijst verwijderen",
     "@delete_shopping_list_dialog_title": {},
-    "delete_shopping_list_dialog_body": "Czy na pewno chcesz usunąć listę zakupów {list_name}? Ta operacja nie może zostać cofnięta.",
+    "delete_shopping_list_dialog_body": "Weet u zeker dat u {list_name} boodschappenlijstje wilt verwijderen? Dit kan niet ongedaan gemaakt worden.",
     "@delete_shopping_list_dialog_body": {
         "placeholders": {
             "list_name": {
@@ -104,121 +104,121 @@
             }
         }
     },
-    "delete_shopping_list_dialog_cancel": "ANULUJ",
+    "delete_shopping_list_dialog_cancel": "ANNULEER",
     "@delete_shopping_list_dialog_cancel": {},
-    "delete_shopping_list_dialog_delete": "USUŃ",
+    "delete_shopping_list_dialog_delete": "VERWIJDER",
     "@delete_shopping_list_dialog_delete": {},
-    "no_current_lists_message": "Nie ma żadnych bieżących list, stwórz jakieś!",
+    "no_current_lists_message": "Er zijn geen huidige lijsten, maak er een aan!",
     "@no_current_lists_message": {},
-    "no_archived_lists_message": "Nie ma żadnych zarchiwizowanych list.",
+    "no_archived_lists_message": "Er zijn geen gearchiveerde lijsten.",
     "@no_archived_lists_message": {},
-    "shopping_lists_item_elements": "{count, plural, =1 {1 element} few {{count} elementy} many {{count} elementów} other {{count} elementu}}",
+    "shopping_lists_item_elements": "{count, plural, =1 {1 artikel} other {{count} artikelen}}",
     "@shopping_lists_item_elements": {
         "placeholders": {
             "count": {}
         }
     },
-    "list_item_title_hint": "Wpisz tutaj nazwę...",
+    "list_item_title_hint": "Schrijf artikel naam hier...",
     "@list_item_title_hint": {
         "description": "Placeholder in item name text field."
     },
-    "list_item_action_rename": "Zmień nazwę",
+    "list_item_action_rename": "Naam wijzigen",
     "@list_item_action_rename": {},
-    "list_item_action_archive": "Archiwizuj",
+    "list_item_action_archive": "Archiveren",
     "@list_item_action_archive": {},
-    "list_item_action_unarchive": "Przywróć",
+    "list_item_action_unarchive": "Uit archief halen",
     "@list_item_action_unarchive": {},
-    "list_item_action_delete": "Usuń",
+    "list_item_action_delete": "Verwijder",
     "@list_item_action_delete": {},
-    "shopping_lists_tab_current": "Bieżące",
+    "shopping_lists_tab_current": "Huidig",
     "@shopping_lists_tab_current": {},
-    "screenshot_item_1": "Masło osełkowe",
+    "screenshot_item_1": "Tomatensaus",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
     },
-    "screenshot_item_2": "Ser żółty",
+    "screenshot_item_2": "Mosterd",
     "@screenshot_item_2": {},
-    "screenshot_item_3": "Sałatka roszponka",
+    "screenshot_item_3": "Barbecue saus",
     "@screenshot_item_3": {},
-    "screenshot_item_4": "Brązowy ryż",
+    "screenshot_item_4": "Rode wijnazijn",
     "@screenshot_item_4": {},
-    "screenshot_item_5": "Mrożonka warzyw na patelnię",
+    "screenshot_item_5": "Salsa",
     "@screenshot_item_5": {
         "description": "Expanded item on shopping list in app stores screenshots."
     },
-    "screenshot_item_6": "Kasza gryczana",
+    "screenshot_item_6": "Extra vierge olijfolie",
     "@screenshot_item_6": {},
-    "screenshot_item_7": "Buraki",
+    "screenshot_item_7": "Kappertjes en olijven",
     "@screenshot_item_7": {},
-    "screenshot_item_8": "Serek wiejski",
+    "screenshot_item_8": "Hete pepersaus",
     "@screenshot_item_8": {},
-    "screenshot_list_1": "Zakupy do domu",
+    "screenshot_list_1": "Boodschappen",
     "@screenshot_list_1": {
         "description": "Active shopping list in app stores screenshots."
     },
-    "screenshot_list_2": "Domówka u Krysi",
+    "screenshot_list_2": "Feestje bij Mike",
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
     },
-    "settings_title": "Ustawienia",
+    "settings_title": "Instellingen",
     "@settings_title": {
         "description": "Title on the Settings screen app bar."
     },
-    "settings_multiple_lists": "Wiele list zakupów",
+    "settings_multiple_lists": "Meerdere boodschappenlijstjes",
     "@settings_multiple_lists": {},
-    "settings_multiple_lists_subtitle": "Więcej funkcji, lepsze zarządzanie.",
+    "settings_multiple_lists_subtitle": "Meer functionaliteit, beter beheer.",
     "@settings_multiple_lists_subtitle": {},
-    "settings_single_list": "Jedna lista zakupów",
+    "settings_single_list": "Enkele boodschappenlijst",
     "@settings_single_list": {},
-    "settings_single_list_subtitle": "Proste w użyciu.",
+    "settings_single_list_subtitle": "Eenvoudig overzicht.",
     "@settings_single_list_subtitle": {},
-    "settings_dark_theme": "Ciemny motyw",
+    "settings_dark_theme": "Donkere modus",
     "@settings_dark_theme": {},
-    "settings_dark_theme_enabled": "Włączony",
+    "settings_dark_theme_enabled": "Ingeschakeld",
     "@settings_dark_theme_enabled": {},
-    "settings_dark_theme_system": "Użyj ustawień systemowych",
+    "settings_dark_theme_system": "Gebruik systeem instellingen",
     "@settings_dark_theme_system": {},
-    "settings_dark_theme_disabled": "Wyłączony",
+    "settings_dark_theme_disabled": "Uitgeschakeld",
     "@settings_dark_theme_disabled": {},
-    "settings_items_layout": "Układ elementów",
+    "settings_items_layout": "Artikelen lay-out",
     "@settings_items_layout": {
         "description": "Whether the item tiles are layed out spaciously or dense."
     },
-    "settings_items_layout_comfortable": "Wygodny",
+    "settings_items_layout_comfortable": "Comfortabel",
     "@settings_items_layout_comfortable": {},
-    "settings_items_layout_dense": "Ciasny",
+    "settings_items_layout_dense": "Compact",
     "@settings_items_layout_dense": {},
-    "settings_move_done": "Przenieś oznaczone elementy na koniec",
+    "settings_move_done": "Verplaats voltooide items naar het einde",
     "@settings_move_done": {},
-    "settings_support_author": "Wesprzyj autora",
+    "settings_support_author": "Ondersteun de auteur",
     "@settings_support_author": {
         "description": "Redirects the user to the author's website."
     },
-    "settings_project_website": "Strona internetowa projektu",
+    "settings_project_website": "Project website",
     "@settings_project_website": {
         "description": "Redirects the user to GitHub."
     },
-    "settings_licenses": "Licencje",
+    "settings_licenses": "Licenties",
     "@settings_licenses": {},
-    "menu_undone_all_done": "Odznacz zaznaczone",
+    "menu_undone_all_done": "Alles ongedaan maken",
     "@menu_undone_all_done": {
         "description": "Shown only when the user is in the _Single shopping list_ mode."
     },
-    "menu_remove_all_done": "Usuń zaznaczone",
+    "menu_remove_all_done": "Alles voltooid verwijderen",
     "@menu_remove_all_done": {
         "description": "Shown only when the user is in the _Single shopping list_ mode."
     },
-    "menu_archive_list": "Zarchiwizuj listę",
+    "menu_archive_list": "Archiveer lijst",
     "@menu_archive_list": {
         "description": "Shown only when the user is in the _Multiple shopping lists_ mode."
     },
-    "menu_settings": "Ustawienia",
+    "menu_settings": "Instellingen",
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
-    "remove_all_done_dialog_title": "Usuwanie wszystkich oznaczonych",
+    "remove_all_done_dialog_title": "Verwijder alle voltooide artikelen",
     "@remove_all_done_dialog_title": {},
-    "remove_all_done_dialog_body": "{count, plural, =1 {Czy na pewno chcesz usunąć 1 element? Tej operacji nie można cofnąć.} few {Czy na pewno chcesz usunąć wszystkie {count} elementy? Tej operacji nie można cofnąć.} many {Czy na pewno chcesz usunąć wszystkie {count} elementów? Tej operacji nie można cofnąć.} other {Czy na pewno chcesz usunąć wszystkie {count} elementu? Tej operacji nie można cofnąć.}}",
+    "remove_all_done_dialog_body": "{count, plural, =1 {Weet u zeker dat u 1 artikel wilt verwijderen? Dit kan niet ongedaan gemaakt worden.} other {Weet u zeker dat u {count} artikelen wilt verwijderen? Dit kan niet ongedaan gemaakt worden.}}",
     "@remove_all_done_dialog_body": {
         "placeholders": {
             "count": {
@@ -227,8 +227,8 @@
             }
         }
     },
-    "remove_all_done_dialog_cancel": "ANULUJ",
+    "remove_all_done_dialog_cancel": "ANNULEER",
     "@remove_all_done_dialog_cancel": {},
-    "remove_all_done_dialog_remove": "USUŃ",
+    "remove_all_done_dialog_remove": "VERWIJDER",
     "@remove_all_done_dialog_remove": {}
 }
