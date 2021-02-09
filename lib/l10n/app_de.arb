@@ -164,8 +164,14 @@
     "@settings_title": {
         "description": "Title on the Settings screen app bar."
     },
-    "settings_multiple_lists_subtitle": "Mehrere Listen",
+    "settings_multiple_lists": "Mehrere Einkaufslisten",
+    "@settings_multiple_lists": {},
+    "settings_multiple_lists_subtitle": "Mehr Features, besseres Management.",
     "@settings_multiple_lists_subtitle": {},
+    "settings_single_list": "Einzelne Einkaufsliste",
+    "@settings_single_list": {},
+    "settings_single_list_subtitle": "Einfaches Gefühl.",
+    "@settings_single_list_subtitle": {},
     "settings_dark_theme": "Dunkles Theme",
     "@settings_dark_theme": {},
     "settings_dark_theme_enabled": "Aktiviert",
@@ -194,7 +200,11 @@
     },
     "settings_licenses": "Lizenzen",
     "@settings_licenses": {},
-    "menu_remove_all_done": "Alle erledigt entfernen",
+    "menu_undone_all_done": "Unerledigte abwählen",
+    "@menu_undone_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_remove_all_done": "Erledigte entfernen",
     "@menu_remove_all_done": {
         "description": "Shown only when the user is in the _Single shopping list_ mode."
     },
@@ -206,6 +216,8 @@
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
+    "remove_all_done_dialog_title": "Entferne alle erledigte",
+    "@remove_all_done_dialog_title": {},
     "remove_all_done_dialog_body": "{count, plural, =1 {Bist du sicher, dass du 1 Element entfernen möchtest? Dieser Vorgang kann nicht rückgängig gemacht werden.} other {Bist du sicher, dass du alle {count} Elemente entfernen möchtest? Dieser Vorgang kann nicht rückgängig gemacht werden.}}",
     "@remove_all_done_dialog_body": {
         "placeholders": {
