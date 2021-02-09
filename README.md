@@ -45,17 +45,6 @@ flutter pub run build_runner build --delete-conflicting outputs
 
 [![Localization at Crowdin][crowdin-badge]][crowdin-link]
 
-## Available languages
-
-There are current or past translation maintainers in the parentheses next to each language.
-
-- English (me)
-- Polish (me)
-- Macedonian ([@MatejMecka])
-- German ([@kojid0], [@divadsn])
-- Russian ([@rikishi0071])
-- French ([@ashledombos])
-
 [app-logo]: android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
 
 [build-status-badge]: https://img.shields.io/github/workflow/status/Albert221/FastShopping/Flutter%20test
@@ -77,9 +66,3 @@ There are current or past translation maintainers in the parentheses next to eac
 
 [crowdin-link]: https://crowdin.com/project/fast-shopping
 [crowdin-badge]: https://badges.crowdin.net/badge/dark/crowdin-on-light.png
-
-[@matejmecka]: https://github.com/MatejMecka
-[@kojid0]: https://github.com/kojid0
-[@divadsn]: https://github.com/divadsn
-[@rikishi0071]: https://github.com/rikishi0071
-[@ashledombos]: https://github.com/ashledombos
