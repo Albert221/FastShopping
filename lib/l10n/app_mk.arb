@@ -218,6 +218,15 @@
     },
     "remove_all_done_dialog_title": "Ги отстранувам сите готови",
     "@remove_all_done_dialog_title": {},
+    "remove_all_done_dialog_body": "{count, plural, =1 {Дали сте сигурни дека сакате да отстраните 1 предмет? Оваа операција е трајна.} other {Дали сте сигурни дека сакате да ги избришете сите {count} предмета? Оваа операција е трајна.}}",
+    "@remove_all_done_dialog_body": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "compactLong"
+            }
+        }
+    },
     "remove_all_done_dialog_cancel": "ОТКАЖИ",
     "@remove_all_done_dialog_cancel": {},
     "remove_all_done_dialog_remove": "ОТСТРАНИ",
