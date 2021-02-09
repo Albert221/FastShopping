@@ -200,6 +200,10 @@
     },
     "settings_licenses": "Licenze",
     "@settings_licenses": {},
+    "menu_undone_all_done": "Annullato tutti i contrassegnati",
+    "@menu_undone_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
     "menu_remove_all_done": "Rimuovi tutti i contrassegnati",
     "@menu_remove_all_done": {
         "description": "Shown only when the user is in the _Single shopping list_ mode."
