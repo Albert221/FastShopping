@@ -172,6 +172,14 @@
     "@settings_single_list": {},
     "settings_single_list_subtitle": "Semplicità.",
     "@settings_single_list_subtitle": {},
+    "settings_dark_theme": "Tema scuro",
+    "@settings_dark_theme": {},
+    "settings_dark_theme_enabled": "Abilitato",
+    "@settings_dark_theme_enabled": {},
+    "settings_dark_theme_system": "Usa le impostazioni di sistema",
+    "@settings_dark_theme_system": {},
+    "settings_dark_theme_disabled": "Disabilitato",
+    "@settings_dark_theme_disabled": {},
     "settings_items_layout": "Disposizione elementi",
     "@settings_items_layout": {
         "description": "Whether the item tiles are layed out spaciously or dense."
@@ -191,5 +199,32 @@
         "description": "Redirects the user to GitHub."
     },
     "settings_licenses": "Licenze",
-    "@settings_licenses": {}
+    "@settings_licenses": {},
+    "menu_remove_all_done": "Rimuovi tutti i contrassegnati",
+    "@menu_remove_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_archive_list": "Archivia lista",
+    "@menu_archive_list": {
+        "description": "Shown only when the user is in the _Multiple shopping lists_ mode."
+    },
+    "menu_settings": "Impostazioni",
+    "@menu_settings": {
+        "description": "Opens the _Settings_ screen."
+    },
+    "remove_all_done_dialog_title": "Rimozione di tutti i contrassegnati",
+    "@remove_all_done_dialog_title": {},
+    "remove_all_done_dialog_body": "{count, plural, one {} =1 {Sei sicuro di voler rimuovere 1 oggetto? Questa operazione non può essere annullata.} other {Sei sicuro di voler rimuovere tutti i {count} elementi? Questa operazione non può essere annullata.}}",
+    "@remove_all_done_dialog_body": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "compactLong"
+            }
+        }
+    },
+    "remove_all_done_dialog_cancel": "ANNULLA",
+    "@remove_all_done_dialog_cancel": {},
+    "remove_all_done_dialog_remove": "RIMUOVI",
+    "@remove_all_done_dialog_remove": {}
 }
