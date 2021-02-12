@@ -5,10 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run Fast Shopping",
+            "name": "Run Fast Shopping (foss)",
             "request": "launch",
             "type": "dart",
             "args": ["--flavor", "foss"]
+        },
+        {
+            "name": "Run Fast Shopping (iOS)",
+            "request": "launch",
+            "type": "dart"
         }
     ]
 }
