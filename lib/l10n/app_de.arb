@@ -7,7 +7,7 @@
     "@list_item_no_name": {
         "description": "When the item has no/empty name."
     },
-    "list_item_done_ago": "fertig {when}",
+    "list_item_done_ago": "vor {when} erledigt",
     "@list_item_done_ago": {
         "description": "Small caps date when item was marked as done.",
         "placeholders": {
@@ -71,11 +71,11 @@
     },
     "shopping_list_no_name": "Kein Name",
     "@shopping_list_no_name": {},
-    "shopping_list_archived_snackbar_message": "Die",
+    "shopping_list_archived_snackbar_message": "Liste erfolgreich archiviert.",
     "@shopping_list_archived_snackbar_message": {},
     "shopping_list_archived_snackbar_undo": "RÜCKGÄNGIG",
     "@shopping_list_archived_snackbar_undo": {},
-    "shopping_list_unarchived_snackbar_message": "Die Liste wurde erfolgreich wiederher.",
+    "shopping_list_unarchived_snackbar_message": "Liste erfolgreich wiederhergestellt.",
     "@shopping_list_unarchived_snackbar_message": {},
     "add_list_dialog_title": "Neue Einkaufsliste hinzufügen",
     "@add_list_dialog_title": {},
@@ -132,25 +132,25 @@
     "@list_item_action_delete": {},
     "shopping_lists_tab_current": "Aktuell",
     "@shopping_lists_tab_current": {},
-    "screenshot_item_1": "Markenbutter",
+    "screenshot_item_1": "Tomatensauce",
     "@screenshot_item_1": {
         "description": "Item visible on app stores screenshots."
     },
-    "screenshot_item_2": "Käse",
+    "screenshot_item_2": "Senf",
     "@screenshot_item_2": {},
-    "screenshot_item_3": "Kopfsalat",
+    "screenshot_item_3": "Barbecue-Sauce",
     "@screenshot_item_3": {},
-    "screenshot_item_4": "Naturreis",
+    "screenshot_item_4": "Rotwein Essig",
     "@screenshot_item_4": {},
-    "screenshot_item_5": "Tiefgefrorene Gemüsepfanne",
+    "screenshot_item_5": "Salsa",
     "@screenshot_item_5": {
         "description": "Expanded item on shopping list in app stores screenshots."
     },
-    "screenshot_item_6": "Buchweizen",
+    "screenshot_item_6": "Extra natives Olivenöl",
     "@screenshot_item_6": {},
-    "screenshot_item_7": "Rote Beete",
+    "screenshot_item_7": "Kapern und Oliven",
     "@screenshot_item_7": {},
-    "screenshot_item_8": "Körniger Frischkäse",
+    "screenshot_item_8": "Scharfe Pfeffersoße",
     "@screenshot_item_8": {},
     "screenshot_list_1": "Wocheneinkauf",
     "@screenshot_list_1": {
