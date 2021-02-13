@@ -129,6 +129,6 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           branch: screenshots/${{ steps.extract-branch.outputs.branch }}
-          commit-message: Update iOS screenshots
+          commit-message: Update fastlane screenshots
           title: Update fastlane screenshots
           body: ''
