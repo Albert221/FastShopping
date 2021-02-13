@@ -5,7 +5,7 @@ on:
 
 jobs:
   android:
-    name: Take Android and iOS screenshots
+    name: Take Android screenshots
 
     runs-on: macos-10.15
 
@@ -27,46 +27,108 @@ jobs:
           path: ${{ env.FLUTTER_HOME }}/.pub-cache
           key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
           restore-keys: ${{ runner.os }}-pub-
-          
 
       - name: Download pub dependencies
         run: flutter pub get
 
-      - name: Launch AVD and take screenshots
+      - name: Take AVD screenshots (Pixel 2 XL)
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 28
           profile: pixel_2_xl
           script: |
+            # Demo mode
             adb shell settings put global sysui_demo_allowed 1
             adb shell am broadcast -a com.android.systemui.demo -e command enter
             adb shell am broadcast -a com.android.systemui.demo -e command clock -e hhmm 0941
+            # Run
             flutter drive --target=test_driver/screenshots_android.dart --flavor foss
 
-      - name: Launch iOS Simulator
-        env:
-          DEVICE: iPhone 12 (14.4)
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: android-screenshots
+          path: fastlane/metadata/android/*/images
+
+  ios:
+    name: Take iOS screenshots
+
+    runs-on: macos-10.15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: stable
+
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Cache pub dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.FLUTTER_HOME }}/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: ${{ runner.os }}-pub-
+
+      - name: Enable Firebase Crashlytics
         run: |
-          UDID=$(
-            xcrun instruments -s |
-            awk \
-              -F ' *[][]' \
-              -v 'device=$DEVICE' \
-              '$1 == device { print $2 }'
+          # https://stackoverflow.com/a/44864004/3158312
+          sed -i '' 's/crashlytics\/foss/crashlytics\/full/g' pubspec.yaml
+
+      - name: Download pub dependencies
+        run: flutter pub get
+
+      - name: Launch iOS Simulator (iPhone 12)
+        run: |
+          export UDID=$(
+            xcrun simctl list --json devices available | \
+              jq --raw-output '.devices."com.apple.CoreSimulator.SimRuntime.iOS-14-3"[] | select(.name == "iPhone 12").udid'
           )
-          xcrun simctl boot "${UDID:?No Simulator with this name found}"
+          xcrun simctl boot $UDID
 
       - name: Take iOS Simulator screenshots
         run: flutter drive --target=test_driver/screenshots_ios.dart
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: ios-screenshots
+          path: fastlane/screenshots
+
+  pull-request:
+    name: Create Pull Request
+
+    needs: [android, ios]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Download Android artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: android-screenshots
+          path: fastlane/metadata/android
+
+      - name: Download iOS artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: ios-screenshots
+          path: fastlane/screenshots
+
       - name: Extract branch name
         id: extract-branch
         run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
-          
+
       - name: Submit Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           branch: screenshots/${{ steps.extract-branch.outputs.branch }}
-          commit-message: Update screenshots
+          commit-message: Update iOS screenshots
           title: Update fastlane screenshots
           body: ''

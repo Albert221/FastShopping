@@ -26,11 +26,6 @@ Future<void> _saveScreenshot(
     await File('assets/iphone-screenshot-frame.png').readAsBytes(),
   );
 
-  // Screenshot size: 1006 x 2174
-  // Frame size:      1944 x 3456
-  //
-  // destination:     140, 458
-
   screenshot = copyResize(
     screenshot,
     width: 1006,
@@ -46,7 +41,7 @@ Future<void> _saveScreenshot(
   // iPhone 6.5"
   var resultBytes = encodePng(image);
 
-  var file = File('fastlane/metadata/screenshots/$locale/iphone-65-$name.png');
+  var file = File('fastlane/screenshots/$locale/iphone-65-$name.png');
   await file.create(recursive: true);
   await file.writeAsBytes(resultBytes);
 
@@ -65,7 +60,7 @@ Future<void> _saveScreenshot(
 
   resultBytes = encodePng(fiveAndHalfInchImage);
 
-  file = File('fastlane/metadata/screenshots/$locale/iphone-55-$name.png');
+  file = File('fastlane/screenshots/$locale/iphone-55-$name.png');
   await file.create(recursive: true);
   await file.writeAsBytes(resultBytes);
 }

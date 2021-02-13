@@ -54,7 +54,7 @@ void takeScreenshots({
         final screenshotShoppingLists = await _takeScreenshot();
         await onScreenshotTaken(locale, '3', screenshotShoppingLists);
 
-        await onThreeScreenshotsTaken(
+        await onThreeScreenshotsTaken?.call(
           locale,
           screenshot1: screenshotItems,
           screenshot2: screenshotAddItem,
