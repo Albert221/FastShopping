@@ -1,0 +1,34 @@
+platform :ios do
+    lane :release do
+        setup_ci
+
+        match(
+            type: "appstore",
+            app_identifier: ENV["APPLE_APP_IDENTIFIER"],
+            git_url: ENV["MATCH_GIT_URL"]
+        )
+
+        update_project_team(
+            path: "ios/Runner.xcodeproj",
+            teamid: ENV["APPLE_TEAM_ID"]
+        )
+
+        update_project_provisioning(
+            xcodeproj: "ios/Runner.xcodeproj",
+            profile: ENV["sigh_#{ENV["APPLE_APP_IDENTIFIER"]}_appstore_profile-path"],
+            build_configuration: "Release",
+            code_signing_identity: "iPhone Distribution"
+        )
+
+        build_app(
+            workspace: "ios/Runner.xcworkspace",
+            scheme: "Runner"
+        )
+
+        upload_to_app_store(
+            force: true,
+            overwrite_screenshots: true,
+            username: ENV["APPLE_USERNAME"]
+        )
+    end
+end

@@ -5,12 +5,12 @@ import 'package:image/image.dart';
 import 'screenshots/screenshots.dart';
 
 // Map of Android metadata locales to App Store ones.
+// http://docs.fastlane.tools/actions/appstore/#available-language-codes
 const localesMap = {
   'de-DE': 'de-DE',
   'en-US': 'en-US',
   'fr-FR': 'fr-FR',
   'it-IT': 'it',
-  // no mk-MK in App Store
   'mk': null,
   'nl-NL': 'nl-NL',
   'pl-PL': 'pl',
@@ -55,7 +55,9 @@ Future<void> _saveScreenshot(
   image = drawImage(image, screenshotFrame);
 
   // iPhone 6.5"
-  var resultBytes = encodePng(image);
+  final sixAndHalfInchImage = image.clone();
+  sixAndHalfInchImage.channels = Channels.rgb;
+  var resultBytes = encodePng(sixAndHalfInchImage);
 
   var file = File('fastlane/screenshots/$locale/iphone-65-$name.png');
   await file.create(recursive: true);

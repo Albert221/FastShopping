@@ -89,6 +89,7 @@ jobs:
               jq --raw-output '.devices."com.apple.CoreSimulator.SimRuntime.iOS-14-3"[] | select(.name == "iPhone 12").udid'
           )
           xcrun simctl boot $UDID
+          xcrun simctl status_bar booted override --time "9:41" --batteryState charged --batteryLevel 100
 
       - name: Take iOS Simulator screenshots
         run: flutter drive --target=test_driver/screenshots_ios.dart

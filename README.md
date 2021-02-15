@@ -11,6 +11,7 @@
 [![Get it on Google Play][google-play-badge]][google-play-link]
 [![Get it on F-Droid][fdroid-badge]][fdroid-link]
 [![Explore it on AppGallery][appgallery-badge]][appgallery-link]
+[![Download on the App Store][app-store-badge]][app-store-link]
 
 </div>
 
@@ -59,6 +60,8 @@ flutter pub run build_runner build --delete-conflicting outputs
 [fdroid-link]: https://www.f-droid.org/en/packages/me.wolszon.fastshopping/
 [appgallery-badge]: assets/appgallery-badge.png
 [appgallery-link]: https://appgallery.huawei.com/#/app/C103706177
+[app-store-badge]: assets/app-store-badge.png
+[app-store-link]: https://apps.apple.com/us/app/fast-shopping-by-albert/id1553515682
 [app-screenshots]: fastlane/metadata/android/en-US/images/featureGraphic.png
 
 [freezed]: https://pub.dev/packages/freezed

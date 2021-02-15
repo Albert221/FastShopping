@@ -1,0 +1,2 @@
+
+Simple app for easy shopping list making, developed with simplicity in mind.
