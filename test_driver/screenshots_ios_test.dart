@@ -4,11 +4,26 @@ import 'package:image/image.dart';
 
 import 'screenshots/screenshots.dart';
 
+// Map of Android metadata locales to App Store ones.
+const localesMap = {
+  'de-DE': 'de-DE',
+  'en-US': 'en-US',
+  'fr-FR': 'fr-FR',
+  'it-IT': 'it',
+  // no mk-MK in App Store
+  'mk': null,
+  'nl-NL': 'nl-NL',
+  'pl-PL': 'pl',
+  'ru-RU': 'ru',
+};
+
 void main() {
   final locales = Directory('fastlane/metadata/android')
       .listSync()
       .whereType<Directory>()
-      .map((directory) => directory.path.split(RegExp(r'[/\\]')).last);
+      .map((directory) => directory.path.split(RegExp(r'[/\\]')).last)
+      .map((locale) => localesMap[locale])
+      .where((locale) => locale != null);
 
   takeScreenshots(
     locales: locales,
