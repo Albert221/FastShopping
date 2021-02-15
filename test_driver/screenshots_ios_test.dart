@@ -35,6 +35,7 @@ Future<void> _saveScreenshot(
 
   // frame
   var image = Image(1284, 2778);
+  image = fill(image, backgroundColor);
   image = drawImage(image, screenshot, dstX: 140, dstY: 458);
   image = drawImage(image, screenshotFrame);
 
