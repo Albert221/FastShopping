@@ -1,6 +1,6 @@
 # Privacy policy
 
-> This Privacy Policy applies only to the application downloaded from Google Play.
+> This Privacy Policy applies only to the application downloaded from Google Play and Apple App Store.
 
 Albert Wolszon built the Fast Shopping app as an Open Source app. This SERVICE is provided by Albert Wolszon at no cost and is intended for use as is.
 
