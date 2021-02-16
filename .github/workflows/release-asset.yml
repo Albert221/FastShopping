@@ -64,3 +64,4 @@ jobs:
           upload_url: ${{ steps.get_release.outputs.upload_url }}
           asset_path: build/app/outputs/flutter-apk/app-foss-release.apk
           asset_name: FastShopping.apk
+          upload-release-asset: application/vnd.android.package-archive
