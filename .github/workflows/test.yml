@@ -8,8 +8,8 @@ on:
     branches: [master]
 
 jobs:
-  test:
-    name: Test on stable
+  test-app:
+    name: App
 
     runs-on: ubuntu-latest
 
@@ -47,7 +47,7 @@ jobs:
           flags: app
 
   test-bloc:
-    name: Test business logic on stable
+    name: Business logic
 
     runs-on: ubuntu-latest
 
