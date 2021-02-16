@@ -75,5 +75,5 @@ jobs:
           HUAWEI_APPGALLERY_CONNECT_CLIENT_SECRET: ${{ secrets.APPGALLERY_CLIENT_SECRET }}
         run: |
           bundle exec fastlane run huawei_appgallery_connect \
-          apk_path:build/app/outputs/bundle/fullRelease/app-full-release.aab \
+          apk_path:build/app/outputs/bundle/fossRelease/app-foss-release.aab \
           is_aab:true
