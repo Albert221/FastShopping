@@ -3,7 +3,7 @@ description: Simple app for easy shopping list making, developed with simplicity
 
 publish_to: 'none'
 
-version: 3.0.0+18
+version: 3.0.1+19
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
