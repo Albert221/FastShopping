@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:animations/animations.dart';
 import 'package:fast_shopping/features/common/better_simple_dialog.dart';
 import 'package:fast_shopping/features/items/widgets/app_logo.dart';
@@ -119,11 +121,12 @@ class SettingsScreen extends StatelessWidget {
                 context.read<AppSettingsCubit>().setMoveDoneToEnd(moveDone),
           ),
           const Divider(),
-          ListTile(
-            leading: const Icon(Icons.attach_money),
-            title: Text(S.of(context).settings_support_author),
-            onTap: () => launch(_supportAuthorUrl),
-          ),
+          if (!Platform.isIOS)
+            ListTile(
+              leading: const Icon(Icons.attach_money),
+              title: Text(S.of(context).settings_support_author),
+              onTap: () => launch(_supportAuthorUrl),
+            ),
           ListTile(
             leading: const SizedBox(),
             title: Text(S.of(context).settings_project_website),
