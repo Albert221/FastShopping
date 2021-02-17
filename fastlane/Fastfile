@@ -27,8 +27,29 @@ platform :ios do
 
         upload_to_app_store(
             force: true,
+            username: ENV["APPLE_USERNAME"],
             overwrite_screenshots: true,
-            username: ENV["APPLE_USERNAME"]
+            submit_for_review: true,
+            automatic_release: true,
+            submission_information: {
+                add_id_info_serves_ads: false,
+                add_id_info_tracks_action: false,
+                add_id_info_tracks_install: false,
+                add_id_info_uses_idfa: false,
+
+                content_rights_contains_third_party_content: false,
+                content_rights_has_rights: false,
+
+                export_compliance_platform: 'ios',
+                export_compliance_compliance_required: false,
+                export_compliance_encryption_updated: false,
+                export_compliance_app_type: nil,
+                export_compliance_uses_encryption: false,
+                export_compliance_is_exempt: false,
+                export_compliance_contains_third_party_cryptography: false,
+                export_compliance_contains_proprietary_cryptography: false,
+                export_compliance_available_on_french_store: false
+            }
         )
     end
 end
