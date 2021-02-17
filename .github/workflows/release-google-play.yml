@@ -30,9 +30,9 @@ jobs:
           key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
           restore-keys: ${{ runner.os }}-pub-
 
-      - name: Enable Firebase Crashlytics
-        run: |
-          sed -i 's/crashlytics\/foss/crashlytics\/full/g' pubspec.yaml
+      # - name: Enable Firebase Crashlytics
+      #   run: |
+      #     sed -i 's/crashlytics\/foss/crashlytics\/full/g' pubspec.yaml
 
       - name: Download pub dependencies
         run: flutter pub get
@@ -52,7 +52,8 @@ jobs:
           echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> android/key.properties
 
       - name: Build Android App Bundle
-        run: flutter build appbundle --flavor full
+        run: flutter build appbundle --flavor foss
+        # run: flutter build appbundle --flavor full
 
       - name: Cache bundle dependencies
         uses: actions/cache@v2
