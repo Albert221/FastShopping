@@ -79,5 +79,5 @@ jobs:
           SUPPLY_JSON_KEY_DATA: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
         run: |
           bundle exec fastlane run supply \
-          aab:build/app/outputs/bundle/fullRelease/app-full-release.aab \
+          aab:build/app/outputs/bundle/fossRelease/app-foss-release.aab \
           track:production
