@@ -28,17 +28,17 @@ if (keystorePropertiesFile.exists()) {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 // Load proprietary libraries for `full` flavor
-android.productFlavors.each { flavor ->
-    if (getGradle().getStartParameter().getTaskRequests()
-            .toString().toLowerCase().contains('full')) {
-        apply plugin: 'com.google.gms.google-services'
-        apply plugin: 'com.google.firebase.crashlytics'
-    }
+if (getGradle().getStartParameter().getTaskRequests()
+        .toString().toLowerCase().contains('full')) {
+
+    apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'com.google.firebase.crashlytics'
 }
+
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
     compileSdkVersion 29
@@ -86,7 +86,7 @@ android {
         }
 
         debug {
-            applicationIdSuffix '.debug'
+            // applicationIdSuffix '.debug'
             debuggable true
         }
     }
