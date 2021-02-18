@@ -14,34 +14,13 @@
       },
       "oauth_client": [
         {
-          "client_id": "1090642900641-utoqlnsdcqn49cfv6f75mt6dpr4ect33.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDkSsfCrKZpUmgasTeOg83wrqZzaV79q8c"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1090642900641-utoqlnsdcqn49cfv6f75mt6dpr4ect33.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:1090642900641:android:b9fbd326eb580b7db762e0",
-        "android_client_info": {
-          "package_name": "me.wolszon.fastshopping.debug"
-        }
-      },
-      "oauth_client": [
+          "client_id": "1090642900641-2j2quomail9ovusf6a801fdjkjkdb0e2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.wolszon.fastshopping",
+            "certificate_hash": "c62350dd92292370c963691b3bc7c20e405f151d"
+          }
+        },
         {
           "client_id": "1090642900641-utoqlnsdcqn49cfv6f75mt6dpr4ect33.apps.googleusercontent.com",
           "client_type": 3
@@ -58,6 +37,13 @@
             {
               "client_id": "1090642900641-utoqlnsdcqn49cfv6f75mt6dpr4ect33.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1090642900641-8cof2arjbuds2itdkmltri4laptj4tr9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "me.wolszon.fastshopping"
+              }
             }
           ]
         }
