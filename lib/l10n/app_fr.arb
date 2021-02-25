@@ -73,7 +73,7 @@
     "@shopping_list_no_name": {},
     "shopping_list_archived_snackbar_message": "La liste a été archivée avec succès.",
     "@shopping_list_archived_snackbar_message": {},
-    "shopping_list_archived_snackbar_undo": "DÉFAIRE",
+    "shopping_list_archived_snackbar_undo": "ANNULER",
     "@shopping_list_archived_snackbar_undo": {},
     "shopping_list_unarchived_snackbar_message": "La liste a été désarchivée avec succès.",
     "@shopping_list_unarchived_snackbar_message": {},
@@ -170,7 +170,7 @@
     "@settings_multiple_lists_subtitle": {},
     "settings_single_list": "Liste de courses unique",
     "@settings_single_list": {},
-    "settings_single_list_subtitle": "Sentiment simple.",
+    "settings_single_list_subtitle": "Utilisation simple.",
     "@settings_single_list_subtitle": {},
     "settings_dark_theme": "Thème sombre",
     "@settings_dark_theme": {},
@@ -200,15 +200,15 @@
     },
     "settings_licenses": "Licences",
     "@settings_licenses": {},
-    "menu_undone_all_done": "Annuler tout fait",
+    "menu_undone_all_done": "Décocher tous les articles validés",
     "@menu_undone_all_done": {
         "description": "Shown only when the user is in the _Single shopping list_ mode."
     },
-    "menu_remove_all_done": "Supprimer tout fait",
+    "menu_remove_all_done": "Supprimer tous les articles validés",
     "@menu_remove_all_done": {
         "description": "Shown only when the user is in the _Single shopping list_ mode."
     },
-    "menu_archive_list": "Liste d'archive",
+    "menu_archive_list": "Liste d'archives",
     "@menu_archive_list": {
         "description": "Shown only when the user is in the _Multiple shopping lists_ mode."
     },
@@ -216,9 +216,9 @@
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
-    "remove_all_done_dialog_title": "Suppression de toutes les fait",
+    "remove_all_done_dialog_title": "Suppression de tous les articles validés",
     "@remove_all_done_dialog_title": {},
-    "remove_all_done_dialog_body": "{count, plural, =1 {Êtes-vous sûr de vouloir supprimer 1 élément? Cette opération ne peut pas être annulée.} other {Êtes-vous sûr de vouloir tout supprimer {count} éléments? Cette opération ne peut pas être annulée.}}",
+    "remove_all_done_dialog_body": "{count, plural, =1 {Êtes-vous sûr de vouloir supprimer 1 article ? Cette opération ne peut pas être annulée.} other {Êtes-vous sûr de vouloir supprimer ces {count} articles ? Cette opération ne peut pas être annulée.}}",
     "@remove_all_done_dialog_body": {
         "placeholders": {
             "count": {
