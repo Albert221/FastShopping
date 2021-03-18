@@ -73,12 +73,13 @@ class _App extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: darkTheme == DarkTheme.enabled
-          ? FastShoppingTheme.dark()
-          : FastShoppingTheme.light(),
-      darkTheme: darkTheme == DarkTheme.disabled
-          ? FastShoppingTheme.light()
-          : FastShoppingTheme.dark(),
+      theme: FastShoppingTheme.light(),
+      darkTheme: FastShoppingTheme.dark(),
+      themeMode: {
+        DarkTheme.enabled: ThemeMode.dark,
+        DarkTheme.system: ThemeMode.system,
+        DarkTheme.disabled: ThemeMode.light,
+      }[darkTheme],
       home: ItemsScreen(),
       // Localization stuff
       locale: OverrideLocale.of(context),
