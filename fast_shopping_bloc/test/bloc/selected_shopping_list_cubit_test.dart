@@ -75,10 +75,10 @@ void main() {
           verify(
             shoppingListsCubit.update(shoppingList1.copyWith(
               items: [
+                const Item(id: 'some id', title: 'Title'),
                 item1,
                 item2,
                 item3,
-                const Item(id: 'some id', title: 'Title'),
               ],
             )),
           ).called(1);

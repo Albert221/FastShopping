@@ -30,11 +30,13 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     _assertListSelected();
 
     _listsCubit.update(state.list.copyWith(
-      items: List.of(state.list.items)
-        ..add(Item(
+      items: List.of([
+        Item(
           id: _uuid.v4(),
           title: title,
-        )),
+        ),
+        ...state.list.items,
+      ]),
     ));
   }
 
