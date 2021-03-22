@@ -160,7 +160,7 @@
     "@screenshot_list_2": {
         "description": "Inactive shopping list in app stores screenshots."
     },
-    "settings_title": "Réglages",
+    "settings_title": "Paramétrage",
     "@settings_title": {
         "description": "Title on the Settings screen app bar."
     },
