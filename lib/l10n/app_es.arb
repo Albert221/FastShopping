@@ -1,1 +1,38 @@
-{}
+{
+    "app_title": "Fast Shopping",
+    "@app_title": {
+        "description": "Shown on top of the screen."
+    },
+    "list_item_no_name": "Ningún nombre",
+    "@list_item_no_name": {
+        "description": "When the item has no/empty name."
+    },
+    "list_item_done_ago": "terminado {when}",
+    "@list_item_done_ago": {
+        "description": "Small caps date when item was marked as done.",
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "a minute ago"
+            }
+        }
+    },
+    "list_item_editing_cancel": "CANCELAR",
+    "@list_item_editing_cancel": {},
+    "list_item_editing_save": "GUARDAR",
+    "@list_item_editing_save": {},
+    "list_item_remove": "ELIMINAR",
+    "@list_item_remove": {},
+    "list_item_edit": "EDITAR",
+    "@list_item_edit": {},
+    "item_removed_snackbar_message": "El artículo ha sido eliminado de la lista.",
+    "@item_removed_snackbar_message": {},
+    "item_removed_snackbar_undo": "DESHACER",
+    "@item_removed_snackbar_undo": {},
+    "add_item_dialog_title": "Añadir artículo",
+    "@add_item_dialog_title": {},
+    "add_item_dialog_cancel": "CANCELAR",
+    "@add_item_dialog_cancel": {},
+    "add_item_dialog_add": "AÑADIR",
+    "@add_item_dialog_add": {}
+}
