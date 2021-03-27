@@ -1,1 +1,1 @@
-Simple app for easy shopping list making, developed with simplicity in mind.
+Aplicación sencilla para crear listas de la compra, basada en la simplicidad.
