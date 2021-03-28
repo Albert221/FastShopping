@@ -62,7 +62,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
-          channel: stable
+          flutter-version: '1.22.6'
 
       - name: Flutter version
         run: flutter --version
@@ -84,9 +84,10 @@ jobs:
 
       - name: Launch iOS Simulator (iPhone 12)
         run: |
+          xcrun simctl list --json devices available
           export UDID=$(
             xcrun simctl list --json devices available | \
-              jq --raw-output '.devices."com.apple.CoreSimulator.SimRuntime.iOS-14-3"[] | select(.name == "iPhone 12").udid'
+              jq --raw-output '.devices."com.apple.CoreSimulator.SimRuntime.iOS-14-4"[] | select(.name == "iPhone 12").udid'
           )
           xcrun simctl boot $UDID
           xcrun simctl status_bar booted override --time "9:41" --batteryState charged --batteryLevel 100
