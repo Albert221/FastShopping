@@ -15,6 +15,7 @@ const localesMap = {
   'nl-NL': 'nl-NL',
   'pl-PL': 'pl',
   'ru-RU': 'ru',
+  'es-ES': 'es-ES',
 };
 
 void main() {

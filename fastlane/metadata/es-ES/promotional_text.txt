@@ -1,0 +1,2 @@
+
+Aplicación sencilla para crear listas de la compra, basada en la simplicidad.
