@@ -34,5 +34,47 @@
     "add_item_dialog_cancel": "CANCELAR",
     "@add_item_dialog_cancel": {},
     "add_item_dialog_add": "AÑADIR",
-    "@add_item_dialog_add": {}
+    "@add_item_dialog_add": {},
+    "archive_banner_content": "Parece que todo está marcado como hecho. ¿Desea archivar su lista de la compra?",
+    "@archive_banner_content": {},
+    "archive_banner_archive": "ARCHIVAR",
+    "@archive_banner_archive": {},
+    "shopping_list_not_selected_placeholder": "Ninguna lista seleccionada",
+    "@shopping_list_not_selected_placeholder": {},
+    "shopping_list_not_selected_message": "No hay ninguna lista seleccionada, cree una.",
+    "@shopping_list_not_selected_message": {},
+    "empty_list_add_some_items_message": "¡Añade algunos artículos a tu lista!",
+    "@empty_list_add_some_items_message": {},
+    "shopping_lists_title": "Listas de la compra",
+    "@shopping_lists_title": {},
+    "shopping_lists_tab_archived": "Archivado",
+    "@shopping_lists_tab_archived": {},
+    "shopping_lists_add_new": "NUEVA LISTA",
+    "@shopping_lists_add_new": {},
+    "shopping_lists_item_created_at": "Creada {when}",
+    "@shopping_lists_item_created_at": {
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "3 days ago"
+            }
+        }
+    },
+    "shopping_lists_item_archived_at": "Archivada {when}",
+    "@shopping_lists_item_archived_at": {
+        "placeholders": {
+            "when": {
+                "type": "String",
+                "example": "2 months ago"
+            }
+        }
+    },
+    "shopping_list_no_name": "Sin nombre",
+    "@shopping_list_no_name": {},
+    "shopping_list_archived_snackbar_message": "La lista ha sido archivada con éxito.",
+    "@shopping_list_archived_snackbar_message": {},
+    "shopping_list_archived_snackbar_undo": "DESHACER",
+    "@shopping_list_archived_snackbar_undo": {},
+    "shopping_list_unarchived_snackbar_message": "La lista ha sido recuperada con éxito.",
+    "@shopping_list_unarchived_snackbar_message": {}
 }
