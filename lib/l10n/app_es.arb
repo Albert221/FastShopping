@@ -76,5 +76,159 @@
     "shopping_list_archived_snackbar_undo": "DESHACER",
     "@shopping_list_archived_snackbar_undo": {},
     "shopping_list_unarchived_snackbar_message": "La lista ha sido recuperada con éxito.",
-    "@shopping_list_unarchived_snackbar_message": {}
+    "@shopping_list_unarchived_snackbar_message": {},
+    "add_list_dialog_title": "Añadir nueva lista de la compra",
+    "@add_list_dialog_title": {},
+    "add_list_dialog_name_hint": "Escribe el nombre de la lista de la compra aquí...",
+    "@add_list_dialog_name_hint": {},
+    "add_list_dialog_cancel": "CANCELAR",
+    "@add_list_dialog_cancel": {},
+    "add_list_dialog_add": "AÑADIR",
+    "@add_list_dialog_add": {},
+    "rename_shopping_list_dialog_title": "Renombrar lista de la compra",
+    "@rename_shopping_list_dialog_title": {},
+    "rename_shopping_list_dialog_name_hint": "Escribe el nuevo nombre de la lista de la compra aquí...",
+    "@rename_shopping_list_dialog_name_hint": {},
+    "rename_shopping_list_dialog_cancel": "CANCELAR",
+    "@rename_shopping_list_dialog_cancel": {},
+    "rename_shopping_list_dialog_rename": "RENOMBRAR",
+    "@rename_shopping_list_dialog_rename": {},
+    "delete_shopping_list_dialog_title": "Eliminando lista de la compra",
+    "@delete_shopping_list_dialog_title": {},
+    "delete_shopping_list_dialog_body": "¿Realmente desea eliminar la lista de la compra {list_name}? Esta operación no se puede deshacer.",
+    "@delete_shopping_list_dialog_body": {
+        "placeholders": {
+            "list_name": {
+                "type": "String",
+                "example": "Groceries"
+            }
+        }
+    },
+    "delete_shopping_list_dialog_cancel": "CANCELAR",
+    "@delete_shopping_list_dialog_cancel": {},
+    "delete_shopping_list_dialog_delete": "ELIMINAR",
+    "@delete_shopping_list_dialog_delete": {},
+    "no_current_lists_message": "No hay ninguna lista, crea una!",
+    "@no_current_lists_message": {},
+    "no_archived_lists_message": "No existen listas archivadas.",
+    "@no_archived_lists_message": {},
+    "shopping_lists_item_elements": "{count, plural, =1 {1 artículo} other {{count} artículos}}",
+    "@shopping_lists_item_elements": {
+        "placeholders": {
+            "count": {}
+        }
+    },
+    "list_item_title_hint": "Escribe el nombre del artículo aquí...",
+    "@list_item_title_hint": {
+        "description": "Placeholder in item name text field."
+    },
+    "list_item_action_rename": "Renombrar",
+    "@list_item_action_rename": {},
+    "list_item_action_archive": "Archivar",
+    "@list_item_action_archive": {},
+    "list_item_action_unarchive": "Recuperar",
+    "@list_item_action_unarchive": {},
+    "list_item_action_delete": "Eliminar",
+    "@list_item_action_delete": {},
+    "shopping_lists_tab_current": "Activas",
+    "@shopping_lists_tab_current": {},
+    "screenshot_item_1": "Salsa de tomate",
+    "@screenshot_item_1": {
+        "description": "Item visible on app stores screenshots."
+    },
+    "screenshot_item_2": "Mostaza",
+    "@screenshot_item_2": {},
+    "screenshot_item_3": "Salsa barbacoa",
+    "@screenshot_item_3": {},
+    "screenshot_item_4": "Vinagre de vino tinto",
+    "@screenshot_item_4": {},
+    "screenshot_item_5": "Salsa",
+    "@screenshot_item_5": {
+        "description": "Expanded item on shopping list in app stores screenshots."
+    },
+    "screenshot_item_6": "Aceite de oliva virgen extra",
+    "@screenshot_item_6": {},
+    "screenshot_item_7": "Bote de aceitunas y alcaparras",
+    "@screenshot_item_7": {},
+    "screenshot_item_8": "Salsa de pimienta picante",
+    "@screenshot_item_8": {},
+    "screenshot_list_1": "Alimentos",
+    "@screenshot_list_1": {
+        "description": "Active shopping list in app stores screenshots."
+    },
+    "screenshot_list_2": "Fiesta en casa de Miguel",
+    "@screenshot_list_2": {
+        "description": "Inactive shopping list in app stores screenshots."
+    },
+    "settings_title": "Configuración",
+    "@settings_title": {
+        "description": "Title on the Settings screen app bar."
+    },
+    "settings_multiple_lists": "Múltiples listas de la compra",
+    "@settings_multiple_lists": {},
+    "settings_multiple_lists_subtitle": "Más características, mejor gestión.",
+    "@settings_multiple_lists_subtitle": {},
+    "settings_single_list": "Una única lista de la compra",
+    "@settings_single_list": {},
+    "settings_single_list_subtitle": "Experiencia simplificada.",
+    "@settings_single_list_subtitle": {},
+    "settings_dark_theme": "Tema oscuro",
+    "@settings_dark_theme": {},
+    "settings_dark_theme_enabled": "Activado",
+    "@settings_dark_theme_enabled": {},
+    "settings_dark_theme_system": "Usar la configuración del sistema",
+    "@settings_dark_theme_system": {},
+    "settings_dark_theme_disabled": "Desactivado",
+    "@settings_dark_theme_disabled": {},
+    "settings_items_layout": "Diseño de los elementos",
+    "@settings_items_layout": {
+        "description": "Whether the item tiles are layed out spaciously or dense."
+    },
+    "settings_items_layout_comfortable": "Amplio",
+    "@settings_items_layout_comfortable": {},
+    "settings_items_layout_dense": "Denso",
+    "@settings_items_layout_dense": {},
+    "settings_move_done": "Mover artículos marcados al final",
+    "@settings_move_done": {},
+    "settings_support_author": "Apoyar al autor",
+    "@settings_support_author": {
+        "description": "Redirects the user to the author's website."
+    },
+    "settings_project_website": "Sitio web del proyecto",
+    "@settings_project_website": {
+        "description": "Redirects the user to GitHub."
+    },
+    "settings_licenses": "Licencias",
+    "@settings_licenses": {},
+    "menu_undone_all_done": "Desmarcar todos los artículos",
+    "@menu_undone_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_remove_all_done": "Eliminar artículos marcados",
+    "@menu_remove_all_done": {
+        "description": "Shown only when the user is in the _Single shopping list_ mode."
+    },
+    "menu_archive_list": "Archivar la lista",
+    "@menu_archive_list": {
+        "description": "Shown only when the user is in the _Multiple shopping lists_ mode."
+    },
+    "menu_settings": "Configuración",
+    "@menu_settings": {
+        "description": "Opens the _Settings_ screen."
+    },
+    "remove_all_done_dialog_title": "Eliminando artículos marcados",
+    "@remove_all_done_dialog_title": {},
+    "remove_all_done_dialog_body": "{count, plural, =1 {¿Estás seguro que deseas eliminar 1 artículo? Esta operación no se puede deshacer.} other {¿Estás seguro que deseas eliminar todos {count} los artículos? Esta operación no se puede deshacer.}}",
+    "@remove_all_done_dialog_body": {
+        "placeholders": {
+            "count": {
+                "type": "int",
+                "format": "compactLong"
+            }
+        }
+    },
+    "remove_all_done_dialog_cancel": "CANCELAR",
+    "@remove_all_done_dialog_cancel": {},
+    "remove_all_done_dialog_remove": "ELIMINAR",
+    "@remove_all_done_dialog_remove": {}
 }
