@@ -180,14 +180,6 @@
     "@settings_dark_theme_system": {},
     "settings_dark_theme_disabled": "Uitgeschakeld",
     "@settings_dark_theme_disabled": {},
-    "settings_items_layout": "Artikelen lay-out",
-    "@settings_items_layout": {
-        "description": "Whether the item tiles are layed out spaciously or dense."
-    },
-    "settings_items_layout_comfortable": "Comfortabel",
-    "@settings_items_layout_comfortable": {},
-    "settings_items_layout_dense": "Compact",
-    "@settings_items_layout_dense": {},
     "settings_move_done": "Verplaats voltooide items naar het einde",
     "@settings_move_done": {},
     "settings_support_author": "Ondersteun de auteur",
