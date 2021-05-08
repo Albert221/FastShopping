@@ -180,14 +180,6 @@
     "@settings_dark_theme_system": {},
     "settings_dark_theme_disabled": "Wyłączony",
     "@settings_dark_theme_disabled": {},
-    "settings_items_layout": "Układ elementów",
-    "@settings_items_layout": {
-        "description": "Whether the item tiles are layed out spaciously or dense."
-    },
-    "settings_items_layout_comfortable": "Wygodny",
-    "@settings_items_layout_comfortable": {},
-    "settings_items_layout_dense": "Ciasny",
-    "@settings_items_layout_dense": {},
     "settings_move_done": "Przenieś oznaczone elementy na koniec",
     "@settings_move_done": {},
     "settings_support_author": "Wesprzyj autora",
