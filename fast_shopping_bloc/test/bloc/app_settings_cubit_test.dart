@@ -7,8 +7,8 @@ import '../mocks.dart';
 
 void main() {
   group('AppSettingsCubit', () {
-    AppSettingsRepository appSettingsRepository;
-    AppSettingsCubit cubit;
+    late AppSettingsRepository appSettingsRepository;
+    late AppSettingsCubit cubit;
     setUp(() {
       appSettingsRepository = MockAppSettingsRepository();
       cubit = AppSettingsCubit(appSettingsRepository);
@@ -33,7 +33,7 @@ void main() {
         return cubit;
       },
       act: (cubit) => cubit.load(),
-      expect: const [
+      expect: () => const [
         AppSettings(
           shoppingListsMode: ShoppingListsMode.single,
           moveDoneToEnd: false,
@@ -51,7 +51,7 @@ void main() {
       'sets shopping list mode correctly',
       build: () => cubit,
       act: (cubit) => cubit.setShoppingListsMode(ShoppingListsMode.single),
-      expect: const [
+      expect: () => const [
         AppSettings(shoppingListsMode: ShoppingListsMode.single),
       ],
       verify: (cubit) => verify(
@@ -63,7 +63,7 @@ void main() {
       'sets dark mode correctly',
       build: () => cubit,
       act: (cubit) => cubit.setDarkTheme(DarkTheme.enabled),
-      expect: const [
+      expect: () => const [
         AppSettings(darkTheme: DarkTheme.enabled),
       ],
       verify: (cubit) => verify(
@@ -75,7 +75,7 @@ void main() {
       'sets items layout correctly',
       build: () => cubit,
       act: (cubit) => cubit.setItemsLayout(ItemsLayout.dense),
-      expect: const [
+      expect: () => const [
         AppSettings(itemsLayout: ItemsLayout.dense),
       ],
       verify: (cubit) => verify(
@@ -87,7 +87,7 @@ void main() {
       'sets move done to ended correctly',
       build: () => cubit,
       act: (cubit) => cubit.setMoveDoneToEnd(false),
-      expect: const [
+      expect: () => const [
         AppSettings(moveDoneToEnd: false),
       ],
       verify: (cubit) => verify(

@@ -17,10 +17,10 @@ class AppSettingsCubit extends Cubit<AppSettings> {
       _settingsRepository.getMoveDoneToEnd(),
     ]);
 
-    final shoppingListsMode = settings[0] as ShoppingListsMode;
-    final darkTheme = settings[1] as DarkTheme;
-    final itemsLayout = settings[2] as ItemsLayout;
-    final moveDoneToEnd = settings[3] as bool;
+    final shoppingListsMode = settings[0] as ShoppingListsMode?;
+    final darkTheme = settings[1] as DarkTheme?;
+    final itemsLayout = settings[2] as ItemsLayout?;
+    final moveDoneToEnd = settings[3] as bool?;
 
     emit(state.copyWith(
       shoppingListsMode: shoppingListsMode ?? state.shoppingListsMode,
@@ -53,7 +53,7 @@ class AppSettingsCubit extends Cubit<AppSettings> {
 }
 
 @freezed
-abstract class AppSettings with _$AppSettings {
+class AppSettings with _$AppSettings {
   const factory AppSettings({
     @Default(ShoppingListsMode.multiple) ShoppingListsMode shoppingListsMode,
     @Default(DarkTheme.system) DarkTheme darkTheme,

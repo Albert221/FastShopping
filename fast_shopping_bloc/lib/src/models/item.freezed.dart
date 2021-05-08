@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'item.dart';
 
@@ -8,6 +8,10 @@ part of 'item.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 Item _$ItemFromJson(Map<String, dynamic> json) {
   return _Item.fromJson(json);
 }
@@ -16,11 +20,10 @@ Item _$ItemFromJson(Map<String, dynamic> json) {
 class _$ItemTearOff {
   const _$ItemTearOff();
 
-// ignore: unused_element
   _Item call(
-      {@required String id,
-      @required String title,
-      DateTime doneAt,
+      {required String id,
+      required String title,
+      DateTime? doneAt,
       bool removed = false}) {
     return _Item(
       id: id,
@@ -30,33 +33,31 @@ class _$ItemTearOff {
     );
   }
 
-// ignore: unused_element
   Item fromJson(Map<String, Object> json) {
     return Item.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Item = _$ItemTearOff();
 
 /// @nodoc
 mixin _$Item {
-  String get id;
-  String get title;
-  DateTime get doneAt;
-  bool get removed;
+  String get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  DateTime? get doneAt => throw _privateConstructorUsedError;
+  bool get removed => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ItemCopyWith<Item> get copyWith;
+  $ItemCopyWith<Item> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ItemCopyWith<$Res> {
   factory $ItemCopyWith(Item value, $Res Function(Item) then) =
       _$ItemCopyWithImpl<$Res>;
-  $Res call({String id, String title, DateTime doneAt, bool removed});
+  $Res call({String id, String title, DateTime? doneAt, bool removed});
 }
 
 /// @nodoc
@@ -69,16 +70,28 @@ class _$ItemCopyWithImpl<$Res> implements $ItemCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object title = freezed,
-    Object doneAt = freezed,
-    Object removed = freezed,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? doneAt = freezed,
+    Object? removed = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
-      title: title == freezed ? _value.title : title as String,
-      doneAt: doneAt == freezed ? _value.doneAt : doneAt as DateTime,
-      removed: removed == freezed ? _value.removed : removed as bool,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      doneAt: doneAt == freezed
+          ? _value.doneAt
+          : doneAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      removed: removed == freezed
+          ? _value.removed
+          : removed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -88,7 +101,7 @@ abstract class _$ItemCopyWith<$Res> implements $ItemCopyWith<$Res> {
   factory _$ItemCopyWith(_Item value, $Res Function(_Item) then) =
       __$ItemCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String title, DateTime doneAt, bool removed});
+  $Res call({String id, String title, DateTime? doneAt, bool removed});
 }
 
 /// @nodoc
@@ -102,33 +115,41 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object title = freezed,
-    Object doneAt = freezed,
-    Object removed = freezed,
+    Object? id = freezed,
+    Object? title = freezed,
+    Object? doneAt = freezed,
+    Object? removed = freezed,
   }) {
     return _then(_Item(
-      id: id == freezed ? _value.id : id as String,
-      title: title == freezed ? _value.title : title as String,
-      doneAt: doneAt == freezed ? _value.doneAt : doneAt as DateTime,
-      removed: removed == freezed ? _value.removed : removed as bool,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      doneAt: doneAt == freezed
+          ? _value.doneAt
+          : doneAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      removed: removed == freezed
+          ? _value.removed
+          : removed // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_Item extends _Item {
   const _$_Item(
-      {@required this.id,
-      @required this.title,
+      {required this.id,
+      required this.title,
       this.doneAt,
       this.removed = false})
-      : assert(id != null),
-        assert(title != null),
-        assert(removed != null),
-        super._();
+      : super._();
 
   factory _$_Item.fromJson(Map<String, dynamic> json) =>
       _$_$_ItemFromJson(json);
@@ -138,7 +159,7 @@ class _$_Item extends _Item {
   @override
   final String title;
   @override
-  final DateTime doneAt;
+  final DateTime? doneAt;
   @JsonKey(defaultValue: false)
   @override
   final bool removed;
@@ -182,24 +203,24 @@ class _$_Item extends _Item {
 }
 
 abstract class _Item extends Item {
-  const _Item._() : super._();
   const factory _Item(
-      {@required String id,
-      @required String title,
-      DateTime doneAt,
+      {required String id,
+      required String title,
+      DateTime? doneAt,
       bool removed}) = _$_Item;
+  const _Item._() : super._();
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  DateTime get doneAt;
+  DateTime? get doneAt => throw _privateConstructorUsedError;
   @override
-  bool get removed;
+  bool get removed => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ItemCopyWith<_Item> get copyWith;
+  _$ItemCopyWith<_Item> get copyWith => throw _privateConstructorUsedError;
 }

@@ -5,12 +5,12 @@ part 'shopping_list.freezed.dart';
 part 'shopping_list.g.dart';
 
 @freezed
-abstract class ShoppingList implements _$ShoppingList {
+class ShoppingList with _$ShoppingList {
   const factory ShoppingList({
-    @required String id,
-    @required String name,
-    @required DateTime createdAt,
-    DateTime archivedAt,
+    required String id,
+    required String name,
+    required DateTime createdAt,
+    DateTime? archivedAt,
     @Default([]) List<Item> items,
   }) = _ShoppingList;
 

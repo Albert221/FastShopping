@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'app_settings_cubit.dart';
 
@@ -9,11 +9,13 @@ part of 'app_settings_cubit.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AppSettingsTearOff {
   const _$AppSettingsTearOff();
 
-// ignore: unused_element
   _AppSettings call(
       {ShoppingListsMode shoppingListsMode = ShoppingListsMode.multiple,
       DarkTheme darkTheme = DarkTheme.system,
@@ -29,18 +31,18 @@ class _$AppSettingsTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AppSettings = _$AppSettingsTearOff();
 
 /// @nodoc
 mixin _$AppSettings {
-  ShoppingListsMode get shoppingListsMode;
-  DarkTheme get darkTheme;
-  ItemsLayout get itemsLayout;
-  bool get moveDoneToEnd;
+  ShoppingListsMode get shoppingListsMode => throw _privateConstructorUsedError;
+  DarkTheme get darkTheme => throw _privateConstructorUsedError;
+  ItemsLayout get itemsLayout => throw _privateConstructorUsedError;
+  bool get moveDoneToEnd => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppSettingsCopyWith<AppSettings> get copyWith;
+  $AppSettingsCopyWith<AppSettings> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -65,23 +67,28 @@ class _$AppSettingsCopyWithImpl<$Res> implements $AppSettingsCopyWith<$Res> {
 
   @override
   $Res call({
-    Object shoppingListsMode = freezed,
-    Object darkTheme = freezed,
-    Object itemsLayout = freezed,
-    Object moveDoneToEnd = freezed,
+    Object? shoppingListsMode = freezed,
+    Object? darkTheme = freezed,
+    Object? itemsLayout = freezed,
+    Object? moveDoneToEnd = freezed,
   }) {
     return _then(_value.copyWith(
       shoppingListsMode: shoppingListsMode == freezed
           ? _value.shoppingListsMode
-          : shoppingListsMode as ShoppingListsMode,
-      darkTheme:
-          darkTheme == freezed ? _value.darkTheme : darkTheme as DarkTheme,
+          : shoppingListsMode // ignore: cast_nullable_to_non_nullable
+              as ShoppingListsMode,
+      darkTheme: darkTheme == freezed
+          ? _value.darkTheme
+          : darkTheme // ignore: cast_nullable_to_non_nullable
+              as DarkTheme,
       itemsLayout: itemsLayout == freezed
           ? _value.itemsLayout
-          : itemsLayout as ItemsLayout,
+          : itemsLayout // ignore: cast_nullable_to_non_nullable
+              as ItemsLayout,
       moveDoneToEnd: moveDoneToEnd == freezed
           ? _value.moveDoneToEnd
-          : moveDoneToEnd as bool,
+          : moveDoneToEnd // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -112,38 +119,40 @@ class __$AppSettingsCopyWithImpl<$Res> extends _$AppSettingsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object shoppingListsMode = freezed,
-    Object darkTheme = freezed,
-    Object itemsLayout = freezed,
-    Object moveDoneToEnd = freezed,
+    Object? shoppingListsMode = freezed,
+    Object? darkTheme = freezed,
+    Object? itemsLayout = freezed,
+    Object? moveDoneToEnd = freezed,
   }) {
     return _then(_AppSettings(
       shoppingListsMode: shoppingListsMode == freezed
           ? _value.shoppingListsMode
-          : shoppingListsMode as ShoppingListsMode,
-      darkTheme:
-          darkTheme == freezed ? _value.darkTheme : darkTheme as DarkTheme,
+          : shoppingListsMode // ignore: cast_nullable_to_non_nullable
+              as ShoppingListsMode,
+      darkTheme: darkTheme == freezed
+          ? _value.darkTheme
+          : darkTheme // ignore: cast_nullable_to_non_nullable
+              as DarkTheme,
       itemsLayout: itemsLayout == freezed
           ? _value.itemsLayout
-          : itemsLayout as ItemsLayout,
+          : itemsLayout // ignore: cast_nullable_to_non_nullable
+              as ItemsLayout,
       moveDoneToEnd: moveDoneToEnd == freezed
           ? _value.moveDoneToEnd
-          : moveDoneToEnd as bool,
+          : moveDoneToEnd // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_AppSettings implements _AppSettings {
   const _$_AppSettings(
       {this.shoppingListsMode = ShoppingListsMode.multiple,
       this.darkTheme = DarkTheme.system,
       this.itemsLayout = ItemsLayout.comfortable,
-      this.moveDoneToEnd = false})
-      : assert(shoppingListsMode != null),
-        assert(darkTheme != null),
-        assert(itemsLayout != null),
-        assert(moveDoneToEnd != null);
+      this.moveDoneToEnd = false});
 
   @JsonKey(defaultValue: ShoppingListsMode.multiple)
   @override
@@ -203,14 +212,15 @@ abstract class _AppSettings implements AppSettings {
       bool moveDoneToEnd}) = _$_AppSettings;
 
   @override
-  ShoppingListsMode get shoppingListsMode;
+  ShoppingListsMode get shoppingListsMode => throw _privateConstructorUsedError;
   @override
-  DarkTheme get darkTheme;
+  DarkTheme get darkTheme => throw _privateConstructorUsedError;
   @override
-  ItemsLayout get itemsLayout;
+  ItemsLayout get itemsLayout => throw _privateConstructorUsedError;
   @override
-  bool get moveDoneToEnd;
+  bool get moveDoneToEnd => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppSettingsCopyWith<_AppSettings> get copyWith;
+  _$AppSettingsCopyWith<_AppSettings> get copyWith =>
+      throw _privateConstructorUsedError;
 }
