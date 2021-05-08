@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'selected_shopping_list_cubit.dart';
 
@@ -9,23 +9,23 @@ part of 'selected_shopping_list_cubit.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$ItemActionStateTearOff {
   const _$ItemActionStateTearOff();
 
-// ignore: unused_element
   ItemActionNone none() {
     return const ItemActionNone();
   }
 
-// ignore: unused_element
   ItemActionExpanded expanded(String itemId) {
     return ItemActionExpanded(
       itemId,
     );
   }
 
-// ignore: unused_element
   ItemActionEditing editing(String itemId) {
     return ItemActionEditing(
       itemId,
@@ -34,37 +34,40 @@ class _$ItemActionStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ItemActionState = _$ItemActionStateTearOff();
 
 /// @nodoc
 mixin _$ItemActionState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult none(),
-    @required TResult expanded(String itemId),
-    @required TResult editing(String itemId),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() none,
+    required TResult Function(String itemId) expanded,
+    required TResult Function(String itemId) editing,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult none(),
-    TResult expanded(String itemId),
-    TResult editing(String itemId),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
+    TResult Function(String itemId)? expanded,
+    TResult Function(String itemId)? editing,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult none(ItemActionNone value),
-    @required TResult expanded(ItemActionExpanded value),
-    @required TResult editing(ItemActionEditing value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(ItemActionNone value) none,
+    required TResult Function(ItemActionExpanded value) expanded,
+    required TResult Function(ItemActionEditing value) editing,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult none(ItemActionNone value),
-    TResult expanded(ItemActionExpanded value),
-    TResult editing(ItemActionEditing value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ItemActionNone value)? none,
+    TResult Function(ItemActionExpanded value)? expanded,
+    TResult Function(ItemActionEditing value)? editing,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -104,6 +107,7 @@ class _$ItemActionNoneCopyWithImpl<$Res>
 }
 
 /// @nodoc
+
 class _$ItemActionNone extends ItemActionNone {
   const _$ItemActionNone() : super._();
 
@@ -122,26 +126,22 @@ class _$ItemActionNone extends ItemActionNone {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult none(),
-    @required TResult expanded(String itemId),
-    @required TResult editing(String itemId),
+  TResult when<TResult extends Object?>({
+    required TResult Function() none,
+    required TResult Function(String itemId) expanded,
+    required TResult Function(String itemId) editing,
   }) {
-    assert(none != null);
-    assert(expanded != null);
-    assert(editing != null);
     return none();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult none(),
-    TResult expanded(String itemId),
-    TResult editing(String itemId),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
+    TResult Function(String itemId)? expanded,
+    TResult Function(String itemId)? editing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (none != null) {
       return none();
     }
@@ -150,26 +150,22 @@ class _$ItemActionNone extends ItemActionNone {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult none(ItemActionNone value),
-    @required TResult expanded(ItemActionExpanded value),
-    @required TResult editing(ItemActionEditing value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ItemActionNone value) none,
+    required TResult Function(ItemActionExpanded value) expanded,
+    required TResult Function(ItemActionEditing value) editing,
   }) {
-    assert(none != null);
-    assert(expanded != null);
-    assert(editing != null);
     return none(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult none(ItemActionNone value),
-    TResult expanded(ItemActionExpanded value),
-    TResult editing(ItemActionEditing value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ItemActionNone value)? none,
+    TResult Function(ItemActionExpanded value)? expanded,
+    TResult Function(ItemActionEditing value)? editing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (none != null) {
       return none(this);
     }
@@ -178,8 +174,8 @@ class _$ItemActionNone extends ItemActionNone {
 }
 
 abstract class ItemActionNone extends ItemActionState {
-  const ItemActionNone._() : super._();
   const factory ItemActionNone() = _$ItemActionNone;
+  const ItemActionNone._() : super._();
 }
 
 /// @nodoc
@@ -203,19 +199,21 @@ class _$ItemActionExpandedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object itemId = freezed,
+    Object? itemId = freezed,
   }) {
     return _then(ItemActionExpanded(
-      itemId == freezed ? _value.itemId : itemId as String,
+      itemId == freezed
+          ? _value.itemId
+          : itemId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$ItemActionExpanded extends ItemActionExpanded {
-  const _$ItemActionExpanded(this.itemId)
-      : assert(itemId != null),
-        super._();
+  const _$ItemActionExpanded(this.itemId) : super._();
 
   @override
   final String itemId;
@@ -244,26 +242,22 @@ class _$ItemActionExpanded extends ItemActionExpanded {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult none(),
-    @required TResult expanded(String itemId),
-    @required TResult editing(String itemId),
+  TResult when<TResult extends Object?>({
+    required TResult Function() none,
+    required TResult Function(String itemId) expanded,
+    required TResult Function(String itemId) editing,
   }) {
-    assert(none != null);
-    assert(expanded != null);
-    assert(editing != null);
     return expanded(itemId);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult none(),
-    TResult expanded(String itemId),
-    TResult editing(String itemId),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
+    TResult Function(String itemId)? expanded,
+    TResult Function(String itemId)? editing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (expanded != null) {
       return expanded(itemId);
     }
@@ -272,26 +266,22 @@ class _$ItemActionExpanded extends ItemActionExpanded {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult none(ItemActionNone value),
-    @required TResult expanded(ItemActionExpanded value),
-    @required TResult editing(ItemActionEditing value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ItemActionNone value) none,
+    required TResult Function(ItemActionExpanded value) expanded,
+    required TResult Function(ItemActionEditing value) editing,
   }) {
-    assert(none != null);
-    assert(expanded != null);
-    assert(editing != null);
     return expanded(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult none(ItemActionNone value),
-    TResult expanded(ItemActionExpanded value),
-    TResult editing(ItemActionEditing value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ItemActionNone value)? none,
+    TResult Function(ItemActionExpanded value)? expanded,
+    TResult Function(ItemActionEditing value)? editing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (expanded != null) {
       return expanded(this);
     }
@@ -300,12 +290,13 @@ class _$ItemActionExpanded extends ItemActionExpanded {
 }
 
 abstract class ItemActionExpanded extends ItemActionState {
-  const ItemActionExpanded._() : super._();
   const factory ItemActionExpanded(String itemId) = _$ItemActionExpanded;
+  const ItemActionExpanded._() : super._();
 
-  String get itemId;
+  String get itemId => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ItemActionExpandedCopyWith<ItemActionExpanded> get copyWith;
+  $ItemActionExpandedCopyWith<ItemActionExpanded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -329,19 +320,21 @@ class _$ItemActionEditingCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object itemId = freezed,
+    Object? itemId = freezed,
   }) {
     return _then(ItemActionEditing(
-      itemId == freezed ? _value.itemId : itemId as String,
+      itemId == freezed
+          ? _value.itemId
+          : itemId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
+
 class _$ItemActionEditing extends ItemActionEditing {
-  const _$ItemActionEditing(this.itemId)
-      : assert(itemId != null),
-        super._();
+  const _$ItemActionEditing(this.itemId) : super._();
 
   @override
   final String itemId;
@@ -370,26 +363,22 @@ class _$ItemActionEditing extends ItemActionEditing {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult none(),
-    @required TResult expanded(String itemId),
-    @required TResult editing(String itemId),
+  TResult when<TResult extends Object?>({
+    required TResult Function() none,
+    required TResult Function(String itemId) expanded,
+    required TResult Function(String itemId) editing,
   }) {
-    assert(none != null);
-    assert(expanded != null);
-    assert(editing != null);
     return editing(itemId);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult none(),
-    TResult expanded(String itemId),
-    TResult editing(String itemId),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? none,
+    TResult Function(String itemId)? expanded,
+    TResult Function(String itemId)? editing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (editing != null) {
       return editing(itemId);
     }
@@ -398,26 +387,22 @@ class _$ItemActionEditing extends ItemActionEditing {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult none(ItemActionNone value),
-    @required TResult expanded(ItemActionExpanded value),
-    @required TResult editing(ItemActionEditing value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(ItemActionNone value) none,
+    required TResult Function(ItemActionExpanded value) expanded,
+    required TResult Function(ItemActionEditing value) editing,
   }) {
-    assert(none != null);
-    assert(expanded != null);
-    assert(editing != null);
     return editing(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult none(ItemActionNone value),
-    TResult expanded(ItemActionExpanded value),
-    TResult editing(ItemActionEditing value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ItemActionNone value)? none,
+    TResult Function(ItemActionExpanded value)? expanded,
+    TResult Function(ItemActionEditing value)? editing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (editing != null) {
       return editing(this);
     }
@@ -426,20 +411,20 @@ class _$ItemActionEditing extends ItemActionEditing {
 }
 
 abstract class ItemActionEditing extends ItemActionState {
-  const ItemActionEditing._() : super._();
   const factory ItemActionEditing(String itemId) = _$ItemActionEditing;
+  const ItemActionEditing._() : super._();
 
-  String get itemId;
+  String get itemId => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ItemActionEditingCopyWith<ItemActionEditing> get copyWith;
+  $ItemActionEditingCopyWith<ItemActionEditing> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 class _$SelectedShoppingListStateTearOff {
   const _$SelectedShoppingListStateTearOff();
 
-// ignore: unused_element
-  _SelectedShoppingListState call(@nullable ShoppingList list,
+  _SelectedShoppingListState call(ShoppingList? list,
       {ItemActionState itemActionState = const ItemActionState.none()}) {
     return _SelectedShoppingListState(
       list,
@@ -449,17 +434,16 @@ class _$SelectedShoppingListStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $SelectedShoppingListState = _$SelectedShoppingListStateTearOff();
 
 /// @nodoc
 mixin _$SelectedShoppingListState {
-  @nullable
-  ShoppingList get list;
-  ItemActionState get itemActionState;
+  ShoppingList? get list => throw _privateConstructorUsedError;
+  ItemActionState get itemActionState => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $SelectedShoppingListStateCopyWith<SelectedShoppingListState> get copyWith;
+  $SelectedShoppingListStateCopyWith<SelectedShoppingListState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -467,9 +451,9 @@ abstract class $SelectedShoppingListStateCopyWith<$Res> {
   factory $SelectedShoppingListStateCopyWith(SelectedShoppingListState value,
           $Res Function(SelectedShoppingListState) then) =
       _$SelectedShoppingListStateCopyWithImpl<$Res>;
-  $Res call({@nullable ShoppingList list, ItemActionState itemActionState});
+  $Res call({ShoppingList? list, ItemActionState itemActionState});
 
-  $ShoppingListCopyWith<$Res> get list;
+  $ShoppingListCopyWith<$Res>? get list;
   $ItemActionStateCopyWith<$Res> get itemActionState;
 }
 
@@ -484,32 +468,34 @@ class _$SelectedShoppingListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object list = freezed,
-    Object itemActionState = freezed,
+    Object? list = freezed,
+    Object? itemActionState = freezed,
   }) {
     return _then(_value.copyWith(
-      list: list == freezed ? _value.list : list as ShoppingList,
+      list: list == freezed
+          ? _value.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as ShoppingList?,
       itemActionState: itemActionState == freezed
           ? _value.itemActionState
-          : itemActionState as ItemActionState,
+          : itemActionState // ignore: cast_nullable_to_non_nullable
+              as ItemActionState,
     ));
   }
 
   @override
-  $ShoppingListCopyWith<$Res> get list {
+  $ShoppingListCopyWith<$Res>? get list {
     if (_value.list == null) {
       return null;
     }
-    return $ShoppingListCopyWith<$Res>(_value.list, (value) {
+
+    return $ShoppingListCopyWith<$Res>(_value.list!, (value) {
       return _then(_value.copyWith(list: value));
     });
   }
 
   @override
   $ItemActionStateCopyWith<$Res> get itemActionState {
-    if (_value.itemActionState == null) {
-      return null;
-    }
     return $ItemActionStateCopyWith<$Res>(_value.itemActionState, (value) {
       return _then(_value.copyWith(itemActionState: value));
     });
@@ -523,10 +509,10 @@ abstract class _$SelectedShoppingListStateCopyWith<$Res>
           $Res Function(_SelectedShoppingListState) then) =
       __$SelectedShoppingListStateCopyWithImpl<$Res>;
   @override
-  $Res call({@nullable ShoppingList list, ItemActionState itemActionState});
+  $Res call({ShoppingList? list, ItemActionState itemActionState});
 
   @override
-  $ShoppingListCopyWith<$Res> get list;
+  $ShoppingListCopyWith<$Res>? get list;
   @override
   $ItemActionStateCopyWith<$Res> get itemActionState;
 }
@@ -545,27 +531,30 @@ class __$SelectedShoppingListStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object list = freezed,
-    Object itemActionState = freezed,
+    Object? list = freezed,
+    Object? itemActionState = freezed,
   }) {
     return _then(_SelectedShoppingListState(
-      list == freezed ? _value.list : list as ShoppingList,
+      list == freezed
+          ? _value.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as ShoppingList?,
       itemActionState: itemActionState == freezed
           ? _value.itemActionState
-          : itemActionState as ItemActionState,
+          : itemActionState // ignore: cast_nullable_to_non_nullable
+              as ItemActionState,
     ));
   }
 }
 
 /// @nodoc
+
 class _$_SelectedShoppingListState implements _SelectedShoppingListState {
-  const _$_SelectedShoppingListState(@nullable this.list,
-      {this.itemActionState = const ItemActionState.none()})
-      : assert(itemActionState != null);
+  const _$_SelectedShoppingListState(this.list,
+      {this.itemActionState = const ItemActionState.none()});
 
   @override
-  @nullable
-  final ShoppingList list;
+  final ShoppingList? list;
   @JsonKey(defaultValue: const ItemActionState.none())
   @override
   final ItemActionState itemActionState;
@@ -601,15 +590,15 @@ class _$_SelectedShoppingListState implements _SelectedShoppingListState {
 }
 
 abstract class _SelectedShoppingListState implements SelectedShoppingListState {
-  const factory _SelectedShoppingListState(@nullable ShoppingList list,
+  const factory _SelectedShoppingListState(ShoppingList? list,
       {ItemActionState itemActionState}) = _$_SelectedShoppingListState;
 
   @override
-  @nullable
-  ShoppingList get list;
+  ShoppingList? get list => throw _privateConstructorUsedError;
   @override
-  ItemActionState get itemActionState;
+  ItemActionState get itemActionState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$SelectedShoppingListStateCopyWith<_SelectedShoppingListState> get copyWith;
+  _$SelectedShoppingListStateCopyWith<_SelectedShoppingListState>
+      get copyWith => throw _privateConstructorUsedError;
 }

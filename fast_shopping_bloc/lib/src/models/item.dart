@@ -4,11 +4,11 @@ part 'item.freezed.dart';
 part 'item.g.dart';
 
 @freezed
-abstract class Item implements _$Item {
+class Item with _$Item {
   const factory Item({
-    @required String id,
-    @required String title,
-    DateTime doneAt,
+    required String id,
+    required String title,
+    DateTime? doneAt,
     @Default(false) bool removed,
   }) = _Item;
 

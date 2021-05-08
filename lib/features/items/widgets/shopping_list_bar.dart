@@ -6,12 +6,12 @@ import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class ShoppingListBar extends HookWidget {
-  const ShoppingListBar({Key key, @required this.shoppingList})
+  const ShoppingListBar({Key? key, required this.shoppingList})
       : super(key: key);
 
   static const _requiredDragOffset = 100;
 
-  final ShoppingList shoppingList;
+  final ShoppingList? shoppingList;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class ShoppingListBar extends HookWidget {
         openBuilder: (context, _) => const ShoppingListsScreen(),
         closedBuilder: (context, open) => GestureDetector(
           onVerticalDragUpdate: (details) =>
-              verticalDrag.value += details.primaryDelta,
+              verticalDrag.value += details.primaryDelta ?? 0,
           onVerticalDragEnd: (details) {
             if (-verticalDrag.value >= _requiredDragOffset) {
               open();
@@ -46,15 +46,15 @@ class ShoppingListBar extends HookWidget {
                 Expanded(
                   child: shoppingList == null
                       ? Text(
-                          S.of(context).shopping_list_not_selected_placeholder,
+                          S.of(context)!.shopping_list_not_selected_placeholder,
                           style: const TextStyle(fontStyle: FontStyle.italic),
                           overflow: TextOverflow.ellipsis,
                         )
                       : Text(
-                          shoppingList.name.isNotEmpty
-                              ? shoppingList.name
-                              : S.of(context).shopping_list_no_name,
-                          style: shoppingList.name.isEmpty
+                          shoppingList!.name.isNotEmpty
+                              ? shoppingList!.name
+                              : S.of(context)!.shopping_list_no_name,
+                          style: shoppingList!.name.isEmpty
                               ? const TextStyle(fontStyle: FontStyle.italic)
                               : null,
                           overflow: TextOverflow.ellipsis,

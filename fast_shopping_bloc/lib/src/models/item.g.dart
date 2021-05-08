@@ -13,7 +13,7 @@ _$_Item _$_$_ItemFromJson(Map<String, dynamic> json) {
     doneAt: json['doneAt'] == null
         ? null
         : DateTime.parse(json['doneAt'] as String),
-    removed: json['removed'] as bool ?? false,
+    removed: json['removed'] as bool? ?? false,
   );
 }
 

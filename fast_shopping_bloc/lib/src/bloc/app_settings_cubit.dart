@@ -13,19 +13,16 @@ class AppSettingsCubit extends Cubit<AppSettings> {
     final settings = await Future.wait([
       _settingsRepository.getShoppingListsMode(),
       _settingsRepository.getDarkTheme(),
-      _settingsRepository.getItemsLayout(),
       _settingsRepository.getMoveDoneToEnd(),
     ]);
 
-    final shoppingListsMode = settings[0] as ShoppingListsMode;
-    final darkTheme = settings[1] as DarkTheme;
-    final itemsLayout = settings[2] as ItemsLayout;
-    final moveDoneToEnd = settings[3] as bool;
+    final shoppingListsMode = settings[0] as ShoppingListsMode?;
+    final darkTheme = settings[1] as DarkTheme?;
+    final moveDoneToEnd = settings[2] as bool?;
 
     emit(state.copyWith(
       shoppingListsMode: shoppingListsMode ?? state.shoppingListsMode,
       darkTheme: darkTheme ?? state.darkTheme,
-      itemsLayout: itemsLayout ?? state.itemsLayout,
       moveDoneToEnd: moveDoneToEnd ?? state.moveDoneToEnd,
     ));
   }
@@ -40,11 +37,6 @@ class AppSettingsCubit extends Cubit<AppSettings> {
     emit(state.copyWith(darkTheme: darkTheme));
   }
 
-  Future<void> setItemsLayout(ItemsLayout itemsLayout) async {
-    await _settingsRepository.saveItemsLayout(itemsLayout);
-    emit(state.copyWith(itemsLayout: itemsLayout));
-  }
-
   // ignore: avoid_positional_boolean_parameters
   Future<void> setMoveDoneToEnd(bool moveDoneToEnd) async {
     await _settingsRepository.saveMoveDoneToEnd(moveDoneToEnd);
@@ -53,11 +45,10 @@ class AppSettingsCubit extends Cubit<AppSettings> {
 }
 
 @freezed
-abstract class AppSettings with _$AppSettings {
+class AppSettings with _$AppSettings {
   const factory AppSettings({
     @Default(ShoppingListsMode.multiple) ShoppingListsMode shoppingListsMode,
     @Default(DarkTheme.system) DarkTheme darkTheme,
-    @Default(ItemsLayout.comfortable) ItemsLayout itemsLayout,
     @Default(false) bool moveDoneToEnd,
   }) = _AppSettings;
 }

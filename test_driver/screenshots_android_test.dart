@@ -22,10 +22,10 @@ Future<void> _saveScreenshot(
   String name,
   List<int> bytes,
 ) async {
-  final screenshot = decodePng(bytes);
+  final screenshot = decodePng(bytes)!;
   final screenshotFrame = decodePng(
     await File('assets/android-screenshot-frame.png').readAsBytes(),
-  );
+  )!;
 
   var image = Image(1944, 3456);
   image = drawImage(image, screenshot, dstX: 255, dstY: 743);
@@ -47,20 +47,20 @@ Future<void> _saveScreenshot(
 
 Future<void> _saveFeaturedGraphic(
   String locale, {
-  List<int> screenshot1,
-  List<int> screenshot2,
-  List<int> screenshot3,
+  required List<int> screenshot1,
+  required List<int> screenshot2,
+  required List<int> screenshot3,
 }) async {
   var image = Image(1024, 500);
   image = fill(image, backgroundColor);
 
   final phoneFrame =
-      decodePng(await File('assets/android-phone-frame.png').readAsBytes());
+      decodePng(await File('assets/android-phone-frame.png').readAsBytes())!;
   final phoneFrameBlank = Image(1623, 3322);
 
   var first = drawImage(
     phoneFrameBlank,
-    decodePng(screenshot1),
+    decodePng(screenshot1)!,
     dstX: 95,
     dstY: 223,
   );
@@ -76,7 +76,7 @@ Future<void> _saveFeaturedGraphic(
 
   var second = drawImage(
     phoneFrameBlank,
-    decodePng(screenshot2),
+    decodePng(screenshot2)!,
     dstX: 95,
     dstY: 223,
   );
@@ -92,7 +92,7 @@ Future<void> _saveFeaturedGraphic(
 
   var third = drawImage(
     phoneFrameBlank,
-    decodePng(screenshot3),
+    decodePng(screenshot3)!,
     dstX: 95,
     dstY: 223,
   );

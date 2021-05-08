@@ -7,8 +7,8 @@ import '../mocks.dart';
 
 void main() {
   group('AppSettingsCubit', () {
-    AppSettingsRepository appSettingsRepository;
-    AppSettingsCubit cubit;
+    late AppSettingsRepository appSettingsRepository;
+    late AppSettingsCubit cubit;
     setUp(() {
       appSettingsRepository = MockAppSettingsRepository();
       cubit = AppSettingsCubit(appSettingsRepository);
@@ -26,14 +26,12 @@ void main() {
             .thenAnswer((_) async => ShoppingListsMode.single);
         when(appSettingsRepository.getDarkTheme())
             .thenAnswer((_) async => null);
-        when(appSettingsRepository.getItemsLayout())
-            .thenAnswer((_) async => null);
         when(appSettingsRepository.getMoveDoneToEnd())
             .thenAnswer((_) async => false);
         return cubit;
       },
       act: (cubit) => cubit.load(),
-      expect: const [
+      expect: () => const [
         AppSettings(
           shoppingListsMode: ShoppingListsMode.single,
           moveDoneToEnd: false,
@@ -42,7 +40,6 @@ void main() {
       verify: (cubit) {
         verify(appSettingsRepository.getShoppingListsMode()).called(1);
         verify(appSettingsRepository.getDarkTheme()).called(1);
-        verify(appSettingsRepository.getItemsLayout()).called(1);
         verify(appSettingsRepository.getMoveDoneToEnd()).called(1);
       },
     );
@@ -51,7 +48,7 @@ void main() {
       'sets shopping list mode correctly',
       build: () => cubit,
       act: (cubit) => cubit.setShoppingListsMode(ShoppingListsMode.single),
-      expect: const [
+      expect: () => const [
         AppSettings(shoppingListsMode: ShoppingListsMode.single),
       ],
       verify: (cubit) => verify(
@@ -63,7 +60,7 @@ void main() {
       'sets dark mode correctly',
       build: () => cubit,
       act: (cubit) => cubit.setDarkTheme(DarkTheme.enabled),
-      expect: const [
+      expect: () => const [
         AppSettings(darkTheme: DarkTheme.enabled),
       ],
       verify: (cubit) => verify(
@@ -72,22 +69,10 @@ void main() {
     );
 
     blocTest<AppSettingsCubit, AppSettings>(
-      'sets items layout correctly',
-      build: () => cubit,
-      act: (cubit) => cubit.setItemsLayout(ItemsLayout.dense),
-      expect: const [
-        AppSettings(itemsLayout: ItemsLayout.dense),
-      ],
-      verify: (cubit) => verify(
-        appSettingsRepository.saveItemsLayout(ItemsLayout.dense),
-      ).called(1),
-    );
-
-    blocTest<AppSettingsCubit, AppSettings>(
       'sets move done to ended correctly',
       build: () => cubit,
       act: (cubit) => cubit.setMoveDoneToEnd(false),
-      expect: const [
+      expect: () => const [
         AppSettings(moveDoneToEnd: false),
       ],
       verify: (cubit) => verify(

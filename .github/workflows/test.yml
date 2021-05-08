@@ -20,7 +20,8 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.22.6'
+          flutter-version: '2.2.0-10.2.pre'
+          channel: beta
 
       - name: Flutter version
         run: flutter --version
@@ -59,10 +60,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 2.12.4
+
+      - name: Dart version
+        run: dart --version
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.22.6'
+          flutter-version: '2.2.0-10.2.pre'
+          channel: beta
 
       - name: Flutter version
         run: flutter --version
@@ -81,7 +91,9 @@ jobs:
         run: flutter analyze
 
       - name: Run tests
-        run: flutter pub run test_coverage --no-badge --print-test-output
+        run: |
+          dart test --coverage=coverage
+          flutter pub run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.packages --report-on=lib
         
       - name: Upload code coverage to Codecov
         uses: codecov/codecov-action@v1

@@ -10,3 +10,4 @@ analyzer:
         - crashlytics
         - fast_shopping_bloc
         - lib/**/*.freezed.dart
+        - test/mocks.mocks.dart

@@ -16,7 +16,8 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.22.6'
+          flutter-version: '2.2.0-10.2.pre'
+          channel: beta
 
       - name: Flutter version
         run: flutter --version
@@ -62,7 +63,8 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.22.6'
+          flutter-version: '2.2.0-10.2.pre'
+          channel: beta
 
       - name: Flutter version
         run: flutter --version

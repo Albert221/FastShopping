@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'shopping_list.dart';
 
@@ -8,6 +8,10 @@ part of 'shopping_list.dart';
 // **************************************************************************
 
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 ShoppingList _$ShoppingListFromJson(Map<String, dynamic> json) {
   return _ShoppingList.fromJson(json);
 }
@@ -16,12 +20,11 @@ ShoppingList _$ShoppingListFromJson(Map<String, dynamic> json) {
 class _$ShoppingListTearOff {
   const _$ShoppingListTearOff();
 
-// ignore: unused_element
   _ShoppingList call(
-      {@required String id,
-      @required String name,
-      @required DateTime createdAt,
-      DateTime archivedAt,
+      {required String id,
+      required String name,
+      required DateTime createdAt,
+      DateTime? archivedAt,
       List<Item> items = const []}) {
     return _ShoppingList(
       id: id,
@@ -32,27 +35,26 @@ class _$ShoppingListTearOff {
     );
   }
 
-// ignore: unused_element
   ShoppingList fromJson(Map<String, Object> json) {
     return ShoppingList.fromJson(json);
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ShoppingList = _$ShoppingListTearOff();
 
 /// @nodoc
 mixin _$ShoppingList {
-  String get id;
-  String get name;
-  DateTime get createdAt;
-  DateTime get archivedAt;
-  List<Item> get items;
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+  DateTime? get archivedAt => throw _privateConstructorUsedError;
+  List<Item> get items => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ShoppingListCopyWith<ShoppingList> get copyWith;
+  $ShoppingListCopyWith<ShoppingList> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -64,7 +66,7 @@ abstract class $ShoppingListCopyWith<$Res> {
       {String id,
       String name,
       DateTime createdAt,
-      DateTime archivedAt,
+      DateTime? archivedAt,
       List<Item> items});
 }
 
@@ -78,20 +80,33 @@ class _$ShoppingListCopyWithImpl<$Res> implements $ShoppingListCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object createdAt = freezed,
-    Object archivedAt = freezed,
-    Object items = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? createdAt = freezed,
+    Object? archivedAt = freezed,
+    Object? items = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as String,
-      name: name == freezed ? _value.name : name as String,
-      createdAt:
-          createdAt == freezed ? _value.createdAt : createdAt as DateTime,
-      archivedAt:
-          archivedAt == freezed ? _value.archivedAt : archivedAt as DateTime,
-      items: items == freezed ? _value.items : items as List<Item>,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      archivedAt: archivedAt == freezed
+          ? _value.archivedAt
+          : archivedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      items: items == freezed
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<Item>,
     ));
   }
 }
@@ -107,7 +122,7 @@ abstract class _$ShoppingListCopyWith<$Res>
       {String id,
       String name,
       DateTime createdAt,
-      DateTime archivedAt,
+      DateTime? archivedAt,
       List<Item> items});
 }
 
@@ -123,39 +138,47 @@ class __$ShoppingListCopyWithImpl<$Res> extends _$ShoppingListCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
-    Object name = freezed,
-    Object createdAt = freezed,
-    Object archivedAt = freezed,
-    Object items = freezed,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? createdAt = freezed,
+    Object? archivedAt = freezed,
+    Object? items = freezed,
   }) {
     return _then(_ShoppingList(
-      id: id == freezed ? _value.id : id as String,
-      name: name == freezed ? _value.name : name as String,
-      createdAt:
-          createdAt == freezed ? _value.createdAt : createdAt as DateTime,
-      archivedAt:
-          archivedAt == freezed ? _value.archivedAt : archivedAt as DateTime,
-      items: items == freezed ? _value.items : items as List<Item>,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: createdAt == freezed
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      archivedAt: archivedAt == freezed
+          ? _value.archivedAt
+          : archivedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      items: items == freezed
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<Item>,
     ));
   }
 }
 
-@JsonSerializable()
-
 /// @nodoc
+@JsonSerializable()
 class _$_ShoppingList extends _ShoppingList {
   const _$_ShoppingList(
-      {@required this.id,
-      @required this.name,
-      @required this.createdAt,
+      {required this.id,
+      required this.name,
+      required this.createdAt,
       this.archivedAt,
       this.items = const []})
-      : assert(id != null),
-        assert(name != null),
-        assert(createdAt != null),
-        assert(items != null),
-        super._();
+      : super._();
 
   factory _$_ShoppingList.fromJson(Map<String, dynamic> json) =>
       _$_$_ShoppingListFromJson(json);
@@ -167,7 +190,7 @@ class _$_ShoppingList extends _ShoppingList {
   @override
   final DateTime createdAt;
   @override
-  final DateTime archivedAt;
+  final DateTime? archivedAt;
   @JsonKey(defaultValue: const [])
   @override
   final List<Item> items;
@@ -216,28 +239,29 @@ class _$_ShoppingList extends _ShoppingList {
 }
 
 abstract class _ShoppingList extends ShoppingList {
-  const _ShoppingList._() : super._();
   const factory _ShoppingList(
-      {@required String id,
-      @required String name,
-      @required DateTime createdAt,
-      DateTime archivedAt,
+      {required String id,
+      required String name,
+      required DateTime createdAt,
+      DateTime? archivedAt,
       List<Item> items}) = _$_ShoppingList;
+  const _ShoppingList._() : super._();
 
   factory _ShoppingList.fromJson(Map<String, dynamic> json) =
       _$_ShoppingList.fromJson;
 
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  DateTime get createdAt;
+  DateTime get createdAt => throw _privateConstructorUsedError;
   @override
-  DateTime get archivedAt;
+  DateTime? get archivedAt => throw _privateConstructorUsedError;
   @override
-  List<Item> get items;
+  List<Item> get items => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ShoppingListCopyWith<_ShoppingList> get copyWith;
+  _$ShoppingListCopyWith<_ShoppingList> get copyWith =>
+      throw _privateConstructorUsedError;
 }

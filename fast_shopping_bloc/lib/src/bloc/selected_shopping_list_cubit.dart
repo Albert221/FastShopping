@@ -11,14 +11,14 @@ part 'selected_shopping_list_cubit.freezed.dart';
 class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   SelectedShoppingListCubit(this._listsCubit, this._clock, this._uuid)
       : super(SelectedShoppingListState(_listsCubit.state.selected)) {
-    _listsCubitSubscription = _listsCubit
+    _listsCubitSubscription = _listsCubit.stream
         .listen((state) => emit(this.state.copyWith(list: state.selected)));
   }
 
   final ShoppingListsCubit _listsCubit;
   final Clock _clock;
   final Uuid _uuid;
-  StreamSubscription _listsCubitSubscription;
+  late final StreamSubscription _listsCubitSubscription;
 
   @override
   Future<void> close() async {
@@ -27,15 +27,15 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   }
 
   void addItem(String title) {
-    _assertListSelected();
+    final list = _selectedList;
 
-    _listsCubit.update(state.list.copyWith(
+    _listsCubit.update(list.copyWith(
       items: List.of([
         Item(
           id: _uuid.v4(),
           title: title,
         ),
-        ...state.list.items,
+        ...list.items,
       ]),
     ));
   }
@@ -45,10 +45,10 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   }
 
   void removeAllDoneItems() {
-    _assertListSelected();
+    final list = _selectedList;
 
-    _listsCubit.update(state.list.copyWith(
-      items: List.of(state.list.items)..removeWhere((item) => item.done),
+    _listsCubit.update(list.copyWith(
+      items: List.of(list.items)..removeWhere((item) => item.done),
     ));
   }
 
@@ -59,10 +59,10 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   /// [oldIndex] and [newIndex] refer to indices
   /// in the [state.list.availableItems].
   void moveItem(int oldIndex, int newIndex) {
-    _assertListSelected();
+    final list = _selectedList;
 
     final newList = _moveItem(
-      state.list,
+      list,
       oldIndex,
       newIndex,
       availableItemsIndices: true,
@@ -80,7 +80,7 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
       return;
     }
 
-    _assertListSelected();
+    final list = _selectedList;
 
     /// There is a case when the user has few items, some of which are done
     /// and are not positioned at the end of the list. That's why we search
@@ -109,14 +109,14 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     /// group.
     int indexBeforeLastGroupOfDoneItems() {
       final newReversedIndex =
-          state.list.items.reversed.toList().indexWhere((item) => !item.done);
-      final newIndex = state.list.items.length - newReversedIndex;
+          list.items.reversed.toList().indexWhere((item) => !item.done);
+      final newIndex = list.items.length - newReversedIndex;
       return newIndex;
     }
 
-    final oldIndex = state.list.items.indexWhere((item) => item.id == itemId);
+    final oldIndex = list.items.indexWhere((item) => item.id == itemId);
     final newIndex = indexBeforeLastGroupOfDoneItems();
-    var newList = _updateItem(state.list, itemId, update);
+    var newList = _updateItem(list, itemId, update);
 
     if (done) {
       newList = _moveItem(newList, oldIndex, newIndex - 1);
@@ -151,10 +151,10 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   }
 
   void setAllItemsUndone() {
-    _assertListSelected();
+    final list = _selectedList;
 
-    _listsCubit.update(state.list.copyWith(
-      items: state.list.items.map((item) {
+    _listsCubit.update(list.copyWith(
+      items: list.items.map((item) {
         return item.copyWith(doneAt: null);
       }).toList(),
     ));
@@ -167,9 +167,9 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   /// Updates an item with specified `itemId` from the selected shopping
   /// list in [state] and emits it (sends above to the shopping lists cubit).
   void _updateItemAndEmit(String itemId, Item Function(Item) itemUpdate) {
-    _assertListSelected();
+    final list = _selectedList;
 
-    _listsCubit.update(_updateItem(state.list, itemId, itemUpdate));
+    _listsCubit.update(_updateItem(list, itemId, itemUpdate));
   }
 
   /// Returns a `list` with an item with id `itemId` updated with `itemUpdate`.
@@ -185,12 +185,14 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     );
   }
 
-  void _assertListSelected() {
+  ShoppingList get _selectedList {
     if (state.list == null) {
       throw Exception(
         'You must have any shopping list selected to perform that action.',
       );
     }
+
+    return state.list!;
   }
 
   void expandItem(String itemId) {
@@ -225,7 +227,7 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
 }
 
 @freezed
-abstract class ItemActionState implements _$ItemActionState {
+class ItemActionState with _$ItemActionState {
   const factory ItemActionState.none() = ItemActionNone;
   const factory ItemActionState.expanded(String itemId) = ItemActionExpanded;
   const factory ItemActionState.editing(String itemId) = ItemActionEditing;
@@ -245,9 +247,9 @@ abstract class ItemActionState implements _$ItemActionState {
 }
 
 @freezed
-abstract class SelectedShoppingListState with _$SelectedShoppingListState {
+class SelectedShoppingListState with _$SelectedShoppingListState {
   const factory SelectedShoppingListState(
-    @nullable ShoppingList list, {
+    ShoppingList? list, {
     @Default(ItemActionState.none()) ItemActionState itemActionState,
   }) = _SelectedShoppingListState;
 }

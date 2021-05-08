@@ -6,26 +6,11 @@ extension DarkThemeLocalize on DarkTheme {
   String localize(BuildContext context) {
     switch (this) {
       case DarkTheme.system:
-        return S.of(context).settings_dark_theme_system;
+        return S.of(context)!.settings_dark_theme_system;
       case DarkTheme.disabled:
-        return S.of(context).settings_dark_theme_disabled;
+        return S.of(context)!.settings_dark_theme_disabled;
       case DarkTheme.enabled:
-        return S.of(context).settings_dark_theme_enabled;
-      default:
-        return null;
-    }
-  }
-}
-
-extension ItemsLayoutLocalize on ItemsLayout {
-  String localize(BuildContext context) {
-    switch (this) {
-      case ItemsLayout.comfortable:
-        return S.of(context).settings_items_layout_comfortable;
-      case ItemsLayout.dense:
-        return S.of(context).settings_items_layout_dense;
-      default:
-        return null;
+        return S.of(context)!.settings_dark_theme_enabled;
     }
   }
 }

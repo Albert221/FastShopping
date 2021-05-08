@@ -34,8 +34,8 @@ class ShoppingListsCubit extends Cubit<ShoppingListsState> {
     ]);
 
     emit(ShoppingListsState(
-      selectedId: results[0] as String,
-      lists: results[1] as List<ShoppingList>,
+      selectedId: results[0] as String?,
+      lists: results[1]! as List<ShoppingList>,
     ));
   }
 
@@ -107,25 +107,20 @@ class ShoppingListsCubit extends Cubit<ShoppingListsState> {
 }
 
 @freezed
-abstract class ShoppingListsState implements _$ShoppingListsState {
+class ShoppingListsState with _$ShoppingListsState {
   factory ShoppingListsState({
-    String selectedId,
+    String? selectedId,
     @Default([]) List<ShoppingList> lists,
   }) = _ShoppingListsState;
 
   ShoppingListsState._();
 
-  @late
-  ShoppingList get selected => lists.firstWhere(
-        (list) => list.id == selectedId,
-        orElse: () => null,
-      );
+  late final ShoppingList? selected =
+      lists.firstWhereOrNull((list) => list.id == selectedId);
 
-  @late
-  List<ShoppingList> get current =>
+  late final List<ShoppingList> current =
       lists.where((list) => list.archivedAt == null).toList();
 
-  @late
-  List<ShoppingList> get archived =>
+  late final List<ShoppingList> archived =
       lists.where((list) => list.archivedAt != null).toList();
 }

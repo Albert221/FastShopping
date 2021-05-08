@@ -1,14 +1,17 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mockito/annotations.dart';
 import 'package:uuid/uuid.dart';
 
-class MockUuid extends Mock implements Uuid {}
+export 'mocks.mocks.dart';
 
-class MockAppSettingsRepository extends Mock implements AppSettingsRepository {}
+@GenerateMocks([
+  Uuid,
+  AppSettingsRepository,
+  ShoppingListRepository,
+])
+// ignore: unused_element
+class _Mocks {}
 
-class MockShoppingListRepository extends Mock
-    implements ShoppingListRepository {}
-
-class MockShoppingListsCubit extends MockBloc<ShoppingListsState>
+class MockShoppingListsCubit extends MockCubit<ShoppingListsState>
     implements ShoppingListsCubit {}

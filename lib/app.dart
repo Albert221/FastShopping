@@ -10,9 +10,9 @@ import 'package:uuid/uuid.dart';
 
 class FastShoppingApp extends HookWidget {
   const FastShoppingApp({
-    Key key,
-    @required this.appSettingsRepository,
-    @required this.shoppingListRepository,
+    Key? key,
+    required this.appSettingsRepository,
+    required this.shoppingListRepository,
   }) : super(key: key);
 
   final AppSettingsRepository appSettingsRepository;
@@ -27,14 +27,10 @@ class FastShoppingApp extends HookWidget {
 
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider<Clock>.value(value: const Clock()),
-        RepositoryProvider<Uuid>.value(value: Uuid()),
-        RepositoryProvider<AppSettingsRepository>.value(
-          value: appSettingsRepository,
-        ),
-        RepositoryProvider<ShoppingListRepository>.value(
-          value: shoppingListRepository,
-        ),
+        RepositoryProvider.value(value: const Clock()),
+        RepositoryProvider.value(value: const Uuid()),
+        RepositoryProvider.value(value: appSettingsRepository),
+        RepositoryProvider.value(value: shoppingListRepository),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -65,7 +61,7 @@ class FastShoppingApp extends HookWidget {
 }
 
 class _App extends StatelessWidget {
-  const _App({Key key}) : super(key: key);
+  const _App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +79,7 @@ class _App extends StatelessWidget {
       home: ItemsScreen(),
       // Localization stuff
       locale: OverrideLocale.of(context),
-      onGenerateTitle: (context) => S.of(context).app_title,
+      onGenerateTitle: (context) => S.of(context)!.app_title,
       supportedLocales: S.supportedLocales,
       localizationsDelegates: S.localizationsDelegates,
     );

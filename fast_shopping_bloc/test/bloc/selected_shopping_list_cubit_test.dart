@@ -1,6 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart' as mocktail;
 import 'package:test/test.dart';
 import 'package:uuid/uuid.dart';
 
@@ -9,20 +10,24 @@ import '../fixtures.dart';
 import '../mocks.dart';
 
 void main() {
+  setUpAll(() {
+    mocktail.registerFallbackValue(ShoppingListsState());
+  });
   group('SelectedShoppingListCubit', () {
-    ShoppingListsCubit shoppingListsCubit;
-    Uuid uuid;
-    SelectedShoppingListCubit cubit;
-
+    late ShoppingListsCubit shoppingListsCubit;
+    late Uuid uuid;
+    late SelectedShoppingListCubit cubit;
     setUp(() {
       shoppingListsCubit = MockShoppingListsCubit();
-      when(shoppingListsCubit.state).thenReturn(
-        ShoppingListsState(
-          selectedId: shoppingList1.id,
-          lists: [shoppingList1],
-        ),
+      final initial = ShoppingListsState(
+        selectedId: shoppingList1.id,
+        lists: [shoppingList1],
       );
-      whenListen<ShoppingListsState>(shoppingListsCubit, const Stream.empty());
+      whenListen<ShoppingListsState>(
+        shoppingListsCubit,
+        Stream.fromIterable([initial]),
+        initialState: initial,
+      );
 
       uuid = MockUuid();
 
@@ -56,7 +61,7 @@ void main() {
 
         return SelectedShoppingListCubit(shoppingListsCubit, clock, uuid);
       },
-      expect: [
+      expect: () => [
         const SelectedShoppingListState(null),
         SelectedShoppingListState(shoppingList1),
         SelectedShoppingListState(shoppingList1.copyWith(name: 'This is test')),
@@ -72,25 +77,27 @@ void main() {
         },
         act: (cubit) => cubit.addItem('Title'),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [
-                const Item(id: 'some id', title: 'Title'),
-                item1,
-                item2,
-                item3,
-              ],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [
+                    const Item(id: 'some id', title: 'Title'),
+                    item1,
+                    item2,
+                    item3,
+                  ],
+                )),
+              )
+              .called(1);
         },
       );
 
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'with exception if none is selected',
         build: () => cubit,
-        seed: const SelectedShoppingListState(null),
+        seed: () => const SelectedShoppingListState(null),
         act: (cubit) => cubit.addItem('some id'),
-        errors: [isA<Exception>()],
+        errors: () => [isA<Exception>()],
       );
     });
 
@@ -98,23 +105,25 @@ void main() {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'correctly',
         build: () => cubit,
-        seed: SelectedShoppingListState(shoppingList1),
+        seed: () => SelectedShoppingListState(shoppingList1),
         act: (cubit) => cubit.removeItem(item3.id),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [item1, item2, item3.copyWith(removed: true)],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [item1, item2, item3.copyWith(removed: true)],
+                )),
+              )
+              .called(1);
         },
       );
 
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'with exception if none is selected',
         build: () => cubit,
-        seed: const SelectedShoppingListState(null),
+        seed: () => const SelectedShoppingListState(null),
         act: (cubit) => cubit.removeItem(item3.id),
-        errors: [isA<Exception>()],
+        errors: () => [isA<Exception>()],
       );
     });
 
@@ -124,20 +133,22 @@ void main() {
         build: () => cubit,
         act: (cubit) => cubit.removeAllDoneItems(),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [item1, item3],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [item1, item3],
+                )),
+              )
+              .called(1);
         },
       );
 
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'with exception if no list is selected',
         build: () => cubit,
-        seed: const SelectedShoppingListState(null),
+        seed: () => const SelectedShoppingListState(null),
         act: (cubit) => cubit.removeAllDoneItems(),
-        errors: [isA<Exception>()],
+        errors: () => [isA<Exception>()],
       );
     });
 
@@ -145,25 +156,27 @@ void main() {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'correctly',
         build: () => cubit,
-        seed: SelectedShoppingListState(shoppingList1.copyWith(
+        seed: () => SelectedShoppingListState(shoppingList1.copyWith(
           items: [item1, item2.copyWith(removed: true), item3],
         )),
         act: (cubit) => cubit.undoRemoveItem(item2.id),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [item1, item2, item3],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [item1, item2, item3],
+                )),
+              )
+              .called(1);
         },
       );
 
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'with exception if none is selected',
         build: () => cubit,
-        seed: const SelectedShoppingListState(null),
+        seed: () => const SelectedShoppingListState(null),
         act: (cubit) => cubit.undoRemoveItem(item2.id),
-        errors: [isA<Exception>()],
+        errors: () => [isA<Exception>()],
       );
     });
 
@@ -171,30 +184,34 @@ void main() {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'correctly',
         build: () => cubit,
-        seed: SelectedShoppingListState(shoppingList1),
+        seed: () => SelectedShoppingListState(shoppingList1),
         act: (cubit) => cubit.moveItem(0, 2),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [item2, item3, item1],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [item2, item3, item1],
+                )),
+              )
+              .called(1);
         },
       );
 
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'with removed items correctly',
         build: () => cubit,
-        seed: SelectedShoppingListState(shoppingList1.copyWith(
+        seed: () => SelectedShoppingListState(shoppingList1.copyWith(
           items: [item1, item2, removedItem, item3],
         )),
         act: (cubit) => cubit.moveItem(0, 2),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [item2, removedItem, item3, item1],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [item2, removedItem, item3, item1],
+                )),
+              )
+              .called(1);
         },
       );
     });
@@ -205,11 +222,13 @@ void main() {
         build: () => cubit,
         act: (cubit) => cubit.setItemDone(item1.id, true),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [item1.copyWith(doneAt: clock.now()), item2, item3],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [item1.copyWith(doneAt: clock.now()), item2, item3],
+                )),
+              )
+              .called(1);
         },
       );
 
@@ -220,28 +239,32 @@ void main() {
           act: (cubit) =>
               cubit.setItemDone(item1.id, true, moveDoneToEnd: true),
           verify: (cubit) {
-            verify(
-              shoppingListsCubit.update(shoppingList1.copyWith(
-                items: [item2, item3, item1.copyWith(doneAt: clock.now())],
-              )),
-            ).called(1);
+            mocktail
+                .verify(
+                  () => shoppingListsCubit.update(shoppingList1.copyWith(
+                    items: [item2, item3, item1.copyWith(doneAt: clock.now())],
+                  )),
+                )
+                .called(1);
           },
         );
 
         blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
           'with one done item at the end correctly',
           build: () => cubit,
-          seed: SelectedShoppingListState(shoppingList1.copyWith(
+          seed: () => SelectedShoppingListState(shoppingList1.copyWith(
             items: [item1, item3, item2],
           )),
           act: (cubit) =>
               cubit.setItemDone(item1.id, true, moveDoneToEnd: true),
           verify: (cubit) {
-            verify(
-              shoppingListsCubit.update(shoppingList1.copyWith(
-                items: [item3, item1.copyWith(doneAt: clock.now()), item2],
-              )),
-            ).called(1);
+            mocktail
+                .verify(
+                  () => shoppingListsCubit.update(shoppingList1.copyWith(
+                    items: [item3, item1.copyWith(doneAt: clock.now()), item2],
+                  )),
+                )
+                .called(1);
           },
         );
       });
@@ -251,16 +274,18 @@ void main() {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'without moving done to the end correctly',
         build: () => cubit,
-        seed: SelectedShoppingListState(shoppingList1.copyWith(
+        seed: () => SelectedShoppingListState(shoppingList1.copyWith(
           items: [item1, item2.copyWith(doneAt: clock.now()), item3],
         )),
         act: (cubit) => cubit.setItemDone(item2.id, false),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [item1, item2.copyWith(doneAt: null), item3],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [item1, item2.copyWith(doneAt: null), item3],
+                )),
+              )
+              .called(1);
         },
       );
 
@@ -268,63 +293,69 @@ void main() {
         blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
           'when item is not in the last done items group correctly',
           build: () => cubit,
-          seed: SelectedShoppingListState(shoppingList1.copyWith(
+          seed: () => SelectedShoppingListState(shoppingList1.copyWith(
             items: [item2, item1, item3.copyWith(doneAt: clock.now())],
           )),
           act: (cubit) =>
               cubit.setItemDone(item2.id, false, moveDoneToEnd: true),
           verify: (cubit) {
-            verify(
-              shoppingListsCubit.update(shoppingList1.copyWith(
-                items: [
-                  item2.copyWith(doneAt: null),
-                  item1,
-                  item3.copyWith(doneAt: clock.now()),
-                ],
-              )),
-            ).called(1);
+            mocktail
+                .verify(
+                  () => shoppingListsCubit.update(shoppingList1.copyWith(
+                    items: [
+                      item2.copyWith(doneAt: null),
+                      item1,
+                      item3.copyWith(doneAt: clock.now()),
+                    ],
+                  )),
+                )
+                .called(1);
           },
         );
 
         blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
           'when item is at the beggining of the last done items group correctly',
           build: () => cubit,
-          seed: SelectedShoppingListState(shoppingList1.copyWith(
+          seed: () => SelectedShoppingListState(shoppingList1.copyWith(
             items: [item1, item2, item3.copyWith(doneAt: clock.now())],
           )),
           act: (cubit) =>
               cubit.setItemDone(item2.id, false, moveDoneToEnd: true),
           verify: (cubit) {
-            verify(
-              shoppingListsCubit.update(shoppingList1.copyWith(
-                items: [
-                  item1,
-                  item2.copyWith(doneAt: null),
-                  item3.copyWith(doneAt: clock.now()),
-                ],
-              )),
-            ).called(1);
+            mocktail
+                .verify(
+                  () => shoppingListsCubit.update(shoppingList1.copyWith(
+                    items: [
+                      item1,
+                      item2.copyWith(doneAt: null),
+                      item3.copyWith(doneAt: clock.now()),
+                    ],
+                  )),
+                )
+                .called(1);
           },
         );
 
         blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
           'when item is in the last done items group correctly',
           build: () => cubit,
-          seed: SelectedShoppingListState(shoppingList1.copyWith(
+          seed: () => SelectedShoppingListState(shoppingList1.copyWith(
             items: [item1, item3.copyWith(doneAt: clock.now()), item2],
           )),
           act: (cubit) =>
               cubit.setItemDone(item2.id, false, moveDoneToEnd: true),
           verify: (cubit) {
-            verify(
-              shoppingListsCubit.update(shoppingList1.copyWith(
-                items: [
-                  item1,
-                  item2.copyWith(doneAt: null),
-                  item3.copyWith(doneAt: clock.now()),
-                ],
-              )),
-            ).called(1);
+            mocktail
+                .verify(
+                  () => shoppingListsCubit.update(shoppingList1.copyWith(
+                    items: [
+                      item1,
+                      item2.copyWith(doneAt: null),
+                      item3.copyWith(doneAt: clock.now()),
+                    ],
+                  )),
+                )
+                .called(1);
           },
         );
       });
@@ -336,20 +367,22 @@ void main() {
         build: () => cubit,
         act: (cubit) => cubit.setAllItemsUndone(),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [item1, item2.copyWith(doneAt: null), item3],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [item1, item2.copyWith(doneAt: null), item3],
+                )),
+              )
+              .called(1);
         },
       );
 
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'with exception if no list is selected',
         build: () => cubit,
-        seed: const SelectedShoppingListState(null),
+        seed: () => const SelectedShoppingListState(null),
         act: (cubit) => cubit.setAllItemsUndone(),
-        errors: [isA<Exception>()],
+        errors: () => [isA<Exception>()],
       );
     });
 
@@ -359,11 +392,13 @@ void main() {
         build: () => cubit,
         act: (cubit) => cubit.setItemTitle(item2.id, 'New title!'),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [item1, item2.copyWith(title: 'New title!'), item3],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [item1, item2.copyWith(title: 'New title!'), item3],
+                )),
+              )
+              .called(1);
         },
       );
 
@@ -372,15 +407,17 @@ void main() {
         build: () => cubit,
         act: (cubit) => cubit.setItemTitle(item2.id, ' I have many spaces    '),
         verify: (cubit) {
-          verify(
-            shoppingListsCubit.update(shoppingList1.copyWith(
-              items: [
-                item1,
-                item2.copyWith(title: 'I have many spaces'),
-                item3,
-              ],
-            )),
-          ).called(1);
+          mocktail
+              .verify(
+                () => shoppingListsCubit.update(shoppingList1.copyWith(
+                  items: [
+                    item1,
+                    item2.copyWith(title: 'I have many spaces'),
+                    item3,
+                  ],
+                )),
+              )
+              .called(1);
         },
       );
     });
@@ -390,7 +427,7 @@ void main() {
         'correctly',
         build: () => cubit,
         act: (cubit) => cubit.expandItem(item2.id),
-        expect: [
+        expect: () => [
           SelectedShoppingListState(
             shoppingList1,
             itemActionState: ItemActionState.expanded(item2.id),
@@ -401,12 +438,12 @@ void main() {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'while editing other item correctly',
         build: () => cubit,
-        seed: SelectedShoppingListState(
+        seed: () => SelectedShoppingListState(
           shoppingList1,
           itemActionState: ItemActionState.editing(item3.id),
         ),
         act: (cubit) => cubit.expandItem(item2.id),
-        expect: [
+        expect: () => [
           SelectedShoppingListState(
             shoppingList1,
             itemActionState: ItemActionState.expanded(item2.id),
@@ -418,12 +455,12 @@ void main() {
     blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
       'collapses item correctly',
       build: () => cubit,
-      seed: SelectedShoppingListState(
+      seed: () => SelectedShoppingListState(
         shoppingList1,
         itemActionState: ItemActionState.expanded(item2.id),
       ),
       act: (cubit) => cubit.collapseItem(),
-      expect: [
+      expect: () => [
         SelectedShoppingListState(shoppingList1),
       ],
     );
@@ -432,12 +469,12 @@ void main() {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'correctly',
         build: () => cubit,
-        seed: SelectedShoppingListState(
+        seed: () => SelectedShoppingListState(
           shoppingList1,
           itemActionState: ItemActionState.expanded(item2.id),
         ),
         act: (cubit) => cubit.startEditingItem(),
-        expect: [
+        expect: () => [
           SelectedShoppingListState(
             shoppingList1,
             itemActionState: ItemActionState.editing(item2.id),
@@ -449,7 +486,7 @@ void main() {
         'with exception when none are expanded',
         build: () => cubit,
         act: (cubit) => cubit.startEditingItem(),
-        errors: [isA<Exception>()],
+        errors: () => [isA<Exception>()],
       );
     });
 
@@ -457,12 +494,12 @@ void main() {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'correctly',
         build: () => cubit,
-        seed: SelectedShoppingListState(
+        seed: () => SelectedShoppingListState(
           shoppingList1,
           itemActionState: ItemActionState.editing(item2.id),
         ),
         act: (cubit) => cubit.stopEditingItem(),
-        expect: [
+        expect: () => [
           SelectedShoppingListState(
             shoppingList1,
             itemActionState: ItemActionState.expanded(item2.id),
@@ -473,9 +510,9 @@ void main() {
       blocTest<SelectedShoppingListCubit, SelectedShoppingListState>(
         'with exception when none are being edited',
         build: () => cubit,
-        seed: SelectedShoppingListState(shoppingList1),
+        seed: () => SelectedShoppingListState(shoppingList1),
         act: (cubit) => cubit.stopEditingItem(),
-        errors: [isA<Exception>()],
+        errors: () => [isA<Exception>()],
       );
     });
   });

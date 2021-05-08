@@ -9,3 +9,4 @@ analyzer:
     exclude:
         - lib/**/*.freezed.dart
         - lib/**/*.g.dart
+        - test/mocks.mocks.dart

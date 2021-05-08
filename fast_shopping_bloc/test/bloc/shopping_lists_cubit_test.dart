@@ -10,9 +10,9 @@ import '../mocks.dart';
 
 void main() {
   group('ShoppingListsCubit', () {
-    ShoppingListRepository repository;
-    Uuid uuid;
-    ShoppingListsCubit cubit;
+    late MockShoppingListRepository repository;
+    late Uuid uuid;
+    late ShoppingListsCubit cubit;
     setUp(() {
       repository = MockShoppingListRepository();
       uuid = MockUuid();
@@ -32,7 +32,7 @@ void main() {
         return cubit;
       },
       act: (cubit) => cubit.load(),
-      expect: [
+      expect: () => [
         ShoppingListsState(lists: [shoppingList1]),
       ],
       verify: (cubit) {
@@ -62,7 +62,7 @@ void main() {
         return cubit;
       },
       act: (cubit) => cubit.addList('Nice list'),
-      expect: [
+      expect: () => [
         ShoppingListsState(lists: [
           ShoppingList(
             id: 'some id',
@@ -76,11 +76,11 @@ void main() {
     blocTest<ShoppingListsCubit, ShoppingListsState>(
       'updates existing shopping list correctly',
       build: () => cubit,
-      seed: ShoppingListsState(lists: [shoppingList1]),
+      seed: () => ShoppingListsState(lists: [shoppingList1]),
       act: (cubit) => cubit.update(
         shoppingList1.copyWith(name: 'Test!'),
       ),
-      expect: [
+      expect: () => [
         ShoppingListsState(
           lists: [shoppingList1.copyWith(name: 'Test!')],
         ),
@@ -91,9 +91,9 @@ void main() {
       blocTest<ShoppingListsCubit, ShoppingListsState>(
         'correctly',
         build: () => cubit,
-        seed: ShoppingListsState(lists: [shoppingList1]),
+        seed: () => ShoppingListsState(lists: [shoppingList1]),
         act: (cubit) => cubit.select(shoppingList1.id),
-        expect: [
+        expect: () => [
           ShoppingListsState(
             selectedId: shoppingList1.id,
             lists: [shoppingList1],
@@ -104,9 +104,9 @@ void main() {
       blocTest<ShoppingListsCubit, ShoppingListsState>(
         'with failure when its id is not in the lists',
         build: () => cubit,
-        seed: ShoppingListsState(lists: [shoppingList1]),
+        seed: () => ShoppingListsState(lists: [shoppingList1]),
         act: (cubit) => cubit.select('im not here'),
-        errors: [isA<Exception>()],
+        errors: () => [isA<Exception>()],
       );
     });
 
@@ -114,9 +114,9 @@ void main() {
       blocTest<ShoppingListsCubit, ShoppingListsState>(
         'correctly',
         build: () => cubit,
-        seed: ShoppingListsState(lists: [shoppingList1]),
+        seed: () => ShoppingListsState(lists: [shoppingList1]),
         act: (cubit) => cubit.rename(shoppingList1.id, 'new name'),
-        expect: [
+        expect: () => [
           ShoppingListsState(
             lists: [
               shoppingList1.copyWith(name: 'new name'),
@@ -128,9 +128,9 @@ void main() {
       blocTest<ShoppingListsCubit, ShoppingListsState>(
         'and trims its title correctly',
         build: () => cubit,
-        seed: ShoppingListsState(lists: [shoppingList1]),
+        seed: () => ShoppingListsState(lists: [shoppingList1]),
         act: (cubit) => cubit.rename(shoppingList1.id, '  spaces '),
-        expect: [
+        expect: () => [
           ShoppingListsState(
             lists: [shoppingList1.copyWith(name: 'spaces')],
           ),
@@ -142,9 +142,9 @@ void main() {
       blocTest<ShoppingListsCubit, ShoppingListsState>(
         'correctly',
         build: () => cubit,
-        seed: ShoppingListsState(lists: [shoppingList1]),
+        seed: () => ShoppingListsState(lists: [shoppingList1]),
         act: (cubit) => cubit.archive(shoppingList1.id),
-        expect: [
+        expect: () => [
           ShoppingListsState(
             lists: [
               shoppingList1.copyWith(archivedAt: clock.now()),
@@ -156,12 +156,12 @@ void main() {
       blocTest<ShoppingListsCubit, ShoppingListsState>(
         'correctly and deselects it',
         build: () => cubit,
-        seed: ShoppingListsState(
+        seed: () => ShoppingListsState(
           selectedId: shoppingList1.id,
           lists: [shoppingList1],
         ),
         act: (cubit) => cubit.archive(shoppingList1.id),
-        expect: [
+        expect: () => [
           ShoppingListsState(
             lists: [
               shoppingList1.copyWith(archivedAt: clock.now()),
@@ -174,11 +174,11 @@ void main() {
     blocTest<ShoppingListsCubit, ShoppingListsState>(
       'unarchives a shopping list correctly',
       build: () => cubit,
-      seed: ShoppingListsState(lists: [
+      seed: () => ShoppingListsState(lists: [
         shoppingList1.copyWith(archivedAt: clock.now()),
       ]),
       act: (cubit) => cubit.unarchive(shoppingList1.id),
-      expect: [
+      expect: () => [
         ShoppingListsState(
           lists: [
             shoppingList1.copyWith(archivedAt: null),
@@ -190,9 +190,9 @@ void main() {
     blocTest<ShoppingListsCubit, ShoppingListsState>(
       'removes a shopping list correctly',
       build: () => cubit,
-      seed: ShoppingListsState(lists: [shoppingList1]),
+      seed: () => ShoppingListsState(lists: [shoppingList1]),
       act: (cubit) => cubit.remove(shoppingList1.id),
-      expect: [
+      expect: () => [
         ShoppingListsState(lists: []),
       ],
     );

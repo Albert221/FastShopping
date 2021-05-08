@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class BetterSimpleDialog extends StatelessWidget {
   const BetterSimpleDialog({
-    Key key,
+    Key? key,
     this.title,
     this.titlePadding =
         const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -13,19 +13,17 @@ class BetterSimpleDialog extends StatelessWidget {
     this.semanticLabel,
     this.shape,
     this.children,
-  })  : assert(titlePadding != null),
-        assert(contentPadding != null),
-        super(key: key);
+  }) : super(key: key);
 
-  final Widget title;
+  final Widget? title;
   final EdgeInsetsGeometry titlePadding;
-  final TextStyle titleTextStyle;
+  final TextStyle? titleTextStyle;
   final EdgeInsetsGeometry contentPadding;
-  final Color backgroundColor;
-  final double elevation;
-  final String semanticLabel;
-  final ShapeBorder shape;
-  final List<Widget> children;
+  final Color? backgroundColor;
+  final double? elevation;
+  final String? semanticLabel;
+  final ShapeBorder? shape;
+  final List<Widget>? children;
 
   @override
   Widget build(BuildContext context) {
@@ -45,15 +43,15 @@ class BetterSimpleDialog extends StatelessWidget {
 
 class BetterSimpleDialogOption extends StatelessWidget {
   const BetterSimpleDialogOption({
-    Key key,
+    Key? key,
     this.onPressed,
     this.padding = const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
     this.child,
   }) : super(key: key);
 
-  final VoidCallback onPressed;
-  final EdgeInsets padding;
-  final Widget child;
+  final VoidCallback? onPressed;
+  final EdgeInsets? padding;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {

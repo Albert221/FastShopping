@@ -9,8 +9,8 @@ enum ShoppingListActions { rename, archive, unarchive, delete }
 
 class ShoppingListTile extends StatelessWidget {
   const ShoppingListTile({
-    Key key,
-    @required this.shoppingList,
+    Key? key,
+    required this.shoppingList,
     this.current = false,
     this.onTap,
     this.onRenameTap,
@@ -21,11 +21,11 @@ class ShoppingListTile extends StatelessWidget {
 
   final ShoppingList shoppingList;
   final bool current;
-  final VoidCallback onTap;
-  final VoidCallback onRenameTap;
-  final VoidCallback onArchiveTap;
-  final VoidCallback onUnarchiveTap;
-  final VoidCallback onDeleteTap;
+  final VoidCallback? onTap;
+  final VoidCallback? onRenameTap;
+  final VoidCallback? onArchiveTap;
+  final VoidCallback? onUnarchiveTap;
+  final VoidCallback? onDeleteTap;
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +33,10 @@ class ShoppingListTile extends StatelessWidget {
         ? Theme.of(context).colorScheme.primary.withOpacity(.2)
         : Theme.of(context).colorScheme.surface;
 
-    final textColor = DefaultTextStyle.of(context).style.color;
+    final textColor = DefaultTextStyle.of(context).style.color!;
 
     return TweenAnimationBuilder<Color>(
-      tween: ColorTween(begin: background, end: background),
+      tween: Tween(begin: background, end: background),
       curve: standardEasing,
       duration: const Duration(milliseconds: 300),
       builder: (context, background, child) => Material(
@@ -65,10 +65,13 @@ class ShoppingListTile extends StatelessWidget {
                         child: Text(
                           shoppingList.name.isNotEmpty
                               ? shoppingList.name
-                              : S.of(context).shopping_list_no_name,
+                              : S.of(context)!.shopping_list_no_name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.subtitle1.copyWith(
+                          style: Theme.of(context)
+                              .textTheme
+                              .subtitle1!
+                              .copyWith(
                                 fontStyle: shoppingList.name.isEmpty
                                     ? FontStyle.italic
                                     : null,

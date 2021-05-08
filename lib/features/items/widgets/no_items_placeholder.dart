@@ -3,7 +3,7 @@ import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NoItemsPlaceholder extends StatelessWidget {
-  const NoItemsPlaceholder({Key key, @required this.fabLocation})
+  const NoItemsPlaceholder({Key? key, required this.fabLocation})
       : super(key: key);
 
   final FloatingActionButtonLocation fabLocation;
@@ -24,7 +24,7 @@ class NoItemsPlaceholder extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               Text(
-                S.of(context).empty_list_add_some_items_message,
+                S.of(context)!.empty_list_add_some_items_message,
                 textAlign: TextAlign.center,
               ),
             ],
