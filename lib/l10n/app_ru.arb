@@ -180,14 +180,6 @@
     "@settings_dark_theme_system": {},
     "settings_dark_theme_disabled": "Отключена",
     "@settings_dark_theme_disabled": {},
-    "settings_items_layout": "Расположение элементов",
-    "@settings_items_layout": {
-        "description": "Whether the item tiles are layed out spaciously or dense."
-    },
-    "settings_items_layout_comfortable": "Удобное",
-    "@settings_items_layout_comfortable": {},
-    "settings_items_layout_dense": "Плотное",
-    "@settings_items_layout_dense": {},
     "settings_move_done": "Переместить завершенные элементы в конец",
     "@settings_move_done": {},
     "settings_support_author": "Поддержите автора",
