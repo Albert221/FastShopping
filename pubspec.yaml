@@ -27,7 +27,7 @@ dependencies:
   intl: ^0.17.0
   md2_tab_indicator:
     git:
-      url: git@github.com:westdabestdb/md2_tab_indicator.git
+      url: https://github.com/westdabestdb/md2_tab_indicator.git
       ref: 1097deb4f4018c408fd4745711efb8f0ea9044e7
   shared_preferences: ^2.0.5
   timeago: ^3.0.2
