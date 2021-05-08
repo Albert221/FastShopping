@@ -26,8 +26,6 @@ void main() {
             .thenAnswer((_) async => ShoppingListsMode.single);
         when(appSettingsRepository.getDarkTheme())
             .thenAnswer((_) async => null);
-        when(appSettingsRepository.getItemsLayout())
-            .thenAnswer((_) async => null);
         when(appSettingsRepository.getMoveDoneToEnd())
             .thenAnswer((_) async => false);
         return cubit;
@@ -42,7 +40,6 @@ void main() {
       verify: (cubit) {
         verify(appSettingsRepository.getShoppingListsMode()).called(1);
         verify(appSettingsRepository.getDarkTheme()).called(1);
-        verify(appSettingsRepository.getItemsLayout()).called(1);
         verify(appSettingsRepository.getMoveDoneToEnd()).called(1);
       },
     );
@@ -68,18 +65,6 @@ void main() {
       ],
       verify: (cubit) => verify(
         appSettingsRepository.saveDarkTheme(DarkTheme.enabled),
-      ).called(1),
-    );
-
-    blocTest<AppSettingsCubit, AppSettings>(
-      'sets items layout correctly',
-      build: () => cubit,
-      act: (cubit) => cubit.setItemsLayout(ItemsLayout.dense),
-      expect: () => const [
-        AppSettings(itemsLayout: ItemsLayout.dense),
-      ],
-      verify: (cubit) => verify(
-        appSettingsRepository.saveItemsLayout(ItemsLayout.dense),
       ).called(1),
     );
 

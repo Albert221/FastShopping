@@ -3,7 +3,7 @@ import 'package:fast_shopping/l10n/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NoListSelectedPlaceholder extends StatelessWidget {
-  const NoListSelectedPlaceholder({Key key}) : super(key: key);
+  const NoListSelectedPlaceholder({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class NoListSelectedPlaceholder extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 32),
             alignment: Alignment.bottomCenter,
             child: Text(
-              S.of(context).shopping_list_not_selected_message,
+              S.of(context)!.shopping_list_not_selected_message,
               textAlign: TextAlign.center,
             ),
           ),

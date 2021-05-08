@@ -11,7 +11,7 @@ import 'widgets/tabs/archived_tab.dart';
 import 'widgets/tabs/current_tab.dart';
 
 class ShoppingListsScreen extends HookWidget {
-  const ShoppingListsScreen({Key key}) : super(key: key);
+  const ShoppingListsScreen({Key? key}) : super(key: key);
 
   Future<void> _onNewListTapped(BuildContext context) async {
     final name = await showModal<String>(
@@ -31,7 +31,7 @@ class ShoppingListsScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final tabController = useTabController(initialLength: 2);
-    final fabShown = useListenable(tabController.animation).value < 0.5;
+    final fabShown = useListenable(tabController.animation!).value < 0.5;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -40,7 +40,7 @@ class ShoppingListsScreen extends HookWidget {
           ? FloatingActionButton.extended(
               onPressed: () => _onNewListTapped(context),
               icon: const Icon(Icons.add),
-              label: Text(S.of(context).shopping_lists_add_new),
+              label: Text(S.of(context)!.shopping_lists_add_new),
             )
           : null,
       body: TabBarView(

@@ -27,20 +27,20 @@ class FastShoppingTheme {
   }
 
   static ThemeData _build({
-    Brightness brightness,
-    Color primary,
-    Color text,
-    Color surface,
-    Color background,
-    Color error,
-    Color onError,
+    required Brightness brightness,
+    required Color primary,
+    required Color text,
+    required Color surface,
+    required Color background,
+    required Color error,
+    required Color onError,
   }) {
     final isDark = brightness == Brightness.dark;
     final defaultTextTheme = isDark
         ? Typography.material2014(platform: defaultTargetPlatform).white
         : Typography.material2014(platform: defaultTargetPlatform).black;
 
-    final darkPrimary = Color.lerp(primary, surface, 0.8);
+    final darkPrimary = Color.lerp(primary, surface, 0.8)!;
 
     final theme = ThemeData.from(
       colorScheme: ColorScheme(
@@ -59,7 +59,7 @@ class FastShoppingTheme {
         brightness: brightness,
       ),
       textTheme: defaultTextTheme.copyWith(
-        bodyText2: defaultTextTheme.bodyText2.copyWith(
+        bodyText2: defaultTextTheme.bodyText2!.copyWith(
           fontSize: 16,
         ),
       ),
@@ -101,7 +101,7 @@ extension TextButtonStyles on TextButton {
           focusNode: focusNode,
           autofocus: autofocus,
           clipBehavior: clipBehavior,
-          child: child,
+          child: child!,
         );
       },
     );
@@ -119,7 +119,7 @@ extension TextButtonStyles on TextButton {
         focusNode: focusNode,
         autofocus: autofocus,
         clipBehavior: clipBehavior,
-        child: child,
+        child: child!,
       ),
     );
   }

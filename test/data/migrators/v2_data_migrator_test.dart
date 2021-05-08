@@ -8,7 +8,7 @@ import '../../mocks.dart';
 
 void main() {
   group('V2DataMigrator', () {
-    ShoppingListRepository repository;
+    late MockShoppingListRepository repository;
     setUp(() {
       repository = MockShoppingListRepository();
     });

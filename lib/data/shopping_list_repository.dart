@@ -11,15 +11,19 @@ class ShoppingListRepository extends fsb.ShoppingListRepository {
   final _sharedPrefs = SharedPreferences.getInstance();
 
   @override
-  Future<String> getSelectedListId() async {
+  Future<String?> getSelectedListId() async {
     final prefs = await _sharedPrefs;
     return prefs.getString(_selectedListIdKey);
   }
 
   @override
-  Future<void> saveSelectedListId(String id) async {
+  Future<void> saveSelectedListId(String? id) async {
     final prefs = await _sharedPrefs;
-    return prefs.setString(_selectedListIdKey, id);
+    if (id == null) {
+      await prefs.remove(_selectedListIdKey);
+    } else {
+      await prefs.setString(_selectedListIdKey, id);
+    }
   }
 
   @override
@@ -38,6 +42,6 @@ class ShoppingListRepository extends fsb.ShoppingListRepository {
     final prefs = await _sharedPrefs;
     final json = jsonEncode(lists.map((list) => list.toJson()).toList());
 
-    return prefs.setString(_listsKey, json);
+    await prefs.setString(_listsKey, json);
   }
 }

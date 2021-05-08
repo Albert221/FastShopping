@@ -4,9 +4,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class PromptDialog extends HookWidget {
   const PromptDialog({
-    Key key,
-    @required this.title,
-    @required this.submitText,
+    Key? key,
+    required this.title,
+    required this.submitText,
     this.cancelText,
     this.inputHint,
     this.initialValue = '',
@@ -14,8 +14,8 @@ class PromptDialog extends HookWidget {
 
   final String title;
   final String submitText;
-  final String cancelText;
-  final String inputHint;
+  final String? cancelText;
+  final String? inputHint;
   final String initialValue;
 
   void _onSubmit(BuildContext context, TextEditingController controller) {
@@ -73,7 +73,7 @@ class PromptDialog extends HookWidget {
                     TextButton(
                       key: const Key('cancel-dialog'),
                       onPressed: () => _onCancel(context),
-                      child: Text(cancelText),
+                      child: Text(cancelText!),
                     ),
                   const SizedBox(width: 8),
                   TextButton(

@@ -31,14 +31,14 @@ class ItemsScreen extends StatelessWidget {
   void _onArchiveTap(BuildContext context, ShoppingList list) {
     context.read<ShoppingListsCubit>().archive(list.id);
 
-    Scaffold.of(context)
+    ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(
         SnackBar(
           behavior: SnackBarBehavior.floating,
-          content: Text(S.of(context).shopping_list_archived_snackbar_message),
+          content: Text(S.of(context)!.shopping_list_archived_snackbar_message),
           action: SnackBarAction(
-            label: S.of(context).shopping_list_archived_snackbar_undo,
+            label: S.of(context)!.shopping_list_archived_snackbar_undo,
             onPressed: () => context.read<ShoppingListsCubit>()
               ..unarchive(list.id)
               ..select(list.id),
@@ -54,7 +54,7 @@ class ItemsScreen extends StatelessWidget {
       configuration: const FadeScaleTransitionConfiguration(),
       builder: (context) => RemoveAllDoneDialog(
         itemsCount:
-            shoppingList.availableItems.where((item) => item.done).length,
+            shoppingList!.availableItems.where((item) => item.done).length,
       ),
     );
 
@@ -90,7 +90,7 @@ class ItemsScreen extends StatelessWidget {
         appBar: ItemsAppBar(
           shoppingListsMode: shoppingListsMode,
           onArchiveList: listSelected
-              ? (context) => _onArchiveTap(context, selectedShoppingList)
+              ? (context) => _onArchiveTap(context, selectedShoppingList!)
               : null,
           onUndoneAll: selectedShoppingList?.anyItemDone == true
               ? (context) =>
@@ -115,15 +115,19 @@ class ItemsScreen extends StatelessWidget {
             Widget child;
             if (!listSelected) {
               child = const NoListSelectedPlaceholder();
-            } else if (selectedShoppingList.availableItems.isEmpty) {
+            } else if (selectedShoppingList!.availableItems.isEmpty) {
               child = NoItemsPlaceholder(fabLocation: fabLocation);
             } else {
               child = ImplicitlyAnimatedReorderableList<Item>(
                 areItemsTheSame: (oldItem, newItem) => oldItem.id == newItem.id,
                 items: selectedShoppingList.availableItems,
-                onReorderFinished: (item, from, to, newItems) => context
-                    .read<SelectedShoppingListCubit>()
-                    .moveItem(from, to),
+                onReorderFinished: (item, from, to, newItems) {
+                  if (from != null) {
+                    context
+                        .read<SelectedShoppingListCubit>()
+                        .moveItem(from, to);
+                  }
+                },
                 header: shoppingListsMode == ShoppingListsMode.multiple
                     ? ArchiveBanner(
                         visible: selectedShoppingList.allItemsDone,
@@ -173,10 +177,10 @@ class ItemsScreen extends StatelessWidget {
 
 class _DraggableTileContainer extends StatelessWidget {
   const _DraggableTileContainer({
-    Key key,
-    @required this.expanded,
-    @required this.child,
-    this.dragAnimation,
+    Key? key,
+    required this.expanded,
+    required this.child,
+    required this.dragAnimation,
   }) : super(key: key);
 
   final Animation<double> dragAnimation;
@@ -206,7 +210,7 @@ class _DraggableTileContainer extends StatelessWidget {
                   ),
                 ),
               ),
-              child,
+              child!,
             ],
           ),
         );
@@ -218,9 +222,9 @@ class _DraggableTileContainer extends StatelessWidget {
 
 class _ItemTile extends StatelessWidget {
   const _ItemTile({
-    Key key,
-    @required this.item,
-    @required this.itemActionState,
+    Key? key,
+    required this.item,
+    required this.itemActionState,
   }) : super(key: key);
 
   final Item item;
@@ -230,13 +234,13 @@ class _ItemTile extends StatelessWidget {
     final selectedShoppingListCubit = context.read<SelectedShoppingListCubit>();
     selectedShoppingListCubit.removeItem(item.id);
 
-    Scaffold.of(context)
+    ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(SnackBar(
         behavior: SnackBarBehavior.floating,
-        content: Text(S.of(context).item_removed_snackbar_message),
+        content: Text(S.of(context)!.item_removed_snackbar_message),
         action: SnackBarAction(
-          label: S.of(context).item_removed_snackbar_undo,
+          label: S.of(context)!.item_removed_snackbar_undo,
           onPressed: () => selectedShoppingListCubit.undoRemoveItem(item.id),
         ),
       ));

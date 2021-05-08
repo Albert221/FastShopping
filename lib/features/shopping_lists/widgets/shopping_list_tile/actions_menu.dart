@@ -5,28 +5,28 @@ import 'shopping_list_tile.dart';
 
 class ActionsMenu extends StatelessWidget {
   const ActionsMenu({
-    Key key,
+    Key? key,
     this.onRenameTap,
     this.onArchiveTap,
     this.onUnarchiveTap,
     this.onDeleteTap,
   }) : super(key: key);
 
-  final VoidCallback onRenameTap;
-  final VoidCallback onArchiveTap;
-  final VoidCallback onUnarchiveTap;
-  final VoidCallback onDeleteTap;
+  final VoidCallback? onRenameTap;
+  final VoidCallback? onArchiveTap;
+  final VoidCallback? onUnarchiveTap;
+  final VoidCallback? onDeleteTap;
 
   void _onActionSelected(BuildContext context, ShoppingListActions action) {
     switch (action) {
       case ShoppingListActions.rename:
-        return onRenameTap();
+        return onRenameTap!();
       case ShoppingListActions.archive:
-        return onArchiveTap();
+        return onArchiveTap!();
       case ShoppingListActions.unarchive:
-        return onUnarchiveTap();
+        return onUnarchiveTap!();
       case ShoppingListActions.delete:
-        return onDeleteTap();
+        return onDeleteTap!();
     }
   }
 
@@ -46,7 +46,7 @@ class ActionsMenu extends StatelessWidget {
                     children: [
                       const Icon(Icons.edit),
                       const SizedBox(width: 16),
-                      Text(S.of(context).list_item_action_rename),
+                      Text(S.of(context)!.list_item_action_rename),
                     ],
                   ),
                 ),
@@ -57,7 +57,7 @@ class ActionsMenu extends StatelessWidget {
                     children: [
                       const Icon(Icons.archive),
                       const SizedBox(width: 16),
-                      Text(S.of(context).list_item_action_archive),
+                      Text(S.of(context)!.list_item_action_archive),
                     ],
                   ),
                 ),
@@ -68,7 +68,7 @@ class ActionsMenu extends StatelessWidget {
                     children: [
                       const Icon(Icons.unarchive),
                       const SizedBox(width: 16),
-                      Text(S.of(context).list_item_action_unarchive),
+                      Text(S.of(context)!.list_item_action_unarchive),
                     ],
                   ),
                 ),
@@ -79,7 +79,7 @@ class ActionsMenu extends StatelessWidget {
                     children: [
                       const Icon(Icons.delete),
                       const SizedBox(width: 16),
-                      Text(S.of(context).list_item_action_delete),
+                      Text(S.of(context)!.list_item_action_delete),
                     ],
                   ),
                 ),

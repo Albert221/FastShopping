@@ -4,19 +4,20 @@ import 'package:fast_shopping/l10n/l10n.dart';
 
 class DoneBar extends StatelessWidget {
   const DoneBar({
-    Key key,
-    @required this.item,
+    Key? key,
+    required this.item,
     this.onDoneChanged,
-    @required this.onExpandedChanged,
+    required this.onExpandedChanged,
   }) : super(key: key);
 
   final Item item;
-  final ValueChanged<bool> onDoneChanged;
+  final ValueChanged<bool>? onDoneChanged;
   final ValueChanged<bool> onExpandedChanged;
 
   @override
   Widget build(BuildContext context) {
-    final doneColor = DefaultTextStyle.of(context).style.color.withOpacity(.87);
+    final doneColor =
+        DefaultTextStyle.of(context).style.color!.withOpacity(.87);
 
     return InkWell(
       onTap: () => onExpandedChanged(false),
@@ -27,11 +28,15 @@ class DoneBar extends StatelessWidget {
           children: [
             Checkbox(
               value: item.done,
-              onChanged: onDoneChanged,
+              onChanged: onDoneChanged != null
+                  ? (value) => onDoneChanged!(value!)
+                  : null,
             ),
             if (item.done)
               Text(
-                S.of(context).list_item_done_ago(item.doneAt.timeAgo(context)),
+                S
+                    .of(context)!
+                    .list_item_done_ago(item.doneAt!.timeAgo(context)),
                 style: TextStyle(color: doneColor, fontSize: 12),
               ),
           ],

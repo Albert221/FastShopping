@@ -3,13 +3,13 @@ import 'package:fast_shopping/l10n/l10n.dart';
 
 class ArchiveBanner extends StatelessWidget {
   const ArchiveBanner({
-    Key key,
+    Key? key,
     this.visible = true,
     this.onArchiveTap,
   }) : super(key: key);
 
   final bool visible;
-  final VoidCallback onArchiveTap;
+  final VoidCallback? onArchiveTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class ArchiveBanner extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 4),
-              child: Text(S.of(context).archive_banner_content),
+              child: Text(S.of(context)!.archive_banner_content),
             ),
             Align(
               alignment: Alignment.centerRight,
@@ -34,13 +34,13 @@ class ArchiveBanner extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 child: TextButton(
                   onPressed: onArchiveTap,
-                  child: Text(S.of(context).archive_banner_archive),
+                  child: Text(S.of(context)!.archive_banner_archive),
                 ),
               ),
             ),
             Divider(
               height: 0,
-              color: DefaultTextStyle.of(context).style.color.withOpacity(.12),
+              color: DefaultTextStyle.of(context).style.color!.withOpacity(.12),
               thickness: 1,
             ),
           ],

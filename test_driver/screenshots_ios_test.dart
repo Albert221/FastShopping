@@ -24,7 +24,8 @@ void main() {
       .whereType<Directory>()
       .map((directory) => directory.path.split(RegExp(r'[/\\]')).last)
       .map((locale) => localesMap[locale])
-      .where((locale) => locale != null);
+      .where((locale) => locale != null)
+      .cast<String>();
 
   takeScreenshots(
     locales: locales,
@@ -37,10 +38,10 @@ Future<void> _saveScreenshot(
   String name,
   List<int> bytes,
 ) async {
-  var screenshot = decodePng(bytes);
+  var screenshot = decodePng(bytes)!;
   final screenshotFrame = decodePng(
     await File('assets/iphone-screenshot-frame.png').readAsBytes(),
-  );
+  )!;
 
   screenshot = copyResize(
     screenshot,

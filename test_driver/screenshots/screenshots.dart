@@ -12,26 +12,26 @@ typedef OnScreenshotTaken = Future<void> Function(
 
 typedef OnThreeScreenshotsTaken = Future<void> Function(
   String locale, {
-  List<int> screenshot1,
-  List<int> screenshot2,
-  List<int> screenshot3,
+  required List<int> screenshot1,
+  required List<int> screenshot2,
+  required List<int> screenshot3,
 });
 
 final backgroundColor = getColor(0xFF, 0xC1, 0x07);
 
 void takeScreenshots({
   Iterable<String> locales = const [],
-  OnScreenshotTaken onScreenshotTaken,
-  OnThreeScreenshotsTaken onThreeScreenshotsTaken,
+  required OnScreenshotTaken onScreenshotTaken,
+  OnThreeScreenshotsTaken? onThreeScreenshotsTaken,
 }) {
   group('Screenshots', () {
-    FlutterDriver driver;
+    late FlutterDriver driver;
 
     setUpAll(() async {
       driver = await FlutterDriver.connect();
     });
 
-    tearDownAll(() => driver?.close());
+    tearDownAll(() => driver.close());
 
     for (final locale in locales) {
       test(locale, () async {

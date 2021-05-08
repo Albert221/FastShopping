@@ -29,7 +29,7 @@ class SettingsScreen extends StatelessWidget {
       context: context,
       configuration: const FadeScaleTransitionConfiguration(),
       builder: (context) => BetterSimpleDialog(
-        title: Text(S.of(context).settings_dark_theme),
+        title: Text(S.of(context)!.settings_dark_theme),
         children: DarkTheme.values.map((option) {
           return BetterSimpleDialogOption(
             key: ValueKey('dark-theme-${option.index}'),
@@ -44,26 +44,6 @@ class SettingsScreen extends StatelessWidget {
       context.read<AppSettingsCubit>().setDarkTheme(darkTheme);
     }
   }
-
-  // Future<void> _onItemsLayoutTap(BuildContext context) async {
-  //   final layout = await showModal<ItemsLayout>(
-  //     context: context,
-  //     configuration: const FadeScaleTransitionConfiguration(),
-  //     builder: (context) => BetterSimpleDialog(
-  //       title: Text(S.of(context).settings_items_layout),
-  //       children: ItemsLayout.values.map((option) {
-  //         return BetterSimpleDialogOption(
-  //           onPressed: () => Navigator.of(context).pop(option),
-  //           child: Text(option.localize(context)),
-  //         );
-  //       }).toList(),
-  //     ),
-  //   );
-  //
-  //   if (layout != null) {
-  //     context.read<AppSettingsCubit>().setItemsLayout(layout);
-  //   }
-  // }
 
   void _onLicensesTap(BuildContext context) {
     showLicensePage(
@@ -80,7 +60,7 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(key: ValueKey('settings-back')),
-        title: Text(S.of(context).settings_title),
+        title: Text(S.of(context)!.settings_title),
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 8),
@@ -88,34 +68,28 @@ class SettingsScreen extends StatelessWidget {
           RadioListTile<ShoppingListsMode>(
             value: ShoppingListsMode.multiple,
             groupValue: appSettings.shoppingListsMode,
-            title: Text(S.of(context).settings_multiple_lists),
-            subtitle: Text(S.of(context).settings_multiple_lists_subtitle),
-            onChanged: (mode) => _setShoppingListsMode(context, mode),
+            title: Text(S.of(context)!.settings_multiple_lists),
+            subtitle: Text(S.of(context)!.settings_multiple_lists_subtitle),
+            onChanged: (mode) => _setShoppingListsMode(context, mode!),
           ),
           RadioListTile<ShoppingListsMode>(
             value: ShoppingListsMode.single,
             groupValue: appSettings.shoppingListsMode,
-            title: Text(S.of(context).settings_single_list),
-            subtitle: Text(S.of(context).settings_single_list_subtitle),
-            onChanged: (mode) => _setShoppingListsMode(context, mode),
+            title: Text(S.of(context)!.settings_single_list),
+            subtitle: Text(S.of(context)!.settings_single_list_subtitle),
+            onChanged: (mode) => _setShoppingListsMode(context, mode!),
           ),
           const Divider(),
           ListTile(
             key: const ValueKey('dark-theme'),
             leading: const Icon(Icons.nights_stay),
-            title: Text(S.of(context).settings_dark_theme),
+            title: Text(S.of(context)!.settings_dark_theme),
             subtitle: Text(appSettings.darkTheme.localize(context)),
             onTap: () => _onDarkThemeTap(context),
           ),
-          // ListTile(
-          //   leading: const Icon(Icons.view_stream),
-          //   title: Text(S.of(context).settings_items_layout),
-          //   subtitle: Text(appSettings.itemsLayout.localize(context)),
-          //   onTap: () => _onItemsLayoutTap(context),
-          // ),
           SwitchListTile(
             secondary: const Icon(Icons.low_priority),
-            title: Text(S.of(context).settings_move_done),
+            title: Text(S.of(context)!.settings_move_done),
             value: appSettings.moveDoneToEnd,
             onChanged: (moveDone) =>
                 context.read<AppSettingsCubit>().setMoveDoneToEnd(moveDone),
@@ -124,17 +98,17 @@ class SettingsScreen extends StatelessWidget {
           if (!Platform.isIOS)
             ListTile(
               leading: const Icon(Icons.attach_money),
-              title: Text(S.of(context).settings_support_author),
+              title: Text(S.of(context)!.settings_support_author),
               onTap: () => launch(_supportAuthorUrl),
             ),
           ListTile(
             leading: const SizedBox(),
-            title: Text(S.of(context).settings_project_website),
+            title: Text(S.of(context)!.settings_project_website),
             onTap: () => launch(_projectPage),
           ),
           ListTile(
             leading: const SizedBox(),
-            title: Text(S.of(context).settings_licenses),
+            title: Text(S.of(context)!.settings_licenses),
             onTap: () => _onLicensesTap(context),
           ),
         ],

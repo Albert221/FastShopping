@@ -8,8 +8,3 @@ enum DarkTheme {
   system,
   disabled,
 }
-
-enum ItemsLayout {
-  comfortable,
-  dense,
-}

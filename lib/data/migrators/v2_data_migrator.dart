@@ -58,7 +58,7 @@ class V2DataMigrator {
     final sharedPrefs = await SharedPreferences.getInstance();
     if (!sharedPrefs.containsKey(_v2DataKey)) return;
 
-    final data = sharedPrefs.getString(_v2DataKey);
+    final data = sharedPrefs.getString(_v2DataKey)!;
     final json = jsonDecode(data) as Map<String, dynamic>;
 
     await _map(json, repository);
@@ -70,7 +70,7 @@ class V2DataMigrator {
     Map<String, dynamic> json,
     ShoppingListRepository repository,
   ) async {
-    final selectedListId = json['currentListId'] as String;
+    final selectedListId = json['currentListId'] as String?;
     if (selectedListId != null) {
       await repository.saveSelectedListId(selectedListId);
     }

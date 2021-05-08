@@ -64,6 +64,41 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  build_config:
+    dependency: transitive
+    description:
+      name: build_config
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
+  build_daemon:
+    dependency: transitive
+    description:
+      name: build_daemon
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
+  build_resolvers:
+    dependency: transitive
+    description:
+      name: build_resolvers
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
+  build_runner:
+    dependency: "direct dev"
+    description:
+      name: build_runner
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.2"
+  build_runner_core:
+    dependency: transitive
+    description:
+      name: build_runner_core
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "7.0.0"
   built_collection:
     dependency: transitive
     description:
@@ -92,6 +127,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  checked_yaml:
+    dependency: transitive
+    description:
+      name: checked_yaml
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   cli_util:
     dependency: transitive
     description:
@@ -243,6 +285,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.14.1"
+  frontend_server_client:
+    dependency: transitive
+    description:
+      name: frontend_server_client
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   fuchsia_remote_debug_protocol:
     dependency: transitive
     description: flutter
@@ -255,6 +304,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  graphs:
+    dependency: transitive
+    description:
+      name: graphs
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -481,6 +537,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
+  pubspec_parse:
+    dependency: transitive
+    description:
+      name: pubspec_parse
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -598,6 +661,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  stream_transform:
+    dependency: transitive
+    description:
+      name: stream_transform
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   string_scanner:
     dependency: transitive
     description:
@@ -647,6 +717,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
+  timing:
+    dependency: transitive
+    description:
+      name: timing
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   typed_data:
     dependency: transitive
     description:
@@ -775,4 +852,4 @@ packages:
     version: "3.1.0"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-  flutter: ">=1.24.0-7.0"
+  flutter: ">=2.2.0-0"

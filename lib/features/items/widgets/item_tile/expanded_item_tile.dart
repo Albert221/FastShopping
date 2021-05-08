@@ -8,21 +8,21 @@ import 'expanded/done_bar.dart';
 
 class ExpandedItemTile extends HookWidget {
   const ExpandedItemTile({
-    Key key,
-    @required this.item,
+    Key? key,
+    required this.item,
     this.onDoneChanged,
     this.onTitleChanged,
     this.onRemoved,
-    @required this.expanded,
-    @required this.onExpandedChanged,
-    @required this.editing,
-    @required this.onEditingChanged,
+    required this.expanded,
+    required this.onExpandedChanged,
+    required this.editing,
+    required this.onEditingChanged,
   }) : super(key: key);
 
   final Item item;
-  final ValueChanged<bool> onDoneChanged;
-  final ValueChanged<String> onTitleChanged;
-  final VoidCallback onRemoved;
+  final ValueChanged<bool>? onDoneChanged;
+  final ValueChanged<String>? onTitleChanged;
+  final VoidCallback? onRemoved;
   final bool expanded;
   final ValueChanged<bool> onExpandedChanged;
   final bool editing;
@@ -38,7 +38,7 @@ class ExpandedItemTile extends HookWidget {
         decoration: BoxDecoration(
           border: Border.symmetric(
             horizontal: BorderSide(
-              color: DefaultTextStyle.of(context).style.color.withOpacity(.12),
+              color: DefaultTextStyle.of(context).style.color!.withOpacity(.12),
             ),
           ),
         ),

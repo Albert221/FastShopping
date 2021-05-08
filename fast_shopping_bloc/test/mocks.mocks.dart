@@ -113,17 +113,6 @@ class MockAppSettingsRepository extends _i1.Mock
           returnValue: Future<void>.value(null),
           returnValueForMissingStub: Future.value()) as _i4.Future<void>);
   @override
-  _i4.Future<_i5.ItemsLayout?> getItemsLayout() =>
-      (super.noSuchMethod(Invocation.method(#getItemsLayout, []),
-              returnValue:
-                  Future<_i5.ItemsLayout?>.value(_i5.ItemsLayout?.comfortable))
-          as _i4.Future<_i5.ItemsLayout?>);
-  @override
-  _i4.Future<void> saveItemsLayout(_i5.ItemsLayout? itemsLayout) =>
-      (super.noSuchMethod(Invocation.method(#saveItemsLayout, [itemsLayout]),
-          returnValue: Future<void>.value(null),
-          returnValueForMissingStub: Future.value()) as _i4.Future<void>);
-  @override
   _i4.Future<bool?> getMoveDoneToEnd() =>
       (super.noSuchMethod(Invocation.method(#getMoveDoneToEnd, []),
           returnValue: Future<bool?>.value(false)) as _i4.Future<bool?>);

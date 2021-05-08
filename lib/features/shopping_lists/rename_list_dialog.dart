@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
 
 class RenameListDialog extends StatelessWidget {
-  const RenameListDialog({Key key, this.initialName = ''}) : super(key: key);
+  const RenameListDialog({Key? key, this.initialName = ''}) : super(key: key);
 
   final String initialName;
 
@@ -11,10 +11,10 @@ class RenameListDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return PromptDialog(
       initialValue: initialName,
-      title: S.of(context).rename_shopping_list_dialog_title,
-      inputHint: S.of(context).rename_shopping_list_dialog_name_hint,
-      submitText: S.of(context).rename_shopping_list_dialog_rename,
-      cancelText: S.of(context).rename_shopping_list_dialog_cancel,
+      title: S.of(context)!.rename_shopping_list_dialog_title,
+      inputHint: S.of(context)!.rename_shopping_list_dialog_name_hint,
+      submitText: S.of(context)!.rename_shopping_list_dialog_rename,
+      cancelText: S.of(context)!.rename_shopping_list_dialog_cancel,
     );
   }
 }

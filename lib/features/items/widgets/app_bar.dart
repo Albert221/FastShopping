@@ -11,17 +11,17 @@ enum _MenuItem { archiveList, undoneAll, removeAllDone, settings }
 
 class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ItemsAppBar({
-    Key key,
-    @required this.shoppingListsMode,
+    Key? key,
+    required this.shoppingListsMode,
     this.onArchiveList,
     this.onUndoneAll,
     this.onRemoveAllDone,
   }) : super(key: key);
 
   final ShoppingListsMode shoppingListsMode;
-  final _ContextCallback onArchiveList;
-  final _ContextCallback onUndoneAll;
-  final _ContextCallback onRemoveAllDone;
+  final _ContextCallback? onArchiveList;
+  final _ContextCallback? onUndoneAll;
+  final _ContextCallback? onRemoveAllDone;
 
   void _onMenuItemSelected(BuildContext context, _MenuItem item) {
     switch (item) {
@@ -58,20 +58,20 @@ class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
                 value: _MenuItem.archiveList,
                 enabled: onArchiveList != null,
                 icon: const Icon(Icons.archive),
-                label: Text(S.of(context).menu_archive_list),
+                label: Text(S.of(context)!.menu_archive_list),
               )
             else ...[
               _PopupMenuItem(
                 value: _MenuItem.undoneAll,
                 enabled: onUndoneAll != null,
                 icon: const Icon(Icons.remove_done),
-                label: Text(S.of(context).menu_undone_all_done),
+                label: Text(S.of(context)!.menu_undone_all_done),
               ),
               _PopupMenuItem(
                 value: _MenuItem.removeAllDone,
                 enabled: onRemoveAllDone != null,
                 icon: const Icon(Icons.delete),
-                label: Text(S.of(context).menu_remove_all_done),
+                label: Text(S.of(context)!.menu_remove_all_done),
               ),
             ],
             const PopupMenuDivider(),
@@ -79,7 +79,7 @@ class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
               key: const ValueKey('settings'),
               value: _MenuItem.settings,
               icon: const Icon(Icons.settings),
-              label: Text(S.of(context).settings_title),
+              label: Text(S.of(context)!.settings_title),
             ),
           ],
         ),
@@ -93,11 +93,11 @@ class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 class _PopupMenuItem<T> extends PopupMenuItem<T> {
   _PopupMenuItem({
-    Key key,
-    T value,
+    Key? key,
+    required T value,
     bool enabled = true,
-    Widget icon,
-    @required Widget label,
+    Widget? icon,
+    required Widget label,
   }) : super(
           key: key,
           value: value,

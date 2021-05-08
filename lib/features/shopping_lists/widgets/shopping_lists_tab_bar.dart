@@ -4,7 +4,7 @@ import 'package:md2_tab_indicator/md2_tab_indicator.dart';
 
 class ShoppingListsTabBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const ShoppingListsTabBar({Key key, @required this.controller})
+  const ShoppingListsTabBar({Key? key, required this.controller})
       : super(key: key);
 
   // _kTextAndIconTabHeight + indicatorHeight
@@ -19,17 +19,17 @@ class ShoppingListsTabBar extends StatelessWidget
       tabs: [
         Tab(
           icon: const Icon(Icons.local_grocery_store),
-          text: S.of(context).shopping_lists_tab_current,
+          text: S.of(context)!.shopping_lists_tab_current,
         ),
         Tab(
           icon: const Icon(Icons.archive),
-          text: S.of(context).shopping_lists_tab_archived,
+          text: S.of(context)!.shopping_lists_tab_archived,
         ),
       ],
       labelStyle: const TextStyle(fontWeight: FontWeight.w700),
       indicatorSize: TabBarIndicatorSize.label,
       indicator: MD2Indicator(
-        indicatorColor: DefaultTextStyle.of(context).style.color,
+        indicatorColor: DefaultTextStyle.of(context).style.color!,
         indicatorHeight: 3,
         indicatorSize: MD2IndicatorSize.normal,
       ),

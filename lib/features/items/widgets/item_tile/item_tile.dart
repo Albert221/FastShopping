@@ -7,21 +7,21 @@ import 'expanded_item_tile.dart';
 
 class ItemTile extends StatelessWidget {
   const ItemTile({
-    Key key,
-    @required this.item,
+    Key? key,
+    required this.item,
     this.onDoneChanged,
     this.onTitleChanged,
     this.onRemoved,
     this.expanded = false,
-    @required this.onExpandedChanged,
+    required this.onExpandedChanged,
     this.editing = false,
-    @required this.onEditingChanged,
+    required this.onEditingChanged,
   }) : super(key: key);
 
   final Item item;
-  final ValueChanged<bool> onDoneChanged;
-  final ValueChanged<String> onTitleChanged;
-  final VoidCallback onRemoved;
+  final ValueChanged<bool>? onDoneChanged;
+  final ValueChanged<String>? onTitleChanged;
+  final VoidCallback? onRemoved;
   final bool expanded;
   final ValueChanged<bool> onExpandedChanged;
   final bool editing;
@@ -29,10 +29,10 @@ class ItemTile extends StatelessWidget {
 
   Future<bool> _onPop(BuildContext context) {
     if (editing) {
-      onEditingChanged?.call(false);
+      onEditingChanged.call(false);
       return SynchronousFuture(false);
     } else if (expanded) {
-      onExpandedChanged?.call(false);
+      onExpandedChanged.call(false);
       return SynchronousFuture(false);
     }
 

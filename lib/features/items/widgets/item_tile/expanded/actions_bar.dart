@@ -4,18 +4,18 @@ import 'package:fast_shopping/l10n/l10n.dart';
 
 class ActionsBar extends StatelessWidget {
   const ActionsBar({
-    Key key,
-    @required this.titleController,
-    @required this.editing,
+    Key? key,
+    required this.titleController,
+    required this.editing,
     this.onTitleChanged,
     this.onRemoved,
-    @required this.onEditingChanged,
+    required this.onEditingChanged,
   }) : super(key: key);
 
   final TextEditingController titleController;
   final bool editing;
-  final ValueChanged<String> onTitleChanged;
-  final VoidCallback onRemoved;
+  final ValueChanged<String>? onTitleChanged;
+  final VoidCallback? onRemoved;
   final ValueChanged<bool> onEditingChanged;
 
   @override
@@ -27,7 +27,7 @@ class ActionsBar extends StatelessWidget {
         children: [
           TextButton(
             onPressed: onRemoved,
-            child: Text(S.of(context).list_item_remove),
+            child: Text(S.of(context)!.list_item_remove),
           ).danger,
           const Spacer(),
           if (editing)
@@ -40,7 +40,7 @@ class ActionsBar extends StatelessWidget {
             TextButton.icon(
               onPressed: () => onEditingChanged(true),
               icon: const Icon(Icons.edit, size: 16),
-              label: Text(S.of(context).list_item_edit),
+              label: Text(S.of(context)!.list_item_edit),
             ).primary,
         ],
       ),
@@ -50,14 +50,14 @@ class ActionsBar extends StatelessWidget {
 
 class _EditActions extends StatelessWidget {
   const _EditActions({
-    Key key,
-    @required this.titleController,
+    Key? key,
+    required this.titleController,
     this.onTitleChanged,
-    @required this.onEditingChanged,
+    required this.onEditingChanged,
   }) : super(key: key);
 
   final TextEditingController titleController;
-  final ValueChanged<String> onTitleChanged;
+  final ValueChanged<String>? onTitleChanged;
   final ValueChanged<bool> onEditingChanged;
 
   void _onCancel(BuildContext context) {
@@ -75,12 +75,12 @@ class _EditActions extends StatelessWidget {
       children: [
         TextButton(
           onPressed: () => _onCancel(context),
-          child: Text(S.of(context).list_item_editing_cancel),
+          child: Text(S.of(context)!.list_item_editing_cancel),
         ),
         const SizedBox(width: 16),
         TextButton(
           onPressed: () => _onSave(context),
-          child: Text(S.of(context).list_item_editing_save),
+          child: Text(S.of(context)!.list_item_editing_save),
         ).primary,
       ],
     );

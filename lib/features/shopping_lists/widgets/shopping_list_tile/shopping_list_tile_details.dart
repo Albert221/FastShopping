@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fast_shopping/l10n/l10n.dart';
 
 class ShoppingListTileDetails extends StatelessWidget {
-  const ShoppingListTileDetails({Key key, @required this.shoppingList})
+  const ShoppingListTileDetails({Key? key, required this.shoppingList})
       : super(key: key);
 
   final ShoppingList shoppingList;
@@ -14,26 +14,26 @@ class ShoppingListTileDetails extends StatelessWidget {
       TextSpan(
         children: [
           TextSpan(
-            text: S.of(context).shopping_lists_item_elements(
+            text: S.of(context)!.shopping_lists_item_elements(
                   shoppingList.availableItems.length,
                 ),
           ),
           const TextSpan(text: ' • '),
           if (shoppingList.archivedAt != null)
             TextSpan(
-              text: S.of(context).shopping_lists_item_archived_at(
-                    shoppingList.archivedAt.timeAgo(context),
+              text: S.of(context)!.shopping_lists_item_archived_at(
+                    shoppingList.archivedAt!.timeAgo(context),
                   ),
             )
           else
             TextSpan(
-              text: S.of(context).shopping_lists_item_created_at(
+              text: S.of(context)!.shopping_lists_item_created_at(
                     shoppingList.createdAt.timeAgo(context),
                   ),
             ),
         ],
         style: TextStyle(
-          color: Theme.of(context).textTheme.caption.color,
+          color: Theme.of(context).textTheme.caption!.color,
           fontSize: 15,
         ),
       ),

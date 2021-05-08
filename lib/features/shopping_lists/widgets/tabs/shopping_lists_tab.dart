@@ -5,9 +5,9 @@ import 'package:implicitly_animated_reorderable_list/transitions.dart';
 
 class ShoppingListsTab extends StatelessWidget {
   const ShoppingListsTab({
-    Key key,
-    @required this.shoppingLists,
-    @required this.itemBuilder,
+    Key? key,
+    required this.shoppingLists,
+    required this.itemBuilder,
   }) : super(key: key);
 
   final List<ShoppingList> shoppingLists;

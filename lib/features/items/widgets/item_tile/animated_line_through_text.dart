@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class AnimatedLineThroughText extends StatelessWidget {
   const AnimatedLineThroughText(
     this.data, {
-    Key key,
-    @required this.stroked,
-    @required this.duration,
+    Key? key,
+    required this.stroked,
+    required this.duration,
     this.curve = Curves.linear,
     this.style,
   }) : super(key: key);
@@ -14,7 +14,7 @@ class AnimatedLineThroughText extends StatelessWidget {
   final bool stroked;
   final Duration duration;
   final Curve curve;
-  final TextStyle style;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ import '../shopping_list_tile/shopping_list_tile.dart';
 import 'shopping_lists_tab.dart';
 
 class ArchivedTab extends StatelessWidget {
-  const ArchivedTab({Key key, @required this.shoppingListsCubit})
+  const ArchivedTab({Key? key, required this.shoppingListsCubit})
       : super(key: key);
 
   final ShoppingListsCubit shoppingListsCubit;
@@ -17,11 +17,11 @@ class ArchivedTab extends StatelessWidget {
   void _onUnarchive(BuildContext context, ShoppingList list) {
     shoppingListsCubit.unarchive(list.id);
 
-    Scaffold.of(context)
+    ScaffoldMessenger.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(SnackBar(
         behavior: SnackBarBehavior.floating,
-        content: Text(S.of(context).shopping_list_unarchived_snackbar_message),
+        content: Text(S.of(context)!.shopping_list_unarchived_snackbar_message),
       ));
   }
 

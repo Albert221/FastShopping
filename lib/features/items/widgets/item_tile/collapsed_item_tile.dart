@@ -6,20 +6,20 @@ import 'animated_line_through_text.dart';
 
 class CollapsedItemTile extends StatelessWidget {
   const CollapsedItemTile({
-    Key key,
-    @required this.item,
+    Key? key,
+    required this.item,
     this.onDoneChanged,
-    @required this.onExpandedChanged,
+    required this.onExpandedChanged,
   }) : super(key: key);
 
   final Item item;
-  final ValueChanged<bool> onDoneChanged;
-  final ValueChanged<bool> onExpandedChanged;
+  final ValueChanged<bool>? onDoneChanged;
+  final ValueChanged<bool>? onExpandedChanged;
 
   @override
   Widget build(BuildContext context) {
     final emptyTitleStyle = TextStyle(
-      color: DefaultTextStyle.of(context).style.color.withOpacity(.54),
+      color: DefaultTextStyle.of(context).style.color!.withOpacity(.54),
       fontStyle: FontStyle.italic,
     );
 
@@ -34,7 +34,7 @@ class CollapsedItemTile extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(
                 color:
-                    DefaultTextStyle.of(context).style.color.withOpacity(.12),
+                    DefaultTextStyle.of(context).style.color!.withOpacity(.12),
               ),
               borderRadius: BorderRadius.circular(4),
             ),
@@ -45,7 +45,9 @@ class CollapsedItemTile extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 1),
                   child: Checkbox(
                     value: item.done,
-                    onChanged: onDoneChanged,
+                    onChanged: onDoneChanged != null
+                        ? (value) => onDoneChanged!(value!)
+                        : null,
                   ),
                 ),
                 Expanded(
@@ -54,7 +56,7 @@ class CollapsedItemTile extends StatelessWidget {
                     child: AnimatedLineThroughText(
                       item.title.isNotEmpty
                           ? item.title
-                          : S.of(context).list_item_no_name,
+                          : S.of(context)!.list_item_no_name,
                       stroked: item.done,
                       duration: const Duration(milliseconds: 300),
                       curve: standardEasing,

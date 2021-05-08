@@ -7,9 +7,6 @@ abstract class AppSettingsRepository {
   Future<DarkTheme?> getDarkTheme();
   Future<void> saveDarkTheme(DarkTheme darkTheme);
 
-  Future<ItemsLayout?> getItemsLayout();
-  Future<void> saveItemsLayout(ItemsLayout itemsLayout);
-
   Future<bool?> getMoveDoneToEnd();
   // ignore: avoid_positional_boolean_parameters
   Future<void> saveMoveDoneToEnd(bool moveDoneToEnd);
