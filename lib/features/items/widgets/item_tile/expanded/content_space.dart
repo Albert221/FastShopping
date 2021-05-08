@@ -44,6 +44,7 @@ class ContentSpace extends HookWidget {
       //     editing item -> not editing item with new title
       // TODO: Add debouncing (ideally conditional) to the SelectedShoppingListCubit
       //       after migrating to bloc 7.0.0 (transformTransitions in cubits).
+      // Reply: If I only could recall what exactly I wanted to debounce then...
       if (debounce.value?.isActive ?? false) debounce.value!.cancel();
       debounce.value = Timer(const Duration(milliseconds: 50), () {
         titleController.value = TextEditingValue(
