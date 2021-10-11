@@ -176,8 +176,8 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
   void shareItems(){
     final list = _selectedList;
     const shareSubject = 'Here is our shopping list: \n\n';
-    final doneRune = String.fromCharCodes(Runes('\u2612  '));
-    final undoneRune = String.fromCharCodes(Runes('\u2610  '));
+    final doneRune = String.fromCharCodes(Runes('\u22A0  '));
+    final undoneRune = String.fromCharCodes(Runes('\u25A1  '));
 
     try {
       final shareItemsString = shareSubject + [for (var item in list.items) item.doneAt != null  ? doneRune + item.title : undoneRune + item.title].join(',\n');
