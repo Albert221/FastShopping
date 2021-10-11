@@ -89,6 +89,10 @@ class ItemsScreen extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         appBar: ItemsAppBar(
           shoppingListsMode: shoppingListsMode,
+          onShareItems: listSelected
+              ? (context) =>
+              context.read<SelectedShoppingListCubit>().shareItems()
+              : null,
           onArchiveList: listSelected
               ? (context) => _onArchiveTap(context, selectedShoppingList!)
               : null,

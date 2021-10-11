@@ -208,6 +208,10 @@
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
+    "menu_share_list": "Partager la liste",
+    "@menu_share_list": {
+        "description": "Share list via 3rd party apps."
+    },
     "remove_all_done_dialog_title": "Suppression de tous les articles validés",
     "@remove_all_done_dialog_title": {},
     "remove_all_done_dialog_body": "{count, plural, =1 {Êtes-vous sûr de vouloir supprimer 1 article ? Cette opération ne peut pas être annulée.} other {Êtes-vous sûr de vouloir supprimer ces {count} articles ? Cette opération ne peut pas être annulée.}}",

@@ -208,6 +208,10 @@
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
+    "menu_share_list": "Teile die Liste",
+    "@menu_share_list": {
+        "description": "Share list via 3rd party apps."
+    },
     "remove_all_done_dialog_title": "Entferne alle erledigte",
     "@remove_all_done_dialog_title": {},
     "remove_all_done_dialog_body": "{count, plural, =1 {Bist du sicher, dass du 1 Element entfernen möchtest? Dieser Vorgang kann nicht rückgängig gemacht werden.} other {Bist du sicher, dass du alle {count} Elemente entfernen möchtest? Dieser Vorgang kann nicht rückgängig gemacht werden.}}",

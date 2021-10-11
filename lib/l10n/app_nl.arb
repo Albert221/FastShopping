@@ -208,6 +208,10 @@
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
+    "menu_share_list": "Deel de lijst",
+    "@menu_share_list": {
+        "description": "Share list via 3rd party apps."
+    },
     "remove_all_done_dialog_title": "Verwijder alle voltooide artikelen",
     "@remove_all_done_dialog_title": {},
     "remove_all_done_dialog_body": "{count, plural, =1 {Weet u zeker dat u 1 artikel wilt verwijderen? Dit kan niet ongedaan gemaakt worden.} other {Weet u zeker dat u {count} artikelen wilt verwijderen? Dit kan niet ongedaan gemaakt worden.}}",

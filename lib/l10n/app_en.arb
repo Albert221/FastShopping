@@ -208,6 +208,10 @@
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
+    "menu_share_list": "Share list",
+    "@menu_share_list": {
+        "description": "Share list via 3rd party apps."
+    },
     "remove_all_done_dialog_title": "Removing all done",
     "@remove_all_done_dialog_title": {},
     "remove_all_done_dialog_body": "{count, plural, =1 {Are you sure you want to remove 1 item? This operation cannot be undone.} other {Are you sure you want to remove all {count} items? This operation cannot be undone.}}",
