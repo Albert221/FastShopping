@@ -62,7 +62,7 @@ class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
             _PopupMenuItem(
               value: _MenuItem.shareItems,
               enabled: onArchiveList != null,
-              icon: const Icon(Icons.ios_share),
+              icon: const Icon(Icons.share),
               label: Text(S.of(context)!.menu_share_list),
             ),
             const PopupMenuDivider(),
