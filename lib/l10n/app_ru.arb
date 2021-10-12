@@ -208,6 +208,10 @@
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
+    "menu_share_list": "Поделитесь списком",
+    "@menu_share_list": {
+        "description": "Share list via 3rd party apps."
+    },
     "remove_all_done_dialog_title": "Удалить все выполненные",
     "@remove_all_done_dialog_title": {},
     "remove_all_done_dialog_body": "{count, plural, =1 {Вы уверены, что хотите удалить 1 элемент? Эту операцию нельзя отменить.} few {Вы уверены, что хотите удалить все {count} элемента? Эту операцию нельзя отменить.} many {Вы уверены, что хотите удалить все {count} элементов? Эту операцию нельзя отменить.} other {Вы уверены, что хотите удалить все {count} элементов? Эту операцию нельзя отменить.}}",

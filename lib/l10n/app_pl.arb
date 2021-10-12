@@ -208,6 +208,10 @@
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
+    "menu_share_list": "Udostępnij listę",
+    "@menu_share_list": {
+        "description": "Share list via 3rd party apps."
+    },
     "remove_all_done_dialog_title": "Usuwanie wszystkich oznaczonych",
     "@remove_all_done_dialog_title": {},
     "remove_all_done_dialog_body": "{count, plural, =1 {Czy na pewno chcesz usunąć 1 element? Tej operacji nie można cofnąć.} few {Czy na pewno chcesz usunąć wszystkie {count} elementy? Tej operacji nie można cofnąć.} many {Czy na pewno chcesz usunąć wszystkie {count} elementów? Tej operacji nie można cofnąć.} other {Czy na pewno chcesz usunąć wszystkie {count} elementu? Tej operacji nie można cofnąć.}}",

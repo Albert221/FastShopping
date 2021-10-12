@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:clock/clock.dart';
 import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:uuid/uuid.dart';
 
 part 'selected_shopping_list_cubit.freezed.dart';
@@ -170,6 +171,24 @@ class SelectedShoppingListCubit extends Cubit<SelectedShoppingListState> {
     final list = _selectedList;
 
     _listsCubit.update(_updateItem(list, itemId, itemUpdate));
+  }
+
+  void shareItems(){
+    final list = _selectedList;
+    final shareSubjectString = list.name != '' ? '${list.name}:\n\n' : 'Shopping list:\n\n';
+    final doneRune = String.fromCharCodes(Runes('\u22A0\t'));
+    final undoneRune = String.fromCharCodes(Runes('\u25A1\t'));
+
+    try {
+      final shareItemsString = [for (var item in list.availableItems) item.doneAt != null  ? doneRune + item.title : undoneRune + item.title].join('\n');
+
+      Share.share(shareSubjectString + shareItemsString);
+    }
+    catch (e) {
+      throw Exception(
+        'You must add at least one item to perform this action.',
+      );
+    }
   }
 
   /// Returns a `list` with an item with id `itemId` updated with `itemUpdate`.

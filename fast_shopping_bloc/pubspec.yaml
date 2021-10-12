@@ -11,6 +11,7 @@ dependencies:
   collection: ^1.15.0
   freezed_annotation: ^0.14.1
   json_annotation: ^4.0.1
+  share_plus: ^3.0.2
   uuid: ^3.0.4
 
 dev_dependencies:

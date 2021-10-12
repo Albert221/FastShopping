@@ -208,6 +208,10 @@
     "@menu_settings": {
         "description": "Opens the _Settings_ screen."
     },
+    "menu_share_list": "Condivi la lista",
+    "@menu_share_list": {
+        "description": "Share list via 3rd party apps."
+    },
     "remove_all_done_dialog_title": "Rimozione di tutti i contrassegnati",
     "@remove_all_done_dialog_title": {},
     "remove_all_done_dialog_body": "{count, plural, =1 {Sei sicuro di voler rimuovere 1 oggetto? Questa operazione non può essere annullata.} other {Sei sicuro di voler rimuovere tutti i {count} elementi? Questa operazione non può essere annullata.}}",

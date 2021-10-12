@@ -7,24 +7,30 @@ import 'app_logo.dart';
 
 typedef _ContextCallback = void Function(BuildContext);
 
-enum _MenuItem { archiveList, undoneAll, removeAllDone, settings }
+enum _MenuItem { shareItems, archiveList, undoneAll, removeAllDone, settings }
 
 class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
+
   const ItemsAppBar({
     Key? key,
     required this.shoppingListsMode,
+    this.onShareItems,
     this.onArchiveList,
     this.onUndoneAll,
     this.onRemoveAllDone,
   }) : super(key: key);
 
   final ShoppingListsMode shoppingListsMode;
+  final _ContextCallback? onShareItems;
   final _ContextCallback? onArchiveList;
   final _ContextCallback? onUndoneAll;
   final _ContextCallback? onRemoveAllDone;
 
   void _onMenuItemSelected(BuildContext context, _MenuItem item) {
     switch (item) {
+      case _MenuItem.shareItems:
+        onShareItems?.call(context);
+        break;
       case _MenuItem.archiveList:
         onArchiveList?.call(context);
         break;
@@ -53,6 +59,13 @@ class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
           key: const ValueKey('menu'),
           onSelected: (item) => _onMenuItemSelected(context, item),
           itemBuilder: (context) => [
+            _PopupMenuItem(
+              value: _MenuItem.shareItems,
+              enabled: onArchiveList != null,
+              icon: const Icon(Icons.share),
+              label: Text(S.of(context)!.menu_share_list),
+            ),
+            const PopupMenuDivider(),
             if (shoppingListsMode == ShoppingListsMode.multiple)
               _PopupMenuItem(
                 value: _MenuItem.archiveList,
