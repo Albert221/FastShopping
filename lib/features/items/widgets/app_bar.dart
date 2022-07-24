@@ -53,28 +53,26 @@ class ItemsAppBar extends StatelessWidget implements PreferredSizeWidget {
           key: const ValueKey('menu'),
           onSelected: (item) => _onMenuItemSelected(context, item),
           itemBuilder: (context) => [
-            if (shoppingListsMode == ShoppingListsMode.multiple)
-              [
-                _PopupMenuItem(
-                  value: _MenuItem.archiveList,
-                  enabled: onArchiveList != null,
-                  icon: const Icon(Icons.archive),
-                  label: Text(S.of(context)!.menu_archive_list),
-                ),
-                _PopupMenuItem(
-                  value: _MenuItem.undoneAll,
-                  enabled: onUndoneAll != null,
-                  icon: const Icon(Icons.remove_done),
-                  label: Text(S.of(context)!.menu_undone_all_done),
-                ),
-                _PopupMenuItem(
-                  value: _MenuItem.removeAllDone,
-                  enabled: onRemoveAllDone != null,
-                  icon: const Icon(Icons.delete),
-                  label: Text(S.of(context)!.menu_remove_all_done),
-                )
-              ]
-            else ...[
+            if (shoppingListsMode == ShoppingListsMode.multiple) ...[
+              _PopupMenuItem(
+                value: _MenuItem.archiveList,
+                enabled: onArchiveList != null,
+                icon: const Icon(Icons.archive),
+                label: Text(S.of(context)!.menu_archive_list),
+              ),
+              _PopupMenuItem(
+                value: _MenuItem.undoneAll,
+                enabled: onUndoneAll != null,
+                icon: const Icon(Icons.remove_done),
+                label: Text(S.of(context)!.menu_undone_all_done),
+              ),
+              _PopupMenuItem(
+                value: _MenuItem.removeAllDone,
+                enabled: onRemoveAllDone != null,
+                icon: const Icon(Icons.delete),
+                label: Text(S.of(context)!.menu_remove_all_done),
+              )
+            ] else ...[
               _PopupMenuItem(
                 value: _MenuItem.undoneAll,
                 enabled: onUndoneAll != null,
