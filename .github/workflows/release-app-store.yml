@@ -49,7 +49,7 @@ jobs:
 
       - name: Download bundle dependencies
         run: |
-          gem install bundler:2.0.2
+          gem install bundler:2.3.21
           bundle config path vendor/bundle
           bundle install
 
