@@ -34,13 +34,14 @@ platform :ios do
 		<string>#{ENV["sigh_#{ENV["APPLE_APP_IDENTIFIER"]}_appstore_profile-name"]}</string>
 	</dict>
 </dict>
-</plist>EOF
+</plist>
+        EOF
         File.write("build/ExportOptions.plist", export_options)
 
         sh('flutter build ipa --release --export-options-plist=build/ExportOptions.plist')
 
         upload_to_app_store(
-            ipa: "build/ios/iphoneos/Runner.app"
+            ipa: "build/ios/iphoneos/Runner.app",
 
             force: true,
             overwrite_screenshots: true,
