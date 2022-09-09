@@ -1,0 +1,1 @@
+Aplicație simplă de liste de cumpărături, dezvoltată cu gândul la simplitate.

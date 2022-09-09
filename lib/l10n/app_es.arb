@@ -47,7 +47,7 @@
     "@empty_list_add_some_items_message": {},
     "shopping_lists_title": "Listas de la compra",
     "@shopping_lists_title": {},
-    "shopping_lists_tab_archived": "Archivado",
+    "shopping_lists_tab_archived": "Archivadas",
     "@shopping_lists_tab_archived": {},
     "shopping_lists_add_new": "NUEVA LISTA",
     "@shopping_lists_add_new": {},
@@ -192,11 +192,11 @@
     },
     "settings_licenses": "Licencias",
     "@settings_licenses": {},
-    "menu_undone_all_done": "Desmarcar todos los artículos",
+    "menu_undone_all_done": "Desmarcar todo",
     "@menu_undone_all_done": {
         "description": "Shown only when the user is in the _Single shopping list_ mode."
     },
-    "menu_remove_all_done": "Eliminar artículos marcados",
+    "menu_remove_all_done": "Eliminar marcados",
     "@menu_remove_all_done": {
         "description": "Shown only when the user is in the _Single shopping list_ mode."
     },
