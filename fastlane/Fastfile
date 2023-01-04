@@ -14,24 +14,35 @@ platform :ios do
             git_url: ENV["MATCH_GIT_URL"]
         )
 
-        update_project_team(
-            path: "ios/Runner.xcodeproj",
-            teamid: ENV["APPLE_TEAM_ID"]
-        )
-
         update_project_provisioning(
             xcodeproj: "ios/Runner.xcodeproj",
             profile: ENV["sigh_#{ENV["APPLE_APP_IDENTIFIER"]}_appstore_profile-path"],
             build_configuration: "Release",
-            code_signing_identity: "iPhone Distribution"
+            code_signing_identity: "Apple Distribution"
         )
 
-        build_app(
-            workspace: "ios/Runner.xcworkspace",
-            scheme: "Runner"
-        )
+        export_options = <<-EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>method</key>
+	<string>app-store</string>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>#{ENV["APPLE_APP_IDENTIFIER"]}</key>
+		<string>#{ENV["sigh_#{ENV["APPLE_APP_IDENTIFIER"]}_appstore_profile-name"]}</string>
+	</dict>
+</dict>
+</plist>
+        EOF
+        File.write("build/ExportOptions.plist", export_options)
+
+        sh('flutter build ipa --release --export-options-plist=build/ExportOptions.plist')
 
         upload_to_app_store(
+            ipa: "build/ios/iphoneos/Runner.app",
+
             force: true,
             overwrite_screenshots: true,
             submit_for_review: true,

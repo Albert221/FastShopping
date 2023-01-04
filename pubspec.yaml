@@ -6,14 +6,14 @@ publish_to: 'none'
 version: 3.0.4+23
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
-  flutter: '>=2.2.0-0 < 3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
+  flutter: '>=3.0.5 <4.0.0'
 
 dependencies:
   animations: ^2.0.0
   clock: ^1.1.0
   crashlytics:
-    path: crashlytics/foss # CD changes me 🤖
+    path: crashlytics/full # CD changes me 🤖
   fast_shopping_bloc:
     path: fast_shopping_bloc
   flutter:

@@ -1,5 +1,6 @@
 import 'package:fast_shopping/data/migrators/v2_data_migrator.dart';
 import 'package:fast_shopping_bloc/fast_shopping_bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,12 +9,18 @@ import '../../mocks.dart';
 
 void main() {
   group('V2DataMigrator', () {
+    setUpAll(() {
+      TestWidgetsFlutterBinding.ensureInitialized();
+    });
+
     late MockShoppingListRepository repository;
     setUp(() {
       repository = MockShoppingListRepository();
     });
 
     test('does nothing when there is no v2 data', () async {
+      SharedPreferences.setMockInitialValues({});
+
       await V2DataMigrator.migrate(repository);
 
       verifyNever(repository.saveSelectedListId(any));
